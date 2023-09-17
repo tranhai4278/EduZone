@@ -6,25 +6,25 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <html lang="en">   
-        <head>
-            <!-- Required meta tags -->
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <!-- <link rel="icon" type="image/x-icon" href="Eduzone/assets/images/cover/favicon.ico"> -->
-            <!-- Font Awesome CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/all.css">
-            <!-- Bootstrap CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/bootstrap/bootstrap.min.css">
-            <!-- Custom CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/color-modes.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/common.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/animation.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/index.css">
-            <!-- Title -->
-            <title>Eduzone - Home</title>
-        </head>
+<html lang="en">  
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- <link rel="icon" type="image/x-icon" href="Eduzone/assets/images/cover/favicon.ico"> -->
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="assets/css/all.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="assets/css/eduzone/color-modes.css">
+        <link rel="stylesheet" href="assets/css/eduzone/common.css">
+        <link rel="stylesheet" href="assets/css/eduzone/animation.css">
+        <link rel="stylesheet" href="assets/css/eduzone/index.css">
+        <!-- Title -->
+        <title>Eduzone - Home</title>
+    </head>
         <body>
 
             <section id="cover">
@@ -38,12 +38,12 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="wrap">
-                                <img src="Eduzone/assets/images/1.svg" alt="Mobirise" class="image-1 animated-elements1">
-                                <img src="Eduzone/assets/images/2.svg" alt="Mobirise" class="image-2 animated-elements2">
-                                <img src="Eduzone/assets/images/3.svg" alt="Mobirise" class="image-3 animated-elements3">
-                                <img src="Eduzone/assets/images/4.svg" alt="Mobirise" class="image-4 animated-elements4">
-                                <img src="Eduzone/assets/images/5.svg" alt="Mobirise" class="image-5 animated-elements5">
-                                <img src="Eduzone/assets/images/6.svg" alt="Mobirise" class="image-6 animated-elements6">
+                                <img src="assets/images/1.svg" alt="Mobirise" class="image-1 animated-elements1">
+                                <img src="assets/images/2.svg" alt="Mobirise" class="image-2 animated-elements2">
+                                <img src="assets/images/3.svg" alt="Mobirise" class="image-3 animated-elements3">
+                                <img src="assets/images/4.svg" alt="Mobirise" class="image-4 animated-elements4">
+                                <img src="assets/images/5.svg" alt="Mobirise" class="image-5 animated-elements5">
+                                <img src="assets/images/6.svg" alt="Mobirise" class="image-6 animated-elements6">
                             </div>
                         </div>
                     </div>
@@ -474,12 +474,12 @@
                             <h1 class="title">Contact <span class="highlight">US</span></h1>
                             <p>Please tell us your thoughts, wishes - suggestions.</p>
                             <div class="wrap">
-                                <img src="Eduzone/assets/images/1.svg" alt="Mobirise" class="image-1 animated-elements1">
-                                <img src="Eduzone/assets/images/2.svg" alt="Mobirise" class="image-2 animated-elements2">
-                                <img src="Eduzone/assets/images/3.svg" alt="Mobirise" class="image-3 animated-elements3">
-                                <img src="Eduzone/assets/images/4.svg" alt="Mobirise" class="image-4 animated-elements4">
-                                <img src="Eduzone/assets/images/5.svg" alt="Mobirise" class="image-5 animated-elements5">
-                                <img src="Eduzone/assets/images/6.svg" alt="Mobirise" class="image-6 animated-elements6">
+                                <img src="assets/images/1.svg" alt="Mobirise" class="image-1 animated-elements1">
+                                <img src="assets/images/2.svg" alt="Mobirise" class="image-2 animated-elements2">
+                                <img src="assets/images/3.svg" alt="Mobirise" class="image-3 animated-elements3">
+                                <img src="assets/images/4.svg" alt="Mobirise" class="image-4 animated-elements4">
+                                <img src="assets/images/5.svg" alt="Mobirise" class="image-5 animated-elements5">
+                                <img src="assets/images/6.svg" alt="Mobirise" class="image-6 animated-elements6">
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6">
@@ -548,17 +548,17 @@
             <!-- Bootstrap core JavaScript-->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="Eduzone/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 
             <!-- Custom scripts for all pages-->
-            <script src="EduZone/assets/js/anest/anest.js"></script>
-            <script src="EduZone/assets/js/anest/jarallax.min.js"></script>
-            <script src="EduZone/assets/js/anest/animation.js"></script>
-            <script src="EduZone/assets/js/anest/color-modes.js"></script>
-            <script src="EduZone/assets/js/anest/index.js"></script>
+            <script src="assets/js/anest/anest.js"></script>
+            <script src="assets/js/anest/jarallax.min.js"></script>
+            <script src="assets/js/anest/animation.js"></script>
+            <script src="assets/js/anest/color-modes.js"></script>
+            <script src="assets/js/anest/index.js"></script>
 
             <!-- Custom scripts for current pages-->
-            <script src="EduZone/assets/js/anest/contact.js"></script>
+            <script src="assets/js/anest/contact.js"></script>
         </body>
     </html>
 

@@ -5,27 +5,27 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
-    <html>
-        <head>
-            <!-- Required meta tags -->
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <!-- <link rel="icon" type="image/x-icon" href="Eduzone/assets/images/cover/favicon.ico"> -->
-            <!-- Font Awesome CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/all.css">
-            <!-- Bootstrap CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/bootstrap/bootstrap.min.css">
-            <!-- Custom CSS -->
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/color-modes.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/common.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/animation.css">
-            <link rel="stylesheet" href="EduZone/assets/css/eduzone/index.css">
-            <!-- Title -->
-            <title>Eduzone - Home</title>
-        </head>
+<html lang="en">  
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- <link rel="icon" type="image/x-icon" href="Eduzone/assets/images/cover/favicon.ico"> -->
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="assets/css/all.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="assets/css/eduzone/color-modes.css">
+        <link rel="stylesheet" href="assets/css/eduzone/common.css">
+        <link rel="stylesheet" href="assets/css/eduzone/animation.css">
+        <link rel="stylesheet" href="assets/css/eduzone/index.css">
+        <!-- Title -->
+        <title>Eduzone - Home</title>
+    </head>
+    
         <body id="page-top" data-spy="scroll" data-target=".navbar" data-offset="50" onload="startTime()">
             <!-- Start hero -->
 
@@ -156,16 +156,16 @@
             <!-- Bootstrap core JavaScript-->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="Eduzone/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+            <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 
             <!-- Custom scripts for all pages-->
-            <script src="EduZone/assets/js/anest/anest.js"></script>
-            <script src="EduZone/assets/js/anest/jarallax.min.js"></script>
-            <script src="EduZone/assets/js/anest/animation.js"></script>
-            <script src="EduZone/assets/js/anest/color-modes.js"></script>
-            <script src="EduZone/assets/js/anest/index.js"></script>
+            <script src="assets/js/anest/anest.js"></script>
+            <script src="assets/js/anest/jarallax.min.js"></script>
+            <script src="assets/js/anest/animation.js"></script>
+            <script src="assets/js/anest/color-modes.js"></script>
+            <script src="assets/js/anest/index.js"></script>
 
             <!-- Custom scripts for current pages-->
-            <script src="EduZone/assets/js/anest/contact.js"></script>
+            <script src="assets/js/anest/contact.js"></script>
         </body>
     </html>

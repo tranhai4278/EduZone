@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="assets/css/eduzone/color-modes.css">
         <link rel="stylesheet" href="assets/css/eduzone/common.css">
         <link rel="stylesheet" href="assets/css/eduzone/animation.css">
-        <link rel="stylesheet" href="assets/css/eduzone/index.css">
+        <link rel="stylesheet" href="css/eduzone/index.css">
         <!-- Title -->
         <title>Eduzone - Home</title>
     </head>
@@ -33,9 +33,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-lg justify-content">
                         <div class="site-branding">
-                            <a href="index.html">
-                                <!-- <img src="assets/images/cover/logo.png"> -->
-                                EDUZONE LOGO
+                            <a href="home.jsp">
+                                <img src="assets/images/cover/logo.png"> 
                             </a>
                         </div>
                         <div class="site-navigation d-flex">

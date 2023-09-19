@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="assets/css/eduzone/color-modes.css">
         <link rel="stylesheet" href="assets/css/eduzone/common.css">
         <link rel="stylesheet" href="assets/css/eduzone/animation.css">
-        <link rel="stylesheet" href="css/eduzone/index.css">
+        <link rel="stylesheet" href="assets/css/eduzone/index.css">
         <!-- Title -->
         <title>Eduzone - Home</title>
     </head>
@@ -58,8 +58,8 @@
                                     <div class="dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>LOGIN</a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <li><button class="dropdown-item" type="button"><a href="login.html">Login</a></button></li>
-                                            <li><button class="dropdown-item" type="button"><a href="register.html">Register</a></button></li>
+                                            <li><button class="dropdown-item" type="button"><a href="login.jsp">Login</a></button></li>
+                                            <li><button class="dropdown-item" type="button"><a href="register.jsp">Register</a></button></li>
                                             <li><button class="dropdown-item" type="button">Help</button></li>
                                         </ul>
                                     </div>

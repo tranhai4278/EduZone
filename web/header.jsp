@@ -1,170 +1,151 @@
-<%-- 
-    Document   : header
-    Created on : Sep 16, 2023, 10:47:53 PM
-    Author     : MinhDQ
---%>
+<header class="header rs-nav header-transparent">
+                <div class="top-bar">
+                    <div class="container">
+                        <div class="row d-flex justify-content-between">
+                            <div class="topbar-left">
+                                <ul>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">  
-
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- <link rel="icon" type="image/x-icon" href="Eduzone/assets/images/cover/favicon.ico"> -->
-        <!-- Font Awesome CSS -->
-        <link rel="stylesheet" href="assets/css/all.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="assets/css/eduzone/color-modes.css">
-        <link rel="stylesheet" href="assets/css/eduzone/common.css">
-        <link rel="stylesheet" href="assets/css/eduzone/animation.css">
-        <link rel="stylesheet" href="assets/css/eduzone/index.css">
-        <!-- Title -->
-        <title>Eduzone - Home</title>
-    </head>
-    
-        <body id="page-top" data-spy="scroll" data-target=".navbar" data-offset="50" onload="startTime()">
-            <!-- Start hero -->
-
-            <section id="menu">
-                <div class="container">
-                    <nav class="navbar navbar-expand-lg justify-content">
-                        <div class="site-branding">
-                            <a href="home.jsp">
-                                <img src="assets/images/cover/logo.png"> 
-                            </a>
-                        </div>
-                        <div class="site-navigation d-flex">
-                            <div>
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
+                                </ul>
                             </div>
-                            <ul class="navbar-nav">
-                                <!-- <li class="nav-item">
-                                  <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw"></i>HOME</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="dashboard.html"><i class="fas fa-bars fa-fw"></i>DASHBOARD</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#course"><i class="fas fa-code fa-fw"></i>COURSES</a>
-                                </li> -->
-                                <li class="nav-item">
-                                    <div class="dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>LOGIN</a>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <li><button class="dropdown-item" type="button"><a href="login.jsp">Login</a></button></li>
-                                            <li><button class="dropdown-item" type="button"><a href="register.jsp">Register</a></button></li>
-                                            <li><button class="dropdown-item" type="button">Help</button></li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-
-                                <li class="nav-item">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-star-half-alt fa-fw"></i>SCREEN
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-theme-value="light">
-                                            <i class="fas fa-sun fa-fw mr-2"></i>Light
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                            </svg>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-theme-value="dark">
-                                            <i class="fas fa-moon fa-fw mr-2"></i>Dark
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                            </svg>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-theme-value="auto">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half mr-2" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                                            </svg>Auto
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                            </svg>
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <h6 class="dropdown-header">Color</h6>
-                                        <div class="color-theme" style="margin-top: 8px !important;">
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Brown" data-bs-color-value="tan" class="color" style="background-color: #c7af8b;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Yellow" data-bs-color-value="yellow" class="color" style="background-color: #f8d06d;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Orange" data-bs-color-value="orange" class="color" style="background-color: #fd7e14;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Red" data-bs-color-value="red" class="color" style="background-color: #dc3545;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div class="color-theme mb-1">
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Green" data-bs-color-value="green" class="color" style="background-color: #03bb63;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Teal Blue" data-bs-color-value="teal" class="color" style="background-color: #20c997;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Blue" data-bs-color-value="cyan" class="color" style="background-color: #0dcaf0;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Pink" data-bs-color-value="pink" class="color" style="background-color: #d63384;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                </li>
-                            </ul>
-                            <div id="btn-collapse" class="hamburger-menu d-lg-none rotate">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
+                            <div class="topbar-right">
+                                <ul>
+                                    <li><a href="#">Logout</a></li>
+<!--                                    <li><a href="register.jsp">Register</a></li>-->
+                                </ul>
                             </div>
                         </div>
-                    </nav>
+                    </div>
                 </div>
-            </section>
-
-            <!-- Bootstrap core JavaScript-->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-
-            <!-- Custom scripts for all pages-->
-            <script src="assets/js/anest/anest.js"></script>
-            <script src="assets/js/anest/jarallax.min.js"></script>
-            <script src="assets/js/anest/animation.js"></script>
-            <script src="assets/js/anest/color-modes.js"></script>
-            <script src="assets/js/anest/index.js"></script>
-
-            <!-- Custom scripts for current pages-->
-            <script src="assets/js/anest/contact.js"></script>
-        </body>
-    </html>
+                <div class="sticky-header navbar-expand-lg">
+                    <div class="menu-bar clearfix">
+                        <div class="container clearfix">
+                            <!-- Header Logo ==== -->
+                            <div class="menu-logo">
+                                <a href="index.jsp"><img src="assets/images/logo.png" alt=""></a>
+                            </div>
+                            <!-- Mobile Nav Button ==== -->
+                            <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <!-- Author Nav ==== -->
+                            <div class="secondary-menu">
+                                <div class="secondary-inner">
+                                    <ul>
+                                        <li><a href="javascript:;" class="btn-link"><i class="fa fa-google-plus"></i></a></li>
+                                        <!-- Search Button ==== -->
+                                        <li class="search-btn"><button id="quik-search-btn" type="button" class="btn-link"><i class="fa fa-search"></i></button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Search Box ==== -->
+                            <div class="nav-search-bar">
+                                <form action="#">
+                                    <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
+                                    <span><i class="ti-search"></i></span>
+                                </form>
+                                <span id="search-remove"><i class="ti-close"></i></span>
+                            </div>
+                            <!-- Navigation Menu ==== -->
+                            <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+                                <div class="menu-logo">
+                                    <a href="home.jsp"><img src="assets/images/logo.png" alt=""></a>
+                                </div>
+                                <ul class="nav navbar-nav">	
+                                    <li><a href="javascript:;">"Tên User" <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+<!--                                            <li><a href="javascript:;">About<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="about-1.jsp">About 1</a></li>
+                                                    <li><a href="about-2.jsp">About 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="javascript:;">Event<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="event.jsp">Event</a></li>
+                                                    <li><a href="events-details.jsp">Events Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="javascript:;">FAQ's<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="faq-1.jsp">FAQ's 1</a></li>
+                                                    <li><a href="faq-2.jsp">FAQ's 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="javascript:;">Contact Us<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="contact-1.jsp">Contact Us 1</a></li>
+                                                    <li><a href="contact-2.jsp">Contact Us 2</a></li>
+                                                </ul>
+                                            </li>-->
+<!--                                            <li><a href="portfolio.jsp">Portfolio</a></li>-->
+                                            <li><a href="profile.jsp">My Profile</a></li>
+<!--                                            <li><a href="profile.jsp">My Subject</a></li>
+                                            <li><a href="profile.jsp">My Class</a></li>                                    Will do this in future--> 
+                                            <li><a href="#">Change Password</a></li>
+                                            <li><a href="#">Logout</a></li>
+<!--                                            <li><a href="membership.jsp">Membership</a></li>
+                                            <li><a href="error-404.jsp">404 Page</a></li>-->
+                                        </ul>
+                                    </li>
+                                    <li class="add-mega-menu"><a href="javascript:;">Our Courses <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu add-menu">
+                                            <li class="add-menu-left">
+                                                <h5 class="menu-adv-title">Our Courses</h5>
+                                                <ul>
+                                                    <li><a href="courses.jsp">Courses </a></li>
+<!--                                                    <li><a href="courses-details.jsp">Courses Details</a></li>-->
+<!--                                                    <li><a href="profile.jsp">Instructor Profile</a></li>
+                                                    <li><a href="event.jsp">Upcoming Event</a></li>
+                                                    <li><a href="membership.jsp">Membership</a></li>-->
+                                                </ul>
+                                            </li>
+                                            <li class="add-menu-right">
+                                                <img src="assets/images/adv/adv.jpg" alt=""/>
+                                            </li>
+                                        </ul>
+                                    </li>
+<!--                                    <li><a href="javascript:;">Blog <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog-classic-grid.jsp">Blog Classic</a></li>
+                                            <li><a href="blog-classic-sidebar.jsp">Blog Classic Sidebar</a></li>
+                                            <li><a href="blog-list-sidebar.jsp">Blog List Sidebar</a></li>
+                                            <li><a href="blog-standard-sidebar.jsp">Blog Standard Sidebar</a></li>
+                                            <li><a href="blog-details.jsp">Blog Details</a></li>
+                                        </ul>
+                                    </li>-->
+                                    <li class="nav-dashboard"><a href="javascript:;">Dashboard <i class="fa fa-chevron-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="admin/index.jsp">Dashboard</a></li>
+                                            <!--<li><a href="admin/add-listing.jsp">Add Listing</a></li>-->
+                                            <!--<li><a href="admin/bookmark.jsp">Bookmark</a></li>-->
+                                            <li><a href="admin/courses.jsp">Subject</a></li>
+                                            <!--<li><a href="admin/review.jsp">Review</a></li>-->
+                                            <li><a href="admin/teacher-profile.jsp">Teacher Profile</a></li>
+                                            <li><a href="admin/user-profile.jsp">User Profile</a></li>
+<!--                                            <li><a href="javascript:;">Calendar<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="admin/basic-calendar.jsp">Basic Calendar</a></li>
+                                                    <li><a href="admin/list-view-calendar.jsp">List View Calendar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="javascript:;">Mailbox<i class="fa fa-angle-right"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="admin/mailbox.jsp">Mailbox</a></li>
+                                                    <li><a href="admin/mailbox-compose.jsp">Compose</a></li>
+                                                    <li><a href="admin/mailbox-read.jsp">Mail Read</a></li>
+                                                </ul>
+                                            </li>-->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="nav-social-link">
+                                    <a href="javascript:;"><i class="fa fa-google-plus"></i></a>
+                                </div>
+                            </div>
+                            <!-- Navigation Menu END ==== -->
+                        </div>
+                    </div>
+                </div>
+            </header>

@@ -11,65 +11,65 @@ import java.util.Date;
  * @author Nết
  */
 public class Subject {
-    private int subject_id;
-    private int manager_id;
-    private String subject_name;
-    private String subject_code;
+    private int subjectId;
+    private int managerId;
+    private String subjectName;
+    private String subjectCode;
     private String description;
-    private String img_url;
+    private String imgUrl;
     private boolean status;
-    private Date create_at;
-    private int create_by;
-    private Date update_at;
-    private int update_by;
+    private Date createAt;
+    private int createBy;
+    private Date updateAt;
+    private int updateBy;
 
     public Subject() {
     }
 
-    public Subject(int subject_id, int manager_id, String subject_name, String subject_code, String description, String img_url, boolean status, Date create_at, int create_by, Date update_at, int update_by) {
-        this.subject_id = subject_id;
-        this.manager_id = manager_id;
-        this.subject_name = subject_name;
-        this.subject_code = subject_code;
+    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.subjectId = subjectId;
+        this.managerId = managerId;
+        this.subjectName = subjectName;
+        this.subjectCode = subjectCode;
         this.description = description;
-        this.img_url = img_url;
+        this.imgUrl = imgUrl;
         this.status = status;
-        this.create_at = create_at;
-        this.create_by = create_by;
-        this.update_at = update_at;
-        this.update_by = update_by;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
     }
 
-    public int getSubject_id() {
-        return subject_id;
+    public int getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject_id(int subject_id) {
-        this.subject_id = subject_id;
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public int getManager_id() {
-        return manager_id;
+    public int getManagerId() {
+        return managerId;
     }
 
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setSubject_name(String subject_name) {
-        this.subject_name = subject_name;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
-    public String getSubject_code() {
-        return subject_code;
+    public String getSubjectCode() {
+        return subjectCode;
     }
 
-    public void setSubject_code(String subject_code) {
-        this.subject_code = subject_code;
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
 
     public String getDescription() {
@@ -80,12 +80,12 @@ public class Subject {
         this.description = description;
     }
 
-    public String getImg_url() {
-        return img_url;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public boolean isStatus() {
@@ -96,36 +96,38 @@ public class Subject {
         this.status = status;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    public int getCreate_by() {
-        return create_by;
+    public int getCreateBy() {
+        return createBy;
     }
 
-    public void setCreate_by(int create_by) {
-        this.create_by = create_by;
+    public void setCreateBy(int createBy) {
+        this.createBy = createBy;
     }
 
-    public Date getUpdate_at() {
-        return update_at;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public int getUpdate_by() {
-        return update_by;
+    public int getUpdateBy() {
+        return updateBy;
     }
 
-    public void setUpdate_by(int update_by) {
-        this.update_by = update_by;
+    public void setUpdateBy(int updateBy) {
+        this.updateBy = updateBy;
     }
+
+
     
 }

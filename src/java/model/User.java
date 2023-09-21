@@ -11,45 +11,45 @@ import java.util.Date;
  * @author Nết
  */
 public class User {
-    private int user_id;
+    private int userId;
     private String password;
-    private String full_name;
+    private String fullName;
     private boolean gender;
-    private String avatar_url;
+    private String avatarUrl;
     private String phone;
     private String email;
-    private int role_id;
+    private int roleId;
     private boolean status;
-    private Date create_at;
-    private int create_by;
-    private Date update_at;
-    private int update_by;
+    private Date createAt;
+    private int createBy;
+    private Date updateAt;
+    private int updateBy;
 
     public User() {
     }
 
-    public User(int user_id, String password, String full_name, boolean gender, String avatar_url, String phone, String email, int role_id, boolean status, Date create_at, int create_by, Date update_at, int update_by) {
-        this.user_id = user_id;
+    public User(int userId, String password, String fullName, boolean gender, String avatarUrl, String phone, String email, int roleId, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.userId = userId;
         this.password = password;
-        this.full_name = full_name;
+        this.fullName = fullName;
         this.gender = gender;
-        this.avatar_url = avatar_url;
+        this.avatarUrl = avatarUrl;
         this.phone = phone;
         this.email = email;
-        this.role_id = role_id;
+        this.roleId = roleId;
         this.status = status;
-        this.create_at = create_at;
-        this.create_by = create_by;
-        this.update_at = update_at;
-        this.update_by = update_by;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
@@ -60,12 +60,12 @@ public class User {
         this.password = password;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public boolean isGender() {
@@ -76,12 +76,12 @@ public class User {
         this.gender = gender;
     }
 
-    public String getAvatar_url() {
-        return avatar_url;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAvatar_url(String avatar_url) {
-        this.avatar_url = avatar_url;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getPhone() {
@@ -100,12 +100,12 @@ public class User {
         this.email = email;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public boolean isStatus() {
@@ -116,36 +116,37 @@ public class User {
         this.status = status;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
-    public int getCreate_by() {
-        return create_by;
+    public int getCreateBy() {
+        return createBy;
     }
 
-    public void setCreate_by(int create_by) {
-        this.create_by = create_by;
+    public void setCreateBy(int createBy) {
+        this.createBy = createBy;
     }
 
-    public Date getUpdate_at() {
-        return update_at;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdate_at(Date update_at) {
-        this.update_at = update_at;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
-    public int getUpdate_by() {
-        return update_by;
+    public int getUpdateBy() {
+        return updateBy;
     }
 
-    public void setUpdate_by(int update_by) {
-        this.update_by = update_by;
+    public void setUpdateBy(int updateBy) {
+        this.updateBy = updateBy;
     }
+
     
 }

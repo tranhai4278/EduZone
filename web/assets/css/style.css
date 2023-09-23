@@ -1970,12 +1970,11 @@ button.back-to-top {
     margin-bottom: 5px;
 }
 .media-post li{
-    list-style: none;
-    display: inline-block;
-    font-size: 13px;
-    text-transform: capitalize;
-    font-family: "Montserrat",sans-serif ;
-    margin-right: 5px;
+	list-style: none;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: capitalize;
+	margin-right: 5px;
 }
 .media-post li a{
     color:var(--primary);

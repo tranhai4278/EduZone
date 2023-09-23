@@ -5,16 +5,16 @@
         <servlet-class>controller.LandingPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>HeaderController</servlet-name>
-        <servlet-class>controller.HeaderController</servlet-class>
+        <servlet-name>SubjectSetting</servlet-name>
+        <servlet-class>controller.SubjectSetting</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>HeaderController</servlet-name>
-        <url-pattern>/HeaderController</url-pattern>
+        <servlet-name>SubjectSetting</servlet-name>
+        <url-pattern>/subjectSetting</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

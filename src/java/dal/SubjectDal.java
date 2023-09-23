@@ -1,13 +1,12 @@
-package Dal;
+package dal;
 
-import dal.MySqlConnection;
 import java.sql.Date;
 import java.util.ArrayList;
 import model.Subject;
 
 public class SubjectDal extends MySqlConnection {
 
-    public ArrayList getSubjects() {
+    public ArrayList getAllSubjects() {
         ArrayList<Subject> list = new ArrayList<>();
         String sql = "select * from subject";
 
@@ -27,11 +26,60 @@ public class SubjectDal extends MySqlConnection {
                 int create_by = result.getInt(9);
                 Date update_at = result.getDate(10);
                 int update_by = result.getInt(11);
-                Subject subject = new Subject(subject_id, manager_id, subject_name, subject_code, description, img_url, status, create_at, create_by, update_at, update_by);
+                Subject subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        subject_name,
+                        subject_code,
+                        description,
+                        img_url,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by);
                 list.add(subject);
             }
             return list;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList getAllSubjectNames() {
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "SELECT subject_name FROM `subject`";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                String subjectName = result.getString(1);
+                list.add(subjectName);
+            }
+            return list;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList getAllSubjectCodes() {
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "SELECT subject_code FROM `subject`";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                String SubjectCode = result.getString(1);
+                list.add(SubjectCode);
+            }
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

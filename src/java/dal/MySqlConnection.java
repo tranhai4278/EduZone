@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class MySqlConnection {
 
@@ -16,7 +14,7 @@ public class MySqlConnection {
     public MySqlConnection() {
         String url = "jdbc:mysql://localhost:3306/eduzone";
         String username = "root";
-        String password = "";
+        String password = "root";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -27,9 +25,11 @@ public class MySqlConnection {
             ex.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         try {
             System.out.println(new MySqlConnection().connection);
+            
         } catch (Exception e) {
         }
     }

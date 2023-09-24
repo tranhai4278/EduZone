@@ -38,6 +38,8 @@ public class AdminDAO extends MySqlConnection {
                 list.add(s);
             }
         } catch ( SQLException e) {
+            e.printStackTrace();
+            return null;
         }
         return list;
     }

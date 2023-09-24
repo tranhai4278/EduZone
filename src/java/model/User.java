@@ -44,6 +44,23 @@ public class User {
         this.updateBy = updateBy;
     }
 
+    public User(String password, String fullName, boolean gender, String avatarUrl, String phone, String email, int roleId, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.password = password;
+        this.fullName = fullName;
+        this.gender = gender;
+        this.avatarUrl = avatarUrl;
+        this.phone = phone;
+        this.email = email;
+        this.roleId = roleId;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
+    
+    
     public int getUserId() {
         return userId;
     }

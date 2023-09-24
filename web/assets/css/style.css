@@ -1971,11 +1971,13 @@ button.back-to-top {
 }
 .media-post li{
 
+
     list-style: none;
     display: inline-block;
     font-size: 13px;
     text-transform: capitalize;
     margin-right: 5px;
+
 
 }
 .media-post li a{

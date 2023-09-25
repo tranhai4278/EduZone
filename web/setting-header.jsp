@@ -193,12 +193,25 @@
                                                 </li>
                                             </ul>
                                         </li>-->
-                <!--                        <li>
-                                            <a href="bookmark.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-bookmark-alt"></i></span>
-                                                <span class="ttr-label">Bookmarks</span>
+                                        <li>
+                                            <a href="#" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-user"></i></span>
+                                                <span class="ttr-label">User</span>
                                             </a>
-                                        </li>-->
+                                        </li>
+                                        <li>
+                                            <a href="settingSubject" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-book"></i></span>
+                                                <span class="ttr-label">Subject</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-settings"></i></span>
+                                                <span class="ttr-label">Setting</span>
+                                            </a>
+                                        </li>
+                                        
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-comments"></i></span>
@@ -211,7 +224,7 @@
                                                 <span class="ttr-label">Add listing</span>
                                             </a>
                                         </li>-->
-                <li>
+<!--                <li>
                     <a href="#" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-settings"></i></span>
                         <span class="ttr-label">Setting List</span>
@@ -222,13 +235,13 @@
                             <a href="l" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
                         </li>
                         <li>
-                            <a href="subjectSetting" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
+                            <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
                         </li>
                         <li>
                             <a href="" class="ttr-material-button"><span class="ttr-label">Setting</span></a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="ttr-seperate"></li>
             </ul>
 

@@ -88,13 +88,7 @@
                                         <div class="mail-search-bar">
                                             <input type="text" class="form-control" placeholder="Search"/>
                                         </div>
-                                        <div class="dropdown all-msg-toolbar">
-                                            <span class="btn btn-info-icon" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#"><i class="fa fa-arrow-down"></i>A-Z</a></li>
-                                                <li><a href="#"><i class="fa fa-arrow-up"></i>Z-A</a></li>
-                                            </ul>
-                                        </div> 
+               
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>

@@ -27,6 +27,8 @@
     <servlet>
         <servlet-name>SettingSubject</servlet-name>
         <servlet-class>Admin.controller.SettingSubject</servlet-class>
+        <servlet-name>SubjectListController</servlet-name>
+        <servlet-class>controller.SubjectListController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
@@ -53,8 +55,13 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
         <servlet-name>SettingSubject</servlet-name>
         <url-pattern>/settingSubject</url-pattern>
+
+        <servlet-name>SubjectListController</servlet-name>
+        <url-pattern>/SubjectList</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

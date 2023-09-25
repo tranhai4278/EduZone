@@ -5,10 +5,6 @@
         <servlet-class>controller.LandingPage</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SubjectSetting</servlet-name>
-        <servlet-class>controller.SubjectSetting</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>Login.controller.RegisterController</servlet-class>
     </servlet>
@@ -28,13 +24,17 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>Login.controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SettingSubject</servlet-name>
+        <servlet-class>Admin.controller.SettingSubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubjectListController</servlet-name>
+        <servlet-class>controller.SubjectListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SubjectSetting</servlet-name>
-        <url-pattern>/subjectSetting</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -55,6 +55,15 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingSubject</servlet-name>
+        <url-pattern>/settingSubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectListController</servlet-name>
+        <url-pattern>/SubjectList</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

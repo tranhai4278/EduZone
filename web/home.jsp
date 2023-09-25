@@ -399,477 +399,400 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 heading-bx left">
-                                    <h2 class="title-head">Popular <span>Courses</span></h2>
+                                    <h2 class="title-head">Widely enrolled <span>Subjects</span></h2>
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
-                                    <div class="item">
-                                        <div class="cours-bx">
-                                            <div class="action-box">
-                                                <img src="assets/images/courses/pic1.jpg" alt="">
-                                                <a href="#" class="btn">Read More</a>
-                                            </div>
-                                            <div class="info-bx text-center">
-                                                <h5><a href="#">Introduction EduZone – LMS plugin</a></h5>
-                                                <span>Programming</span>
-                                            </div>
-                                            <div class="cours-more-info">
-                                                <div class="review">
-                                                    <span>3 Review</span>
-                                                    <ul class="cours-star">
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
+                                    <c:forEach var="subject" items="${list}">
+                                        <div class="item">
+                                            <div class="cours-bx">
+                                                <div class="action-box">
+                                                    <img src="${subject.getImgUrl()}" style="width: 330px; height: 260px;" alt="">
+                                                    <a href="SubjectDetail?subject_id=${subject.getSubjectId()}" class="btn">Read More</a>
                                                 </div>
-                                                <div class="price">
-                                                    <del>$190</del>
-                                                    <h5>$120</h5>
+                                                <div class="info-bx text-center">
+                                                    <h5><a href="SubjectDetail?subject_id=${subject.getSubjectId()}">${subject.getSubjectName()}</a></h5>
+                                                    <span>${subject.getSubjectCode()}</span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="cours-bx">
-                                            <div class="action-box">
-                                                <img src="assets/images/courses/pic2.jpg" alt="">
-                                                <a href="#" class="btn">Read More</a>
-                                            </div>
-                                            <div class="info-bx text-center">
-                                                <h5><a href="#">Introduction EduZone – LMS plugin</a></h5>
-                                                <span>Programming</span>
-                                            </div>
-                                            <div class="cours-more-info">
-                                                <div class="review">
-                                                    <span>3 Review</span>
-                                                    <ul class="cours-star">
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <del>$190</del>
-                                                    <h5>$120</h5>
+                                                <div class="cours-more-info">
+                                                    <div class="review">
+                                                        <span>3 Review</span>
+                                                        <ul class="cours-star">
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li class="active"><i class="fa fa-star"></i></li>
+                                                            <li><i class="fa fa-star"></i></li>
+                                                            <li><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="price">
+                                                        <h6>Instructor</h6>
+                                                        <h8>
+                                                            ${subject.getManagerName()}
+                                                        </h8>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="cours-bx">
-                                            <div class="action-box">
-                                                <img src="assets/images/courses/pic3.jpg" alt="">
-                                                <a href="#" class="btn">Read More</a>
-                                            </div>
-                                            <div class="info-bx text-center">
-                                                <h5><a href="#">Introduction EduZone – LMS plugin</a></h5>
-                                                <span>Programming</span>
-                                            </div>
-                                            <div class="cours-more-info">
-                                                <div class="review">
-                                                    <span>3 Review</span>
-                                                    <ul class="cours-star">
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <del>$190</del>
-                                                    <h5>$120</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="cours-bx">
-                                            <div class="action-box">
-                                                <img src="assets/images/courses/pic4.jpg" alt="">
-                                                <a href="#" class="btn">Read More</a>
-                                            </div>
-                                            <div class="info-bx text-center">
-                                                <h5><a href="#">Introduction EduZone – LMS plugin</a></h5>
-                                                <span>Programming</span>
-                                            </div>
-                                            <div class="cours-more-info">
-                                                <div class="review">
-                                                    <span>3 Review</span>
-                                                    <ul class="cours-star">
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li class="active"><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price">
-                                                    <del>$190</del>
-                                                    <h5>$120</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </c:forEach>
+
+
+
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Popular Courses END -->
+                        <!-- Popular Courses END -->
 
-                    <!-- Form -->
-                    <div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(assets/images/background/bg1.jpg);">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-center text-white">
-                                    <h2>Online Courses To Learn</h2>
-                                    <h5>Own Your Feature Learning New Skills Online</h5>
-                                    <form class="cours-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="What do you want to learn today?	">
-                                            <div class="input-group-append">
-                                                <button class="btn" type="submit">Search</button> 
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="mw800 m-auto">
+                        <!-- Form -->
+                        <div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(assets/images/background/bg1.jpg);">
+                            <div class="container">
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="cours-search-bx m-b30">
-                                            <div class="icon-box">
-                                                <h3><i class="ti-user"></i><span class="counter">5</span>M</h3>
+                                    <div class="col-md-12 text-center text-white">
+                                        <h2>Online Courses To Learn</h2>
+                                        <h5>Own Your Feature Learning New Skills Online</h5>
+                                        <form class="cours-search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="What do you want to learn today?	">
+                                                <div class="input-group-append">
+                                                    <button class="btn" type="submit">Search</button> 
+                                                </div>
                                             </div>
-                                            <span class="cours-search-text">Over 5 million student</span>
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="cours-search-bx m-b30">
-                                            <div class="icon-box">
-                                                <h3><i class="ti-book"></i><span class="counter">30</span>K</h3>
+                                </div>
+                                <div class="mw800 m-auto">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="cours-search-bx m-b30">
+                                                <div class="icon-box">
+                                                    <h3><i class="ti-user"></i><span class="counter">5</span>M</h3>
+                                                </div>
+                                                <span class="cours-search-text">Over 5 million student</span>
                                             </div>
-                                            <span class="cours-search-text">30,000 Courses.</span>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-12">
-                                        <div class="cours-search-bx m-b30">
-                                            <div class="icon-box">
-                                                <h3><i class="ti-layout-list-post"></i><span class="counter">20</span>K</h3>
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="cours-search-bx m-b30">
+                                                <div class="icon-box">
+                                                    <h3><i class="ti-book"></i><span class="counter">30</span>K</h3>
+                                                </div>
+                                                <span class="cours-search-text">30,000 Courses.</span>
                                             </div>
-                                            <span class="cours-search-text">Learn Anythink Online.</span>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="cours-search-bx m-b30">
+                                                <div class="icon-box">
+                                                    <h3><i class="ti-layout-list-post"></i><span class="counter">20</span>K</h3>
+                                                </div>
+                                                <span class="cours-search-text">Learn Anythink Online.</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Form END -->
-                    <div class="section-area section-sp2">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-center heading-bx">
-                                    <h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
-                                    <p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+                        <!-- Form END -->
+                        <div class="section-area section-sp2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 text-center heading-bx">
+                                        <h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
+                                        <p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
-                                    <div class="item">
-                                        <div class="event-bx">
-                                            <div class="action-box">
-                                                <img src="assets/images/event/pic4.jpg" alt="">
-                                            </div>
-                                            <div class="info-bx d-flex">
-                                                <div>
-                                                    <div class="event-time">
-                                                        <div class="event-date">29</div>
-                                                        <div class="event-month">October</div>
+                                <div class="row">
+                                    <div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+                                        <div class="item">
+                                            <div class="event-bx">
+                                                <div class="action-box">
+                                                    <img src="assets/images/event/pic4.jpg" alt="">
+                                                </div>
+                                                <div class="info-bx d-flex">
+                                                    <div>
+                                                        <div class="event-time">
+                                                            <div class="event-date">29</div>
+                                                            <div class="event-month">October</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="event-info">
+                                                        <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                                        <ul class="media-post">
+                                                            <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                            <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                                        </ul>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
                                                     </div>
                                                 </div>
-                                                <div class="event-info">
-                                                    <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
-                                                    <ul class="media-post">
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
-                                                        <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
-                                                    </ul>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="event-bx">
+                                                <div class="action-box">
+                                                    <img src="assets/images/event/pic3.jpg" alt="">
+                                                </div>
+                                                <div class="info-bx d-flex">
+                                                    <div>
+                                                        <div class="event-time">
+                                                            <div class="event-date">29</div>
+                                                            <div class="event-month">October</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="event-info">
+                                                        <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                                        <ul class="media-post">
+                                                            <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                            <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                                        </ul>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="event-bx">
+                                                <div class="action-box">
+                                                    <img src="assets/images/event/pic2.jpg" alt="">
+                                                </div>
+                                                <div class="info-bx d-flex">
+                                                    <div>
+                                                        <div class="event-time">
+                                                            <div class="event-date">29</div>
+                                                            <div class="event-month">October</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="event-info">
+                                                        <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+                                                        <ul class="media-post">
+                                                            <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+                                                            <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+                                                        </ul>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <a href="#" class="btn">View All Event</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonials -->
+                        <div class="section-area section-sp2 bg-fix ovbl-dark" style="background-image:url(assets/images/background/bg1.jpg);">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 text-white heading-bx left">
+                                        <h2 class="title-head text-uppercase">what people <span>say</span></h2>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+                                    <div class="item">
+                                        <div class="testimonial-bx">
+                                            <div class="testimonial-thumb">
+                                                <img src="assets/images/testimonials/pic1.jpg" alt="">
+                                            </div>
+                                            <div class="testimonial-info">
+                                                <h5 class="name">Peter Packer</h5>
+                                                <p>-Art Director</p>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="testimonial-bx">
+                                            <div class="testimonial-thumb">
+                                                <img src="assets/images/testimonials/pic2.jpg" alt="">
+                                            </div>
+                                            <div class="testimonial-info">
+                                                <h5 class="name">Peter Packer</h5>
+                                                <p>-Art Director</p>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonials END -->
+
+                        <!-- Recent News -->
+                        <div class="section-area section-sp2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 heading-bx left">
+                                        <h2 class="title-head">Recent <span>News</span></h2>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                                    </div>
+                                </div>
+                                <div class="recent-news-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+                                    <div class="item">
+                                        <div class="recent-news">
+                                            <div class="action-box">
+                                                <img src="assets/images/blog/latest-blog/pic1.jpg" alt="">
+                                            </div>
+                                            <div class="info-bx">
+                                                <ul class="media-post">
+                                                    <li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i>By William</a></li>
+                                                </ul>
+                                                <h5 class="post-title"><a href="blog-details.jsp">This Story Behind Education Will Haunt You Forever.</a></h5>
+                                                <p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
+                                                <div class="post-extra">
+                                                    <a href="#" class="btn-link">READ MORE</a>
+                                                    <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <div class="event-bx">
+                                        <div class="recent-news">
                                             <div class="action-box">
-                                                <img src="assets/images/event/pic3.jpg" alt="">
+                                                <img src="assets/images/blog/latest-blog/pic2.jpg" alt="">
                                             </div>
-                                            <div class="info-bx d-flex">
-                                                <div>
-                                                    <div class="event-time">
-                                                        <div class="event-date">29</div>
-                                                        <div class="event-month">October</div>
-                                                    </div>
-                                                </div>
-                                                <div class="event-info">
-                                                    <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
-                                                    <ul class="media-post">
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
-                                                        <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
-                                                    </ul>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                            <div class="info-bx">
+                                                <ul class="media-post">
+                                                    <li><a href="#"><i class="fa fa-calendar"></i>Feb 05 2019</a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i>By John</a></li>
+                                                </ul>
+                                                <h5 class="post-title"><a href="blog-details.jsp">What Will Education Be Like In The Next 50 Years?</a></h5>
+                                                <p>As desperate as you are right now, you have done everything you can on your.</p>
+                                                <div class="post-extra">
+                                                    <a href="#" class="btn-link">READ MORE</a>
+                                                    <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>14 Comment</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <div class="event-bx">
+                                        <div class="recent-news">
                                             <div class="action-box">
-                                                <img src="assets/images/event/pic2.jpg" alt="">
+                                                <img src="assets/images/blog/latest-blog/pic3.jpg" alt="">
                                             </div>
-                                            <div class="info-bx d-flex">
-                                                <div>
-                                                    <div class="event-time">
-                                                        <div class="event-date">29</div>
-                                                        <div class="event-month">October</div>
-                                                    </div>
-                                                </div>
-                                                <div class="event-info">
-                                                    <h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
-                                                    <ul class="media-post">
-                                                        <li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
-                                                        <li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
-                                                    </ul>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+                                            <div class="info-bx">
+                                                <ul class="media-post">
+                                                    <li><a href="#"><i class="fa fa-calendar"></i>April 14 2019</a></li>
+                                                    <li><a href="#"><i class="fa fa-user"></i>By George</a></li>
+                                                </ul>
+                                                <h5 class="post-title"><a href="blog-details.jsp">Master The Skills Of Education And Be.</a></h5>
+                                                <p>You will see in the guide all my years of valuable experience together with.</p>
+                                                <div class="post-extra">
+                                                    <a href="#" class="btn-link">READ MORE</a>
+                                                    <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>23 Comment</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <a href="#" class="btn">View All Event</a>
-                            </div>
                         </div>
-                    </div>
+                        <!-- Recent News End -->
 
-                    <!-- Testimonials -->
-                    <div class="section-area section-sp2 bg-fix ovbl-dark" style="background-image:url(assets/images/background/bg1.jpg);">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 text-white heading-bx left">
-                                    <h2 class="title-head text-uppercase">what people <span>say</span></h2>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
-                                <div class="item">
-                                    <div class="testimonial-bx">
-                                        <div class="testimonial-thumb">
-                                            <img src="assets/images/testimonials/pic1.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-info">
-                                            <h5 class="name">Peter Packer</h5>
-                                            <p>-Art Director</p>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="testimonial-bx">
-                                        <div class="testimonial-thumb">
-                                            <img src="assets/images/testimonials/pic2.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-info">
-                                            <h5 class="name">Peter Packer</h5>
-                                            <p>-Art Director</p>
-                                        </div>
-                                        <div class="testimonial-content">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- Testimonials END -->
-
-                    <!-- Recent News -->
-                    <div class="section-area section-sp2">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12 heading-bx left">
-                                    <h2 class="title-head">Recent <span>News</span></h2>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
-                                </div>
-                            </div>
-                            <div class="recent-news-carousel owl-carousel owl-btn-1 col-12 p-lr0">
-                                <div class="item">
-                                    <div class="recent-news">
-                                        <div class="action-box">
-                                            <img src="assets/images/blog/latest-blog/pic1.jpg" alt="">
-                                        </div>
-                                        <div class="info-bx">
-                                            <ul class="media-post">
-                                                <li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
-                                                <li><a href="#"><i class="fa fa-user"></i>By William</a></li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-details.jsp">This Story Behind Education Will Haunt You Forever.</a></h5>
-                                            <p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
-                                            <div class="post-extra">
-                                                <a href="#" class="btn-link">READ MORE</a>
-                                                <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="recent-news">
-                                        <div class="action-box">
-                                            <img src="assets/images/blog/latest-blog/pic2.jpg" alt="">
-                                        </div>
-                                        <div class="info-bx">
-                                            <ul class="media-post">
-                                                <li><a href="#"><i class="fa fa-calendar"></i>Feb 05 2019</a></li>
-                                                <li><a href="#"><i class="fa fa-user"></i>By John</a></li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-details.jsp">What Will Education Be Like In The Next 50 Years?</a></h5>
-                                            <p>As desperate as you are right now, you have done everything you can on your.</p>
-                                            <div class="post-extra">
-                                                <a href="#" class="btn-link">READ MORE</a>
-                                                <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>14 Comment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="recent-news">
-                                        <div class="action-box">
-                                            <img src="assets/images/blog/latest-blog/pic3.jpg" alt="">
-                                        </div>
-                                        <div class="info-bx">
-                                            <ul class="media-post">
-                                                <li><a href="#"><i class="fa fa-calendar"></i>April 14 2019</a></li>
-                                                <li><a href="#"><i class="fa fa-user"></i>By George</a></li>
-                                            </ul>
-                                            <h5 class="post-title"><a href="blog-details.jsp">Master The Skills Of Education And Be.</a></h5>
-                                            <p>You will see in the guide all my years of valuable experience together with.</p>
-                                            <div class="post-extra">
-                                                <a href="#" class="btn-link">READ MORE</a>
-                                                <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>23 Comment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Recent News End -->
-
+                    <!-- contact area END -->
                 </div>
-                <!-- contact area END -->
+                <!-- Content END-->
+                <!-- Footer ==== -->
+                <%@include file="footer.jsp" %>
+                <!-- Footer END ==== -->
+                <button class="back-to-top fa fa-chevron-up" ></button>
             </div>
-            <!-- Content END-->
-            <!-- Footer ==== -->
-            <%@include file="footer.jsp" %>
-            <!-- Footer END ==== -->
-            <button class="back-to-top fa fa-chevron-up" ></button>
-        </div>
             <%@include file="scripjs.jsp" %>
-        <script>
-            jQuery(document).ready(function () {
-                var ttrevapi;
-                var tpj = jQuery;
-                if (tpj("#rev_slider_486_1").revolution == undefined) {
-                    revslider_showDoubleJqueryError("#rev_slider_486_1");
-                } else {
-                    ttrevapi = tpj("#rev_slider_486_1").show().revolution({
-                        sliderType: "standard",
-                        jsFileLocation: "assets/vendors/revolution/js/",
-                        sliderLayout: "fullwidth",
-                        dottedOverlay: "none",
-                        delay: 9000,
-                        navigation: {
-                            keyboardNavigation: "on",
-                            keyboard_direction: "horizontal",
-                            mouseScrollNavigation: "off",
-                            mouseScrollReverse: "default",
-                            onHoverStop: "on",
-                            touch: {
-                                touchenabled: "on",
-                                swipe_threshold: 75,
-                                swipe_min_touches: 1,
-                                swipe_direction: "horizontal",
-                                drag_block_vertical: false
-                            }
-                            ,
-                            arrows: {
-                                style: "uranus",
-                                enable: true,
-                                hide_onmobile: false,
-                                hide_onleave: false,
-                                tmp: '',
-                                left: {
-                                    h_align: "left",
-                                    v_align: "center",
-                                    h_offset: 10,
-                                    v_offset: 0
-                                },
-                                right: {
-                                    h_align: "right",
-                                    v_align: "center",
-                                    h_offset: 10,
-                                    v_offset: 0
+            <script>
+                jQuery(document).ready(function () {
+                    var ttrevapi;
+                    var tpj = jQuery;
+                    if (tpj("#rev_slider_486_1").revolution == undefined) {
+                        revslider_showDoubleJqueryError("#rev_slider_486_1");
+                    } else {
+                        ttrevapi = tpj("#rev_slider_486_1").show().revolution({
+                            sliderType: "standard",
+                            jsFileLocation: "assets/vendors/revolution/js/",
+                            sliderLayout: "fullwidth",
+                            dottedOverlay: "none",
+                            delay: 9000,
+                            navigation: {
+                                keyboardNavigation: "on",
+                                keyboard_direction: "horizontal",
+                                mouseScrollNavigation: "off",
+                                mouseScrollReverse: "default",
+                                onHoverStop: "on",
+                                touch: {
+                                    touchenabled: "on",
+                                    swipe_threshold: 75,
+                                    swipe_min_touches: 1,
+                                    swipe_direction: "horizontal",
+                                    drag_block_vertical: false
                                 }
-                            },
+                                ,
+                                arrows: {
+                                    style: "uranus",
+                                    enable: true,
+                                    hide_onmobile: false,
+                                    hide_onleave: false,
+                                    tmp: '',
+                                    left: {
+                                        h_align: "left",
+                                        v_align: "center",
+                                        h_offset: 10,
+                                        v_offset: 0
+                                    },
+                                    right: {
+                                        h_align: "right",
+                                        v_align: "center",
+                                        h_offset: 10,
+                                        v_offset: 0
+                                    }
+                                },
 
-                        },
-                        viewPort: {
-                            enable: true,
-                            outof: "pause",
-                            visible_area: "80%",
-                            presize: false
-                        },
-                        responsiveLevels: [1240, 1024, 778, 480],
-                        visibilityLevels: [1240, 1024, 778, 480],
-                        gridwidth: [1240, 1024, 778, 480],
-                        gridheight: [768, 600, 600, 600],
-                        lazyType: "none",
-                        parallax: {
-                            type: "scroll",
-                            origo: "enterpoint",
-                            speed: 400,
-                            levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 46, 47, 48, 49, 50, 55],
-                            type: "scroll",
-                        },
-                        shadow: 0,
-                        spinner: "off",
-                        stopLoop: "off",
-                        stopAfterLoops: -1,
-                        stopAtSlide: -1,
-                        shuffle: "off",
-                        autoHeight: "off",
-                        hideThumbsOnMobile: "off",
-                        hideSliderAtLimit: 0,
-                        hideCaptionAtLimit: 0,
-                        hideAllCaptionAtLilmit: 0,
-                        debugMode: false,
-                        fallbacks: {
-                            simplifyAll: "off",
-                            nextSlideOnWindowFocus: "off",
-                            disableFocusListener: false,
-                        }
-                    });
-                }
-            });
-        </script>
+                            },
+                            viewPort: {
+                                enable: true,
+                                outof: "pause",
+                                visible_area: "80%",
+                                presize: false
+                            },
+                            responsiveLevels: [1240, 1024, 778, 480],
+                            visibilityLevels: [1240, 1024, 778, 480],
+                            gridwidth: [1240, 1024, 778, 480],
+                            gridheight: [768, 600, 600, 600],
+                            lazyType: "none",
+                            parallax: {
+                                type: "scroll",
+                                origo: "enterpoint",
+                                speed: 400,
+                                levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 46, 47, 48, 49, 50, 55],
+                                type: "scroll",
+                            },
+                            shadow: 0,
+                            spinner: "off",
+                            stopLoop: "off",
+                            stopAfterLoops: -1,
+                            stopAtSlide: -1,
+                            shuffle: "off",
+                            autoHeight: "off",
+                            hideThumbsOnMobile: "off",
+                            hideSliderAtLimit: 0,
+                            hideCaptionAtLimit: 0,
+                            hideAllCaptionAtLilmit: 0,
+                            debugMode: false,
+                            fallbacks: {
+                                simplifyAll: "off",
+                                nextSlideOnWindowFocus: "off",
+                                disableFocusListener: false,
+                            }
+                        });
+                    }
+                });
+            </script>
     </body>
 
 </html>

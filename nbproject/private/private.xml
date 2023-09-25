@@ -2,31 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Setting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/User.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Subject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSubject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
-        </group>
-=======
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/assets/css/style.css</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/MySqlConnection.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/SubjectDal.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/home.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/subjects.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/setting-subject.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/AdminDAO.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/index.html</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/Admin/controller/SettingSubject.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/User.java</file>
         </group>
-=======
-        <group/>
->>>>>>> 708a26df12fd5afafb35106347724a890d8d21f9
->>>>>>> 7d0b8c41fe1ac001c2f45b9d440e9133c6853e90
     </open-files>
 </project-private>

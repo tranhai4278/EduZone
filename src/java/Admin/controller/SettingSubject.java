@@ -56,7 +56,7 @@ public class SettingSubject extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        AdminDAO d = new  AdminDAO();
+        AdminDAO d = new AdminDAO();
         List<Subject> listS = d.getAllSubject();
         request.setAttribute("listS", listS);
         request.getRequestDispatcher("setting-subject.jsp").forward(request, response);

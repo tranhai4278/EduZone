@@ -68,10 +68,10 @@ public class RegisterController extends HttpServlet {
         String name = request.getParameter("rgt_Name");
         String pass = request.getParameter("rgt_Pass");
         String email = request.getParameter("rgt_Email");
-        String avatar = request.getParameter("rgt_Ava");
         String phone = request.getParameter("rgt_Phone");
-        String gender = request.getParameter("rgt_gender");
-
+        String gd = request.getParameter("rgt_gender");
+        boolean gender = Boolean.parseBoolean(gd);
+        
         MyUtil util = new MyUtil();
         String captcha = util.getCaptcha();
         String md5 = util.toSHA1(pass);
@@ -83,7 +83,7 @@ public class RegisterController extends HttpServlet {
         session.setAttribute("captcha_rgt", captcha);
 
         Date d = new Date();
-        User user = new User(md5, name, true, avatar, phone, email, 1, true, d, 1, d, 1);
+        User user = new User(md5, name, gender, phone, email, 1, true, d, 1, d, 1);
         if (userDAO.getUserByEmail(email) != null) {
             request.setAttribute("message_email", "Email already exists");
             request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -93,9 +93,9 @@ public class RegisterController extends HttpServlet {
         }
         else {
             session.setAttribute("user_rgt", user);
-            String link = "ma otp cua ban la:  " + captcha;
+            String link = "Your otp:  " + captcha;
             try {
-                util.sendMail("minhdqhe163046@fpt.edu.vn", "test1", link);
+                util.sendMail(email, "Email confirm", link);
 
             } catch (Exception ex) {
                 Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!--<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>authentication</title>
@@ -121,52 +121,81 @@
     <body>
         <div class="form-container">
             <form action="authen" method="post">
-                <h3>Ma xac thuc da duoc gui ve email cua ban</h3>
-                <h3>Nhap ma xac thuc de xac minh tai khoan</h3>
-                Hello ${sessionScope.registerAccount.userName} <br/>
+                <h3>The otp code has been sent to your email</h3>
+                <h3>Enter the correct code to verify account</h3>
+                Hello ${sessionScope.user_rgt.fullName} <br/>
                 <input class="input_otp" type="text" name="ma"><br><br>
                 <input type="submit" name="xacThuc" value="Xac thuc">
-                <p>An OTP has been resent to your email.</p>
-                <p>Time remaining: <span id="timer"></span></p>
-                <p id="resendLink" style="visibility: hidden;">Click <a href="#">here</a> to resend OTP</p>
-                <h4>${err}</h4>
             </form>
         </div>
+    </body>
+</html>-->
+<html>
+    <head>
+        <title>Get your OTP</title>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet" id="bootstrap-css">
+        <script
+        src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
 
-        <!-- Add JavaScript code for countdown timer  -->
-        <script type="text/javascript">
-            var countdown;
-            function startTimer(duration, display) {
-                var timer = duration, minutes, seconds;
-                countdown = setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-                    display.textContent = minutes + ":" + seconds;
-                    if (--timer < 0) {
-                        clearInterval(countdown);
-                        display.textContent = "Time's up!";
-                        enableResendLink();
-                    }
-                }, 1000);
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <style type="text/css">
+            .form-gap {
+                padding-top: 70px;
             }
+        </style>
+    </head>
 
-            function enableResendLink() {
-                var resendLink = document.getElementById("resendLink");
-                resendLink.style.visibility = "visible";
-                resendLink.onclick = function () {
-                    // Call your resend OTP function or redirect the user to the resend page
-                    // Example: window.location.href = "resend_otp.jsp";
-                    window.location.href = "authen";
-                };
-            }
+    <body>
+        <div class="form-gap"></div>
+        
+        <div class="container">
+             
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="text-center">
+                                <h3>Hello ${sessionScope.user_rgt.fullName} ! </h3>
+                                <h3>
+                                    <i class="fa fa-lock fa-4x"></i>
+                                </h3>
+                                <h2 class="text-center">Enter OTP</h2>
+                               
+                                <div class="panel-body">
 
-            window.onload = function () {
-                var duration = 30; // Duration in seconds (e.g., 5 minutes)
-                var display = document.querySelector('#timer');
-                startTimer(duration, display);
-            };
-        </script>
+                                    <form id="register-form" action="authen" method="post"role="form" autocomplete="off"
+                                          class="form">
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i
+                                                        class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+                                                    id="opt" name="ma" placeholder="Enter OTP"
+                                                    class="form-control" type="text" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="xacThuc" value="Xac thuc"
+                                                   class="btn btn-lg btn-primary btn-block"
+                                                    type="submit"><span>${message}</span>
+                                        </div>
+
+                                        <input type="hidden" class="hide" name="token" id="token"
+                                               value="">
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

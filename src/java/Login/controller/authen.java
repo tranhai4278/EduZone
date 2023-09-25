@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
+import utils.MyUtil;
 
 /**
  *
@@ -76,13 +77,14 @@ public class authen extends HttpServlet {
         String code_fe = request.getParameter("ma");
         HttpSession session = request.getSession();
         String code_be = session.getAttribute("captcha_rgt").toString();
+        User user=(User)session.getAttribute("user_rgt");
         if(code_fe.trim().equals(code_be.trim())){
-            User user=(User)session.getAttribute("user_rgt");
             UserDAO udao = new UserDAO();
             udao.addUser(user);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
-            out.print("saicode");
+            request.setAttribute("message", "OTP code does not exist");
+            request.getRequestDispatcher("checkauthen.jsp").forward(request, response);
         }
       //  processRequest(request, response);
     }

@@ -2,6 +2,24 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/HomeController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/header.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/setting_header.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/login.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/User.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/controller/SubjectSetting.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/checkauthen.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/home.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/setting_subject.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/authen.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/SubjectDal.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
+        </group>
     </open-files>
 </project-private>

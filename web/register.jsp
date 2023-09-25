@@ -48,16 +48,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <label>Avatar Url</label>
-                                            <input name="rgt_Ava" type="text" required="" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="input-group">
@@ -66,7 +56,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div >
                                     <table bgcolor="#000000" align="center" cellspacing="5px">
                                         <tr>

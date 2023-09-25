@@ -47,7 +47,7 @@ public class AdminDAO extends MySqlConnection {
 
     public Subject getSubjectbyId(String id) {
         Subject p = null;
-        String sql = "SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE `subject_id` = 1 AND s.manager_id=u.user_id";
+        String sql = "SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE subject_id = ? AND s.manager_id=u.user_id";
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1, id);
@@ -96,4 +96,5 @@ public class AdminDAO extends MySqlConnection {
             int lid, String saleid, String amount, String price) {
 
     }
+    
 }

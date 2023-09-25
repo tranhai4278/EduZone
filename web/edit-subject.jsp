@@ -46,6 +46,8 @@
         <!-- All PLUGINS CSS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
         <!-- TYPOGRAPHY ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
@@ -71,11 +73,11 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Add Subject</h4>
+                    <h4 class="breadcrumb-title">Edit Subject</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="home.jsp"><i class="fa fa-home"></i>Home</a></li>
-                        <li><a href="subjectSetting">Subject List</a></li>
-                        <li>Add Subject</li>
+                        <li><a href="settingSubjet">Subject List</a></li>
+                        <li>Edit Subject</li>
                     </ul>
                 </div>	
                 <div class="row">
@@ -83,7 +85,7 @@
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="wc-title">
-                                <h4>Add Subject</h4>
+                                <h4>Edit Subject</h4>
                             </div>
                             <div class="widget-inner">
                                 <form class="edit-profile m-b30">
@@ -115,13 +117,13 @@
                                             <label class="col-form-label" >Manager</label>
                                             <select
                                                 name="managerid"
-                                         
+
                                                 id="category"
                                                 >
-                                                <option selected >Select subject manager</option>
+                                                
                                                 <c:forEach items="${listSM}" var="s">
                                                     <option <c:if test="${detail.managerId eq s.userId}">
-                                                        selected
+                                                            selected
                                                         </c:if> value="${s.userId}">
                                                         ${s.fullName}
                                                     </option>
@@ -130,20 +132,9 @@
                                         </div>
                                         <div class="form-group col-3">
                                             <label class="col-form-label">Status</label>
-<!--                                             <select
-                                                name="status"
-                                                class="custom-select-sm"
-                                                id="status"
-                                                >
-                                                <option selected >Select statusr</option>
-                                                <c:forEach items="${listC}" var="c">
-                                                    <option <c:if test="${detail.cid eq c.id}">
-                                                        selected
-                                                        </c:if> value="${c.id}">
-                                                        ${c.category}
-                                                    </option>
-                                                </c:forEach>
-                                            </select>-->
+                                            <div class="form-check form-switch">
+                                                <input style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} onclick="' updateStatus(' + ${setting.id} + ', this)'">
+                                            </div>
                                         </div>
                                         <div class="seperator"></div>
 
@@ -155,7 +146,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Subject description</label>
                                             <div>
-                                                <textarea class="form-control"> </textarea>
+                                                <textarea class="form-control">${detail.description} </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -174,6 +165,14 @@
         <div class="ttr-overlay"></div>
 
         <!-- External JavaScripts -->
+<!--        <script>
+                    function updateStatus(id, checkbox) {
+                        let status = checkbox.checked;
+                        if(confirm('Are you sure?'))
+                            fetch(?id=${id}&status=${status})
+                        else checkbox.checked = !status;
+                    }
+                </script>-->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -191,6 +190,7 @@
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             // Pricing add
             function newMenuItem() {
@@ -209,6 +209,7 @@
                 });
             }
         </script>
+        
     </body>
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->

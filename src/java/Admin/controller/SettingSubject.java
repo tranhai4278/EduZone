@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller;
+package Admin.controller;
 
 import dal.AdminDAO;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import model.Subject;
  *
  * @author Nết
  */
-public class SubjectSetting extends HttpServlet {
+public class SettingSubject extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,14 +36,13 @@ public class SubjectSetting extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");  
+            out.println("<title>Servlet SettingSubject</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SettingSubject at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +59,7 @@ public class SubjectSetting extends HttpServlet {
         AdminDAO d = new  AdminDAO();
         List<Subject> listS = d.getAllSubject();
         request.setAttribute("listS", listS);
-        request.getRequestDispatcher("setting_subject.jsp").forward(request, response);
+        request.getRequestDispatcher("setting-subject.jsp").forward(request, response);
     } 
 
     /** 

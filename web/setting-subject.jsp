@@ -57,12 +57,11 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
-
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
         <!-- header start -->
-        <%@include file="setting_header.jsp" %>
+        <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
@@ -115,7 +114,22 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <c:forEach items="${listS}" var="s">
+                                                        <tr>
+                                                            <td>
+                                                                ${s.subjectId}
+                                                            </td>
+                                                            <td>${s.subjectName}</td>
+                                                            <td>${s.subjectCode}</td>
+                                                            <td>${s.managerId}</td>
+                                                            <td>${s.status == 0 ? "Inactive" : "Active"}</td>
+                                                            <td>
+                                                                <a href="editsubject?sid=${s.subjectId}" class="tm-product-delete-link">
+                                                                    <i> Edit</i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </section>
@@ -147,11 +161,11 @@
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
-<!--        <script>
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-        </script>-->
+        <!--        <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>-->
     </body>
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->

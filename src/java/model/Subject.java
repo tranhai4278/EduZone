@@ -22,6 +22,7 @@ public class Subject {
     private int createBy;
     private Date updateAt;
     private int updateBy;
+    private User u;
 
     public Subject() {
     }
@@ -39,6 +40,30 @@ public class Subject {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+
+    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
+        this.subjectId = subjectId;
+        this.managerId = managerId;
+        this.subjectName = subjectName;
+        this.subjectCode = subjectCode;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.u = u;
+    }
+
+    public User getU() {
+        return u;
+    }
+
+    public void setU(User u) {
+        this.u = u;
+    }
+    
 
     public int getSubjectId() {
         return subjectId;

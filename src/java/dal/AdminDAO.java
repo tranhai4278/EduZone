@@ -4,9 +4,11 @@
  */
 package dal;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.Subject;
@@ -92,9 +94,46 @@ public class AdminDAO extends MySqlConnection {
         return list;
     }
 
-    public void editSubject(Subject s,
-            int lid, String saleid, String amount, String price) {
+    public void editSubject(Subject s) {
+        String sql = "UPDATE `subject` \n"
+                + "SET\n"
+                + "`manager_id`=?,\n"
+                + "`subject_name`=?,\n"
+                + "`subject_code`=?,\n"
+                + "`description`=?,\n"
+                + "`img_url`=?,\n"
+                + "`status`=?,\n"
+                + "`update_at`=?,\n"
+                + "`update_by`=? \n"
+                + "WHERE subject_id =?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, s.getManagerId());
+            statement.setString(2, s.getSubjectName());
+            statement.setString(3, s.getSubjectCode());
+            statement.setString(4, s.getDescription());
+            statement.setString(5, s.getImgUrl());
+            statement.setBoolean(6, s.isStatus());
+            statement.setTimestamp(7, new Timestamp(s.getUpdateAt().getTime()));
+            statement.setInt(8, s.getUpdateBy());
+            statement.setInt(9, s.getSubjectId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
 
+        }
     }
-    
+
+    public void updateSatus(int sid, boolean status) {
+        String sql = "UPDATE `subject` SET`status`=?\n"
+                + "WHERE subject_id = ?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setBoolean(1, status);
+            statement.setInt(2, sid);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+
+        }
+    }
+
 }

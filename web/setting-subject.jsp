@@ -52,7 +52,7 @@
 
         <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
@@ -88,7 +88,7 @@
                                         <div class="mail-search-bar">
                                             <input type="text" class="form-control" placeholder="Search"/>
                                         </div>
-               
+
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
@@ -102,7 +102,7 @@
                                                         <th scope="col">ID</th>
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
-                                                        <th scope="col">Subject Manager </th>
+                                                        <th scope="col">Subject Manager ID </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -117,14 +117,9 @@
                                                             <td>${s.subjectCode}</td>
                                                             <td>${s.managerId}</td>
                                                             <td>
-                                                                <c:choose>
-                                                                    <c:when test="${s.isStatus() == false}">
-                                                                        Inactive
-                                                                    </c:when>
-                                                                    <c:otherwise>
-                                                                        Active
-                                                                    </c:otherwise>
-                                                                </c:choose>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
+                                                                </div>
                                                             </td>
                                                             <td>
                                                                 <a href="editsubject?sid=${s.subjectId}" class="tm-product-delete-link">
@@ -145,7 +140,25 @@
                 </div>
         </main>
         <div class="ttr-overlay"></div>
-
+        <script>
+    async function updateStatus(id, checkbox) {
+        let status = checkbox.checked;
+        if (confirm('Are you sure?')) {
+            try {
+                const response = await fetch(`updateStatus?id=${id}&status=${status}`);
+                if (response.ok) {
+                    // Xử lý khi request thành công nếu cần
+                } else {
+                    // Xử lý khi request thất bại nếu cần
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            checkbox.checked = !status;
+        }
+    }
+</script>
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

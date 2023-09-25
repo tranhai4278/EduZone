@@ -107,4 +107,9 @@ public class MyUtil {
         }
         return null;
     }
+    
+    public static void main(String[] args) {
+        MyUtil myUtil = new MyUtil();
+        System.out.println(myUtil.toSHA1("123"));
+    }
 }

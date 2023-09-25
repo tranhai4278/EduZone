@@ -109,7 +109,7 @@ public class UserDAO extends MySqlConnection {
         }
         return null;
     }
-    
+
     public User getUserByPhone(String phone) {
         String query = "SELECT * FROM user WHERE phone_number = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
@@ -140,5 +140,56 @@ public class UserDAO extends MySqlConnection {
         }
         return null;
     }
-    
+
+    public User getUserById(int userId) {
+        User user = new User();
+        String sql = "SELECT *\n"
+                + "FROM USER\n"
+                + "WHERE user_id = " + userId + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                String password = result.getString(2);
+                String fullName = result.getString(3);
+                boolean gender = result.getBoolean(4);
+                String avatarUrl = result.getString(5);
+                String phoneNumber = result.getString(6);
+                String email = result.getString(7);
+                int roleId = result.getInt(8);
+                boolean status = result.getBoolean(9);
+                Date createAt = result.getDate(10);
+                int createBy = result.getInt(11);
+                Date updateAt = result.getDate(12);
+                int updateBy = result.getInt(13);
+                user = new User(
+                        userId,
+                        password,
+                        fullName,
+                        gender,
+                        avatarUrl,
+                        phoneNumber,
+                        email,
+                        roleId,
+                        status,
+                        createAt,
+                        createBy,
+                        updateAt,
+                        updateBy);
+            }
+
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getUserById(1);
+        System.out.println(user.getFullName());
+    }
 }

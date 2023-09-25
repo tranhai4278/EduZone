@@ -52,7 +52,7 @@
             <div class="container clearfix">
                 <!-- Header Logo ==== -->
                 <div class="menu-logo">
-                    <a href="index.jsp"><img src="assets/images/logo.png" alt=""></a>
+                    <a href="home.jsp"><img src="assets/images/logo.png" alt=""></a>
                 </div>
                 <!-- Mobile Nav Button ==== -->
                 <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,7 +135,7 @@
                                 <li class="add-menu-left">
                                     <h5 class="menu-adv-title">Our Subjects</h5>
                                     <ul>
-                                        <li><a href="subjects.jsp">Subjects </a></li>
+                                        <li><a href="SubjectList">Subjects </a></li>
                                         <!--                                                    <li><a href="courses-details.jsp">Courses Details</a></li>-->
                                         <!--                                                    <li><a href="profile.jsp">Instructor Profile</a></li>
                                                                                             <li><a href="event.jsp">Upcoming Event</a></li>

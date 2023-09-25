@@ -11,8 +11,10 @@ import java.util.Date;
  * @author Nết
  */
 public class Subject {
+
     private int subjectId;
     private int managerId;
+    private String managerName;
     private String subjectName;
     private String subjectCode;
     private String description;
@@ -25,6 +27,21 @@ public class Subject {
     private User u;
 
     public Subject() {
+    }
+
+    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.subjectId = subjectId;
+        this.managerId = managerId;
+        this.managerName = managerName;
+        this.subjectName = subjectName;
+        this.subjectCode = subjectCode;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
     }
 
     public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
@@ -69,6 +86,14 @@ public class Subject {
         this.u = u;
     }
 
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
     public User getU() {
         return u;
     }
@@ -76,7 +101,6 @@ public class Subject {
     public void setU(User u) {
         this.u = u;
     }
-    
 
     public int getSubjectId() {
         return subjectId;
@@ -166,6 +190,4 @@ public class Subject {
         this.updateBy = updateBy;
     }
 
-
-    
 }

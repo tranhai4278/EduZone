@@ -113,7 +113,7 @@
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+<!--                                                <tbody>
                                                     <c:forEach items="${listS}" var="s">
                                                         <tr>
                                                             <td>
@@ -122,7 +122,7 @@
                                                             <td>${s.subjectName}</td>
                                                             <td>${s.subjectCode}</td>
                                                             <td>${s.managerId}</td>
-                                                            <td>${s.status == 0 ? "Inactive" : "Active"}</td>
+                                                            
                                                             <td>
                                                                 <a href="editsubject?sid=${s.subjectId}" class="tm-product-delete-link">
                                                                     <i> Edit</i>
@@ -130,7 +130,7 @@
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
-                                                </tbody>
+                                                </tbody>-->
                                             </table>
                                         </section>
                                     </div>

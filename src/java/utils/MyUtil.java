@@ -27,13 +27,28 @@ public class MyUtil {
     Session newSession = null;
     MimeMessage mimeMessage = null;
 
- //       public static void main(String[] args) throws MessagingException, Exception {
-//            String recepient = "minhdqhe163046@fpt.edu.vn";
-//            String subject = "test sending email";
-//            String inboxMessage = "this is the real life";
-//            MyUtil.sendMail(recepient, subject, inboxMessage);
+//    public static void main(String[] args) throws MessagingException, Exception {
+//        String recepient = "minhdqhe163046@fpt.edu.vn";
+//        String subject = "test sending email";
+//        String inboxMessage = "<!DOCTYPE html>\n"
+//                + "<html lang=\"en\">\n"
+//                + "\n"
+//                + "<head>\n"
+//                + "</head>\n"
+//                + "\n"
+//                + "<body>\n"
+//                + " <h3 style=\"color: blue;\">Your order has been processin .</h3>\n"
+//                + " <div>Full Name :Le Hong Quan</div>\n"
+//                + " <div>Phone : 0866823499</div>\n"
+//                + " <div>address :‘Vinh Hung, Vinh Loc, Thanh Hoa</div>\n"
+//                + " <h3 style=\"color: blue;\">Thank you very much!</h3>\n"
+//                + "\n"
+//                + "</body>\n"
+//                + "\n"
+//                + "</html>";
+//        MyUtil.sendMail(recepient, subject, inboxMessage);
 //
-//        }
+//    }
 //    public static void main(String[] args) {
 //        MyUtil m = new MyUtil();
 //        System.out.println(m.getCaptcha());
@@ -43,7 +58,8 @@ public class MyUtil {
 //		System.out.println(toSHA1("12345").equals(toSHA1(mk)));
 //	}
 // PasswordEncryptor   
-    public  String toSHA1(String str) {
+
+    public String toSHA1(String str) {
         String salt = "asjrlkmcoewj@tjle;oxqskjhdjksjf1jurVn";// Làm cho mật khẩu phức tap
         String result = null;
 
@@ -59,7 +75,7 @@ public class MyUtil {
     }
     //Random OTP   
 
-    public String getCaptcha(){
+    public String getCaptcha() {
         Random rand = new Random();
         String str = "0123456789";
         char[] captcha = new char[6];
@@ -70,7 +86,7 @@ public class MyUtil {
     }
 //send email by maitrap
 
-    public  void sendMail(String recepient, String subject, String inboxMessage) throws Exception {
+    public void sendMail(String recepient, String subject, String inboxMessage) throws Exception {
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");

@@ -16,33 +16,32 @@ public class SubjectListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        SubjectDAO subjectDao = new SubjectDAO();
 
+        ArrayList<Subject> subjectList = new ArrayList<>();
+
+        subjectList = subjectDao.getAllSubjectsWithUser();
+
+        request.setAttribute("subjectList", subjectList);
+        request.getRequestDispatcher("subjects.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SubjectDAO subjectDao = new SubjectDAO();
-        UserDAO userDAO = new UserDAO();
 
         String subjectString = request.getParameter("search");
 
         ArrayList<Subject> subjectList = new ArrayList<>();
 
         if (subjectString.isEmpty()) {
-            subjectList = subjectDao.getAllSubjects();
+            subjectList = subjectDao.getAllSubjectsWithUser();
         } else {
-            subjectList = subjectDao.getSubjectListByNameAndCode(subjectString);
-        }
-
-        ArrayList<User> ManagerFromSubjectList = new ArrayList<>();
-        for (Subject ManagerId : subjectList) {
-            User Manager = userDAO.getUserById(ManagerId.getManagerId());
-            ManagerFromSubjectList.add(Manager);
+            subjectList = subjectDao.getSubjectListByNameAndCodeWithUser(subjectString);
         }
 
         request.setAttribute("subjectList", subjectList);
-        request.setAttribute("userList", ManagerFromSubjectList);
         request.getRequestDispatcher("subjects.jsp").forward(request, response);
     }
 }

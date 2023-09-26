@@ -12,5 +12,24 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/Admin/controller/SettingSubject.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/User.java</file>
         </group>
+        <group/>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/checkauthen.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/authen.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/contact.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.scroller.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.min.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/footer.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/checkauthen.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/index.html</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/authen.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
+        </group>
     </open-files>
 </project-private>

@@ -51,11 +51,10 @@ public class User {
         this.updateBy = updateBy;
     }
 
-    public User(String password, String fullName, boolean gender, String avatarUrl, String phone, String email, int roleId, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public User(String password, String fullName, boolean gender, String phone, String email, int roleId, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.password = password;
         this.fullName = fullName;
         this.gender = gender;
-        this.avatarUrl = avatarUrl;
         this.phone = phone;
         this.email = email;
         this.roleId = roleId;
@@ -65,6 +64,11 @@ public class User {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+
+   
+
+
+
 
     
     

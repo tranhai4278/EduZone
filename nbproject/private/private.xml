@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/assets/css/style.css</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/MySqlConnection.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/SubjectDal.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/home.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/subjects.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/setting-subject.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/AdminDAO.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/index.html</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/Admin/controller/SettingSubject.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/User.java</file>
         </group>
         <group/>
         <group>

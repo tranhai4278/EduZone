@@ -3,6 +3,7 @@ package dal;
 import java.sql.Date;
 import java.util.ArrayList;
 import model.Subject;
+import model.User;
 
 public class SubjectDAO extends MySqlConnection {
 
@@ -29,6 +30,52 @@ public class SubjectDAO extends MySqlConnection {
                 Subject subject = new Subject(
                         subject_id,
                         manager_id,
+                        subject_name,
+                        subject_code,
+                        description,
+                        img_url,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by);
+                list.add(subject);
+            }
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList getAllSubjectsWithUser() {
+        UserDAO userDao = new UserDAO();
+        ArrayList<Subject> list = new ArrayList<>();
+        String sql = "select * from subject";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int subject_id = result.getInt(1);
+                int manager_id = result.getInt(2);
+                String subject_name = result.getString(3);
+                String subject_code = result.getString(4);
+                String description = result.getString(5);
+                String img_url = result.getString(6);
+                boolean status = result.getBoolean(7);
+                Date create_at = result.getDate(8);
+                int create_by = result.getInt(9);
+                Date update_at = result.getDate(10);
+                int update_by = result.getInt(11);
+                User user = userDao.getUserById(manager_id);
+                String managerName = user.getFullName();
+                Subject subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        managerName,
                         subject_name,
                         subject_code,
                         description,
@@ -128,5 +175,147 @@ public class SubjectDAO extends MySqlConnection {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public ArrayList getSubjectListByNameAndCodeWithUser(String subjectString) {
+        UserDAO userDao = new UserDAO();
+        ArrayList<Subject> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "FROM subject\n"
+                + "WHERE subject_name LIKE '%" + subjectString + "%' OR subject_code LIKE '%" + subjectString + "%';";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int subject_id = result.getInt(1);
+                int manager_id = result.getInt(2);
+                String subject_name = result.getString(3);
+                String subject_code = result.getString(4);
+                String description = result.getString(5);
+                String img_url = result.getString(6);
+                boolean status = result.getBoolean(7);
+                Date create_at = result.getDate(8);
+                int create_by = result.getInt(9);
+                Date update_at = result.getDate(10);
+                int update_by = result.getInt(11);
+                User user = userDao.getUserById(manager_id);
+                String managerName = user.getFullName();
+                Subject subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        managerName,
+                        subject_name,
+                        subject_code,
+                        description,
+                        img_url,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by);
+                list.add(subject);
+            }
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Subject getSubjectWithId(int subject_id) {
+        Subject subject = new Subject();
+        String sql = "SELECT *\n"
+                + "FROM subject\n"
+                + "WHERE subject_id = " + subject_id + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int manager_id = result.getInt(2);
+                String subject_name = result.getString(3);
+                String subject_code = result.getString(4);
+                String description = result.getString(5);
+                String img_url = result.getString(6);
+                boolean status = result.getBoolean(7);
+                Date create_at = result.getDate(8);
+                int create_by = result.getInt(9);
+                Date update_at = result.getDate(10);
+                int update_by = result.getInt(11);
+                subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        subject_name,
+                        subject_code,
+                        description,
+                        img_url,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by);
+            }
+
+            return subject;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Subject getSubjectAndManagerWithId(int subject_id) {
+        UserDAO userDao = new UserDAO();
+        Subject subject = new Subject();
+        String sql = "SELECT *\n"
+                + "FROM subject\n"
+                + "WHERE subject_id = " + subject_id + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int manager_id = result.getInt(2);
+                String subject_name = result.getString(3);
+                String subject_code = result.getString(4);
+                String description = result.getString(5);
+                String img_url = result.getString(6);
+                boolean status = result.getBoolean(7);
+                Date create_at = result.getDate(8);
+                int create_by = result.getInt(9);
+                Date update_at = result.getDate(10);
+                int update_by = result.getInt(11);
+                User user = userDao.getUserById(manager_id);
+                subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        subject_name,
+                        subject_code,
+                        description,
+                        img_url,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by,
+                        user);
+            }
+
+            return subject;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        SubjectDAO subjectDao = new SubjectDAO();
+        Subject subject = subjectDao.getSubjectAndManagerWithId(1);
+        System.out.println(subject.getU().getAvatarUrl());
+        
     }
 }

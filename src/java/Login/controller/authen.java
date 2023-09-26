@@ -74,7 +74,7 @@ public class authen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             PrintWriter out = response.getWriter();
-        String code_fe = request.getParameter("ma");
+        String code_fe = request.getParameter("code");
         HttpSession session = request.getSession();
         String code_be = session.getAttribute("captcha_rgt").toString();
         User user=(User)session.getAttribute("user_rgt");

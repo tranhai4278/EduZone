@@ -36,6 +36,10 @@
         <servlet-name>SubjectDetailController</servlet-name>
         <servlet-class>controller.SubjectDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SettingServlet</servlet-name>
+        <servlet-class>Admin.controller.SettingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>SubjectDetailController</servlet-name>
         <url-pattern>/SubjectDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingServlet</servlet-name>
+        <url-pattern>/setting</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

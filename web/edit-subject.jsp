@@ -88,7 +88,7 @@
                                 <h4>Edit Subject</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30">
+                                <form class="edit-profile m-b30" action="editsubject" method="post">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="ml-auto">
@@ -98,29 +98,27 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject ID</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectId}" readonly="">
+                                                <input class="form-control" type="text" value="${detail.subjectId}" readonly="" name="id">
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject code</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectCode}">
+                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode">
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Course name</label>
+                                            <label class="col-form-label">Subject name</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectName}">
+                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname">
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label" >Manager</label>
                                             <select
-                                                name="managerid"
-
-                                                id="category"
+                                                name="mid"
+                                                id="manager"
                                                 >
-                                                
                                                 <c:forEach items="${listSM}" var="s">
                                                     <option <c:if test="${detail.managerId eq s.userId}">
                                                             selected
@@ -130,10 +128,17 @@
                                                 </c:forEach>
                                             </select>
                                         </div>
+                                            
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Image URL</label>
+                                            <div>
+                                                <input class="form-control" type="text" value="${detail.imgUrl}" name="img">
+                                            </div>
+                                        </div>
                                         <div class="form-group col-3">
                                             <label class="col-form-label">Status</label>
                                             <div class="form-check form-switch">
-                                                <input style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} onclick="' updateStatus(' + ${setting.id} + ', this)'">
+                                                <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
                                             </div>
                                         </div>
                                         <div class="seperator"></div>
@@ -146,33 +151,24 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Subject description</label>
                                             <div>
-                                                <textarea class="form-control">${detail.description} </textarea>
+                                                <textarea class="form-control" name="description" >${detail.description} </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <button  type="button" class="btn-secondry add-item m-r5" ><i class="fa fa-fw fa-arrow-left"></i>Cancel</button>
-                                            <button type="reset" class="btn">Save changes</button>
+                                            <button type="submit" onclick="setSellDate()" class="btn">Save changes</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <!-- Your Profile Views Chart END-->
+
                 </div>
             </div>
         </main>
-        <div class="ttr-overlay"></div>
 
-        <!-- External JavaScripts -->
-<!--        <script>
-                    function updateStatus(id, checkbox) {
-                        let status = checkbox.checked;
-                        if(confirm('Are you sure?'))
-                            fetch(?id=${id}&status=${status})
-                        else checkbox.checked = !status;
-                    }
-                </script>-->
+        <div class="ttr-overlay"></div>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -192,24 +188,24 @@
         <script src='assets/vendors/switcher/switcher.js'></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-            // Pricing add
-            function newMenuItem() {
-                var newElem = $('tr.list-item').first().clone();
-                newElem.find('input').val('');
-                newElem.appendTo('table#item-add');
-            }
-            if ($("table#item-add").is('*')) {
-                $('.add-item').on('click', function (e) {
-                    e.preventDefault();
-                    newMenuItem();
-                });
-                $(document).on("click", "#item-add .delete", function (e) {
-                    e.preventDefault();
-                    $(this).parent().parent().parent().parent().remove();
-                });
-            }
+                                                // Pricing add
+                                                function newMenuItem() {
+                                                    var newElem = $('tr.list-item').first().clone();
+                                                    newElem.find('input').val('');
+                                                    newElem.appendTo('table#item-add');
+                                                }
+                                                if ($("table#item-add").is('*')) {
+                                                    $('.add-item').on('click', function (e) {
+                                                        e.preventDefault();
+                                                        newMenuItem();
+                                                    });
+                                                    $(document).on("click", "#item-add .delete", function (e) {
+                                                        e.preventDefault();
+                                                        $(this).parent().parent().parent().parent().remove();
+                                                    });
+                                                }
         </script>
-        
+
     </body>
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->

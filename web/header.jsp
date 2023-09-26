@@ -152,7 +152,7 @@
                             <ul class="sub-menu">
                                 <li><a href="admin/courses.jsp">User</a></li>
                                 <li><a href="settingSubject">Subject</a></li>
-                                <li><a href="settingSubject">Setting</a></li>
+                                <li><a href="setting">Setting</a></li>
                             </ul>
                         </li>
                         </c:if>

@@ -12,33 +12,55 @@ import java.util.Date;
  */
 public class Setting {
     private int settingId;
-    private int subjectId;
     private int settingGroup;
     private String settingName;
-    private int settingValue;
+    private boolean status;
     private int displayOrder;
-    private String description;
-    private Date createBy;
-    private int createAt;
+    private String note;
+    private Date createAt;
+    private int createBy;
     private Date updateAt;
     private int updateBy;
 
     public Setting() {
     }
 
-    public Setting(int settingId, int subjectId, int settingGroup, String settingName, int settingValue, int displayOrder, String description, Date createBy, int createAt, Date updateAt, int updateBy) {
+    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date updateAt, int updateBy) {
         this.settingId = settingId;
-        this.subjectId = subjectId;
         this.settingGroup = settingGroup;
         this.settingName = settingName;
-        this.settingValue = settingValue;
+        this.status = status;
         this.displayOrder = displayOrder;
-        this.description = description;
-        this.createBy = createBy;
-        this.createAt = createAt;
+        this.note = note;
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+
+    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.settingId = settingId;
+        this.settingGroup = settingGroup;
+        this.settingName = settingName;
+        this.status = status;
+        this.displayOrder = displayOrder;
+        this.note = note;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
+    public Setting(int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.settingGroup = settingGroup;
+        this.settingName = settingName;
+        this.status = status;
+        this.displayOrder = displayOrder;
+        this.note = note;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+    
 
     public int getSettingId() {
         return settingId;
@@ -46,14 +68,6 @@ public class Setting {
 
     public void setSettingId(int settingId) {
         this.settingId = settingId;
-    }
-
-    public int getSubjectId() {
-        return subjectId;
-    }
-
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
     }
 
     public int getSettingGroup() {
@@ -72,12 +86,12 @@ public class Setting {
         this.settingName = settingName;
     }
 
-    public int getSettingValue() {
-        return settingValue;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setSettingValue(int settingValue) {
-        this.settingValue = settingValue;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getDisplayOrder() {
@@ -88,28 +102,28 @@ public class Setting {
         this.displayOrder = displayOrder;
     }
 
-    public String getDescription() {
-        return description;
+    public String getNote() {
+        return note;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public Date getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Date createBy) {
-        this.createBy = createBy;
-    }
-
-    public int getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(int createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public int getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(int createBy) {
+        this.createBy = createBy;
     }
 
     public Date getUpdateAt() {
@@ -127,6 +141,6 @@ public class Setting {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
-
     
+
 }

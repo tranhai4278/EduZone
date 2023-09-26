@@ -78,7 +78,7 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="dropdown all-msg-toolbar">
+<!--                                        <div class="dropdown all-msg-toolbar">
                                             <select name="subject" class="input-select">
                                                 <option>All Status</option>
                                                 <option value="0">Inactive</option>
@@ -87,7 +87,7 @@
                                         </div> 
                                         <div class="mail-search-bar">
                                             <input type="text" class="form-control" placeholder="Search"/>
-                                        </div>
+                                        </div>-->
 
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
@@ -141,24 +141,16 @@
         </main>
         <div class="ttr-overlay"></div>
         <script>
-    async function updateStatus(id, checkbox) {
-        let status = checkbox.checked;
-        if (confirm('Are you sure?')) {
-            try {
-                const response = await fetch(`updateStatus?id=${id}&status=${status}`);
-                if (response.ok) {
-                    // Xử lý khi request thành công nếu cần
-                } else {
-                    // Xử lý khi request thất bại nếu cần
-                }
-            } catch (error) {
-                console.error(error);
+            function updateStatus(id, checkbox) {
+                let status = checkbox.checked;
+                if (confirm('Are you sure?'))
+                    fetch('/updateStatus?id=${id}&status=${status}', {
+                        method: 'POST', // Sử dụng phương thức POST để gửi dữ liệu
+                    })
+                else
+                    checkbox.checked = !status;
             }
-        } else {
-            checkbox.checked = !status;
-        }
-    }
-</script>
+        </script>
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

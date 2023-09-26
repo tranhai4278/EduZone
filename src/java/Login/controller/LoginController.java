@@ -83,12 +83,13 @@ public class LoginController extends HttpServlet {
          if (user == null || !user.getPassword().equals(md5)) {
             request.setAttribute("message", "Email or password is wrong");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(user.getRoleId() == 1 & user.isStatus() == true){
+        }else if(user.isStatus() == true){
             HttpSession session = request.getSession();
                     session.setAttribute("user", user);
                     response.sendRedirect("home");  
         }else{
-            request.getRequestDispatcher("index.html").forward(request, response);
+             request.setAttribute("message1", "Your account has been blocked");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
     }

@@ -25,38 +25,22 @@ public class Setting {
     public Setting() {
     }
 
-<<<<<<< HEAD
-    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
-=======
+
+    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {}
+
     public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date updateAt, int updateBy) {
->>>>>>> f1448c2fcd7f0ec75b808d3c1521a7c1f8840b67
         this.settingId = settingId;
         this.settingGroup = settingGroup;
         this.settingName = settingName;
         this.status = status;
         this.displayOrder = displayOrder;
         this.note = note;
-<<<<<<< HEAD
         this.createAt = createAt;
         this.createBy = createBy;
-=======
->>>>>>> f1448c2fcd7f0ec75b808d3c1521a7c1f8840b67
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
 
-    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
-        this.settingId = settingId;
-        this.settingGroup = settingGroup;
-        this.settingName = settingName;
-        this.status = status;
-        this.displayOrder = displayOrder;
-        this.note = note;
-        this.createAt = createAt;
-        this.createBy = createBy;
-        this.updateAt = updateAt;
-        this.updateBy = updateBy;
-    }
 
     public Setting(int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingGroup = settingGroup;
@@ -150,17 +134,12 @@ public class Setting {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
-<<<<<<< HEAD
 
     @Override
     public String toString() {
         return "Setting{" + "settingId=" + settingId + ", settingGroup=" + settingGroup + ", settingName=" + settingName + ", status=" + status + ", displayOrder=" + displayOrder + ", note=" + note + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + '}';
     }
 
-    
-
-=======
->>>>>>> f1448c2fcd7f0ec75b808d3c1521a7c1f8840b67
     
 
 }

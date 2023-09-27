@@ -1,6 +1,8 @@
 package dal;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import model.Subject;
 import model.User;
@@ -48,6 +50,34 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
+    
+    public void addSubject(int mID, String name, String code, String des, String image, boolean status,  int createBy, int updateBy) {
+        try {
+            String strSelect = "INSERT INTO subject (manager_id, subject_name, subject_code, description, img_url, \n"
+                    + "status, create_at, create_by, update_at, update_by)\n"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            Connection cnn = (new MySqlConnection()).connection;
+            PreparedStatement pstm = cnn.prepareStatement(strSelect);
+            pstm.setInt(1, mID);
+            pstm.setString(2, name);
+            pstm.setString(3, code);
+            pstm.setString(4, des);
+            pstm.setString(5, image);
+            pstm.setBoolean(6, status );
+            java.util.Date d = new java.util.Date();
+            java.sql.Date createdAt = new java.sql.Date(d.getTime());
+            java.sql.Date updatedAt = new java.sql.Date(d.getTime());
+            pstm.setDate(7, createdAt);
+            pstm.setInt(8, createBy);
+            pstm.setDate(9, updatedAt);
+            pstm.setInt(10, updateBy);
+            pstm.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("addAccount: " + e.getMessage());
+        }
+    }
+
 
     public ArrayList getAllSubjectsWithUser() {
         UserDAO userDao = new UserDAO();
@@ -313,9 +343,10 @@ public class SubjectDAO extends MySqlConnection {
     }
 
     public static void main(String[] args) {
-        SubjectDAO subjectDao = new SubjectDAO();
-        Subject subject = subjectDao.getSubjectAndManagerWithId(1);
-        System.out.println(subject.getU().getAvatarUrl());
-        
+        //SubjectDAO subjectDao = new SubjectDAO();
+        //Subject subject = subjectDao.getSubjectAndManagerWithId(1);
+        //System.out.println(subject.getU().getAvatarUrl());
+        //SubjectDAO dao = new SubjectDAO();
+        //dao.addSubject(1, "Software Requirement", "SWR302", "", "", true, 1, 1);
     }
 }

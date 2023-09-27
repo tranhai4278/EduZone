@@ -36,6 +36,22 @@
         <servlet-name>SubjectDetailController</servlet-name>
         <servlet-class>controller.SubjectDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddUserController</servlet-name>
+        <servlet-class>Admin.controller.AddUserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserDetailController</servlet-name>
+        <servlet-class>Admin.controller.UserDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserListController</servlet-name>
+        <servlet-class>Admin.controller.UserListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddSubjectController</servlet-name>
+        <servlet-class>Admin.controller.AddSubjectController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
@@ -71,6 +87,22 @@
     <servlet-mapping>
         <servlet-name>SubjectDetailController</servlet-name>
         <url-pattern>/SubjectDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserController</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDetailController</servlet-name>
+        <url-pattern>/userDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserListController</servlet-name>
+        <url-pattern>/userList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSubjectController</servlet-name>
+        <url-pattern>/addSubject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

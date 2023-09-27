@@ -175,6 +175,28 @@ public class User {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
-
+    
+    public String roleName(int roleID) {
+        switch (roleID) {
+            case 4: return "Trainee";
+            case 3: return "Trainer";
+            case 2: return "Subject Manager";
+            case 1: return "Admin";
+        }
+        return null;
+    }
+    
+    public String getRoleName(){
+        return roleName(getRoleId());
+    }
+    
+    public String getStatusDisplay() {
+        return status ? "Active" : "Inactive";
+    }
+    
+    public String getGenderDisplay() {
+        return status ? "Female" : "Male";
+    }
+    
     
 }

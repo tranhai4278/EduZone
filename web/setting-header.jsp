@@ -218,7 +218,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="l" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
+                            <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
                         </li>
                         <li>
                             <a href="subjectSetting" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>

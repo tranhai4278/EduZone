@@ -25,8 +25,21 @@ public class Setting {
     public Setting() {
     }
 
+    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.settingId = settingId;
+        this.settingGroup = settingGroup;
+        this.settingName = settingName;
+        this.status = status;
+        this.displayOrder = displayOrder;
+        this.note = note;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
 
-    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {}
+
+
 
     public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date updateAt, int updateBy) {
         this.settingId = settingId;

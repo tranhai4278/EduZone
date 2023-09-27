@@ -26,11 +26,4 @@ public class MySqlConnection {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(new MySqlConnection().connection);
-            
-        } catch (Exception e) {
-        }
-    }
 }

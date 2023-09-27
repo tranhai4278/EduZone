@@ -216,14 +216,6 @@ public class UserDAO extends MySqlConnection {
         }
     }
 
-    public static void main(String[] args) {
-        //UserDAO userDAO = new UserDAO();
-        //User user = userDAO.getUserById(1);
-        //System.out.println(user.getFullName());
-        UserDAO dao = new UserDAO();
-        ArrayList<User> list = dao.getAllUser();
-        for (User u : list) {
-            System.out.println(u);
-        }
-    }
+
+    
 }

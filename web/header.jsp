@@ -118,10 +118,10 @@
                                                                             </li>-->
                                 <!--                                            
                                 <li><a href="portfolio.jsp">Portfolio</a></li>-->
-                                <li><a href="profile.jsp">My Profile</a></li>
+                                <li><a href="profile">My Profile</a></li>
                                 <!--                                            <li><a href="profile.jsp">My Subject</a></li>
                                                                             <li><a href="profile.jsp">My Class</a></li>                                    Will do this in future--> 
-                                <li><a href="#">Change Password</a></li>
+                                <li><a href="changepassword">Change Password</a></li>
                                 <li><c:if test="${sessionScope.user!=null}">
                                         <a href="logout">Logout</a>
                                     </c:if></li>
@@ -147,39 +147,15 @@
                                 </li>
                             </ul>
                         </li>
-                        <!--                                    <li><a href="javascript:;">Blog <i class="fa fa-chevron-down"></i></a>
-                                                                <ul class="sub-menu">
-                                                                    <li><a href="blog-classic-grid.jsp">Blog Classic</a></li>
-                                                                    <li><a href="blog-classic-sidebar.jsp">Blog Classic Sidebar</a></li>
-                                                                    <li><a href="blog-list-sidebar.jsp">Blog List Sidebar</a></li>
-                                                                    <li><a href="blog-standard-sidebar.jsp">Blog Standard Sidebar</a></li>
-                                                                    <li><a href="blog-details.jsp">Blog Details</a></li>
-                                                                </ul>
-                                                            </li>-->
-                        <li class="nav-dashboard"><a href="javascript:;">Dashboard <i class="fa fa-chevron-down"></i></a>
+                        <c:if test="${sessionScope.user.roleId == 1}">
+                        <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="admin/index.jsp">Dashboard</a></li>
-                                <!--<li><a href="admin/add-listing.jsp">Add Listing</a></li>-->
-                                <!--<li><a href="admin/bookmark.jsp">Bookmark</a></li>-->
-                                <li><a href="admin/courses.jsp">Subject</a></li>
-                                <!--<li><a href="admin/review.jsp">Review</a></li>-->
-                                <li><a href="admin/teacher-profile.jsp">Teacher Profile</a></li>
-                                <li><a href="profile">User Profile</a></li>
-                                <!--                                            <li><a href="javascript:;">Calendar<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="admin/basic-calendar.jsp">Basic Calendar</a></li>
-                                                                                    <li><a href="admin/list-view-calendar.jsp">List View Calendar</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="javascript:;">Mailbox<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="admin/mailbox.jsp">Mailbox</a></li>
-                                                                                    <li><a href="admin/mailbox-compose.jsp">Compose</a></li>
-                                                                                    <li><a href="admin/mailbox-read.jsp">Mail Read</a></li>
-                                                                                </ul>
-                                                                            </li>-->
+                                <li><a href="admin/courses.jsp">User</a></li>
+                                <li><a href="settingSubject">Subject</a></li>
+                                <li><a href="setting">Setting</a></li>
                             </ul>
                         </li>
+                        </c:if>
                     </ul>
                     <div class="nav-social-link">
                         <a href="javascript:;"><i class="fa fa-google-plus"></i></a>

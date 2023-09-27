@@ -12,6 +12,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import java.util.List;
 import model.Subject;
 import model.User;
@@ -69,7 +75,35 @@ public class EditSubject extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String sid = request.getParameter("id");
+        String code = request.getParameter("scode");
+        String name = request.getParameter("sname");
+        String mid = request.getParameter("mid");
+        String description = request.getParameter("description");
+        String imgUrl = request.getParameter("img");
+        String action = request.getParameter("on");
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
+
+        boolean status = "on".equals(action); // Kiểm tra nếu action là "on" thì isChecked là true, ngược lại là false
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Định dạng của chuỗi ngày tháng
+
+        try {
+            Date uDate = new Date();
+            int uid = u.getUserId();
+            int id = Integer.parseInt(sid);
+            int managerid = Integer.parseInt(mid);
+            AdminDAO dao = new AdminDAO();
+            Timestamp timestamp = new Timestamp(uDate.getTime());
+            Subject s = new Subject(id, managerid, name, code, description, imgUrl, status, timestamp, uid);
+            dao.editSubject(s);
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace(); // Xử lý nếu có lỗi chuyển đổi
+        }
+
+        response.sendRedirect("settingSubject");
     }
 
     /**

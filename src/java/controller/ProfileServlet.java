@@ -58,9 +58,9 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
-        //User user = (User) request.getSession().getAttribute("userSessionAttribute");
+        User user = (User) request.getSession().getAttribute("user");
         //test case with an existing user in the database 
-        User user = userDAO.getUserTest();
+        //User user = userDAO.getUserTest();
         if (user != null) {
             // User is logged in, you can access their information
             // Set the user object as an attribute in the request

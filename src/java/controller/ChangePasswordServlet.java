@@ -61,9 +61,10 @@ public class ChangePasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         UserDAO userDAO = new UserDAO();
+          UserDAO userDAO = new UserDAO();
+        User user = (User) request.getSession().getAttribute("user");
         
-        User user = userDAO.getUserTest();
+        //User user = userDAO.getUserTest();
 
         // Set the user object as an attribute in the request
         request.setAttribute("user", user);

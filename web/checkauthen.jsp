@@ -60,6 +60,7 @@
                                             <input name="Verify" value="Verify"
                                                    class="btn btn-lg btn-primary btn-block"
                                                     type="submit"><span>${message}</span>
+                                            <p id="resendLink">Click <a href="authen">here</a> to resend OTP</p>
                                         </div>
 
                                         <input type="hidden" class="hide" name="token" id="token"

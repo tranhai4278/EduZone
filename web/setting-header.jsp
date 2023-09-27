@@ -8,11 +8,11 @@
     <meta name="robots" content="" />
 
     <!-- DESCRIPTION -->
-    <meta name="description" content="EduNext : Education HTML Template" />
+    <meta name="description" content="EduZone : Education HTML Template" />
 
     <!-- OG -->
-    <meta property="og:title" content="EduNext : Education HTML Template" />
-    <meta property="og:description" content="EduNext : Education HTML Template" />
+    <meta property="og:title" content="EduZone : Education HTML Template" />
+    <meta property="og:description" content="EduZone : Education HTML Template" />
     <meta property="og:image" content="" />
     <meta name="format-detection" content="telephone=no">
 
@@ -21,7 +21,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
 
     <!-- PAGE TITLE HERE ============================================= -->
-    <title>EduNext : Education HTML Template </title>
+    <title>EduZone : Education HTML Template </title>
 
     <!-- MOBILE SPECIFIC ============================================= -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -194,7 +194,7 @@
                                             </ul>
                                         </li>-->
                                         <li>
-                                            <a href="#" class="ttr-material-button">
+                                            <a href="userList" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-user"></i></span>
                                                 <span class="ttr-label">User</span>
                                             </a>
@@ -206,7 +206,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" class="ttr-material-button">
+                                            <a href="setting" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-settings"></i></span>
                                                 <span class="ttr-label">Setting</span>
                                             </a>
@@ -232,7 +232,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="l" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
+                            <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
                         </li>
                         <li>
                             <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>

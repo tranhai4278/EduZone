@@ -16,6 +16,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 /**
@@ -26,39 +27,7 @@ public class MyUtil {
 
     Session newSession = null;
     MimeMessage mimeMessage = null;
-
-//    public static void main(String[] args) throws MessagingException, Exception {
-//        String recepient = "minhdqhe163046@fpt.edu.vn";
-//        String subject = "test sending email";
-//        String inboxMessage = "<!DOCTYPE html>\n"
-//                + "<html lang=\"en\">\n"
-//                + "\n"
-//                + "<head>\n"
-//                + "</head>\n"
-//                + "\n"
-//                + "<body>\n"
-//                + " <h3 style=\"color: blue;\">Your order has been processin .</h3>\n"
-//                + " <div>Full Name :Le Hong Quan</div>\n"
-//                + " <div>Phone : 0866823499</div>\n"
-//                + " <div>address :‘Vinh Hung, Vinh Loc, Thanh Hoa</div>\n"
-//                + " <h3 style=\"color: blue;\">Thank you very much!</h3>\n"
-//                + "\n"
-//                + "</body>\n"
-//                + "\n"
-//                + "</html>";
-//        MyUtil.sendMail(recepient, subject, inboxMessage);
-//
-//    }
-//    public static void main(String[] args) {
-//        MyUtil m = new MyUtil();
-//        System.out.println(m.getCaptcha());
-//    }
-//    	public static void main(String[] args) {
-//           String mk = "12345"; 
-//		System.out.println(toSHA1("12345").equals(toSHA1(mk)));
-//	}
-// PasswordEncryptor   
-
+//Encrypt passwords to SHA-1
     public String toSHA1(String str) {
         String salt = "asjrlkmcoewj@tjle;oxqskjhdjksjf1jurVn";// Làm cho mật khẩu phức tap
         String result = null;
@@ -73,8 +42,8 @@ public class MyUtil {
         }
         return result;
     }
-    //Random OTP   
-
+    
+//Random OTP   
     public String getCaptcha() {
         Random rand = new Random();
         String str = "0123456789";
@@ -84,8 +53,8 @@ public class MyUtil {
         }
         return String.valueOf(captcha);
     }
+    
 //send email by maitrap
-
     public void sendMail(String recepient, String subject, String inboxMessage) throws Exception {
 
         Properties properties = new Properties();
@@ -93,8 +62,8 @@ public class MyUtil {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.mailtrap.io"); // Mailtrap SMTP server
         properties.put("mail.smtp.port", "2525"); // Mailtrap port
-        String myAccountEmail = "bff45630c9c041";
-        String password = "1ebf9a7e83640f";
+        String myAccountEmail = "4599395f414362";
+        String password = "4c83187b7ef7c3";
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -123,9 +92,9 @@ public class MyUtil {
         }
         return null;
     }
-    
-    public static void main(String[] args) {
-        MyUtil myUtil = new MyUtil();
-        System.out.println(myUtil.toSHA1("123"));
+
+    public String extractDomain(String email) {
+        return StringUtils.substringAfter(email, "@");
     }
+
 }

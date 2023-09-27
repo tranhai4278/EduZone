@@ -79,6 +79,35 @@ public class UserDAO extends MySqlConnection {
             System.out.println("addAccount: " + e.getMessage());
         }
     }
+    
+    public void addUser( String pass, String name, boolean gender, String avatar, String phone, String email, int role, int createBy, int updateBy) {
+        try {
+            String strSelect = "INSERT INTO user ( password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
+                    + "status, create_at, create_by, update_at, update_by)\n"
+                    + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            Connection cnn = (new MySqlConnection()).connection;
+            PreparedStatement pstm = cnn.prepareStatement(strSelect);
+            pstm.setString(1, pass);
+            pstm.setString(2, name);
+            pstm.setBoolean(3, gender);
+            pstm.setString(4, avatar);
+            pstm.setString(5, phone);
+            pstm.setString(6, email);
+            pstm.setInt(7,role);
+            pstm.setBoolean(8, true);
+            java.util.Date d = new java.util.Date();
+            java.sql.Date createdAt = new java.sql.Date(d.getTime());
+            java.sql.Date updatedAt = new java.sql.Date(d.getTime());
+            pstm.setDate(9, createdAt);
+            pstm.setInt(10, createBy);
+            pstm.setDate(11, updatedAt);
+            pstm.setInt(12, updateBy);
+            pstm.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("addAccount: " + e.getMessage());
+        }
+    }
 
     public User getUserByEmail(String email) {
         String query = "SELECT * FROM user WHERE email = ?";
@@ -381,8 +410,13 @@ public class UserDAO extends MySqlConnection {
 
 
     public static void main(String[] args) {
-        UserDAO userDAO = new UserDAO();
-        User user = userDAO.getUserById(1);
-        System.out.println(user.getFullName());
+        //UserDAO userDAO = new UserDAO();
+        //User user = userDAO.getUserById(1);
+        //System.out.println(user.getFullName());
+        UserDAO dao = new UserDAO();
+        ArrayList<User> list = dao.getAllUser();
+        for (User u : list) {
+            System.out.println(u);
+        }
     }
 }

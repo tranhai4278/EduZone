@@ -52,7 +52,7 @@
 
         <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
@@ -78,7 +78,19 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="dropdown all-msg-toolbar">
+<<<<<<< HEAD
+                                        <!--                                        <div class="dropdown all-msg-toolbar">
+                                                                                    <select name="subject" class="input-select">
+                                                                                        <option>All Status</option>
+                                                                                        <option value="0">Inactive</option>
+                                                                                        <option value="1">Active</option>
+                                                                                    </select>
+                                                                                </div> 
+                                                                                <div class="mail-search-bar">
+                                                                                    <input type="text" class="form-control" placeholder="Search"/>
+                                                                                </div>-->
+=======
+<!--                                        <div class="dropdown all-msg-toolbar">
                                             <select name="subject" class="input-select">
                                                 <option>All Status</option>
                                                 <option value="0">Inactive</option>
@@ -87,8 +99,22 @@
                                         </div> 
                                         <div class="mail-search-bar">
                                             <input type="text" class="form-control" placeholder="Search"/>
+                                        </div>-->
+                                        <div class="">
+                                            <div class="">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                    </div>
+                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                        <a class="btn" href="addSubject.jsp">
+                                                            Add a new subject   
+                                                        </a></td>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-               
+>>>>>>> f1448c2fcd7f0ec75b808d3c1521a7c1f8840b67
+
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
@@ -102,7 +128,7 @@
                                                         <th scope="col">ID</th>
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
-                                                        <th scope="col">Subject Manager </th>
+                                                        <th scope="col">Subject Manager ID </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -118,14 +144,9 @@
                                                             <td>${s.managerId}</td>
 
                                                             <td>
-                                                                <c:choose>
-                                                                    <c:when test="${s.isStatus() == false}">
-                                                                        Inactive
-                                                                    </c:when>
-                                                                    <c:otherwise>
-                                                                        Active
-                                                                    </c:otherwise>
-                                                                </c:choose>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
+                                                                </div>
                                                             </td>
                                                             <td>
                                                                 <a href="editsubject?sid=${s.subjectId}" class="tm-product-delete-link">
@@ -141,12 +162,19 @@
                                 </div>
                             </div> 
                         </div>
-                        <!-- Your Profile Views Chart END-->
                     </div>
                 </div>
         </main>
         <div class="ttr-overlay"></div>
-
+        <script>
+            function updateStatus(id, checkbox) {
+                let status = checkbox.checked;
+                if (confirm('Are you sure?'))
+//                    fetch(`updateStatus?id=${id}&status=${status}`);
+                        window.location.href='updateStatus?id='+id + '&status='+status;
+                        else checkbox.checked = !status;
+            }
+        </script>
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

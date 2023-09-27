@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Setting;
 import model.Subject;
 import model.User;
 
@@ -96,4 +97,34 @@ public class AdminDAO extends MySqlConnection {
             int lid, String saleid, String amount, String price) {
 
     }
+
+    public Setting getDomainBySetting(String settingName, boolean status) {
+        String query = "SELECT * FROM setting WHERE setting_name = ? AND status = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, settingName);
+            statement.setBoolean(2, status);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Setting setting = new Setting();
+                    setting.setSettingId(resultSet.getInt(1));
+                    setting.setSettingGroup(resultSet.getInt(2));
+                    setting.setSettingName(resultSet.getString(3));
+                    setting.setStatus(resultSet.getBoolean(4));
+                    setting.setDisplayOrder(resultSet.getInt(5));
+                    setting.setNote(resultSet.getString(6));
+                    setting.setCreateAt(resultSet.getDate(7));
+                    setting.setCreateBy(resultSet.getInt(8));
+                    setting.setUpdateAt(resultSet.getDate(9));
+                    setting.setUpdateBy(resultSet.getInt(10));
+
+                    return setting;
+                }
+            } catch (Exception e) {
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    
 }

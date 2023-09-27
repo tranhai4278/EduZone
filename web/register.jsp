@@ -7,49 +7,56 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%@include file="cssconnect.jsp" %>
-    <script>
-       // validate.js
-function validateForm() {
-    var name = document.forms["registerForm"]["rgt_Name"].value;
-    var email = document.forms["registerForm"]["rgt_Email"].value;
-    var pass = document.forms["registerForm"]["rgt_Pass"].value;
-    var phone = document.forms["registerForm"]["rgt_Phone"].value;
-    var gender = document.querySelector('input[name="rgt_gender"]:checked');
+    <%@include file="cssconnect.jsp" %>
+        <script>
+            // Validate the form on submit
+            function validateForm() {
+                var yourname = document.getElementById("yourname").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var phone = document.getElementById("phone").value;
+                var successMessage = document.getElementById("successMessage");
+                var isValid = true;
 
-    // Kiểm tra xem các trường đã được điền đầy đủ hay chưa
-    if (name === "" || email === "" || pass === "" || phone === "" || !gender) {
-        alert("Vui lòng điền đầy đủ thông tin.");
-        return false;
-    }
+                if (successMessage) {
+                    successMessage.style.display = "none";
+                }
 
-    // Kiểm tra độ dài tên người dùng (không quá 250 kí tự)
-    if (name.length > 250) {
-        alert("Tên người dùng không được vượt quá 250 kí tự.");
-        return false;
-    }
+                // Validate fullName
+                if (!/^[\p{L} ]+$/u.test(yourname)) {
+                    document.getElementById("yourNameError").innerHTML = "Fullname should only contain letters";
+                    isValid = false;
+                } else {
+                    document.getElementById("yourNameError").innerHTML = "";
+                }
+                
+                // Validate email
+                if (!/\S+@\S+\.\S+/.test(email)) {
+                    document.getElementById("emailError").innerHTML = "Invalid email format";
+                    isValid = false;
+                } else {
+                    document.getElementById("emailError").innerHTML = "";
+                }
+                
+                // Validate password
+                if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)^.{8,16}$/.test(password)) {
+                    document.getElementById("passwordError").innerHTML = "Passwordshould have from 8 to 16 characters, at least one uppercase, one digit, and one special character";
+                    isValid = false;
+                } else {
+                    document.getElementById("passwordError").innerHTML = "";
+                }
 
-    // Kiểm tra định dạng email
-    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!emailPattern.test(email)) {
-        alert("Email không hợp lệ.");
-        return false;
-    }
+                // Validate phone
+                if (!/^\d{7,11}$/.test(phone)) {
+                    document.getElementById("phoneError").innerHTML = "Phones can only contain numbers and have 10 numbers";
+                    isValid = false;
+                } else {
+                    document.getElementById("phoneError").innerHTML = "";
+                }
 
-    // Kiểm tra số điện thoại (10 chữ số)
-    var phonePattern = /^\d{10}$/;
-    if (!phonePattern.test(phone)) {
-        alert("Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.");
-        return false;
-    }
-
-    return true;
-}
-    </head>
-    
- 
-    </script>
+                return isValid;
+            }
+        </script>
     <body id="bg">
         <div class="page-wraper">
             <div id="loading-icon-bx"></div>
@@ -63,13 +70,14 @@ function validateForm() {
                             <h2 class="title-head">Sign Up <span>Now</span></h2>
                             <p>Login Your Account <a href="login.jsp">Click here</a></p>
                         </div>	
-                        <form action="register" method="post" class="contact-bx">
+                        <form name="registerForm" action="register" method="post" class="contact-bx" onsubmit="return validateForm()">
                             <div class="row placeani">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <label>Your Name</label>
-                                            <input name="rgt_Name" type="text" required="" class="form-control">
+                                            <input name="rgt_Name" id="yourname" type="text" required maxlength="20" class="form-control">
+                                            <span id="yourNameError" class="error-message position-relative"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -77,15 +85,17 @@ function validateForm() {
                                     <div class="form-group">
                                         <div class="input-group">
                                             <label>Your Email Address</label>
-                                            <input name="rgt_Email" type="email" required="" class="form-control">
-                                        </div>
+                                            <input name="rgt_Email" id="email" type="email" required maxlength="30"  class="form-control">
+                                            <span id="emailError" class="error-message position-relative"></span>
+                                        </div><span>${message_domain}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div class="input-group"> 
                                             <label>Your Password</label>
-                                            <input name="rgt_Pass" type="password" class="form-control" required="">
+                                            <input name="rgt_Pass" id="password" type="password" class="form-control" required maxlength="16">
+                                            <span id="passwordError" class="error-message position-relative"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +103,8 @@ function validateForm() {
                                     <div class="form-group">
                                         <div class="input-group">
                                             <label>Phone Number</label>
-                                            <input name="rgt_Phone" type="text" required="" class="form-control">
+                                            <input name="rgt_Phone" id="phone" type="text" class="form-control" required maxlength="11">
+                                            <span id="phoneError" class="error-message position-relative"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -102,12 +113,12 @@ function validateForm() {
                                         <tr>
                                             <td>Gender</td>
                                             <td>
-                                                <input type="radio" name="rgt_gender"  value="1"> Male
-                                                <input type="radio" name="rgt_gender"  value="0"> Female</td>
+                                                <input id="gender" type="radio" name="rgt_gender" required value="1"> Male
+                                                <input id="gender" type="radio" name="rgt_gender" required value="0"> Female</td>
                                         </tr>
                                     </table>
                                     <div>
-                                        
+
 
                                         <div class="col-lg-12 m-b30">
                                             <button name="submit" type="submit" value="Submit" class="btn button-md">Sign Up</button><span>${message_email}</span><span>${message_phone}</span>

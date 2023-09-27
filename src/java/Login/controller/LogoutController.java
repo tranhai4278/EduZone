@@ -29,6 +29,7 @@ public class LogoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //Delete session of user
         HttpSession session= request.getSession();
         session.removeAttribute("user");
         request.getRequestDispatcher("index.html").forward(request, response);

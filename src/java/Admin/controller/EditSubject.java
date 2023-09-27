@@ -6,7 +6,6 @@ package Admin.controller;
 
 import dal.AdminDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -87,7 +85,6 @@ public class EditSubject extends HttpServlet {
 
         boolean status = "on".equals(action); // Kiểm tra nếu action là "on" thì isChecked là true, ngược lại là false
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Định dạng của chuỗi ngày tháng
 
         try {
             Date uDate = new Date();

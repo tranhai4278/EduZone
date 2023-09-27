@@ -194,7 +194,7 @@
                                             </ul>
                                         </li>-->
                                         <li>
-                                            <a href="#" class="ttr-material-button">
+                                            <a href="userList" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-user"></i></span>
                                                 <span class="ttr-label">User</span>
                                             </a>

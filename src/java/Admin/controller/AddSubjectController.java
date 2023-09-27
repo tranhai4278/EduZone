@@ -90,7 +90,7 @@ public class AddSubjectController extends HttpServlet {
         int updateBy = Integer.parseInt(updateByStr);
 
         dao.addSubject(mID, name, code, des, image, status, createBy, updateBy);
-        response.sendRedirect("");
+        response.sendRedirect("settingSubject");
     }
 
     /** 

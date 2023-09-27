@@ -79,7 +79,7 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="dropdown all-msg-toolbar">
+<!--                                        <div class="dropdown all-msg-toolbar">
                                             <select name="subject" class="input-select">
                                                 <option>All Status</option>
                                                 <option value="0">Inactive</option>
@@ -95,7 +95,7 @@
                                                 <li><a href="#"><i class="fa fa-arrow-down"></i>A-Z</a></li>
                                                 <li><a href="#"><i class="fa fa-arrow-up"></i>Z-A</a></li>
                                             </ul>
-                                        </div>
+                                        </div>-->
                                         <div class="">
                                             <div class="">
                                                 <div class="row">

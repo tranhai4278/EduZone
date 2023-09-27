@@ -79,23 +79,21 @@ public class AddUserController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String roleStr = request.getParameter("role");
-        String statusStr = request.getParameter("status");
         String createByStr = request.getParameter("createBy");
         String updateByStr = request.getParameter("createBy");
         
         if ( pass == null || name == null || genderStr == null || avatar == null
-                || phone == null || email == null || roleStr == null || statusStr == null) {
+                || phone == null || email == null || roleStr == null ) {
             request.setAttribute("error1", "This field mustn't be empty!");
             request.getRequestDispatcher("addUser.jsp").forward(request, response);
         }
         
         int role = Integer.parseInt(roleStr);
         boolean gender = Boolean.parseBoolean(genderStr);
-        boolean status = Boolean.parseBoolean(statusStr);
         int createBy = Integer.parseInt(createByStr);
         int updateBy = Integer.parseInt(updateByStr);
         
-        dao.addUser( pass, name, gender, avatar, phone, email, role, status, createBy, updateBy);
+        dao.addUser( pass, name, gender, avatar, phone, email, role, createBy, updateBy);
         response.sendRedirect("userList");
                 
     }

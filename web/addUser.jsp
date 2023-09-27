@@ -140,13 +140,7 @@
                                                             <input type="radio" name="role" value="4">Trainee
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Status</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input type="radio" name="status" value="0">Inactive&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                                            <input type="radio" name="status" value="1">Active
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="form-group row">
                                                         <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user by</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">

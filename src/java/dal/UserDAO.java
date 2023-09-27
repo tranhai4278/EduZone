@@ -79,7 +79,7 @@ public class UserDAO extends MySqlConnection {
         }
     }
     
-    public void addUser( String pass, String name, boolean gender, String avatar, String phone, String email, int role, boolean status, int createBy, int updateBy) {
+    public void addUser( String pass, String name, boolean gender, String avatar, String phone, String email, int role, int createBy, int updateBy) {
         try {
             String strSelect = "INSERT INTO user ( password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
                     + "status, create_at, create_by, update_at, update_by)\n"
@@ -93,7 +93,7 @@ public class UserDAO extends MySqlConnection {
             pstm.setString(5, phone);
             pstm.setString(6, email);
             pstm.setInt(7,role);
-            pstm.setBoolean(8, status);
+            pstm.setBoolean(8, true);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());

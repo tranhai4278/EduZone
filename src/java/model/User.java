@@ -191,12 +191,25 @@ public class User {
     }
     
     public String getStatusDisplay() {
-        return status ? "Active" : "Inactive";
+    if (status) {
+        return "Active";
+    } else {
+        return "Inactive";
     }
-    
-    public String getGenderDisplay() {
-        return status ? "Female" : "Male";
+}
+
+public String getGenderDisplay() {
+    if (status) {
+        return "Female";
+    } else {
+        return "Male";
     }
-    
+}
+
+
+
+
+
+
     
 }

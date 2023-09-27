@@ -78,6 +78,18 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
+
+                                        <!--                                        <div class="dropdown all-msg-toolbar">
+                                                                                    <select name="subject" class="input-select">
+                                                                                        <option>All Status</option>
+                                                                                        <option value="0">Inactive</option>
+                                                                                        <option value="1">Active</option>
+                                                                                    </select>
+                                                                                </div> 
+                                                                                <div class="mail-search-bar">
+                                                                                    <input type="text" class="form-control" placeholder="Search"/>
+                                                                                </div>-->
+
 <!--                                        <div class="dropdown all-msg-toolbar">
                                             <select name="subject" class="input-select">
                                                 <option>All Status</option>
@@ -149,7 +161,6 @@
                                 </div>
                             </div> 
                         </div>
-                        <!-- Your Profile Views Chart END-->
                     </div>
                 </div>
         </main>
@@ -158,11 +169,9 @@
             function updateStatus(id, checkbox) {
                 let status = checkbox.checked;
                 if (confirm('Are you sure?'))
-                    fetch('/updateStatus?id=${id}&status=${status}', {
-                        method: 'POST', // Sử dụng phương thức POST để gửi dữ liệu
-                    })
-                else
-                    checkbox.checked = !status;
+//                    fetch(`updateStatus?id=${id}&status=${status}`);
+                        window.location.href='updateStatus?id='+id + '&status='+status;
+                        else checkbox.checked = !status;
             }
         </script>
         <!-- External JavaScripts -->

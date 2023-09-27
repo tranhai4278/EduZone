@@ -342,11 +342,4 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
-    public static void main(String[] args) {
-        //SubjectDAO subjectDao = new SubjectDAO();
-        //Subject subject = subjectDao.getSubjectAndManagerWithId(1);
-        //System.out.println(subject.getU().getAvatarUrl());
-        //SubjectDAO dao = new SubjectDAO();
-        //dao.addSubject(1, "Software Requirement", "SWR302", "", "", true, 1, 1);
-    }
 }

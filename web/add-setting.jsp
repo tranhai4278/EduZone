@@ -107,12 +107,6 @@
                                                 <input class="form-control" type="text"  name="sname" required>
                                             </div>
                                         </div>
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Display Order</label>
-                                            <div>
-                                                <input class="form-control" type="text" name="order" required>
-                                            </div>
-                                        </div>
 
                                         <div class="seperator"></div>
 

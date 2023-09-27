@@ -131,7 +131,7 @@
                                     <div class="col-lg-9 col-md-8 col-sm-12">
                                         <div class="courses-post">
                                             <div class="ttr-post-media media-effect">
-                                                <a href="https://www.youtube.com/shorts/Jl8qkLOLg7I"><img src="${subject.getU().getAvatarUrl()}" style="height: 700px;" alt=""></a>
+                                                <a href="#"><img src="${subject.getImgUrl()}" style="height: 700px;" alt=""></a>
                                             </div>
                                             <div class="ttr-post-info">
                                                 <div class="ttr-post-title ">

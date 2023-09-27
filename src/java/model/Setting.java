@@ -25,17 +25,6 @@ public class Setting {
     public Setting() {
     }
 
-    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date updateAt, int updateBy) {
-        this.settingId = settingId;
-        this.settingGroup = settingGroup;
-        this.settingName = settingName;
-        this.status = status;
-        this.displayOrder = displayOrder;
-        this.note = note;
-        this.updateAt = updateAt;
-        this.updateBy = updateBy;
-    }
-
     public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingId = settingId;
         this.settingGroup = settingGroup;
@@ -48,6 +37,23 @@ public class Setting {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+
+
+
+
+    public Setting(int settingId, int settingGroup, String settingName, boolean status, int displayOrder, String note, Date updateAt, int updateBy) {
+        this.settingId = settingId;
+        this.settingGroup = settingGroup;
+        this.settingName = settingName;
+        this.status = status;
+        this.displayOrder = displayOrder;
+        this.note = note;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
 
     public Setting(int settingGroup, String settingName, boolean status, int displayOrder, String note, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingGroup = settingGroup;
@@ -141,6 +147,12 @@ public class Setting {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
+
+    @Override
+    public String toString() {
+        return "Setting{" + "settingId=" + settingId + ", settingGroup=" + settingGroup + ", settingName=" + settingName + ", status=" + status + ", displayOrder=" + displayOrder + ", note=" + note + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + '}';
+    }
+
     
 
 }

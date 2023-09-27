@@ -73,12 +73,16 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Get parameter from login.jsp
         String email = request.getParameter("lg_email");
         String pass = request.getParameter("lg_pass");
-
+        
+        //Encrypt passwords to SHA-1
         MyUtil util = new MyUtil();
         String md5 = util.toSHA1(pass);
+        
         UserDAO userDAO = new UserDAO();
+        //Check email, user active
         User user = userDAO.getUserByEmail(email);
          if (user == null || !user.getPassword().equals(md5)) {
             request.setAttribute("message", "Email or password is wrong");
@@ -88,7 +92,8 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("user", user);
                     response.sendRedirect("home");  
         }else{
-             request.setAttribute("message1", "Your account has been blocked");
+        //Notification error exists
+            request.setAttribute("message1", "Your account has been blocked");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 

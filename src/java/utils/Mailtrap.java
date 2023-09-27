@@ -3,6 +3,10 @@ package utils;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Date;
 import java.util.Properties;
 
 public class Mailtrap {
@@ -10,6 +14,12 @@ public class Mailtrap {
     public static boolean sendPasswordResetEmail(String userEmail) {
         final String username = "51d141bc93e9bc"; // Replace with your Mailtrap username
         final String password = "4d1447e90c948f"; // Replace with your Mailtrap password
+
+        // Generate a unique token that includes a timestamp
+        String timestamp = String.valueOf(new Date().getTime());
+
+        // Create a hash of the token for security
+        String resetToken = hashToken(username + timestamp);
 
         // Configure SMTP properties for Mailtrap
         Properties props = new Properties();
@@ -38,8 +48,9 @@ public class Mailtrap {
             // Set the email subject
             message.setSubject("Password Reset Request");
 
-            // Create the password reset link with the user's email as a query parameter
-            String resetLink = "http://localhost:9999/eduzone/resetpasswordfinal.jsp?email=" + userEmail;
+            // Create the password reset link with the user's email and reset token as query parameters
+            String resetLink = "http://localhost:9999/eduzone/resetpasswordfinal.jsp?email=" + userEmail +
+                    "&token=" + resetToken;
 
             // Set the email content with the link
             message.setText("You have requested a password reset. Click on the link below to reset your password:\n"
@@ -56,6 +67,18 @@ public class Mailtrap {
             e.printStackTrace();
             // Email sending failed
             return false;
+        }
+    }
+
+    private static String hashToken(String token) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(token.getBytes());
+            return Base64.getEncoder().encodeToString(hashBytes);
+        } catch (NoSuchAlgorithmException e) {
+            // Handle hashing exception
+            e.printStackTrace();
+            return null;
         }
     }
 }

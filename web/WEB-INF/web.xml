@@ -37,7 +37,30 @@
         <servlet-class>controller.SubjectDetailController</servlet-class>
     </servlet>
     <servlet>
-
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>controller.ProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>controller.UpdateProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgetPasswordServlet</servlet-name>
+        <servlet-class>controller.ForgetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResendEmailServlet</servlet-name>
+        <servlet-class>controller.ResendEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>controller.ResetPasswordServlet</servlet-class>
+    </servlet>
+     <servlet>
         <servlet-name>AddUserController</servlet-name>
         <servlet-class>Admin.controller.AddUserController</servlet-class>
     </servlet>
@@ -91,6 +114,30 @@
         <url-pattern>/SubjectDetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/updateprofile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgetPasswordServlet</servlet-name>
+        <url-pattern>/forgetpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResendEmailServlet</servlet-name>
+        <url-pattern>/resendemail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/resetpassword</url-pattern>
+     </servlet-mapping>   
+     <servlet-mapping>
         <servlet-name>AddUserController</servlet-name>
         <url-pattern>/addUser</url-pattern>
     </servlet-mapping>

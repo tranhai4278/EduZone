@@ -16,9 +16,7 @@ public class HomeController extends HttpServlet {
             throws ServletException, IOException {
         SubjectDAO subjectDao = new SubjectDAO();
         ArrayList<Subject> list = new ArrayList<>();
-
         list = subjectDao.getAllSubjectsWithUser();
-
         request.setAttribute("list", list);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

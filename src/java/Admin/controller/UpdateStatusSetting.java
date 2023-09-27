@@ -13,16 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Setting;
 
 /**
  *
  * @author Nết
  */
-
-@WebServlet(name = "SettingServlet", urlPatterns = {"/setting"})
-public class SettingServlet extends HttpServlet {
+@WebServlet(name="UpdateStatusSetting", urlPatterns={"/updateStatusSetting"})
+public class UpdateStatusSetting extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -39,10 +36,10 @@ public class SettingServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SettingServlet</title>");  
+            out.println("<title>Servlet UpdateStatusSetting</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SettingServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet UpdateStatusSetting at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,14 +56,19 @@ public class SettingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        AdminDAO d = new AdminDAO();
-        List<Setting> listR = d.getAllSetting(1);
-        request.setAttribute("listR", listR);
-        List<Setting> listE = d.getAllSetting(2);
-        request.setAttribute("listE", listE);
-        List<Setting> listS = d.getAllSetting(3);
-        request.setAttribute("listS", listS);
-        request.getRequestDispatcher("setting.jsp").forward(request, response);
+        String sid = request.getParameter("id");
+        String action = request.getParameter("status");
+        int id = Integer.parseInt(sid);
+        boolean status = "true".equals(action); // Chuyển đổi từ kiểu String sang boolean
+        System.out.println(sid);
+        System.out.println(status);
+        AdminDAO dao = new AdminDAO();
+        try {
+            dao.updateSatusSetting(id, status); // Gọi hàm updateStatus với tham số boolean status
+        } catch (NumberFormatException e) {
+            e.printStackTrace(); // Xử lý nếu có lỗi chuyển đổi
+        }
+        response.sendRedirect("setting");
     } 
 
     /** 

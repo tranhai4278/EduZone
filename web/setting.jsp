@@ -104,6 +104,7 @@
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Description</th>
                                                         <th scope="col">Display Order </th>
+                                                        <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -113,6 +114,11 @@
                                                             <td>${s.settingName}</td>
                                                             <td>${s.note}</td>
                                                             <td>${s.displayOrder}</td>
+                                                            <td>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
                                                                     <i> Edit</i>
@@ -135,6 +141,7 @@
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Description</th>
                                                         <th scope="col">Display Order </th>
+                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -144,6 +151,11 @@
                                                             <td>${s.settingName}</td>
                                                             <td>${s.note}</td>
                                                             <td>${s.displayOrder}</td>
+                                                            <td>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
                                                                     <i> Edit</i>
@@ -165,6 +177,7 @@
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Description</th>
                                                         <th scope="col">Display Order </th>
+                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
@@ -174,6 +187,11 @@
                                                             <td>${s.settingName}</td>
                                                             <td>${s.note}</td>
                                                             <td>${s.displayOrder}</td>
+                                                            <td>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
                                                                     <i> Edit</i>
@@ -194,6 +212,14 @@
         </main>
         <div class="ttr-overlay"></div>
         <!-- External JavaScripts -->
+        <script>
+            function updateStatus(id, checkbox) {
+                let status = checkbox.checked;
+                if (confirm('Are you sure?'))
+                        window.location.href='updateStatusSetting?id='+id + '&status='+status;
+                        else checkbox.checked = !status;
+            }
+        </script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

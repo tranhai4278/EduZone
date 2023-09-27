@@ -84,7 +84,7 @@ public class RegisterController extends HttpServlet {
 
         //New user
         Date d = new Date();
-        User user = new User(md5, name, gender, phone, email, 1, true, d, 1, d, 1);
+        User user = new User(md5, name, gender, phone, email, 4, true, d, 0, d, 1);
         
         //Check the domain exists and is active
         if (adminDAO.getDomainBySetting(dm,true)!= null) {

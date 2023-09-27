@@ -26,6 +26,22 @@ public class Subject {
     private int updateBy;
     private User u;
 
+    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
+        this.subjectId = subjectId;
+        this.managerId = managerId;
+        this.managerName = managerName;
+        this.subjectName = subjectName;
+        this.subjectCode = subjectCode;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.u = u;
+    }
+    
     public Subject() {
     }
 

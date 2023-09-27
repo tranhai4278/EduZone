@@ -137,6 +137,19 @@ public class AdminDAO extends MySqlConnection {
         }
     }
 
+    public void updateSatusSetting(int sid, boolean status) {
+        String sql = "UPDATE setting SET status = ?\n"
+                + "WHERE setting_id = ?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setBoolean(1, status);
+            statement.setInt(2, sid);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+
+        }
+    }
+
     public Setting getSetting(int gid, int sid) {
         Setting p = null;
         String sql = "SELECT * FROM `setting` WHERE setting_group = ? and setting_id=?";
@@ -216,26 +229,38 @@ public class AdminDAO extends MySqlConnection {
         }
     }
 
-        public void addSetting(Setting s) {
-        String sql = "INSERT INTO `setting`\n"
-                + "(`setting_group`, `setting_name`, `status`, `display_order`, `note`, `create_at`, `create_by`, `update_at`, `update_by`) \n"
-                + "VALUES ('?','?','?','?','?','?','?','?','?')";
+    public void addSetting(Setting s) {
+        String sql1 = "SELECT display_order \n"
+                + "FROM setting\n"
+                + "WHERE setting_group= ?\n"
+                + "ORDER BY display_order  \n"
+                + "DESC LIMIT 1";
         try {
-            statement = connection.prepareStatement(sql);
-            statement.setInt(1, s.getSettingGroup());
-            statement.setString(2, s.getSettingName());
-            statement.setBoolean(3, s.isStatus());
-            statement.setInt(4, s.getDisplayOrder());
-            statement.setString(5, s.getNote());
-            statement.setTimestamp(6, new Timestamp(s.getCreateAt().getTime()));
-            statement.setInt(7, s.getCreateBy());
-             statement.setTimestamp(8, new Timestamp(s.getUpdateAt().getTime()));
-            statement.setInt(9, s.getUpdateBy());
-            statement.executeUpdate();
+            PreparedStatement st = connection.prepareStatement(sql1);
+            st.setInt(1, s.getSettingGroup());
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                int display = rs.getInt("display_order") + 1;
 
+                String sql = "INSERT INTO `setting`\n"
+                        + "(`setting_group`, `setting_name`, `status`, `display_order`, `note`, `create_at`, `create_by`, `update_at`, `update_by`) \n"
+                        + "VALUES (?,?,?,?,?,?,?,?,?)";
+                statement = connection.prepareStatement(sql);
+                statement.setInt(1, s.getSettingGroup());
+                statement.setString(2, s.getSettingName());
+                statement.setBoolean(3, s.isStatus());
+                statement.setInt(4, display);
+                statement.setString(5, s.getNote());
+                statement.setTimestamp(6, new Timestamp(s.getCreateAt().getTime()));
+                statement.setInt(7, s.getCreateBy());
+                statement.setTimestamp(8, new Timestamp(s.getUpdateAt().getTime()));
+                statement.setInt(9, s.getUpdateBy());
+                statement.executeUpdate();
+            }
         } catch (SQLException e) {
 
         }
+
     }
 
     public Setting getDomainBySetting(String settingName, boolean status) {

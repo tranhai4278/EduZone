@@ -194,7 +194,7 @@
                                             </ul>
                                         </li>-->
                                         <li>
-                                            <a href="#" class="ttr-material-button">
+                                            <a href="userList" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-user"></i></span>
                                                 <span class="ttr-label">User</span>
                                             </a>
@@ -232,7 +232,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="l" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
+                            <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
                         </li>
                         <li>
                             <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>

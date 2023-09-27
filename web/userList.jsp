@@ -6,9 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="model.User" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
     <head>
 
@@ -23,9 +23,9 @@
         <meta name="description" content="EduNext : Education HTML Template" />
 
         <!-- OG -->
-        <meta property="og:title" content="EduNext : Education HTML Template" />
-        <meta property="og:description" content="EduNext : Education HTML Template" />
-        <meta property="og:image" content="" />
+        <meta uperty="og:title" content="EduNext : Education HTML Template" />
+        <meta uperty="og:description" content="EduNext : Education HTML Template" />
+        <meta uperty="og:image" content="" />
         <meta name="format-detection" content="telephone=no">
 
         <!-- FAVICONS ICON ============================================= -->
@@ -52,11 +52,12 @@
 
         <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -87,6 +88,13 @@
                                         </div> 
                                         <div class="mail-search-bar">
                                             <input type="text" class="form-control" placeholder="Search"/>
+                                        </div>
+                                        <div class="dropdown all-msg-toolbar">
+                                            <span class="btn btn-info-icon" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#"><i class="fa fa-arrow-down"></i>A-Z</a></li>
+                                                <li><a href="#"><i class="fa fa-arrow-up"></i>Z-A</a></li>
+                                            </ul>
                                         </div>-->
                                         <div class="">
                                             <div class="">
@@ -94,52 +102,46 @@
                                                     <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                                     </div>
                                                     <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <a class="btn" href="addSubject.jsp">
-                                                            Add a new subject   
+                                                        <a class="btn" href="addUser.jsp">
+                                                            Add a new user   
                                                         </a></td>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
                                         </div>
+
                                     </div>
+
                                     <div class="mail-box-list">
                                         <section id="subject">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
-                                                        <th scope="col">Subject Name</th>
-                                                        <th scope="col">Subject Code</th>
-                                                        <th scope="col">Subject Manager ID </th>
+                                                        <th scope="col">Full name</th>
+                                                        <th scope="col">Phone number</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Role</th>
                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Edit</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="s" items="${listS}" >
+                                                    <c:forEach var="u" items="${list}">
                                                         <tr>
-                                                            <td>
-                                                                ${s.subjectId}
-                                                            </td>
-                                                            <td>${s.subjectName}</td>
-                                                            <td>${s.subjectCode}</td>
-                                                            <td>${s.managerId}</td>
-
-                                                            <td>
-                                                                <div class="form-check form-switch">
-                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="editsubject?sid=${s.subjectId}" class="tm-product-delete-link">
-                                                                    <i> Edit</i>
-                                                                </a>
-                                                            </td>
+                                                            <td><c:out value="${u.userId}"/></td>
+                                                            <td><c:out value="${u.fullName}"/></td>
+                                                            <td><c:out value="${u.phone}"/></td>
+                                                            <td><c:out value="${u.email}"/></td>
+                                                            <td><c:out value="${u.roleName}"/></td>
+                                                            <td><c:out value="${u.statusDisplay}"/></td>
+                                                            <td><a href="userDetail?email=${u.email}">
+                                                                    Detail   
+                                                                </a></td>
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>
@@ -154,17 +156,7 @@
                 </div>
         </main>
         <div class="ttr-overlay"></div>
-        <script>
-            function updateStatus(id, checkbox) {
-                let status = checkbox.checked;
-                if (confirm('Are you sure?'))
-                    fetch('/updateStatus?id=${id}&status=${status}', {
-                        method: 'POST', // Sử dụng phương thức POST để gửi dữ liệu
-                    })
-                else
-                    checkbox.checked = !status;
-            }
-        </script>
+
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
@@ -183,11 +175,7 @@
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
-        <!--        <script>
-                    $(document).ready(function () {
-                        $('[data-toggle="tooltip"]').tooltip();
-                    });
-                </script>-->
+
     </body>
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->

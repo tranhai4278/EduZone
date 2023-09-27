@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.User;
@@ -215,6 +216,198 @@ public class UserDAO extends MySqlConnection {
             return null;
         }
     }
+    
+    public User getUserTest() {
+        User user = null; // Initialize the user as null
+        MySqlConnection dbContext = new MySqlConnection();
+
+        try {
+            String sql = "SELECT * FROM user WHERE user_id = 1";
+            PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int userId = resultSet.getInt("user_id");
+                String password = resultSet.getString("password");
+                String fullName = resultSet.getString("full_name");
+                boolean gender = resultSet.getBoolean("gender");
+                String avatarUrl = resultSet.getString("avatar_url");
+                String phoneNumber = resultSet.getString("phone_number");
+                String email = resultSet.getString("email");
+                int roleId = resultSet.getInt("role_id");
+                boolean status = resultSet.getBoolean("status");
+                java.sql.Timestamp createdAtTimestamp = resultSet.getTimestamp("create_at");
+                int createBy = resultSet.getInt("create_by");
+                java.sql.Timestamp updatedAtTimestamp = resultSet.getTimestamp("update_at");
+                int updateBy = resultSet.getInt("update_by");
+
+                // Create a User object with the retrieved data
+                user = new User(userId, password, fullName, gender, avatarUrl, phoneNumber, email, roleId, status, createdAtTimestamp, createBy, updatedAtTimestamp, updateBy);
+            }
+
+            // Close resources
+            resultSet.close();
+            preparedStatement.close();
+            dbContext.connection.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return user; // Return the single User object
+    }
+
+    public boolean updateUser(User updatedUser) {
+        MySqlConnection dbContext = new MySqlConnection();
+        boolean success = false;
+
+        try {
+            String sql = "UPDATE user SET "
+                    + "full_name = ?, "
+                    + "email = ?, "
+                    + "gender = ?, "
+                    + "phone_number = ?, "
+                    + "avatar_url = ?, " // Add avatar URL field to the update query
+                    + "update_at = CURRENT_TIMESTAMP "
+                    + "WHERE user_id = ?";
+
+            PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
+
+            // Set the parameters for the prepared statement
+            preparedStatement.setString(1, updatedUser.getFullName());
+            preparedStatement.setString(2, updatedUser.getEmail());
+            preparedStatement.setBoolean(3, updatedUser.isGender());
+            preparedStatement.setString(4, updatedUser.getPhone());
+            preparedStatement.setString(5, updatedUser.getAvatarUrl()); // Set the avatar URL
+            preparedStatement.setInt(6, updatedUser.getUserId());
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            // Close resources
+            preparedStatement.close();
+            dbContext.connection.close();
+
+            // Check if the update was successful
+            if (rowsUpdated == 1) {
+                success = true;
+            } else {
+                System.err.println("Error: Failed to update user profile.");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: SQL Exception - " + ex.getMessage());
+        }
+
+        return success;
+    }
+
+    public boolean changePassword(int userId, String currentPassword, String newPassword) {
+        MySqlConnection dbContext = new MySqlConnection();
+        boolean success = false;
+
+        try {
+            // First, check if the current password matches the stored password
+            String checkPasswordSql = "SELECT password FROM user WHERE user_id = ? AND password = ?";
+            PreparedStatement checkPasswordStatement = dbContext.connection.prepareStatement(checkPasswordSql);
+            checkPasswordStatement.setInt(1, userId);
+            checkPasswordStatement.setString(2, currentPassword);
+            ResultSet passwordResultSet = checkPasswordStatement.executeQuery();
+
+            if (passwordResultSet.next()) {
+                // Current password matches, proceed to update the password
+                String updatePasswordSql = "UPDATE user SET password = ?, update_at = CURRENT_TIMESTAMP WHERE user_id = ?";
+                PreparedStatement updatePasswordStatement = dbContext.connection.prepareStatement(updatePasswordSql);
+                updatePasswordStatement.setString(1, newPassword);
+                updatePasswordStatement.setInt(2, userId);
+
+                int rowsUpdated = updatePasswordStatement.executeUpdate();
+
+                // Close resources
+                updatePasswordStatement.close();
+
+                if (rowsUpdated == 1) {
+                    success = true;
+                } else {
+                    System.err.println("Error: Failed to update password.");
+                }
+            } else {
+                System.err.println("Error: Current password does not match.");
+            }
+
+            // Close resources
+            passwordResultSet.close();
+            checkPasswordStatement.close();
+            dbContext.connection.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("Error: SQL Exception - " + ex.getMessage());
+        }
+
+        return success;
+    }
+
+    public boolean doesEmailExist(String email) {
+        String query = "SELECT COUNT(*) FROM user WHERE email = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0; // If count > 0, email exists; otherwise, it doesn't
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false; // Return false if an error occurred
+    }
+
+    public boolean doesPhoneNumberExist(String phoneNumber) {
+        String query = "SELECT COUNT(*) FROM user WHERE phone_number = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, phoneNumber);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0; // If count > 0, phone number exists; otherwise, it doesn't
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false; // Return false if an error occurred
+    }
+    
+    public boolean resetPassword(String email, String newPassword) {
+    try {
+        // Check if the email exists in the database
+        if (!doesEmailExist(email)) {
+            return false; // Email does not exist
+        }
+
+        // Update the user's password
+        String updatePasswordSql = "UPDATE user SET password = ?, update_at = CURRENT_TIMESTAMP WHERE email = ?";
+        PreparedStatement updatePasswordStatement = connection.prepareStatement(updatePasswordSql);
+        updatePasswordStatement.setString(1, newPassword);
+        updatePasswordStatement.setString(2, email);
+
+        int rowsUpdated = updatePasswordStatement.executeUpdate();
+
+        // Close resources
+        updatePasswordStatement.close();
+
+        return rowsUpdated == 1; // Password reset successful if one row was updated
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        System.out.println("Error: SQL Exception - " + ex.getMessage());
+        return false;
+    }
+}
+
 
     public static void main(String[] args) {
         //UserDAO userDAO = new UserDAO();

@@ -118,10 +118,10 @@
                                                                             </li>-->
                                 <!--                                            
                                 <li><a href="portfolio.jsp">Portfolio</a></li>-->
-                                <li><a href="profile.jsp">My Profile</a></li>
+                                <li><a href="profile">My Profile</a></li>
                                 <!--                                            <li><a href="profile.jsp">My Subject</a></li>
                                                                             <li><a href="profile.jsp">My Class</a></li>                                    Will do this in future--> 
-                                <li><a href="#">Change Password</a></li>
+                                <li><a href="changepassword">Change Password</a></li>
                                 <li><c:if test="${sessionScope.user!=null}">
                                         <a href="logout">Logout</a>
                                     </c:if></li>

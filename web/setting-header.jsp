@@ -1,5 +1,5 @@
-<head>
 
+<head>
     <!-- META ============================================= -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
     <meta name="robots" content="" />
 
     <!-- DESCRIPTION -->
-    <meta name="description" content="EduNext : Education HTML Template" />
+    <meta name="description" content="EduZone : Education HTML Template" />
 
     <!-- OG -->
-    <meta property="og:title" content="EduNext : Education HTML Template" />
-    <meta property="og:description" content="EduNext : Education HTML Template" />
+    <meta property="og:title" content="EduZone : Education HTML Template" />
+    <meta property="og:description" content="EduZone : Education HTML Template" />
     <meta property="og:image" content="" />
     <meta name="format-detection" content="telephone=no">
 
@@ -21,7 +21,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
 
     <!-- PAGE TITLE HERE ============================================= -->
-    <title>EduNext : Education HTML Template </title>
+    <title>EduZone : Education HTML Template </title>
 
     <!-- MOBILE SPECIFIC ============================================= -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,6 +46,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
     <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
 </head>
+
 <header class="ttr-header">
     <div class="ttr-header-wrapper">
         <!--sidebar menu toggler start -->
@@ -192,12 +193,25 @@
                                                 </li>
                                             </ul>
                                         </li>-->
-                <!--                        <li>
-                                            <a href="bookmark.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-bookmark-alt"></i></span>
-                                                <span class="ttr-label">Bookmarks</span>
+                                        <li>
+                                            <a href="#" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-user"></i></span>
+                                                <span class="ttr-label">User</span>
                                             </a>
-                                        </li>-->
+                                        </li>
+                                        <li>
+                                            <a href="settingSubject" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-book"></i></span>
+                                                <span class="ttr-label">Subject</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="setting" class="ttr-material-button">
+                                                <span class="ttr-icon"><i class="ti-settings"></i></span>
+                                                <span class="ttr-label">Setting</span>
+                                            </a>
+                                        </li>
+                                        
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-comments"></i></span>
@@ -210,7 +224,7 @@
                                                 <span class="ttr-label">Add listing</span>
                                             </a>
                                         </li>-->
-                <li>
+<!--                <li>
                     <a href="#" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-settings"></i></span>
                         <span class="ttr-label">Setting List</span>
@@ -221,13 +235,13 @@
                             <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
                         </li>
                         <li>
-                            <a href="subjectSetting" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
+                            <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
                         </li>
                         <li>
                             <a href="" class="ttr-material-button"><span class="ttr-label">Setting</span></a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="ttr-seperate"></li>
             </ul>
 

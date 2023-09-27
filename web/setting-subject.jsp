@@ -78,7 +78,7 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-<<<<<<< HEAD
+
                                         <!--                                        <div class="dropdown all-msg-toolbar">
                                                                                     <select name="subject" class="input-select">
                                                                                         <option>All Status</option>
@@ -89,7 +89,7 @@
                                                                                 <div class="mail-search-bar">
                                                                                     <input type="text" class="form-control" placeholder="Search"/>
                                                                                 </div>-->
-=======
+
 <!--                                        <div class="dropdown all-msg-toolbar">
                                             <select name="subject" class="input-select">
                                                 <option>All Status</option>
@@ -113,7 +113,6 @@
                                                 </div>
                                             </div>
                                         </div>
->>>>>>> f1448c2fcd7f0ec75b808d3c1521a7c1f8840b67
 
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>

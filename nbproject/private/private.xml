@@ -30,11 +30,21 @@
             <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
         </group>
         <group>
+<<<<<<< HEAD
             <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Setting.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/MySqlConnection.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/AddSetting.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-setting.jsp</file>
+=======
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+>>>>>>> 8df2875d28577012fa05217b4d14a9f49db70041
         </group>
     </open-files>
 </project-private>

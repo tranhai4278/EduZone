@@ -65,7 +65,7 @@
                 <!--logo start -->
                 <div class="ttr-logo-box">
                     <div>
-                        <a href="index.html" class="ttr-logo">
+                        <a href="home" class="ttr-logo">
                             <img alt="" class="ttr-logo-mobile" src="assets/images/logo.png" width="30" height="30">
                             <img alt="" class="ttr-logo-desktop" src="assets/images/logo.png" width="160" height="27">
                         </a>
@@ -76,7 +76,7 @@
                     <!-- header left menu start -->
                     <ul class="ttr-header-navigation">
                         <li>
-                            <a href="../index.html" class="ttr-material-button ttr-submenu-toggle">HOME</a>
+                            <a href="home" class="ttr-material-button ttr-submenu-toggle">HOME</a>
                         </li>
                         <li>
                             <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
@@ -234,7 +234,7 @@
             <div class="ttr-sidebar-wrapper content-scroll">
                 <!-- side menu logo start -->
                 <div class="ttr-sidebar-logo">
-                    <a href="#"><img alt="" src="assets/images/logo.png" width="122" height="27"></a>
+                    <a href="home"><img alt="" src="assets/images/logo.png" width="122" height="27"></a>
                     <!-- <div class="ttr-sidebar-pin-button" title="Pin/Unpin Menu">
                             <i class="material-icons ttr-fixed-icon">gps_fixed</i>
                             <i class="material-icons ttr-not-fixed-icon">gps_not_fixed</i>
@@ -248,7 +248,7 @@
                 <nav class="ttr-sidebar-navi">
                     <ul>
                         <li>
-                            <a href="index.html" class="ttr-material-button">
+                            <a href="home" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-home"></i></span>
                                 <span class="ttr-label">Dashborad</span>
                             </a>

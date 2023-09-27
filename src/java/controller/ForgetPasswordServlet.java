@@ -4,7 +4,8 @@
  */
 package controller;
 
-import util.*;
+import utils.Mailtrap;
+import utils.EmailChecker;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.User;
 
 /**
@@ -69,7 +71,7 @@ public class ForgetPasswordServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -89,6 +91,10 @@ public class ForgetPasswordServlet extends HttpServlet {
 
         // Check if the email exists in the database
         if (userDAO.doesEmailExist(userEmail)) {
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("userEmail", userEmail);
+
             // Send the password reset email using Mailtrap
             Mailtrap.sendPasswordResetEmail(userEmail);
 

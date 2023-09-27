@@ -49,45 +49,56 @@
 
     </head>
     <body id="bg">
-    <div class="page-wraper">
-        <div id="loading-icon-bx"></div>
-        <div class="account-form">
-            <div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
-                <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
-            </div>
-            <div class="account-form-inner">
-                <div class="account-container">
-                    <div class="heading-bx left">
-                        <h2 class="title-head">Reset <span>Password</span></h2>
-                    </div>
-                    <form class="contact-bx">
-                        <div class="row placeani">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>New Password</label>
-                                    <input name="newPassword" type="password" required="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input name="confirmPassword" type="password" required="" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 m-b30">
-                                <button name="submit" type="submit" value="Reset Password" class="btn button-md">Reset Password</button>
-                            </div>
+        <div class="page-wraper">
+            <div id="loading-icon-bx"></div>
+            <div class="account-form">
+                <div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+                    <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                </div>
+                <div class="account-form-inner">
+                    <div class="account-container">
+                        <div class="heading-bx left">
+                            <h2 class="title-head">Reset <span>Password</span></h2>
                         </div>
-                    </form>
-                    <div class="col-lg-12 m-b30">
-                        <p style="text-align: center;">
-                            <a href="login.html">Return to login</a>
-                        </p>
+                        <form class="contact-bx" action ="resetpassword" method="post">
+                            <div class="row placeani">
+                                <div class="col-lg-12">
+                                    <div class="form-group" hidden>
+                                        <label>Email</label>
+                                        <input name="email" type="email" required="" class="form-control" value="${param.email}">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>New Password</label>
+                                        <input name="newPassword" type="password" required="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input name="confirmPassword" type="password" required="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 m-b30">
+                                    <button name="submit" type="submit" value="Reset Password" class="btn button-md">Reset Password</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="col-lg-12 m-b30">
+                            <p style="text-align: center;">
+                                <a href="login.jsp">Return to login</a>
+                            </p>
+                        </div>
+
+                        <c:if test="${not empty message}">
+                            <div class="message">${message}</div>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

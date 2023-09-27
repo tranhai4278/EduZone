@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import util.Mailtrap;
+import utils.Mailtrap;
 
 public class ResendEmailServlet extends HttpServlet {
 
@@ -52,7 +52,7 @@ public class ResendEmailServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            
+
             // Email sending failed or invalid email, redirect to an error page with a message
             response.sendRedirect("error.jsp?message=Failed+to+resend+the+email.+Please+try+again.");
         } else {

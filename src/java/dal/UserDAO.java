@@ -352,6 +352,33 @@ public class UserDAO extends MySqlConnection {
         }
         return false; // Return false if an error occurred
     }
+    
+    public boolean resetPassword(String email, String newPassword) {
+    try {
+        // Check if the email exists in the database
+        if (!doesEmailExist(email)) {
+            return false; // Email does not exist
+        }
+
+        // Update the user's password
+        String updatePasswordSql = "UPDATE user SET password = ?, update_at = CURRENT_TIMESTAMP WHERE email = ?";
+        PreparedStatement updatePasswordStatement = connection.prepareStatement(updatePasswordSql);
+        updatePasswordStatement.setString(1, newPassword);
+        updatePasswordStatement.setString(2, email);
+
+        int rowsUpdated = updatePasswordStatement.executeUpdate();
+
+        // Close resources
+        updatePasswordStatement.close();
+
+        return rowsUpdated == 1; // Password reset successful if one row was updated
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        System.out.println("Error: SQL Exception - " + ex.getMessage());
+        return false;
+    }
+}
+
 
     public static void main(String[] args) {
         UserDAO userDAO = new UserDAO();

@@ -4,7 +4,7 @@
  */
 package controller;
 
-import util.PasswordEncoder;
+import utils.PasswordEncoder;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -100,7 +100,7 @@ public class ChangePasswordServlet extends HttpServlet {
          if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "Cannot be empty");
-            User user = userDao.getUserTest();
+            User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
             return;
@@ -111,7 +111,7 @@ public class ChangePasswordServlet extends HttpServlet {
         if (!newPassword.equals(confirmPassword) || newPassword.length() < 8) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "New Password doesn't match with Confirmed Password");
-            User user = userDao.getUserTest();
+            User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
             return;
@@ -124,13 +124,13 @@ public class ChangePasswordServlet extends HttpServlet {
         if (passwordChangeSuccess) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("success", "Password updated successfully");
-            User user = userDao.getUserTest();
+            User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/userprofile.jsp").forward(request, response); // Forward to the profile page
         } else {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "Password isn't correct");
-            User user = userDao.getUserTest();
+            User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
         }

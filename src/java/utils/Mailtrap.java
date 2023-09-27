@@ -1,4 +1,4 @@
-package util;
+package utils;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -35,9 +35,15 @@ public class Mailtrap {
             // Set the recipient (to) address
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userEmail));
 
-            // Set the email subject and content
+            // Set the email subject
             message.setSubject("Password Reset Request");
-            message.setText("You have requested a password reset. Click on the link to reset your password.");
+
+            // Create the password reset link with the user's email as a query parameter
+            String resetLink = "http://localhost:9999/eduzone/resetpasswordfinal.jsp?email=" + userEmail;
+
+            // Set the email content with the link
+            message.setText("You have requested a password reset. Click on the link below to reset your password:\n"
+                    + resetLink);
 
             // Send the email
             Transport.send(message);

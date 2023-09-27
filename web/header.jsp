@@ -164,7 +164,7 @@
                                 <li><a href="admin/courses.jsp">Subject</a></li>
                                 <!--<li><a href="admin/review.jsp">Review</a></li>-->
                                 <li><a href="admin/teacher-profile.jsp">Teacher Profile</a></li>
-                                <li><a href="admin/user-profile.jsp">User Profile</a></li>
+                                <li><a href="profile">User Profile</a></li>
                                 <!--                                            <li><a href="javascript:;">Calendar<i class="fa fa-angle-right"></i></a>
                                                                                 <ul class="sub-menu">
                                                                                     <li><a href="admin/basic-calendar.jsp">Basic Calendar</a></li>

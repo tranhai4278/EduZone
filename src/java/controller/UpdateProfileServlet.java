@@ -9,8 +9,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import util.EmailChecker;
-import util.PhoneNumberChecker;
+import utils.EmailChecker;
+import utils.PhoneNumberChecker;
 
 public class UpdateProfileServlet extends HttpServlet {
 

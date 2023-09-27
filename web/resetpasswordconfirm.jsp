@@ -65,10 +65,20 @@
                         </div>
                         <div class="col-lg-12 m-b30">
                             <p style="text-align: center;">
-                                <button id="resendButton">Resend</button>
+                            <form action="resendemail" method="GET">
+                                <input type="hidden" name="resend" value="true">
 
-                                <a href="login.html">Return to login</a> |
-                                <a href="forgetpasswordphone.jsp">Reset my password using my phone number</a>
+                                <!-- Add the email input field with a readonly attribute -->
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" value="${sessionScope.userEmail}" readonly>
+                                </div>
+
+                                <!-- Add the Resend button -->
+                                <button type="submit" id="resendButton" class="btn button-md">Resend</button>
+                            </form>
+                            <a href="login.jsp">Return to login</a> |
+                            <a href="forgetpasswordphone.jsp">Reset my password using my phone number</a>
                             </p>
                         </div>
                     </div>
@@ -76,29 +86,6 @@
             </div>
         </div>
 
-        <script>
-            document.getElementById("resendButton").addEventListener("click", function (e) {
-                e.preventDefault(); // Prevent the default link behavior
-                // Perform AJAX request or any other action to trigger the resend logic
-                // You can use JavaScript to make an AJAX request to your resendemail servlet
-                // Example using fetch:
-                fetch("resendemail", {
-                    method: "GET"
-                })
-                        .then(response => {
-                            if (response.status === 200) {
-                                // Resend successful, you can redirect or show a success message here
-                                alert("Email has been resent successfully!");
-                            } else {
-                                // Handle resend failure
-                                alert("Failed to resend email.");
-                            }
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-            });
-        </script>
 
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>

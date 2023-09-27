@@ -486,19 +486,19 @@
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user at</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.createAt}">
+                                                                <input class="form-control" type="text" value="${user.createAt}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user by</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.createBy}">
+                                                                <input class="form-control" type="text" value="${user.createBy}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user at</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.updateAt}">
+                                                                <input class="form-control" type="text" value="${user.updateAt}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

@@ -141,19 +141,7 @@
                                                         </div>
                                                     </div>
                                                     
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user by</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="createBy">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user by</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="updateBy">
-                                                        </div>
-                                                    </div>
-
+                                                    
                                                 </div>
                                                 <div class="">
                                                     <div class="">

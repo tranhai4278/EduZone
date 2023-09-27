@@ -75,9 +75,7 @@ public class AddSubjectController extends HttpServlet {
         String code = request.getParameter("code");
         String des = request.getParameter("des");
         String image = request.getParameter("image");
-        String statusStr = request.getParameter("status");
-        String createByStr = request.getParameter("createBy");
-        String updateByStr = request.getParameter("updateBy");
+        
         
         if (mIDStr == null || name == null || code == null) {
             request.setAttribute("error1", "This field mustn't be empty!");
@@ -85,11 +83,9 @@ public class AddSubjectController extends HttpServlet {
         }
         
         int mID = Integer.parseInt(mIDStr);
-        boolean status = Boolean.parseBoolean(statusStr);
-        int createBy = Integer.parseInt(createByStr);
-        int updateBy = Integer.parseInt(updateByStr);
+        
 
-        dao.addSubject(mID, name, code, des, image, status, createBy, updateBy);
+        dao.addSubject(mID, name, code, des, image);
         response.sendRedirect("settingSubject");
     }
 

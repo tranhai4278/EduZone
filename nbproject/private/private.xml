@@ -2,29 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting-header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/subjects.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/setting-subject.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/model/User.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Setting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/header.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/MyUtil.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/AddSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/add-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
-        </group>
         <group/>
         <group>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
@@ -46,6 +23,12 @@
         </group>
         <group>
             <file>file:/E:/FPTU/HK5/EduZone/web/checkauthen.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserListController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userList.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
         </group>
     </open-files>
 </project-private>

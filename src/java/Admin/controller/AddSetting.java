@@ -70,16 +70,14 @@ public class AddSetting extends HttpServlet {
             throws ServletException, IOException {
         String gid = request.getParameter("gid");
         String name = request.getParameter("sname");
-        String sorder = request.getParameter("order");
         String note = request.getParameter("note");
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
         int uid = u.getUserId();
         int group = Integer.parseInt(gid);
-        int order = Integer.parseInt(sorder);
         Date uDate = new Date();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-        Setting s =new Setting(group, name, true, order, note, uDate, uid, uDate, uid);
+        Setting s =new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
         AdminDAO dao = new AdminDAO();
         dao.addSetting(s);
         response.sendRedirect("setting");

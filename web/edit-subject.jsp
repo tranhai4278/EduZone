@@ -76,7 +76,7 @@
                     <h4 class="breadcrumb-title">Edit Subject</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="home.jsp"><i class="fa fa-home"></i>Home</a></li>
-                        <li><a href="settingSubjet">Subject List</a></li>
+                        <li><a href="settingSubject">Subject List</a></li>
                         <li>Edit Subject</li>
                     </ul>
                 </div>	

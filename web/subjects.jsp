@@ -10,7 +10,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
     <head>
 
         <!-- META ============================================= -->
@@ -79,6 +78,25 @@
                 width: 100%;
                 text-align: right;
                 padding-left: 650px;
+            }
+
+            .listPage {
+                padding: 10px;
+                text-align: center;
+                list-style: none;
+            }
+
+            .listPage li {
+                background-color: #ffffffBD;
+                padding: 20px;
+                display: inline-block;
+                margin: 0 10px;
+                cursor: pointer;
+            }
+
+            .listPage .active {
+                background-color: #B192EF;
+                color: #fff;
             }
         </style>
 
@@ -175,7 +193,6 @@
                                                     </div>
                                                 </div>
                                             </c:forEach>
-
                                         </div>
                                     </div>
                                 </div>
@@ -187,11 +204,11 @@
                                         <button onclick="sortDescending()">Sort Descending</button>
                                     </div>
 
-                                    <div class="row" id="elementList">
+                                    <div class="row list" id="elementList">
 
                                         <c:forEach var="subject" items="${subjectList}">
 
-                                            <div class="col-md-6 col-lg-4 col-sm-6 m-b30" name="${subject.getSubjectName()}">
+                                            <div class="col-md-6 col-lg-4 col-sm-6 m-b30 item" name="${subject.getSubjectName()}">
                                                 <div class="cours-bx">
                                                     <div class="action-box">
                                                         <img src="${subject.getImgUrl()}" style="width: 264px; height: 200px;" alt="">
@@ -223,6 +240,14 @@
                                             </div>
                                         </c:forEach>
                                     </div>
+                                    <div>
+                                        <ul class="listPage">
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -258,10 +283,7 @@
     </body>
 
     <script>
-                                            let availableSubjects = [
-                                                'sss',
-                                                'sedf'
-                                            ];
+        let availableSubjects = [];
         <%
         SubjectDAO subjectDAO2 = new SubjectDAO();
         ArrayList<String> SubjectNameList2 = subjectDAO2.getAllSubjectNames();
@@ -269,63 +291,62 @@
         
         for (String subjectName2 : SubjectNameList2) {
         %>
-                                            availableSubjects.push("<%= subjectName2 %>");
+            availableSubjects.push("<%= subjectName2 %>");
         <%
         }
 
         for (String subjectCode2 : SubjectCodeList2) {
         %>
-                                            availableSubjects.push("<%= subjectCode2 %>");
+            availableSubjects.push("<%= subjectCode2 %>");
         <%
         }
         %>
 
-
-
-                                            $(document).ready(function () {
-                                                $('#subject-input-box').keypress(function (e) {
-                                                    if (e.which === 13) { // 13 is the key code for Enter
-                                                        e.preventDefault(); // Prevent the default form submission
-                                                        $('#subject-search-form').submit(); // Trigger the form submission
-                                                    }
-                                                });
-                                            });
+        $(document).ready(function () {
+            $('#subject-input-box').keypress(function (e) {
+                if (e.which === 13) { // 13 is the key code for Enter
+                    e.preventDefault(); // Prevent the default form submission
+                    $('#subject-search-form').submit(); // Trigger the form submission
+                }
+            });
+        });
     </script>
 
     <script src="assets/js/autocomplete-subject-only.js"></script>
     <script>
-                                            function sortAscending() {
-                                                const elementList = document.getElementById("elementList");
-                                                const elements = Array.from(elementList.children);
+        function sortAscending() {
+            const elementList = document.getElementById("elementList");
+            const elements = Array.from(elementList.children);
 
-                                                elements.sort((a, b) => {
-                                                    const nameA = a.getAttribute("name").toUpperCase();
-                                                    const nameB = b.getAttribute("name").toUpperCase();
-                                                    if (nameA < nameB)
-                                                        return -1;
-                                                    if (nameA > nameB)
-                                                        return 1;
-                                                    return 0;
-                                                });
+            elements.sort((a, b) => {
+                const nameA = a.getAttribute("name").toUpperCase();
+                const nameB = b.getAttribute("name").toUpperCase();
+                if (nameA < nameB)
+                    return -1;
+                if (nameA > nameB)
+                    return 1;
+                return 0;
+            });
 
-                                                elements.forEach((element) => elementList.appendChild(element));
-                                            }
+            elements.forEach((element) => elementList.appendChild(element));
+        }
 
-                                            function sortDescending() {
-                                                const elementList = document.getElementById("elementList");
-                                                const elements = Array.from(elementList.children);
+        function sortDescending() {
+            const elementList = document.getElementById("elementList");
+            const elements = Array.from(elementList.children);
 
-                                                elements.sort((a, b) => {
-                                                    const nameA = a.getAttribute("name").toUpperCase();
-                                                    const nameB = b.getAttribute("name").toUpperCase();
-                                                    if (nameA < nameB)
-                                                        return 1;
-                                                    if (nameA > nameB)
-                                                        return -1;
-                                                    return 0;
-                                                });
+            elements.sort((a, b) => {
+                const nameA = a.getAttribute("name").toUpperCase();
+                const nameB = b.getAttribute("name").toUpperCase();
+                if (nameA < nameB)
+                    return 1;
+                if (nameA > nameB)
+                    return -1;
+                return 0;
+            });
 
-                                                elements.forEach((element) => elementList.appendChild(element));
-                                            }
+            elements.forEach((element) => elementList.appendChild(element));
+        }
     </script>
+    <script src="assets/js/subject-pagination.js"></script>
 </html>

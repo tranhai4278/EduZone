@@ -47,13 +47,39 @@ public class AdminDAO extends MySqlConnection {
         }
         return list;
     }
+     public List<Subject> searchBySubjectName(String name) {
+        List<Subject> list = new ArrayList<>();
+        String sql = "SELECT * FROM `subject` WHERE subject_name like N'%"+ name +"%'";
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+            while (result.next()) {
+                Subject s = new Subject(result.getInt(1),
+                        result.getInt(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getBoolean(7),
+                        result.getDate(8),
+                        result.getInt(9),
+                        result.getDate(10),
+                        result.getInt(11)
+                );
+                list.add(s);
+            }
+        } catch (SQLException e) {
 
-    public Subject getSubjectbyId(String id) {
+        }
+        return list;
+    }
+
+    public Subject getSubjectbyId(int id) {
         Subject p = null;
         String sql = "SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE subject_id = ? AND s.manager_id=u.user_id";
         try {
             statement = connection.prepareStatement(sql);
-            statement.setString(1, id);
+            statement.setInt(1, id);
             result = statement.executeQuery();
             while (result.next()) {
                 p = new Subject(result.getInt(1),
@@ -169,6 +195,55 @@ public class AdminDAO extends MySqlConnection {
                         result.getInt(8),
                         result.getDate(9),
                         result.getInt(10));
+            }
+        } catch (SQLException e) {
+
+        }
+        return p;
+    }
+    public Setting checkSettingName(String name) {
+        Setting p = null;
+        String sql = "SELECT * FROM setting WHERE setting_name = N?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            result = statement.executeQuery();
+            while (result.next()) {
+                p = new Setting(result.getInt(1),
+                        result.getInt(2),
+                        result.getString(3),
+                        result.getBoolean(4),
+                        result.getInt(5),
+                        result.getString(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10));
+            }
+        } catch (SQLException e) {
+
+        }
+        return p;
+    }
+    public Subject checkSubjectCode(String name) {
+        Subject p = null;
+        String sql = "SELECT * FROM `subject` WHERE subject_code = N?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            result = statement.executeQuery();
+            while (result.next()) {
+                p = new Subject(result.getInt(1),
+                        result.getInt(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getString(6),
+                        result.getBoolean(7),
+                        result.getDate(8),
+                        result.getInt(9),
+                        result.getDate(10),
+                        result.getInt(11));
             }
         } catch (SQLException e) {
 

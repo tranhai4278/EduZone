@@ -3,35 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/admin.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.min.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/header.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/User.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LogoutController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/SubjectDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/autocomplete-subject-only.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
-        </group>
-        <group>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Setting.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/setting.jsp</file>
         </group>
         <group/>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/subjects.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/assets/js/subject-pagination.js</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/subjects.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/assets/js/subject-pagination.js</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/WEB-INF/web.xml</file>
+        </group>
     </open-files>
 </project-private>

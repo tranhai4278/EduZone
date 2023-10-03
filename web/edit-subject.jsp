@@ -106,6 +106,7 @@
                                             <div>
                                                 <input class="form-control" type="text" value="${detail.subjectCode}" name="scode">
                                             </div>
+                                            <p style="color: red">${requestScope.error}</p>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject name</label>

@@ -106,6 +106,7 @@
                                             <div>
                                                 <input class="form-control" type="text" value="${detail.settingName}" name="sname">
                                             </div>
+                                            <p style="color: red">${requestScope.error}</p>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Display Order</label>

@@ -51,10 +51,20 @@ public class AddSetting extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private String errorMessage = null;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if (errorMessage != null) {
+            // Truyền thông báo lỗi vào thuộc tính "error" trong request
+            request.setAttribute("error", errorMessage);
+            // Xóa giá trị errorMessage để tránh lặp lại khi doGet được gọi lại
+            errorMessage = null;
+        }
+        String gid = request.getParameter("gid");
+        int group = Integer.parseInt(gid);
+        request.setAttribute("gid", group);
+        request.getRequestDispatcher("add-setting.jsp").forward(request, response);
     }
 
     /**
@@ -77,10 +87,19 @@ public class AddSetting extends HttpServlet {
         int group = Integer.parseInt(gid);
         Date uDate = new Date();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-        Setting s =new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
+        
         AdminDAO dao = new AdminDAO();
-        dao.addSetting(s);
-        response.sendRedirect("setting");
+        Setting scheck = dao.checkSettingName(name);
+        if (scheck == null) {
+            Setting s = new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
+            dao.addSetting(s);
+            response.sendRedirect("setting");
+        }
+        else{
+            errorMessage = "Already exist";
+            doGet(request, response);
+        }
+
     }
 
     /**

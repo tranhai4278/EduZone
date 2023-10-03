@@ -90,25 +90,30 @@
                                                                                     <input type="text" class="form-control" placeholder="Search"/>
                                                                                 </div>-->
 
-<!--                                        <div class="dropdown all-msg-toolbar">
-                                            <select name="subject" class="input-select">
-                                                <option>All Status</option>
-                                                <option value="0">Inactive</option>
-                                                <option value="1">Active</option>
-                                            </select>
-                                        </div> 
-                                        <div class="mail-search-bar">
-                                            <input type="text" class="form-control" placeholder="Search"/>
-                                        </div>-->
+                                        <!--                                        <div class="dropdown all-msg-toolbar">
+                                                                                    <select name="subject" class="input-select">
+                                                                                        <option>All Status</option>
+                                                                                        <option value="0">Inactive</option>
+                                                                                        <option value="1">Active</option>
+                                                                                    </select>
+                                                                                </div> 
+                                                                                <div class="mail-search-bar">
+                                                                                    <input type="text" class="form-control" placeholder="Search"/>
+                                                                                </div>-->
                                         <div class="">
                                             <div class="">
                                                 <div class="row">
-                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                    </div>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+
+                                                    <div class="col-sm-5">
                                                         <a class="btn" href="addSubject.jsp">
                                                             Add a new subject   
                                                         </a></td>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <form id="subject-search-form" action="settingSubject" method="POST">
+                                                            <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
+                                                            <input type="submit" style="display: none;">
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,8 +175,9 @@
                 let status = checkbox.checked;
                 if (confirm('Are you sure?'))
 //                    fetch(`updateStatus?id=${id}&status=${status}`);
-                        window.location.href='updateStatus?id='+id + '&status='+status;
-                        else checkbox.checked = !status;
+                    window.location.href = 'updateStatus?id=' + id + '&status=' + status;
+                else
+                    checkbox.checked = !status;
             }
         </script>
         <!-- External JavaScripts -->

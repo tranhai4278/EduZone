@@ -60,7 +60,7 @@
         <servlet-name>ResetPasswordServlet</servlet-name>
         <servlet-class>controller.ResetPasswordServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>AddUserController</servlet-name>
         <servlet-class>Admin.controller.AddUserController</servlet-class>
     </servlet>
@@ -75,7 +75,10 @@
     <servlet>
         <servlet-name>AddSubjectController</servlet-name>
         <servlet-class>Admin.controller.AddSubjectController</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>UserEditController</servlet-name>
+        <servlet-class>Admin.controller.UserEditController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
@@ -136,8 +139,8 @@
     <servlet-mapping>
         <servlet-name>ResetPasswordServlet</servlet-name>
         <url-pattern>/resetpassword</url-pattern>
-     </servlet-mapping>   
-     <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddUserController</servlet-name>
         <url-pattern>/addUser</url-pattern>
     </servlet-mapping>
@@ -152,7 +155,10 @@
     <servlet-mapping>
         <servlet-name>AddSubjectController</servlet-name>
         <url-pattern>/addSubject</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserEditController</servlet-name>
+        <url-pattern>/userEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

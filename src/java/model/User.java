@@ -65,12 +65,7 @@ public class User {
         this.updateBy = updateBy;
     }
 
-   
-
-
-
-
-    
+ 
     
     public int getUserId() {
         return userId;
@@ -185,31 +180,26 @@ public class User {
         }
         return null;
     }
-    
-    public String getRoleName(){
+ 
+    public String getRoleName() {
         return roleName(getRoleId());
     }
-    
+
     public String getStatusDisplay() {
-    if (status) {
-        return "Active";
-    } else {
-        return "Inactive";
+        if (status) {
+            return "Active";
+        } else {
+            return "Inactive";
+        }
     }
-}
 
-public String getGenderDisplay() {
-    if (status) {
-        return "Female";
-    } else {
-        return "Male";
+    public String getGenderDisplay() {
+        if (status) {
+            return "Male";
+        }else {
+            return "Female";
+        }
     }
-}
 
-
-
-
-
-
-    
+  
 }

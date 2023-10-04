@@ -3,6 +3,7 @@ package dal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Subject;
 import model.User;
@@ -255,6 +256,7 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
+    
     public Subject getSubjectWithId(int subject_id) {
         Subject subject = new Subject();
         String sql = "SELECT *\n"
@@ -296,6 +298,35 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
+
+    public Subject getSubjectByCode(String code) {
+        String query ="SELECT * FROM `subject` WHERE subject_code = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, code);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Subject s = new Subject();
+                    s.setSubjectId(resultSet.getInt(1));
+                    s.setManagerId(resultSet.getInt(2));
+                    s.setSubjectName(resultSet.getString(3));
+                    s.setSubjectCode(resultSet.getString(4));
+                    s.setDescription(resultSet.getString(5));
+                    s.setImgUrl(resultSet.getString(6));
+                    s.setStatus(resultSet.getBoolean(7));
+                    s.setCreateAt(resultSet.getDate(8));
+                    s.setCreateBy(resultSet.getInt(9));
+                    s.setUpdateAt(resultSet.getDate(10));
+                    s.setUpdateBy(resultSet.getInt(11));
+                    return s;
+                }
+            } catch (Exception e) {
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    
 
     public Subject getSubjectAndManagerWithId(int subject_id) {
         UserDAO userDao = new UserDAO();

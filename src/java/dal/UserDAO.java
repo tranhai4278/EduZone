@@ -48,7 +48,29 @@ public class UserDAO extends MySqlConnection {
             return null;
         }
     }
+    
+    public void updateUserRole(int userId, int newRole){
+        
+    }
+   
+    public String getStatusDisplay (int id) {
+        String query = "SELECT CASE WHEN status IS NULL THEN 'Unverified' "
+                + "WHEN status = true THEN 'Active' ELSE 'Inactive' END AS user_status "
+                + "FROM user WHERE user_id = ?;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
 
+            if (result.next()) {
+                return result.getString("user_status");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public void addUser(User acc) {
         try {
             String strSelect = "INSERT INTO user (user_id, password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
@@ -80,28 +102,27 @@ public class UserDAO extends MySqlConnection {
         }
     }
     
-    public void addUser( String pass, String name, boolean gender, String avatar, String phone, String email, int role) {
+    public void addUser(String name, boolean gender,String avatar, String phone, String email, int role) {
         try {
             String strSelect = "INSERT INTO user ( password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
-                    + "status, create_at, create_by, update_at, update_by)\n"
-                    + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    + " create_at, create_by, update_at, update_by)\n"
+                    + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             Connection cnn = (new MySqlConnection()).connection;
             PreparedStatement pstm = cnn.prepareStatement(strSelect);
-            pstm.setString(1, pass);
+            pstm.setString(1, "12345678");
             pstm.setString(2, name);
             pstm.setBoolean(3, gender);
             pstm.setString(4, avatar);
             pstm.setString(5, phone);
             pstm.setString(6, email);
             pstm.setInt(7,role);
-            pstm.setBoolean(8, true);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
-            pstm.setDate(9, createdAt);
-            pstm.setInt(10, 1);
-            pstm.setDate(11, updatedAt);
-            pstm.setInt(12, 1);
+            pstm.setDate(8, createdAt);
+            pstm.setInt(9, 1);
+            pstm.setDate(10, updatedAt);
+            pstm.setInt(11, 1);
             pstm.executeUpdate();
 
         } catch (Exception e) {
@@ -255,6 +276,20 @@ public class UserDAO extends MySqlConnection {
 
         return user; // Return the single User object
     }
+    
+    public void updateRoleStatus (int id, int newRole){
+        MySqlConnection dbContext = new MySqlConnection();
+        try {
+            String sql = "UPDATE user SET role_id = ? WHERE user_id = ?";
+            PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
+            preparedStatement.setInt(1, newRole);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public boolean updateUser(User updatedUser) {
         MySqlConnection dbContext = new MySqlConnection();
@@ -402,13 +437,20 @@ public class UserDAO extends MySqlConnection {
 
         return rowsUpdated == 1; // Password reset successful if one row was updated
     } catch (SQLException ex) {
-        ex.printStackTrace();
-        System.out.println("Error: SQL Exception - " + ex.getMessage());
-        return false;
+            ex.printStackTrace();
+            System.out.println("Error: SQL Exception - " + ex.getMessage());
+            return false;
+        }
     }
-}
-
-
-
     
+    public static void main(String[] args) {
+        UserDAO dao = new UserDAO();
+//        ArrayList<User> list = dao.getAllUser();
+//        
+//        for (User u : list) {
+//            System.out.println(u.getFullName() + " "+ u.getEmail() + " " + u.getPhone() + " " + u.getStatusDisplay());
+//        }
+
+        dao.updateRoleStatus(2, 8);
+    }
 }

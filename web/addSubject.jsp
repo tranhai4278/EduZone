@@ -88,24 +88,27 @@
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
                                                 <h3>Add a new subject</h3>
                                             </div>
+                                            <c:if test="${not empty mess}">
+                                                <div class="message" style="text-align: center; color: red">${mess}</div>
+                                            </c:if> 
                                             <form class="edit-profile" method="post" action="addSubject">
                                                 <div class="">
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Manager ID</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Manager ID *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="mID">
+                                                            <input class="form-control" type="text" name="mID" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Name</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Name *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="name">
+                                                            <input class="form-control" type="text" name="name" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Code</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Code *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="code">
+                                                            <input class="form-control" type="text" name="code" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -136,6 +139,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
                                             </form>
                                         </div>
                                         <!-- contact area END -->

@@ -430,7 +430,8 @@
                                                     <div class="profile-head">
                                                         <h3>Edit User Details</h3>
                                                     </div>
-
+                                                    <div class="edit-profile">
+                                                    <form class="edit-profile" method="post" action="userEdit">
                                                     <div class="edit-profile">
                                                         <div class="form-group row">
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
@@ -440,7 +441,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">User ID</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.userId}" readonly>
+                                                                 <input class="form-control" type="text" name="userId"  value="${user.userId}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -465,7 +466,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Email</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.email}" readonly>
+                                                                <input class="form-control" name="email" type="text" value="${user.email}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -504,7 +505,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user by</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.updateBy}">
+                                                                <input class="form-control" type="text" value="${user.updateBy}" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -513,41 +514,29 @@
                                                                 <h3 class="m-form__section">4. Edit User</h3>
                                                             </div>
                                                         </div>
-                                                        <c:choose>
-                                                            <c:when test="${user.roleId eq 0}">
-                                                                <c:set var="trainerSelected" value="selected" />
-                                                                <c:set var="traineeSelected" value="" />
-                                                            </c:when>
-                                                            <c:when test="${user.roleId eq 1}">
-                                                                <c:set var="trainerSelected" value="" />
-                                                                <c:set var="traineeSelected" value="selected" />
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <c:set var="trainerSelected" value="" />
-                                                                <c:set var="traineeSelected" value="" />
-                                                            </c:otherwise>
-                                                        </c:choose>
-
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Role</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <select name="role" class="form-control">
-                                                                    <option value="1" ${traineeSelected}>Trainee</option>
-                                                                    <option value="2" ${trainerSelected}>Trainer</option>
-                                                                    <option value="3" ${subjectManagerSelected}>Subject Manager</option>
-                                                                    <option value="4" ${adminSelected}>Admin</option>
+                                                                <input type="hidden" name="newRole" id="newRole" value="${user.getRoleName()}">
+                                                                <select name="newRole" onchange="updateUserRole(this.value)">
+                                                                    <option value="1" ${user.roleId == 1 ? "checked" : ""}>Admin</option>
+                                                                    <option value="2" ${user.roleId == 2 ? "checked" : ""}>Subject Manager</option>
+                                                                    <option value="3" ${user.roleId == 3 ? "checked" : ""}>Trainer</option>
+                                                                    <option value="4" ${user.roleId == 4 ? "checked" : ""}>Trainee</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Status</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <select name="role" class="form-control">
-                                                                    <option value="1" ${activeSelected}>Active</option>
-                                                                    <option value="0" ${inactiveSelected}>Inactive</option>
+                                                                <input type="hidden" name="newStatus" id="newStatus" value="${user.roleId}">
+                                                                <!--<select name="role" onchange="updateUserRole(this.value)">-->
+                                                                    <option value="0" ${userRole == 1 ? "checked" : ""}>Inactive</option>
+                                                                    <option value="1" ${userRole == 2 ? "checked" : ""}>Active</option>
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        
                                                     </div>
                                                     <div class="">
                                                         <div class="">
@@ -594,6 +583,11 @@
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
+        <script>
+        function updateUserRole(newRole) {
+        document.getElementById("newRole").value = newRole;
+        }
+        </script>
 
     </body>
 </html>

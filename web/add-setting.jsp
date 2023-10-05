@@ -106,6 +106,7 @@
                                             <div>
                                                 <input class="form-control" type="text"  name="sname" required>
                                             </div>
+                                            <p style="color: red">${requestScope.error}</p>
                                         </div>
 
                                         <div class="seperator"></div>

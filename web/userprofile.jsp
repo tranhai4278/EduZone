@@ -25,7 +25,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 
         <!-- PAGE TITLE HERE ============================================= -->
-        <title>EduChamp : Education HTML Template </title>
+        <title>Eduzone - User Profile </title>
 
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row" >
+                                            <div class="form-group row" hidden>
                                                 <label class="col-sm-2 col-form-label">ID</label>
                                                 <div class="col-sm-7">
                                                     <input class="form-control" type="text" name="id" placeholder="Full Name" value="<%= ((User) request.getAttribute("user")).getUserId() %>">

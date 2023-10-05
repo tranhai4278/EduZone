@@ -125,7 +125,7 @@ public class ChangePasswordServlet extends HttpServlet {
         }
 
         // Check if new password meets complexity requirements
-        if (!newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[a-z].*") || !newPassword.matches(".*[!@#$%^&*()].*")) {
+        if (!newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[a-z].*") || !newPassword.matches(".*[!@#$%^&*()/].*")) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "New password must have at least one uppercase letter, one lowercase letter, and one special character");
             User user = userDao.getUserById(userId);

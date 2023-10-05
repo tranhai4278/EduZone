@@ -38,7 +38,8 @@ public class EditSubject extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("sid");
+        String sid = request.getParameter("sid");
+        int id = Integer.parseInt(sid);
         AdminDAO dao = new AdminDAO();
         Subject s = dao.getSubjectbyId(id);
         List<User> listSM = dao.getAllSubManager();
@@ -85,7 +86,6 @@ public class EditSubject extends HttpServlet {
 
         boolean status = "on".equals(action); // Kiểm tra nếu action là "on" thì isChecked là true, ngược lại là false
 
-
         try {
             Date uDate = new Date();
             int uid = u.getUserId();
@@ -93,14 +93,24 @@ public class EditSubject extends HttpServlet {
             int managerid = Integer.parseInt(mid);
             AdminDAO dao = new AdminDAO();
             Timestamp timestamp = new Timestamp(uDate.getTime());
-            Subject s = new Subject(id, managerid, name, code, description, imgUrl, status, timestamp, uid);
-            dao.editSubject(s);
+            Subject scheck = dao.checkSubjectCode(code);
+            if (scheck == null) {
+                Subject s = new Subject(id, managerid, name, code, description, imgUrl, status, timestamp, uid);
+                dao.editSubject(s);
+                response.sendRedirect("settingSubject");
+            } else {
+                Subject s = dao.getSubjectbyId(id);
+                List<User> listSM = dao.getAllSubManager();
+                request.setAttribute("error", "Already exist");
+                request.setAttribute("listSM", listSM);
+                request.setAttribute("detail", s);
+                request.getRequestDispatcher("edit-subject.jsp").forward(request, response);
+            }
 
         } catch (NumberFormatException e) {
             e.printStackTrace(); // Xử lý nếu có lỗi chuyển đổi
         }
 
-        response.sendRedirect("settingSubject");
     }
 
     /**

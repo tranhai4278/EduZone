@@ -153,8 +153,6 @@ public class Setting {
     public String toString() {
         return "Setting{" + "settingId=" + settingId + ", settingGroup=" + settingGroup + ", settingName=" + settingName + ", status=" + status + ", displayOrder=" + displayOrder + ", note=" + note + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + '}';
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> origin/main
+

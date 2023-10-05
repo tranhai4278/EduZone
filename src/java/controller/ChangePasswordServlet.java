@@ -60,19 +60,17 @@ public class ChangePasswordServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-          UserDAO userDAO = new UserDAO();
+            throws ServletException, IOException {
+        UserDAO userDAO = new UserDAO();
         User user = (User) request.getSession().getAttribute("user");
-        
-        //User user = userDAO.getUserTest();
 
+        //User user = userDAO.getUserTest();
         // Set the user object as an attribute in the request
         request.setAttribute("user", user);
 
         // Forward the request to the JSP file for rendering
         request.getRequestDispatcher("/changepassword.jsp").forward(request, response);
-    } 
-
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -97,8 +95,7 @@ public class ChangePasswordServlet extends HttpServlet {
         // Hash the new password using the toSHA1 method
         String hashedNewPassword = passencoder.toSHA1(newPassword);
 
-        
-         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+        if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "Cannot be empty");
             User user = userDao.getUserById(userId);
@@ -107,20 +104,30 @@ public class ChangePasswordServlet extends HttpServlet {
             return;
         }
 
-         //check if the new password length is 8 characters at least 
-         if(newPassword.length() < 8){
+        //check if the new password length is 8 characters at least 
+        if (newPassword.length() < 8) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "New password must be at least 8 characters");
             User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
             return;
-         }
-        
+        }
+
         // Check if new password and confirm password match and have at least 8 characters
         if (!newPassword.equals(confirmPassword)) {
             UserDAO userDao = new UserDAO();
             request.setAttribute("error", "Confirmed Password doesn't match with New Password");
+            User user = userDao.getUserById(userId);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
+            return;
+        }
+
+        // Check if new password meets complexity requirements
+        if (!newPassword.matches(".*[A-Z].*") || !newPassword.matches(".*[a-z].*") || !newPassword.matches(".*[!@#$%^&*()].*")) {
+            UserDAO userDao = new UserDAO();
+            request.setAttribute("error", "New password must have at least one uppercase letter, one lowercase letter, and one special character");
             User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
@@ -145,7 +152,6 @@ public class ChangePasswordServlet extends HttpServlet {
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
         }
     }
-
 
     /**
      * Returns a short description of the servlet.

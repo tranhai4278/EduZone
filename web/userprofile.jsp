@@ -107,7 +107,8 @@
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
                                                     <span class="ttr-user-avatar" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
-                                                        <img src="<%= ((User) request.getAttribute("user")).getAvatarUrl() %>" width="150" height="150">
+                                                        <img src="${user.avatarUrl}" alt="User Avatar" width="150" height="150">
+
                                                     </span>
                                                 </div>
                                             </div>
@@ -119,7 +120,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group row" hidden>
+                                            <div class="form-group row" >
                                                 <label class="col-sm-2 col-form-label">ID</label>
                                                 <div class="col-sm-7">
                                                     <input class="form-control" type="text" name="id" placeholder="Full Name" value="<%= ((User) request.getAttribute("user")).getUserId() %>">

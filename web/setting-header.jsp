@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <head>
     <!-- META ============================================= -->
     <meta charset="utf-8">
@@ -193,6 +193,7 @@
                                                 </li>
                                             </ul>
                                         </li>-->
+                <c:if test="${sessionScope.user.roleId == 1}">
                                         <li>
                                             <a href="userList" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-user"></i></span>
@@ -211,6 +212,7 @@
                                                 <span class="ttr-label">Setting</span>
                                             </a>
                                         </li>
+                                        </c:if>
                                         
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">

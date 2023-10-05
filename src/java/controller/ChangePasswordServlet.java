@@ -107,11 +107,20 @@ public class ChangePasswordServlet extends HttpServlet {
             return;
         }
 
+         //check if the new password length is 8 characters at least 
+         if(newPassword.length() < 8){
+            UserDAO userDao = new UserDAO();
+            request.setAttribute("error", "New password must be at least 8 characters");
+            User user = userDao.getUserById(userId);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page
+            return;
+         }
         
         // Check if new password and confirm password match and have at least 8 characters
-        if (!newPassword.equals(confirmPassword) || newPassword.length() < 8) {
+        if (!newPassword.equals(confirmPassword)) {
             UserDAO userDao = new UserDAO();
-            request.setAttribute("error", "New Password doesn't match with Confirmed Password");
+            request.setAttribute("error", "Confirmed Password doesn't match with New Password");
             User user = userDao.getUserById(userId);
             request.setAttribute("user", user);
             request.getRequestDispatcher("/changepassword.jsp").forward(request, response); // Forward to the profile page

@@ -166,7 +166,7 @@
                                             <div class="row">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <button type="submit" class="btn">Save changes</button>
+                                                    <button type="submit" class="btn">Save Changes</button>
                                                     <input type="button" class="btn" onclick="location.href = 'changepassword';" value="Change your password" />
                                                     <button type="reset" class="btn-secondry">Cancel</button>
                                                 </div>

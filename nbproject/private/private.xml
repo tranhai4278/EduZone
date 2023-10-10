@@ -3,6 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/userprofile.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/web/setting-header.jsp</file>
+            <file>file:/D:/EduZone/web/setting-subject.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+=======
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/MyUtil.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSubject.java</file>
@@ -32,6 +44,77 @@
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSubject.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-setting.jsp</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
+>>>>>>> 99d596e59ef84ef8c5d90467ac25e0d4617ae311
+        </group>
+        <group>
+            <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/userprofile.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/web/setting-header.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/UpdateProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/setting-subject.jsp</file>
+            <file>file:/D:/EduZone/src/java/utils/Mailtrap.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/changepassword.jsp</file>
+        </group>
+        <group>
+            <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/EduZone/web/assets/vendors/themify/themify-icons.css</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/userprofile.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/web/setting-header.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/UpdateProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/setting-subject.jsp</file>
+            <file>file:/D:/EduZone/src/java/utils/Mailtrap.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/changepassword.jsp</file>
+        </group>
+        <group>
+            <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/EduZone/web/assets/vendors/themify/themify-icons.css</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/userprofile.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/web/setting-header.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/UpdateProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/setting-subject.jsp</file>
+            <file>file:/D:/EduZone/src/java/utils/Mailtrap.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/changepassword.jsp</file>
+        </group>
+        <group>
+            <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/EduZone/web/assets/vendors/themify/themify-icons.css</file>
+            <file>file:/D:/EduZone/web/header.jsp</file>
+            <file>file:/D:/EduZone/web/userprofile.jsp</file>
+            <file>file:/D:/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/D:/EduZone/src/java/utils/Firebase.java</file>
+            <file>file:/D:/EduZone/web/setting-header.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/UpdateProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/setting-subject.jsp</file>
+            <file>file:/D:/EduZone/src/java/utils/Mailtrap.java</file>
+            <file>file:/D:/EduZone/web/login.jsp</file>
+            <file>file:/D:/EduZone/src/java/utils/MyUtil.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ChangePasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/utils/ResetTokenGenerator.java</file>
+            <file>file:/D:/EduZone/web/resetpasswordfinal.jsp</file>
+            <file>file:/D:/EduZone/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
+            <file>file:/D:/EduZone/web/changepassword.jsp</file>
         </group>
     </open-files>
 </project-private>

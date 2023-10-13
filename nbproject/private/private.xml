@@ -3,33 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/AddSubjectController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/model/User.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserListController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userList.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addSubject.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/AddUserController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/edit-subject.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/model/User.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserListController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserDetailController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userList.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/AddUserController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
-        </group>
-        <group>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserListController.java</file>
@@ -38,6 +11,7 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userList.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/AddUserController.java</file>
         </group>
         <group>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
@@ -49,6 +23,32 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/AddUserController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/model/User.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/addUser.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/setting-subject.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZonee/EduZone/web/userDetail.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -194,7 +194,7 @@ public class User {
     }
 
     public String getGenderDisplay() {
-        if (status) {
+        if (!status) {
             return "Male";
         }else {
             return "Female";

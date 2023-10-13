@@ -71,15 +71,12 @@
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
                         <li>Setting</li>
                     </ul>
-                </div>	
+                </div>
+            </div>
                 <!-- header END ==== -->
                 <!-- Content -->
                 <div class="page-content bg-white">
-                    <div class="breadcrumb-row">
-                        <div class="container">
-
-                        </div>
-                    </div>
+                   
                     <!-- Breadcrumb row END -->
                     <!-- inner page banner END -->
                     <div class="content-block">
@@ -101,14 +98,14 @@
                                             <div class="profile-tabnav">
                                                 <ul class="nav nav-tabs">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"></i>Edit User</a>
+                                                        <a class="nav-link" data-toggle="tab" href="#edit-profile"><i></i></a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
-                                                    </li>
+                                                        <a class="nav-link active" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"> </i></a>
+                                                    </li><!-- comment -->
                                                     <li class="nav-item">
-                                                        <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
-                                                    </li>                                              
+                                                        <a class="nav-link" data-toggle="tab" href="#edit-profile"><i></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -116,322 +113,21 @@
                                     <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
                                         <div class="profile-content-bx">
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="courses">
-                                                    <div class="profile-head">
-                                                        <h3>Enrolled Courses</h3>
-                                                        <div class="feature-filters style1 ml-auto">
-                                                            <ul class="filters" data-toggle="buttons">
-                                                                <li data-filter="" class="btn active">
-                                                                    <input type="radio">
-                                                                    <a href="#"><span>All</span></a> 
-                                                                </li>
-                                                                <li data-filter="publish" class="btn">
-                                                                    <input type="radio">
-                                                                    <a href="#"><span>Publish</span></a> 
-                                                                </li>
-                                                                <li data-filter="pending" class="btn">
-                                                                    <input type="radio">
-                                                                    <a href="#"><span>Pending</span></a> 
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="courses-filter">
-                                                        <div class="clearfix">
-                                                            <ul id="masonry" class="ttr-gallery-listing magnific-image row">
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic1.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic2.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic3.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic4.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic5.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic6.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic7.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 book">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic8.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
-                                                                    <div class="cours-bx">
-                                                                        <div class="action-box">
-                                                                            <img src="assets/images/courses/pic9.jpg" alt="">
-                                                                            <a href="#" class="btn">Read More</a>
-                                                                        </div>
-                                                                        <div class="info-bx text-center">
-                                                                            <h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-                                                                            <span>Programming</span>
-                                                                        </div>
-                                                                        <div class="cours-more-info">
-                                                                            <div class="review">
-                                                                                <span>3 Review</span>
-                                                                                <ul class="cours-star">
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li class="active"><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                    <li><i class="fa fa-star"></i></li>
-                                                                                </ul>
-                                                                            </div>
-                                                                            <div class="price">
-                                                                                <del>$190</del>
-                                                                                <h5>$120</h5>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="tab-pane" id="quiz-results">
-                                                    <div class="profile-head">
-                                                        <h3>Quiz Results</h3>
-                                                    </div>
+                                                    
                                                     <div class="courses-filter">
                                                         <div class="row">
-                                                            <div class="col-md-6 col-lg-6">
-                                                                <ul class="course-features">
-                                                                    <li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">8</span></li>
-                                                                    <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                                    <li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                                    <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                                    <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
-                                                                    <li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">32</span></li>
-                                                                    <li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-6 col-lg-6">
-                                                                <ul class="course-features">
-                                                                    <li><i class="ti-book"></i> <span class="label">Lectures</span> <span class="value">8</span></li>
-                                                                    <li><i class="ti-help-alt"></i> <span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                                    <li><i class="ti-time"></i> <span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                                    <li><i class="ti-stats-up"></i> <span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                                    <li><i class="ti-smallcap"></i> <span class="label">Language</span> <span class="value">English</span></li>
-                                                                    <li><i class="ti-user"></i> <span class="label">Students</span> <span class="value">32</span></li>
-                                                                    <li><i class="ti-check-box"></i> <span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                                </ul>
-                                                            </div>
+                                                       
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="edit-profile">
+                                                <div class="tab-pane active" id="edit-profile">
                                                     <div class="profile-head">
                                                         <h3>Edit User Details</h3>
                                                     </div>
                                                     <div class="edit-profile">
-                                                    <form class="edit-profile" method="post" action="userEdit">
+                                                    <form class="edit-profile" action="userEdit" method="post" >
                                                     <div class="edit-profile">
                                                         <div class="form-group row">
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
@@ -456,13 +152,6 @@
                                                                 <input class="form-control" type="text" value="${user.genderDisplay}" readonly>
                                                             </div>
                                                         </div>
-                                                        <div class="seperator"></div>
-
-                                                        <div class="form-group row">
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                                <h3>2. Contact</h3>
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Email</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
@@ -475,68 +164,42 @@
                                                                 <input class="form-control" type="text" value="${user.phone}" readonly>
                                                             </div>
                                                         </div>
+                                                        <div class="seperator"></div>
 
                                                         <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
 
                                                         <div class="form-group row">
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">3. History</h3>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row">
-                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user at</label>
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.createAt}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user by</label>
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.createBy}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user at</label>
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.updateAt}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user by</label>
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" value="${user.updateBy}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-                                                        <div class="form-group row">
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                                <h3 class="m-form__section">4. Edit User</h3>
+                                                                <h3 class="m-form__section">2. Edit User
+                                                                </h3>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Role</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input type="hidden" name="newRole" id="newRole" value="${user.getRoleName()}">
-                                                                <select name="newRole" onchange="updateUserRole(this.value)">
-                                                                    <option value="1" ${user.roleId == 1 ? "checked" : ""}>Admin</option>
-                                                                    <option value="2" ${user.roleId == 2 ? "checked" : ""}>Subject Manager</option>
-                                                                    <option value="3" ${user.roleId == 3 ? "checked" : ""}>Trainer</option>
-                                                                    <option value="4" ${user.roleId == 4 ? "checked" : ""}>Trainee</option>
+                                                                <select name="role">
+                                                                    <option value="1" ${user.getRoleId() == 1 ? "selected" : ""}>Admin</option>
+                                                                    <option value="2" ${user.getRoleId() == 2 ? "selected" : ""}>Subject Manager</option>
+                                                                    <option value="3" ${user.getRoleId() == 3 ? "selected" : ""}>Trainer</option>
+                                                                    <option value="4" ${user.getRoleId() == 4 ? "selected" : ""}>Trainee</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Status</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input type="hidden" name="newStatus" id="newStatus" value="${user.roleId}">
-                                                                <!--<select name="role" onchange="updateUserRole(this.value)">-->
-                                                                    <option value="0" ${userRole == 1 ? "checked" : ""}>Inactive</option>
-                                                                    <option value="1" ${userRole == 2 ? "checked" : ""}>Active</option>
+                                                                <select name="status">
+                                                                    <option value="0" ${user.isStatus() == false ? "selected" : ""}>Inactive</option>
+                                                                    <option value="1" ${user.isStatus() == true ? "selected" : ""}>Active</option>
                                                                 </select>
                                                             </div>
-                                                        </div>
+                                                        </div> 
                                                         
+                                                        
+                                                        
+                                                        
+                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                            
                                                     </div>
                                                     <div class="">
                                                         <div class="">
@@ -583,11 +246,6 @@
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
-        <script>
-        function updateUserRole(newRole) {
-        document.getElementById("newRole").value = newRole;
-        }
-        </script>
-
+        
     </body>
 </html>

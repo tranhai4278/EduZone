@@ -49,10 +49,7 @@ public class UserDAO extends MySqlConnection {
         }
     }
     
-    public void updateUserRole(int userId, int newRole){
-        
-    }
-   
+    
     public String getStatusDisplay (int id) {
         String query = "SELECT CASE WHEN status IS NULL THEN 'Unverified' "
                 + "WHEN status = true THEN 'Active' ELSE 'Inactive' END AS user_status "
@@ -277,14 +274,18 @@ public class UserDAO extends MySqlConnection {
         return user; // Return the single User object
     }
     
-    public void updateRoleStatus (int id, int newRole){
+    public void updateUserByAdmin ( String role, int status, String id){
         MySqlConnection dbContext = new MySqlConnection();
         try {
-            String sql = "UPDATE user SET role_id = ? WHERE user_id = ?";
+            String sql = "UPDATE user SET role_id = ?, status = ? WHERE user_id = ?";
             PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
-            preparedStatement.setInt(1, newRole);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setString(1, role);
+            preparedStatement.setInt(2, status);
+            preparedStatement.setString(3, id);
+
             preparedStatement.executeUpdate();
+            preparedStatement.close();
+            dbContext.connection.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -450,7 +451,6 @@ public class UserDAO extends MySqlConnection {
 //        for (User u : list) {
 //            System.out.println(u.getFullName() + " "+ u.getEmail() + " " + u.getPhone() + " " + u.getStatusDisplay());
 //        }
-
-        dao.updateRoleStatus(2, 8);
+        dao.updateUserByAdmin( "3", 1, "2");
     }
 }

@@ -69,18 +69,18 @@ public class UserEditController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         //processRequest(request, response);
-        // Lấy giá trị mới của vai trò từ request
-        int newRole = Integer.parseInt(request.getParameter("role"));
+        String role = request.getParameter("role");
         String email = request.getParameter("email");
-        // Thực hiện các thao tác cần thiết, chẳng hạn như cập nhật vai trò trong cơ sở dữ liệu
-        // Sử dụng DAO để thực hiện các thao tác liên quan đến cơ sở dữ liệu
-        UserDAO userDao = new UserDAO(); // Thay UserDao bằng tên của lớp DAO thực tế
-        String userIdStr = request.getParameter("userId");
-        int userId = Integer.parseInt(userIdStr);
-        userDao.updateUserRole(userId, newRole); // userId là ID của người dùng
+        String status = request.getParameter("status");
+        int stt;
+        if(status.matches("1")) stt =1;
+        else stt = 0;
+        UserDAO userDao = new UserDAO(); 
+        String userId = request.getParameter("userId");
+        userDao.updateUserByAdmin(role, stt, userId);
 
-        // Redirect hoặc hiển thị trang phản hồi tùy theo logic ứng dụng của bạn
-        response.sendRedirect("userDetail?email=" + email ); // Ví dụ: chuyển hướng đến trang hồi đáp sau khi cập nhật vai trò
+        // Redirect 
+        response.sendRedirect("userDetail?email=" + email ); 
     }
 
     /** 

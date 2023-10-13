@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="mail-box-list">
                                         <section id="role">
-                                            Role Setting
+                                            Setting
                                             <a href="addsetting?gid=1"><i class="fa fa-plus"></i>Add New</a>
                                             <table class="table">
                                                 <thead>
@@ -110,79 +110,6 @@
                                                 </thead>
                                                 <tbody>
                                                     <c:forEach var="s" items="${listR}" >
-                                                        <tr>
-                                                            <td>${s.settingName}</td>
-                                                            <td>${s.note}</td>
-                                                            <td>${s.displayOrder}</td>
-                                                            <td>
-                                                                <div class="form-check form-switch">
-                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
-                                                                    <i> Edit</i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </section>
-                                        
-                                    </div>
-                                    <div class="mail-box-list">
-                                        <section id="email">
-                                            Email Domain
-                                            <a href="addsetting?gid=2"><i class="fa fa-plus"></i>Add New</a>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Description</th>
-                                                        <th scope="col">Display Order </th>
-                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="s" items="${listE}" >
-                                                        <tr>
-                                                            <td>${s.settingName}</td>
-                                                            <td>${s.note}</td>
-                                                            <td>${s.displayOrder}</td>
-                                                            <td>
-                                                                <div class="form-check form-switch">
-                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
-                                                                    <i> Edit</i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </section>
-                                    </div>
-                                    <div class="mail-box-list">
-                                        <section id="semester">
-                                            Semester
-                                            <a href="addsetting?gid=3"><i class="fa fa-plus"></i>Add New</a>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Description</th>
-                                                        <th scope="col">Display Order </th>
-                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="s" items="${listS}" >
                                                         <tr>
                                                             <td>${s.settingName}</td>
                                                             <td>${s.note}</td>

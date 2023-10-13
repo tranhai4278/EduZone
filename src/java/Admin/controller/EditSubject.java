@@ -93,7 +93,7 @@ public class EditSubject extends HttpServlet {
             int managerid = Integer.parseInt(mid);
             AdminDAO dao = new AdminDAO();
             Timestamp timestamp = new Timestamp(uDate.getTime());
-            Subject scheck = dao.checkSubjectCode(code);
+            Subject scheck = dao.checkSubjectCode(code,id);
             if (scheck == null) {
                 Subject s = new Subject(id, managerid, name, code, description, imgUrl, status, timestamp, uid);
                 dao.editSubject(s);

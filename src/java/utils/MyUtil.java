@@ -61,7 +61,7 @@ public class MyUtil {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.mailtrap.io"); // Mailtrap SMTP server
-        properties.put("mail.smtp.port", "2525"); // Mailtrap port
+        properties.put("mail.smtp.port", "587"); // Mailtrap port
         String myAccountEmail = "69842ba7772f9c";
         String password = "aa288898d12b0a";
         Session session = Session.getInstance(properties, new Authenticator() {
@@ -96,5 +96,8 @@ public class MyUtil {
     public String extractDomain(String email) {
         return StringUtils.substringAfter(email, "@");
     }
-
+    public static void main(String[] args) {
+        MyUtil u = new MyUtil();
+        System.out.println(u.toSHA1("123456789"));
+    }
 }

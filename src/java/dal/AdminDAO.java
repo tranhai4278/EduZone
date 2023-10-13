@@ -23,7 +23,7 @@ public class AdminDAO extends MySqlConnection {
 
     public List<Subject> getAllSubject() {
         List<Subject> list = new ArrayList<>();
-        String sql = " SELECT * FROM subject";
+        String sql = " SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE u.user_id = s.manager_id";
         try {
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
@@ -33,23 +33,25 @@ public class AdminDAO extends MySqlConnection {
                         result.getString(3),
                         result.getString(4),
                         result.getString(5),
-                        result.getString(6),
-                        result.getBoolean(7),
-                        result.getDate(8),
-                        result.getInt(9),
-                        result.getDate(10),
-                        result.getInt(11)
+                        result.getBoolean(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10)
                 );
+                s.setU(new User(result.getInt(12), result.getString(13), result.getInt(14)));
                 list.add(s);
+
             }
         } catch (SQLException e) {
 
         }
         return list;
     }
-     public List<Subject> searchBySubjectName(String name) {
+
+    public List<Subject> searchBySubjectName(String name) {
         List<Subject> list = new ArrayList<>();
-        String sql = "SELECT * FROM `subject` WHERE subject_name like N'%"+ name +"%'";
+        String sql = "SELECT * FROM `subject` WHERE subject_name like N'%" + name + "%' or subject_code like N'%" + name + "%'  ";
         try {
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
@@ -59,12 +61,11 @@ public class AdminDAO extends MySqlConnection {
                         result.getString(3),
                         result.getString(4),
                         result.getString(5),
-                        result.getString(6),
-                        result.getBoolean(7),
-                        result.getDate(8),
-                        result.getInt(9),
-                        result.getDate(10),
-                        result.getInt(11)
+                        result.getBoolean(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10)
                 );
                 list.add(s);
             }
@@ -87,14 +88,13 @@ public class AdminDAO extends MySqlConnection {
                         result.getString(3),
                         result.getString(4),
                         result.getString(5),
-                        result.getString(6),
-                        result.getBoolean(7),
-                        result.getDate(8),
-                        result.getInt(9),
-                        result.getDate(10),
-                        result.getInt(11)
+                        result.getBoolean(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10)
                 );
-                p.setU(new User(result.getInt(12), result.getString(13), result.getInt(14)));
+                p.setU(new User(result.getInt(11), result.getString(12), result.getInt(13)));
             }
         } catch (SQLException e) {
 
@@ -139,11 +139,10 @@ public class AdminDAO extends MySqlConnection {
             statement.setString(2, s.getSubjectName());
             statement.setString(3, s.getSubjectCode());
             statement.setString(4, s.getDescription());
-            statement.setString(5, s.getImgUrl());
-            statement.setBoolean(6, s.isStatus());
-            statement.setTimestamp(7, new Timestamp(s.getUpdateAt().getTime()));
-            statement.setInt(8, s.getUpdateBy());
-            statement.setInt(9, s.getSubjectId());
+            statement.setBoolean(5, s.isStatus());
+            statement.setTimestamp(6, new Timestamp(s.getUpdateAt().getTime()));
+            statement.setInt(7, s.getUpdateBy());
+            statement.setInt(8, s.getSubjectId());
             statement.executeUpdate();
         } catch (SQLException e) {
 
@@ -201,12 +200,14 @@ public class AdminDAO extends MySqlConnection {
         }
         return p;
     }
-    public Setting checkSettingName(String name) {
+
+    public Setting checkSettingName(String name, int sid) {
         Setting p = null;
-        String sql = "SELECT * FROM setting WHERE setting_name = N?";
+        String sql = "SELECT * FROM setting WHERE setting_name = N? and setting_id != ?";
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1, name);
+            statement.setInt(2, sid);
             result = statement.executeQuery();
             while (result.next()) {
                 p = new Setting(result.getInt(1),
@@ -225,25 +226,26 @@ public class AdminDAO extends MySqlConnection {
         }
         return p;
     }
-    public Subject checkSubjectCode(String name) {
-        Subject p = null;
-        String sql = "SELECT * FROM `subject` WHERE subject_code = N?";
+
+    public Setting checkSettingNameinGroup(String name, int gid) {
+        Setting p = null;
+        String sql = "SELECT * FROM setting WHERE setting_name = N? AND setting_group = ?";
         try {
             statement = connection.prepareStatement(sql);
             statement.setString(1, name);
+            statement.setInt(2, gid);
             result = statement.executeQuery();
             while (result.next()) {
-                p = new Subject(result.getInt(1),
+                p = new Setting(result.getInt(1),
                         result.getInt(2),
                         result.getString(3),
-                        result.getString(4),
-                        result.getString(5),
+                        result.getBoolean(4),
+                        result.getInt(5),
                         result.getString(6),
-                        result.getBoolean(7),
-                        result.getDate(8),
-                        result.getInt(9),
-                        result.getDate(10),
-                        result.getInt(11));
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10));
             }
         } catch (SQLException e) {
 
@@ -251,12 +253,39 @@ public class AdminDAO extends MySqlConnection {
         return p;
     }
 
-    public List<Setting> getAllSetting(int gid) {
-        List<Setting> list = new ArrayList<>();
-        String sql = " SELECT * FROM `setting` WHERE `setting_group`= ?";
+    public Subject checkSubjectCode(String name, int sid) {
+        Subject p = null;
+        String sql = "SELECT * FROM `subject` WHERE subject_code = N? and subject_id!=?";
         try {
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, gid);
+            statement.setString(1, name);
+            statement.setInt(2, sid);
+
+            result = statement.executeQuery();
+            while (result.next()) {
+                p = new Subject(result.getInt(1),
+                        result.getInt(2),
+                        result.getString(3),
+                        result.getString(4),
+                        result.getString(5),
+                        result.getBoolean(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10)
+                );
+            }
+        } catch (SQLException e) {
+
+        }
+        return p;
+    }
+
+    public List<Setting> getAllSetting() {
+        List<Setting> list = new ArrayList<>();
+        String sql = " SELECT * FROM `setting` ";
+        try {
+            statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
 
             while (result.next()) {
@@ -366,5 +395,5 @@ public class AdminDAO extends MySqlConnection {
         }
         return null;
     }
-    
+
 }

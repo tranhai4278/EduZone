@@ -96,8 +96,4 @@ public class MyUtil {
     public String extractDomain(String email) {
         return StringUtils.substringAfter(email, "@");
     }
-    public static void main(String[] args) {
-        MyUtil u = new MyUtil();
-        System.out.println(u.toSHA1("123456789"));
-    }
 }

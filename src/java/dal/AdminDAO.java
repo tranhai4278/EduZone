@@ -39,7 +39,7 @@ public class AdminDAO extends MySqlConnection {
                         result.getDate(9),
                         result.getInt(10)
                 );
-                s.setU(new User(result.getInt(12), result.getString(13), result.getInt(14)));
+                s.setU(new User(result.getInt(11), result.getString(12), result.getInt(13)));
                 list.add(s);
 
             }

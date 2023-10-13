@@ -148,7 +148,7 @@
                         <c:if test="${sessionScope.user.roleId == 1}">
                         <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li><a href="admin/courses.jsp">User</a></li>
+                                <li><a href="userList">User</a></li>
                                 <li><a href="settingSubject">Subject</a></li>
                                 <li><a href="setting">Setting</a></li>
                             </ul>

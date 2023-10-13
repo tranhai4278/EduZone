@@ -3,6 +3,7 @@ package dal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Subject;
 import model.User;
@@ -49,7 +50,7 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
     
-    public void addSubject(int mID, String name, String code, String des, String image, boolean status,  int createBy, int updateBy) {
+    public void addSubject(int mID, String name, String code, String des, String image) {
         try {
             String strSelect = "INSERT INTO subject (manager_id, subject_name, subject_code, description, img_url, \n"
                     + "status, create_at, create_by, update_at, update_by)\n"
@@ -60,14 +61,16 @@ public class SubjectDAO extends MySqlConnection {
             pstm.setString(2, name);
             pstm.setString(3, code);
             pstm.setString(4, des);
-            pstm.setBoolean(5, status );
+            pstm.setString(5, image);
+            pstm.setBoolean(6, true );
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
-            pstm.setDate(6, createdAt);
-            pstm.setInt(7, createBy);
-            pstm.setDate(8, updatedAt);
-            pstm.setInt(9, updateBy);
+            pstm.setDate(7, createdAt);
+            pstm.setInt(8, 1);
+            pstm.setDate(9, updatedAt);
+            pstm.setInt(10, 1);
+
             pstm.executeUpdate();
 
         } catch (Exception e) {
@@ -246,6 +249,7 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
+    
     public Subject getSubjectWithId(int subject_id) {
         Subject subject = new Subject();
         String sql = "SELECT *\n"
@@ -285,6 +289,34 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
+
+    public Subject getSubjectByCode(String code) {
+        String query ="SELECT * FROM `subject` WHERE subject_code = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, code);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Subject s = new Subject();
+                    s.setSubjectId(resultSet.getInt(1));
+                    s.setManagerId(resultSet.getInt(2));
+                    s.setSubjectName(resultSet.getString(3));
+                    s.setSubjectCode(resultSet.getString(4));
+                    s.setDescription(resultSet.getString(5));
+                    s.setStatus(resultSet.getBoolean(6));
+                    s.setCreateAt(resultSet.getDate(7));
+                    s.setCreateBy(resultSet.getInt(8));
+                    s.setUpdateAt(resultSet.getDate(9));
+                    s.setUpdateBy(resultSet.getInt(10));
+                    return s;
+                }
+            } catch (Exception e) {
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    
 
     public Subject getSubjectAndManagerWithId(int subject_id) {
         UserDAO userDao = new UserDAO();

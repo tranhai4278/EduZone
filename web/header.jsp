@@ -40,7 +40,7 @@
                 </div>
                 <div class="topbar-right">
                     <ul>
-                        <li><a href="logout">Logout</a></li>
+                        <li> <c:if test="${sessionScope.user!=null}"><a href="logout">Logout</a></c:if></li>
                         <!--                                    <li><a href="register.jsp">Register</a></li>-->
                     </ul>
                 </div>
@@ -87,8 +87,6 @@
                         <a href="home.jsp"><img src="assets/images/logo.png" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <c:if test="${sessionScope.user.getRoleId()==1}">
-                        </c:if>
                         <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <!--                                            

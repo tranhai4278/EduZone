@@ -65,8 +65,7 @@ public class User {
         this.updateBy = updateBy;
     }
 
- 
-    
+
     public int getUserId() {
         return userId;
     }

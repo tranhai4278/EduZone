@@ -27,6 +27,8 @@ import model.User;
 @WebServlet(name = "EditSetting", urlPatterns = {"/editsetting"})
 public class EditSetting extends HttpServlet {
 
+    private String errorMessage = null;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -80,18 +82,29 @@ public class EditSetting extends HttpServlet {
         String sorder = request.getParameter("order");
         String action = request.getParameter("on");
         String note = request.getParameter("note");
+        String groupid = request.getParameter("gid");
         boolean status = "on".equals(action);
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
         int uid = u.getUserId();
+        int gid = Integer.parseInt(groupid);
         int id = Integer.parseInt(sid);
         int order = Integer.parseInt(sorder);
         AdminDAO dao = new AdminDAO();
         Date uDate = new Date();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-        Setting s =new Setting(id, order, name, status, order, note, uDate, uid);
-        dao.editSetting(s);
-        response.sendRedirect("setting");
+        Setting scheck = dao.checkSettingName(name);
+        if (scheck == null) {
+            Setting s = new Setting(id, gid, name, status, order, note, timestamp, uid);
+            dao.editSetting(s);
+            response.sendRedirect("setting");
+        } else {
+            request.setAttribute("error", "Already exist");
+            Setting s = dao.getSetting(gid, id);
+            request.setAttribute("detail", s);
+            request.getRequestDispatcher("edit-setting.jsp").forward(request, response);
+        }
+
     }
 
     /**

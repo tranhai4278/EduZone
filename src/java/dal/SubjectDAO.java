@@ -302,12 +302,11 @@ public class SubjectDAO extends MySqlConnection {
                     s.setSubjectName(resultSet.getString(3));
                     s.setSubjectCode(resultSet.getString(4));
                     s.setDescription(resultSet.getString(5));
-                    s.setImgUrl(resultSet.getString(6));
-                    s.setStatus(resultSet.getBoolean(7));
-                    s.setCreateAt(resultSet.getDate(8));
-                    s.setCreateBy(resultSet.getInt(9));
-                    s.setUpdateAt(resultSet.getDate(10));
-                    s.setUpdateBy(resultSet.getInt(11));
+                    s.setStatus(resultSet.getBoolean(6));
+                    s.setCreateAt(resultSet.getDate(7));
+                    s.setCreateBy(resultSet.getInt(8));
+                    s.setUpdateAt(resultSet.getDate(9));
+                    s.setUpdateBy(resultSet.getInt(10));
                     return s;
                 }
             } catch (Exception e) {

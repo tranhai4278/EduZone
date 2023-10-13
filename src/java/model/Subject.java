@@ -70,7 +70,7 @@ public class Subject {
         this.updateBy = updateBy;
     }
 
-    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date updateAt, int updateBy) {
+    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, boolean status, Date updateAt, int updateBy) {
         this.subjectId = subjectId;
         this.managerId = managerId;
         this.subjectName = subjectName;

@@ -79,7 +79,6 @@ public class EditSubject extends HttpServlet {
         String name = request.getParameter("sname");
         String mid = request.getParameter("mid");
         String description = request.getParameter("description");
-        String imgUrl = request.getParameter("img");
         String action = request.getParameter("on");
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
@@ -95,7 +94,7 @@ public class EditSubject extends HttpServlet {
             Timestamp timestamp = new Timestamp(uDate.getTime());
             Subject scheck = dao.checkSubjectCode(code,id);
             if (scheck == null) {
-                Subject s = new Subject(id, managerid, name, code, description, imgUrl, status, timestamp, uid);
+                Subject s = new Subject(id, managerid, name, code, description, status, timestamp, uid);
                 dao.editSubject(s);
                 response.sendRedirect("settingSubject");
             } else {

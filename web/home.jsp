@@ -409,7 +409,6 @@
                                         <div class="item">
                                             <div class="cours-bx">
                                                 <div class="action-box">
-                                                    <img src="${subject.getImgUrl()}" style="width: 330px; height: 260px;" alt="">
                                                     <a href="SubjectDetail?subject_id=${subject.getSubjectId()}" class="btn">Read More</a>
                                                 </div>
                                                 <div class="info-bx text-center">

@@ -6,7 +6,6 @@ package Admin.controller;
 
 import dal.AdminDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,9 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 import model.Setting;
-import model.Subject;
 import model.User;
 
 /**
@@ -93,7 +90,7 @@ public class EditSetting extends HttpServlet {
         AdminDAO dao = new AdminDAO();
         Date uDate = new Date();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-        Setting scheck = dao.checkSettingName(name);
+        Setting scheck = dao.checkSettingName(name,id);
         if (scheck == null) {
             Setting s = new Setting(id, gid, name, status, order, note, timestamp, uid);
             dao.editSetting(s);

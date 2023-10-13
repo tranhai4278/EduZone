@@ -104,14 +104,14 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject code</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode">
+                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11">
                                             </div>
                                             <p style="color: red">${requestScope.error}</p>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject name</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname">
+                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50">
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
@@ -152,7 +152,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Subject description</label>
                                             <div>
-                                                <textarea class="form-control" name="description" >${detail.description} </textarea>
+                                                <textarea class="form-control" name="description" required maxlength="250" >${detail.description} </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">

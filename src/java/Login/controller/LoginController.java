@@ -4,6 +4,7 @@
  */
 package Login.controller;
 
+import dal.AdminDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -80,7 +81,6 @@ public class LoginController extends HttpServlet {
         //Encrypt passwords to SHA-1
         MyUtil util = new MyUtil();
         String md5 = util.toSHA1(pass);
-        
         UserDAO userDAO = new UserDAO();
         //Check email, user active
         User user = userDAO.getUserByEmail(email);
@@ -91,9 +91,10 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
                     session.setAttribute("user", user);
                     response.sendRedirect("home");  
-        }else{
+        }
+        else{
         //Notification error exists
-            request.setAttribute("message1", "Your account has been blocked");
+            request.setAttribute("message1", "Your account or domain email has been blocked");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 

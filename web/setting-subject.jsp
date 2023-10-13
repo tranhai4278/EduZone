@@ -132,7 +132,7 @@
                                                         <th scope="col">ID</th>
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
-                                                        <th scope="col">Subject Manager ID </th>
+                                                        <th scope="col">Manager Name </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -145,7 +145,7 @@
                                                             </td>
                                                             <td>${s.subjectName}</td>
                                                             <td>${s.subjectCode}</td>
-                                                            <td>${s.managerId}</td>
+                                                            <td>${s.u.fullName}</td>
 
                                                             <td>
                                                                 <div class="form-check form-switch">

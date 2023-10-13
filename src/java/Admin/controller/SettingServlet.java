@@ -60,12 +60,8 @@ public class SettingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         AdminDAO d = new AdminDAO();
-        List<Setting> listR = d.getAllSetting(1);
+        List<Setting> listR = d.getAllSetting();
         request.setAttribute("listR", listR);
-        List<Setting> listE = d.getAllSetting(2);
-        request.setAttribute("listE", listE);
-        List<Setting> listS = d.getAllSetting(3);
-        request.setAttribute("listS", listS);
         request.getRequestDispatcher("setting.jsp").forward(request, response);
     } 
 

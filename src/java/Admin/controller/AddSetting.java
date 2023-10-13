@@ -89,10 +89,10 @@ public class AddSetting extends HttpServlet {
         Timestamp timestamp = new Timestamp(uDate.getTime());
         
         AdminDAO dao = new AdminDAO();
-        Setting scheck = dao.checkSettingName(name);
+        Setting scheck = dao.checkSettingNameinGroup(name,group);
         if (scheck == null) {
             Setting s = new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
-            dao.addSetting(s);
+            dao.addSetting(s);  
             response.sendRedirect("setting");
         }
         else{

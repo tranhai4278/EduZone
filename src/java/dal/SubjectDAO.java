@@ -23,19 +23,17 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 Subject subject = new Subject(
                         subject_id,
                         manager_id,
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,
@@ -62,15 +60,14 @@ public class SubjectDAO extends MySqlConnection {
             pstm.setString(2, name);
             pstm.setString(3, code);
             pstm.setString(4, des);
-            pstm.setString(5, image);
-            pstm.setBoolean(6, status );
+            pstm.setBoolean(5, status );
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
-            pstm.setDate(7, createdAt);
-            pstm.setInt(8, createBy);
-            pstm.setDate(9, updatedAt);
-            pstm.setInt(10, updateBy);
+            pstm.setDate(6, createdAt);
+            pstm.setInt(7, createBy);
+            pstm.setDate(8, updatedAt);
+            pstm.setInt(9, updateBy);
             pstm.executeUpdate();
 
         } catch (Exception e) {
@@ -94,12 +91,11 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 User user = userDao.getUserById(manager_id);
                 String managerName = user.getFullName();
                 Subject subject = new Subject(
@@ -109,7 +105,6 @@ public class SubjectDAO extends MySqlConnection {
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,
@@ -179,19 +174,17 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 Subject subject = new Subject(
                         subject_id,
                         manager_id,
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,
@@ -224,12 +217,11 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 User user = userDao.getUserById(manager_id);
                 String managerName = user.getFullName();
                 Subject subject = new Subject(
@@ -239,7 +231,6 @@ public class SubjectDAO extends MySqlConnection {
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,
@@ -270,19 +261,17 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 subject = new Subject(
                         subject_id,
                         manager_id,
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,
@@ -313,12 +302,11 @@ public class SubjectDAO extends MySqlConnection {
                 String subject_name = result.getString(3);
                 String subject_code = result.getString(4);
                 String description = result.getString(5);
-                String img_url = result.getString(6);
-                boolean status = result.getBoolean(7);
-                Date create_at = result.getDate(8);
-                int create_by = result.getInt(9);
-                Date update_at = result.getDate(10);
-                int update_by = result.getInt(11);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
                 User user = userDao.getUserById(manager_id);
                 subject = new Subject(
                         subject_id,
@@ -326,7 +314,6 @@ public class SubjectDAO extends MySqlConnection {
                         subject_name,
                         subject_code,
                         description,
-                        img_url,
                         status,
                         create_at,
                         create_by,

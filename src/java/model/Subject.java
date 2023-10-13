@@ -18,7 +18,6 @@ public class Subject {
     private String subjectName;
     private String subjectCode;
     private String description;
-    private String imgUrl;
     private boolean status;
     private Date createAt;
     private int createBy;
@@ -26,14 +25,13 @@ public class Subject {
     private int updateBy;
     private User u;
 
-    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
+    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
         this.subjectId = subjectId;
         this.managerId = managerId;
         this.managerName = managerName;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.description = description;
-        this.imgUrl = imgUrl;
         this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
@@ -45,14 +43,13 @@ public class Subject {
     public Subject() {
     }
 
-    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.subjectId = subjectId;
         this.managerId = managerId;
         this.managerName = managerName;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.description = description;
-        this.imgUrl = imgUrl;
         this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
@@ -60,13 +57,12 @@ public class Subject {
         this.updateBy = updateBy;
     }
 
-    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.subjectId = subjectId;
         this.managerId = managerId;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.description = description;
-        this.imgUrl = imgUrl;
         this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
@@ -80,20 +76,18 @@ public class Subject {
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.description = description;
-        this.imgUrl = imgUrl;
         this.status = status;
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
     
 
-    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, String imgUrl, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
+    public Subject(int subjectId, int managerId, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
         this.subjectId = subjectId;
         this.managerId = managerId;
         this.subjectName = subjectName;
         this.subjectCode = subjectCode;
         this.description = description;
-        this.imgUrl = imgUrl;
         this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
@@ -158,13 +152,6 @@ public class Subject {
         this.description = description;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
 
     public boolean isStatus() {
         return status;

@@ -96,9 +96,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Group ID</label>
+                                            <label class="col-form-label">Group</label>
                                             <div>
-                                                <input class="form-control" type="text"  value="${gid}" readonly="" name="gid">
+                                                <input class="form-control" type="text" name="gid" >
                                             </div>
                                         </div>
                                         <div class="form-group col-6">

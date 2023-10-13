@@ -25,7 +25,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
 
         <!-- PAGE TITLE HERE ============================================= -->
-        <title>EduChamp : Education HTML Template </title>
+        <title>Eduzone - User Profile </title>
 
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,7 +107,8 @@
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
                                                     <span class="ttr-user-avatar" style="width: 150px; height: 150px; display: block; margin: 0 auto;">
-                                                        <img src="<%= ((User) request.getAttribute("user")).getAvatarUrl() %>" width="150" height="150">
+                                                        <img src="${user.avatarUrl}" alt="User Avatar" width="150" height="150">
+
                                                     </span>
                                                 </div>
                                             </div>
@@ -165,7 +166,7 @@
                                             <div class="row">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <button type="submit" class="btn">Save changes</button>
+                                                    <button type="submit" class="btn">Save Changes</button>
                                                     <input type="button" class="btn" onclick="location.href = 'changepassword';" value="Change your password" />
                                                     <button type="reset" class="btn-secondry">Cancel</button>
                                                 </div>

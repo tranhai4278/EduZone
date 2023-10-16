@@ -89,50 +89,48 @@
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
                                                 <h3>Add a new user</h3>
                                             </div>
+                                            <c:if test="${not empty mess}">
+                                                <div class="message" style="text-align: center; color: red">${mess}</div>
+                                            </c:if> 
                                             <form class="edit-profile" method="post" action="addUser">
-                                                <div class="">
-                                                    
+                                                <div class=""> 
+                                                   
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Password</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Full Name *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="pass">
+                                                            <input class="form-control" type="text" name="name" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Full Name</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Gender </label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Gender</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input type="radio" name="gender" value="0">Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                                            <input type="radio" name="gender" value="1">Male
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Avatar URL</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="avatar">
+                                                            <input type="radio" name="gender" value=false>Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                                            <input type="radio" name="gender" value=true>Male
                                                         </div>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Phone</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Avatar URL</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="tel" name="phone">
+                                                            <input class="form-control" type="text" name="avatar" >
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="seperator"></div>
+                                                    <div class="form-group row">
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Phone *</label>
+                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                            <input class="form-control" type="tel" name="phone" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Email</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Email *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="email">
+                                                            <input class="form-control" type="text" name="email" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Role</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Role *</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                             <input type="radio" name="role" value="1">Admin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                                             <input type="radio" name="role" value="2">Subject Manager&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -140,20 +138,6 @@
                                                             <input type="radio" name="role" value="4">Trainee
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Create user by</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="createBy">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Update user by</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="updateBy">
-                                                        </div>
-                                                    </div>
-
                                                 </div>
                                                 <div class="">
                                                     <div class="">

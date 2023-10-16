@@ -69,6 +69,10 @@
         <servlet-class>Admin.controller.UserDetailController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UserEditController</servlet-name>
+        <servlet-class>Admin.controller.UserEditController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UserListController</servlet-name>
         <servlet-class>Admin.controller.UserListController</servlet-class>
     </servlet>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>AddSubjectController</servlet-name>
         <url-pattern>/addSubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserEditController</servlet-name>
+        <url-pattern>/userEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

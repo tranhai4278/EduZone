@@ -6,7 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="userDAO" value="<%= new dal.UserDAO() %>" />
 <%@page import="model.User" %>
+
+
 <!DOCTYPE html>
 <html>
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
@@ -138,7 +141,7 @@
                                                             <td><c:out value="${u.phone}"/></td>
                                                             <td><c:out value="${u.email}"/></td>
                                                             <td><c:out value="${u.roleName}"/></td>
-                                                            <td><c:out value="${u.statusDisplay}"/></td>
+                                                            <td><c:out value="${userDAO.getStatusDisplay(u.userId)}"/></td>
                                                             <td><a href="userDetail?email=${u.email}">
                                                                     Detail   
                                                                 </a></td>

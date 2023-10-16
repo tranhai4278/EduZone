@@ -37,7 +37,13 @@ public class LoginController extends HttpServlet {
         } else if (user.isStatus() == true) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("home");
+
+            if (user.getRoleId() == 1 || user.getRoleId() == 2) {
+                response.sendRedirect("setting");
+            } else {
+                response.sendRedirect("home");
+            }
+
         } else {
             //Notification error exists
             request.setAttribute("message1", "Your account or domain email has been blocked");

@@ -3,40 +3,59 @@
     <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
-        <filter-class>utils.AdminAuthenticationFilter</filter-class>
+        <filter-class>security.AdminAuthenticationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AdminAuthenticationFilter</filter-name>
-        <url-pattern>/addsetting</url-pattern>
         <url-pattern>/settingSubject</url-pattern>
-        <url-pattern>/addUser</url-pattern>
+        <url-pattern>/setting</url-pattern>
         <url-pattern>/userDetail</url-pattern>
         <url-pattern>/userList</url-pattern>
-        <url-pattern>/addSubject</url-pattern>
-        <url-pattern>/userEdit</url-pattern>
-        <url-pattern>/editsetting</url-pattern>
-        <url-pattern>/editsubject</url-pattern>
-        <url-pattern>/setting</url-pattern>
-        <url-pattern>/updateStatus</url-pattern>
-        <url-pattern>/updateStatusSetting</url-pattern>
+
+        <!-- Add other URL patterns for the admin role here -->
     </filter-mapping>
     <!-- END Authentication Filter for Admin Page -->
     
+    <!-- START Authentication Filter for Manager Page -->
+    <filter>
+        <filter-name>ManagerAuthenticationFilter</filter-name>
+        <filter-class>security.ManagerAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerAuthenticationFilter</filter-name>
+        <url-pattern>/settingSubject</url-pattern>
+        <url-pattern>/setting</url-pattern>
+        <url-pattern>/userDetail</url-pattern>
+        <url-pattern>/userList</url-pattern>
+        <!-- Add other URL patterns for the manager role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Manager Page -->
+    
+    <!-- START Authentication Filter for Trainer Page -->
+    <filter>
+        <filter-name>TrainerAuthenticationFilter</filter-name>
+        <filter-class>security.TrainerAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TrainerAuthenticationFilter</filter-name>
+        <url-pattern></url-pattern>
+        <!-- Add URL patterns for the trainer role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Trainer Page -->
+
     <!-- START Authentication Filter for Normal Page -->
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>utils.AuthenticationFilter</filter-class>
+        <filter-class>security.AuthenticationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/authen</url-pattern>
         <url-pattern>/logout</url-pattern>
         <url-pattern>/profile</url-pattern>
         <url-pattern>/changepassword</url-pattern>
-        <url-pattern>/resendemail</url-pattern>
+        <!-- Add other URL patterns for the normal role here -->
     </filter-mapping>
     <!-- END Authentication Filter for Normal Page -->
-    
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>Login.controller.RegisterController</servlet-class>

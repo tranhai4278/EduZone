@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.Date;
 import model.Setting;
@@ -18,28 +19,35 @@ public class AddSetting extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String gid = request.getParameter("gid");
-        int group = Integer.parseInt(gid);
-        request.setAttribute("gid", group);
-        request.getRequestDispatcher("add-setting.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AccountServlet</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AccountServlet at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
-    private String errorMessage = null;
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        if (errorMessage != null) {
-            // Truyền thông báo lỗi vào thuộc tính "error" trong request
-            request.setAttribute("error", errorMessage);
-            // Xóa giá trị errorMessage để tránh lặp lại khi doGet được gọi lại
-            errorMessage = null;
-        }
-        String gid = request.getParameter("gid");
-        int group = Integer.parseInt(gid);
-        request.setAttribute("gid", group);
-        request.getRequestDispatcher("add-setting.jsp").forward(request, response);
+        processRequest(request, response);
 
     }
 
@@ -62,9 +70,11 @@ public class AddSetting extends HttpServlet {
             Setting s = new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
             dao.addSetting(s);
             response.sendRedirect("setting");
-        } else {
-            errorMessage = "Already exist";
-            doGet(request, response);
+
+        }
+        else{
+            
+
         }
 
     }

@@ -3,6 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingSubject.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Login/controller/LoginController.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/setting-subject.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/header.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/home.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/User.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/MyUtil.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/Mailtrap.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Subject.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Login/controller/RegisterController.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
+        </group>
+        <group>
+>>>>>>> 17f7561cc1a6b5b0e5f10f6bdfedef3a49eb48b3
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
         </group>
         <group>
@@ -113,6 +129,7 @@
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
         </group>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/header.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/utils/AuthenticationFilter.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/src/java/Login/controller/LogoutController.java</file>
@@ -122,6 +139,10 @@
         </group>
         <group>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone2/EduZone/web/WEB-INF/web.xml</file>
+=======
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Setting.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/setting.jsp</file>
+>>>>>>> 17f7561cc1a6b5b0e5f10f6bdfedef3a49eb48b3
         </group>
     </open-files>
 </project-private>

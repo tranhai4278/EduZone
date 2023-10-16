@@ -97,9 +97,21 @@
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Group</label>
-                                            <div>
-                                                <input class="form-control" type="text" name="gid" >
-                                            </div>
+                                            <select
+                                                name="gid"
+                                                id="group"
+                                                required
+                                                >
+                                                    <option value="1">
+                                                        Role
+                                                    </option>
+                                                    <option value="2">
+                                                        Email Domain
+                                                    </option>
+                                                    <option value="3">
+                                                        Semester
+                                                    </option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Name</label>

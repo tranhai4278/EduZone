@@ -124,7 +124,6 @@
         <servlet-name>AddSubjectController</servlet-name>
         <servlet-class>Admin.controller.AddSubjectController</servlet-class>
     </servlet>
-<<<<<<< HEAD
     <servlet>
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
@@ -133,12 +132,10 @@
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
     </servlet-mapping>
-=======
     <welcome-file-list>
         <welcome-file>home</welcome-file>
         <!-- Specify the URL pattern of the default page -->
     </welcome-file-list>
->>>>>>> 3e92f316faae5b839abcfc33d471bdb785e8675a
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>

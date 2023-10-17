@@ -13,15 +13,9 @@ import utils.PhoneNumberChecker;
 
 public class UpdateProfileServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Process request if needed
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     @Override
@@ -130,10 +124,5 @@ public class UpdateProfileServlet extends HttpServlet {
             request.setAttribute("user", user);
             request.getRequestDispatcher("/userprofile.jsp").forward(request, response); // Forward to the profile page
         }
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Update Profile Servlet";
     }
 }

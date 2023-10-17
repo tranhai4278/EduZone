@@ -40,8 +40,21 @@
                 </div>
                 <div class="topbar-right">
                     <ul>
-                        <li> <c:if test="${sessionScope.user!=null}"><a href="logout">Logout</a></c:if></li>
-                        <!--                                    <li><a href="register.jsp">Register</a></li>-->
+                        <c:choose>
+                            <c:when test="${sessionScope.user != null}">
+                                <li>
+                                    <a href="logout">Logout</a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li>
+                                    <a href="login">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register">Register</a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
@@ -87,6 +100,7 @@
                         <a href="home.jsp"><img src="assets/images/logo.png" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav">
+<<<<<<< HEAD
                         <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                               
@@ -121,14 +135,28 @@
                             </ul>
                         </li>
                         </c:if>
+=======
+                        <c:if test="${sessionScope.user != null}">
+                            <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="profile">My Profile</a></li>
+                                    <li><a href="changepassword">Change Password</a></li>
+                                    <li><c:if test="${sessionScope.user!=null}">
+                                            <a href="logout">Logout</a>
+                                        </c:if></li>
+                                </ul>
+                            </li>
+                        </c:if>
+
+>>>>>>> 3e92f316faae5b839abcfc33d471bdb785e8675a
                         <c:if test="${sessionScope.user.roleId == 1}">
-                        <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="userList">User</a></li>
-                                <li><a href="settingSubject">Subject</a></li>
-                                <li><a href="setting">Setting</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="userList">User</a></li>
+                                    <li><a href="settingSubject">Subject</a></li>
+                                    <li><a href="setting">Setting</a></li>
+                                </ul>
+                            </li>
                         </c:if>
                     </ul>
                     <div class="nav-social-link">

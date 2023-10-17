@@ -129,10 +129,6 @@
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LandingPage</servlet-name>
-        <url-pattern>/landingpage</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>home</welcome-file>

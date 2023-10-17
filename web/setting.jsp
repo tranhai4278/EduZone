@@ -83,7 +83,7 @@
                                                 <div class="row">
 
                                                     <div class="col-sm-5">
-                                                        <a class="btn" href="addsetting">
+                                                        <a class="btn" href="add-setting.jsp">
                                                             Add a new setting   
                                                         </a>
                                                     </div>

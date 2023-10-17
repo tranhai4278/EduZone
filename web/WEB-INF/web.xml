@@ -80,6 +80,10 @@
         <servlet-name>AddSubjectController</servlet-name>
         <servlet-class>Admin.controller.AddSubjectController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubjectList</servlet-name>
+        <servlet-class>Manager.controller.SubjectList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LandingPage</servlet-name>
         <url-pattern>/landingpage</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>UserEditController</servlet-name>
         <url-pattern>/userEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectList</servlet-name>
+        <url-pattern>/subjectList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

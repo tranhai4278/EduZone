@@ -228,6 +228,33 @@
                         </a>
                     </li>
                 </c:if>
+                    <c:if test="${sessionScope.user.roleId == 2}">
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">Question</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
+                            <span class="ttr-label">Lesson</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-agenda"></i></span>
+                            <span class="ttr-label">Subject Setting</span>
+                        </a>
+                    </li>
+                    
+                </c:if>
 
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">

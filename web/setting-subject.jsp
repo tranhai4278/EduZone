@@ -107,10 +107,10 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
+                                          
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
-                                                        <th scope="col">Manager Name </th>
+                                                        <th scope="col">Manager </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -118,9 +118,7 @@
                                                 <tbody>
                                                     <c:forEach var="s" items="${listS}" >
                                                         <tr>
-                                                            <td>
-                                                                ${s.subjectId}
-                                                            </td>
+                                            
                                                             <td>${s.subjectName}</td>
                                                             <td>${s.subjectCode}</td>
                                                             <td>${s.u.fullName}</td>

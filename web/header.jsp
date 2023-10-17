@@ -134,6 +134,7 @@
                             </ul>
                         </li>
                         </c:if>
+=======
                         <c:if test="${sessionScope.user != null}">
                             <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">

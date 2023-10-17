@@ -100,7 +100,6 @@
                         <a href="home.jsp"><img src="assets/images/logo.png" alt=""></a>
                     </div>
                     <ul class="nav navbar-nav">
-<<<<<<< HEAD
                         <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                               
@@ -135,7 +134,6 @@
                             </ul>
                         </li>
                         </c:if>
-=======
                         <c:if test="${sessionScope.user != null}">
                             <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
@@ -148,7 +146,6 @@
                             </li>
                         </c:if>
 
->>>>>>> 3e92f316faae5b839abcfc33d471bdb785e8675a
                         <c:if test="${sessionScope.user.roleId == 1}">
                             <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">

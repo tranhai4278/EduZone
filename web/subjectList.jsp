@@ -22,11 +22,11 @@
 
         <!-- FAVICONS ICON ============================================= -->
         <link rel="icon" href="../error-404.html" type="image/x-icon" />
-                <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
 
 
         <!-- PAGE TITLE HERE ============================================= -->
-                <title>EduNext : Education HTML Template </title>
+        <title>EduNext : Education HTML Template </title>
 
 
         <!-- MOBILE SPECIFIC ============================================= -->
@@ -66,34 +66,38 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Dashboard</h4>
+                    <h4 class="breadcrumb-title">Subject Setting</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Dashboard</li>
+                        <li>Subject Setting</li>
                     </ul>
                 </div>	
                 <!-- Card -->
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                        <div class="widget-card widget-bg1">					 
-                            <div class="wc-item">
-                                <h3 class="wc-title">
-                                    Total Frofit
-                                </h3>
-                                <span class="wc-des">
-                                    All Customs Value
-                                </span>
-                                <span class="wc-progress-bx">
-                                    <span class="wc-change">
-                                        Change
+                    <c:forEach items="${listS}" var="s">
+                       
+                        <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+                             <a href="subjectDetail?sid=${s.subjectId}">
+                            <div class="widget-card widget-bg1" style="height: 150px">					 
+                                <div class="wc-item">
+                                    <h3 class="wc-title">
+                                        ${s.subjectCode}
+                                    </h3>
+                                    <span class="wc-des" style="font-size: 15px; font-weight: 500">
+                                        ${s.subjectName}
                                     </span>
-                                    <span class="wc-number ml-auto">
-                                        78%
+                                    <span class="wc-progress-bx">
+                                        <span class="wc-change" >
+                                            ${s.description}
+                                        </span>
                                     </span>
-                                </span>
-                            </div>				      
+                             	
+                                </div>				      
+                            </div>
+                                        </a>
                         </div>
-                    </div>
+                                        
+                    </c:forEach>
                 </div>
                 <!-- Card END -->
             </div>

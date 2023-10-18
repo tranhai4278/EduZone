@@ -5,6 +5,9 @@ import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 /**
  *
  * @author Nết
@@ -47,11 +50,7 @@ public class UpdateStatus extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-=======
-@WebServlet(name = "UpdateStatus", urlPatterns = {"/updateStatus"})
-public class UpdateStatus extends HttpServlet {
 
->>>>>>> b93dfa3f040004c9bdc3230f24768151b50aa7f7
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

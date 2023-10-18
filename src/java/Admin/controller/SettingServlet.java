@@ -6,6 +6,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Setting;
 @WebServlet(name = "SettingServlet", urlPatterns = {"/setting"})
 public class SettingServlet extends HttpServlet {
 

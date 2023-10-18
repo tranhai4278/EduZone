@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>LandingPage</servlet-name>
-        <servlet-class>controller.LandingPage</servlet-class>
-    </servlet>
+    <!-- START Authentication Filter for Admin Page -->
+    <filter>
+        <filter-name>AdminAuthenticationFilter</filter-name>
+        <filter-class>security.AdminAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminAuthenticationFilter</filter-name>
+        <url-pattern>/settingSubject</url-pattern>
+        <url-pattern>/setting</url-pattern>
+        <url-pattern>/userDetail</url-pattern>
+        <url-pattern>/userList</url-pattern>
+
+        <!-- Add other URL patterns for the admin role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Admin Page -->
+    
+    <!-- START Authentication Filter for Manager Page -->
+    <filter>
+        <filter-name>ManagerAuthenticationFilter</filter-name>
+        <filter-class>security.ManagerAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerAuthenticationFilter</filter-name>
+        <url-pattern>/settingSubject</url-pattern>
+        <url-pattern>/setting</url-pattern>
+        <url-pattern>/userDetail</url-pattern>
+        <url-pattern>/userList</url-pattern>
+        <!-- Add other URL patterns for the manager role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Manager Page -->
+    
+    <!-- START Authentication Filter for Trainer Page -->
+    <filter>
+        <filter-name>TrainerAuthenticationFilter</filter-name>
+        <filter-class>security.TrainerAuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TrainerAuthenticationFilter</filter-name>
+        <url-pattern></url-pattern>
+        <!-- Add URL patterns for the trainer role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Trainer Page -->
+
+    <!-- START Authentication Filter for Normal Page -->
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>security.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>/profile</url-pattern>
+        <url-pattern>/changepassword</url-pattern>
+        <!-- Add other URL patterns for the normal role here -->
+    </filter-mapping>
+    <!-- END Authentication Filter for Normal Page -->
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>Login.controller.RegisterController</servlet-class>
@@ -27,14 +79,6 @@
     <servlet>
         <servlet-name>SettingSubject</servlet-name>
         <servlet-class>Admin.controller.SettingSubject</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SubjectListController</servlet-name>
-        <servlet-class>controller.SubjectListController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SubjectDetailController</servlet-name>
-        <servlet-class>controller.SubjectDetailController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
@@ -80,10 +124,14 @@
         <servlet-name>AddSubjectController</servlet-name>
         <servlet-class>Admin.controller.AddSubjectController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LandingPage</servlet-name>
-        <url-pattern>/landingpage</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>SubjectList</servlet-name>
+        <servlet-class>Manager.controller.SubjectList</servlet-class>
+    </servlet>
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+        <!-- Specify the URL pattern of the default page -->
+    </welcome-file-list>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -107,14 +155,6 @@
     <servlet-mapping>
         <servlet-name>SettingSubject</servlet-name>
         <url-pattern>/settingSubject</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SubjectListController</servlet-name>
-        <url-pattern>/SubjectList</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SubjectDetailController</servlet-name>
-        <url-pattern>/SubjectDetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
@@ -159,6 +199,10 @@
     <servlet-mapping>
         <servlet-name>UserEditController</servlet-name>
         <url-pattern>/userEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubjectList</servlet-name>
+        <url-pattern>/subjectList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

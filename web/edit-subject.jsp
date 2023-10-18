@@ -129,13 +129,6 @@
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                            
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Image URL</label>
-                                            <div>
-                                                <input class="form-control" type="text" value="${detail.imgUrl}" name="img">
-                                            </div>
-                                        </div>
                                         <div class="form-group col-3">
                                             <label class="col-form-label">Status</label>
                                             <div class="form-check form-switch">

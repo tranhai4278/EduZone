@@ -40,8 +40,21 @@
                 </div>
                 <div class="topbar-right">
                     <ul>
-                        <li> <c:if test="${sessionScope.user!=null}"><a href="logout">Logout</a></c:if></li>
-                        <!--                                    <li><a href="register.jsp">Register</a></li>-->
+                        <c:choose>
+                            <c:when test="${sessionScope.user != null}">
+                                <li>
+                                    <a href="logout">Logout</a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li>
+                                    <a href="login">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register">Register</a>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>
@@ -89,55 +102,30 @@
                     <ul class="nav navbar-nav">
                         <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <!--                                            
-                                <li><a href="javascript:;">About<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="about-1.jsp">About 1</a></li>
-                                                                                    <li><a href="about-2.jsp">About 2</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="javascript:;">Event<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="event.jsp">Event</a></li>
-                                                                                    <li><a href="events-details.jsp">Events Details</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="javascript:;">FAQ's<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="faq-1.jsp">FAQ's 1</a></li>
-                                                                                    <li><a href="faq-2.jsp">FAQ's 2</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="javascript:;">Contact Us<i class="fa fa-angle-right"></i></a>
-                                                                                <ul class="sub-menu">
-                                                                                    <li><a href="contact-1.jsp">Contact Us 1</a></li>
-                                                                                    <li><a href="contact-2.jsp">Contact Us 2</a></li>
-                                                                                </ul>
-                                                                            </li>-->
-                                <!--                                            
-                                <li><a href="portfolio.jsp">Portfolio</a></li>-->
+                              
                                 <li><a href="profile">My Profile</a></li>
-                                <!--                                            <li><a href="profile.jsp">My Subject</a></li>
-                                                                            <li><a href="profile.jsp">My Class</a></li>                                    Will do this in future--> 
                                 <li><a href="changepassword">Change Password</a></li>
                                 <li><c:if test="${sessionScope.user!=null}">
                                         <a href="logout">Logout</a>
                                     </c:if></li>
-
-                                <!--                                            <li><a href="membership.jsp">Membership</a></li>
-                                                                            <li><a href="error-404.jsp">404 Page</a></li>-->
                             </ul>
                         </li>
-                        <li class="add-mega-menu"><a href="javascript:;">Our Subjects <i class="fa fa-chevron-down"></i></a>
+                        <c:if test="${sessionScope.user.roleId == 2}">
+                        <li class="add-mega-menu"><a href="javascript:;">Manage Subjects <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu add-menu">
                                 <li class="add-menu-left">
-                                    <h5 class="menu-adv-title">Our Subjects</h5>
+                                    <h5 class="menu-adv-title">Manage Subjects</h5>
                                     <ul>
-                                        <li><a href="SubjectList">Subjects </a></li>
-                                        <!--                                                    <li><a href="courses-details.jsp">Courses Details</a></li>-->
-                                        <!--                                                    <li><a href="profile.jsp">Instructor Profile</a></li>
-                                                                                            <li><a href="event.jsp">Upcoming Event</a></li>
-                                                                                            <li><a href="membership.jsp">Membership</a></li>-->
+                                        <li><a href="#">Subjects </a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">Lesson </a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">Quession </a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="#">Quiz </a></li>
                                     </ul>
                                 </li>
                                 <li class="add-menu-right">
@@ -145,24 +133,36 @@
                                 </li>
                             </ul>
                         </li>
+                        </c:if>
+                        <c:if test="${sessionScope.user != null}">
+                            <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="profile">My Profile</a></li>
+                                    <li><a href="changepassword">Change Password</a></li>
+                                    <li><c:if test="${sessionScope.user!=null}">
+                                            <a href="logout">Logout</a>
+                                        </c:if></li>
+                                </ul>
+                            </li>
+                        </c:if>
+
                         <c:if test="${sessionScope.user.roleId == 1}">
-                        <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="userList">User</a></li>
-                                <li><a href="settingSubject">Subject</a></li>
-                                <li><a href="setting">Setting</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-dashboard"><a href="javascript:;">Admin Dashboard Setting <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="userList">User</a></li>
+                                    <li><a href="settingSubject">Subject</a></li>
+                                    <li><a href="setting">Setting</a></li>
+                                </ul>
+                            </li>
                         </c:if>
-                        
+
                         <c:if test="${sessionScope.user.roleId == 2}">
-                        <li class="nav-dashboard"><a href="javascript:;">Subject Manager Dashboard Setting <i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="classlist">Class List</a></li>
-                                <li><a href="newclass">Create A New Class</a></li>
-                            </ul>
-                        </li>
-                        </c:if>
+                            <li class="nav-dashboard"><a href="javascript:;">Subject Manager Dashboard Setting <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="classlist">Class List</a></li>
+                                    <li><a href="newclass">Create A New Class</a></li>
+                                </ul>
+                            </li>
                     </ul>
                     <div class="nav-social-link">
                         <a href="javascript:;"><i class="fa fa-google-plus"></i></a>

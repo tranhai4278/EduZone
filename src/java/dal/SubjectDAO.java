@@ -49,7 +49,6 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-
     public void addSubject(int mID, String name, String code, String des, String image) {
         try {
             String strSelect = "INSERT INTO subject (manager_id, subject_name, subject_code, description, img_url, \n"

@@ -8,10 +8,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.User;
 
-public class UserDetailController extends HttpServlet {
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+<<<<<<< HEAD
+/**
+ *
+ * @author PHAM NGOC
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
 
@@ -33,4 +33,5 @@ public class UserDetailController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+>>>>>>> b93dfa3f040004c9bdc3230f24768151b50aa7f7
 }

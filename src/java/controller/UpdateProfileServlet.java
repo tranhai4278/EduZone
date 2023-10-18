@@ -125,4 +125,12 @@ public class UpdateProfileServlet extends HttpServlet {
             request.getRequestDispatcher("/userprofile.jsp").forward(request, response); // Forward to the profile page
         }
     }
+<<<<<<< HEAD
+
+    @Override
+    public String getServletInfo() {
+        return "Update Profile Servlet";
+    }
+=======
+>>>>>>> b93dfa3f040004c9bdc3230f24768151b50aa7f7
 }

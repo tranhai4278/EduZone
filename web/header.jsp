@@ -155,6 +155,14 @@
                                 </ul>
                             </li>
                         </c:if>
+
+                        <c:if test="${sessionScope.user.roleId == 2}">
+                            <li class="nav-dashboard"><a href="javascript:;">Subject Manager Dashboard Setting <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li><a href="classlist">Class List</a></li>
+                                    <li><a href="newclass">Create A New Class</a></li>
+                                </ul>
+                            </li>
                     </ul>
                     <div class="nav-social-link">
                         <a href="javascript:;"><i class="fa fa-google-plus"></i></a>

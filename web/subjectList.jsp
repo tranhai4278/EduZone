@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
@@ -66,38 +67,38 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Dashboard</h4>
+                    <h4 class="breadcrumb-title">Subject Setting</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Dashboard</li>
+                        <li>Subject Setting</li>
                     </ul>
                 </div>	
                 <!-- Card -->
                 <div class="row">
-                    <c:forEach items="listS" var="s">
+                    <c:forEach items="${listS}" var="s">
                         <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                            <div class="widget-card widget-bg1">					 
-                                <div class="wc-item">
-                                    <h3 class="wc-title">
-                                        ${s.subjectCode}
-                                    </h3>
-                                    <span class="wc-des">
-                                        ${s.subjectName}
-
-                                    </span>
-                                    <span class="wc-progress-bx">
-                                        <span class="wc-change">
-                                            ${s.description}
+                            <a href="subjectDetail?sid=${s.subjectId}">
+                                <div class="widget-card widget-bg1" style="height: 150px">					 
+                                    <div class="wc-item">
+                                        <h3 class="wc-title">
+                                            ${s.subjectCode}
+                                        </h3>
+                                        <span class="wc-des" style="font-size: 15px; font-weight: 500">
+                                            ${s.subjectName}
                                         </span>
-                                      
-                                    </span>
-                                </div>				      
-                            </div>
+                                        <span class="wc-progress-bx">
+                                            <span class="wc-change" >
+                                                ${s.description}
+                                            </span>
+                                        </span>
+                                    </div>				      
+                                </div>
+                            </a>
                         </div>
                     </c:forEach>
                 </div>
+
                 <!-- Card END -->
-            </div>
         </main>
         <div class="ttr-overlay"></div>
 

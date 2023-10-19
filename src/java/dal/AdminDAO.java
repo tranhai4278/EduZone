@@ -12,6 +12,37 @@ import model.User;
 
 public class AdminDAO extends MySqlConnection {
 
+    public ArrayList<Setting> getSemesters() {
+        ArrayList<Setting> semesters = new ArrayList<>();
+        String sql = "SELECT * FROM setting WHERE setting_group = 3";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                Setting semester = new Setting(
+                        result.getInt(1),
+                        result.getInt(2),
+                        result.getString(3),
+                        result.getBoolean(4),
+                        result.getInt(5),
+                        result.getString(6),
+                        result.getDate(7),
+                        result.getInt(8),
+                        result.getDate(9),
+                        result.getInt(10)
+                );
+
+                semesters.add(semester);
+            }
+        } catch (SQLException e) {
+            // Handle any potential exceptions here
+        }
+
+        return semesters;
+    }
+
     public List<Subject> getAllSubject() {
         List<Subject> list = new ArrayList<>();
         String sql = " SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE u.user_id = s.manager_id";
@@ -65,7 +96,7 @@ public class AdminDAO extends MySqlConnection {
         }
         return list;
     }
-        
+
     public Subject getSubjectbyId(int id) {
         Subject p = null;
         String sql = "SELECT s.*,u.user_id,u.full_name,u.role_id FROM subject s, user u WHERE subject_id = ? AND s.manager_id=u.user_id";
@@ -191,6 +222,7 @@ public class AdminDAO extends MySqlConnection {
         }
         return p;
     }
+
     public List<Setting> getAllSettingSemester() {
         List<Setting> list = new ArrayList<>();
         String sql = " SELECT * FROM `setting` WHERE setting_group=3 and status = 1 ";
@@ -217,7 +249,6 @@ public class AdminDAO extends MySqlConnection {
         }
         return list;
     }
-
 
     public Setting checkSettingName(String name, int sid) {
         Setting p = null;

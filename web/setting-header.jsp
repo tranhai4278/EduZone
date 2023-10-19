@@ -178,36 +178,6 @@
                     </a>
                 </li>
                 <li class="ttr-seperate"></li>     
-                <!--                        <li>
-                                            <a href="index.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-home"></i></span>
-                                                <span class="ttr-label">Dashborad</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="courses.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-book"></i></span>
-                                                <span class="ttr-label">Courses</span>
-                                            </a>
-                                        </li>-->
-                <!--                        <li>
-                                            <a href="#" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-email"></i></span>
-                                                <span class="ttr-label"></span>
-                                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="mailbox.html" class="ttr-material-button"><span class="ttr-label">Mail Box</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="mailbox-compose.html" class="ttr-material-button"><span class="ttr-label">Compose</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Mail Read</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>-->
                 <c:if test="${sessionScope.user.roleId == 1}">
                     <li>
                         <a href="userList" class="ttr-material-button">
@@ -248,7 +218,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="subjectList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-agenda"></i></span>
                             <span class="ttr-label">Subject Setting</span>
                         </a>

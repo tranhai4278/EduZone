@@ -12,7 +12,7 @@ public class SubjectSetting {
 
     private int settingId;
     private int subjectId;
-    private int settingType;
+    private String settingType;
     private String settingName;
     private String description;
     private int displayOrder;
@@ -25,7 +25,7 @@ public class SubjectSetting {
     public SubjectSetting() {
     }
 
-    public SubjectSetting(int settingId, int subjectId, int settingType, String settingName, String description, int displayOrder, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public SubjectSetting(int settingId, int subjectId, String settingType, String settingName, String description, int displayOrder, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingId = settingId;
         this.subjectId = subjectId;
         this.settingType = settingType;
@@ -55,11 +55,11 @@ public class SubjectSetting {
         this.subjectId = subjectId;
     }
 
-    public int getSettingType() {
+    public String getSettingType() {
         return settingType;
     }
 
-    public void setSettingType(int settingType) {
+    public void setSettingType(String settingType) {
         this.settingType = settingType;
     }
 

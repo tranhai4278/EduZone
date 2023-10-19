@@ -124,6 +124,10 @@
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QuestionsListController</servlet-name>
+        <servlet-class>Manager.controller.QuestionsListController</servlet-class>
+    </servlet>
     <welcome-file-list>
         <welcome-file>home</welcome-file>
         <!-- Specify the URL pattern of the default page -->
@@ -255,6 +259,10 @@
     <servlet-mapping>
         <servlet-name>NewClassServlet</servlet-name>
         <url-pattern>/newclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuestionsListController</servlet-name>
+        <url-pattern>/QuestionsList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

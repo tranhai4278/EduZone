@@ -20,6 +20,11 @@ public class Question {
     private int createBy;
     private Date updateAt;
     private int updateBy;
+    
+    private String dimensionType;
+    private String dimensionName;
+    private String dimension;
+    private String subjectCode;
 
     public Question() {
     }
@@ -34,6 +39,14 @@ public class Question {
         this.createBy = createBy;
         this.updateAt = updateAt;
         this.updateBy = updateBy;
+    }
+    
+    public Question(int questionId, String question, String dimenstion, String subjectCode, Date createAt) {
+        this.questionId = questionId;
+        this.question = question;
+        this.dimension = dimenstion;
+        this.subjectCode = subjectCode;
+        this.createAt = createAt;
     }
 
     public int getQuestionId() {
@@ -106,6 +119,38 @@ public class Question {
 
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getDimensionType() {
+        return dimensionType;
+    }
+
+    public void setDimensionType(String dimensionType) {
+        this.dimensionType = dimensionType;
+    }
+
+    public String getDimensionName() {
+        return dimensionName;
+    }
+
+    public void setDimensionName(String dimensionName) {
+        this.dimensionName = dimensionName;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getSubjectCode() {
+        return subjectCode;
+    }
+
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
     
 }

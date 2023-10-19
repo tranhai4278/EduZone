@@ -86,7 +86,7 @@
                                             </div>
                                             <div class="col-sm-5">
                                                 <form id="subject-search-form" action="settingSubject" method="POST">
-                                                    <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
+                                                    <input name="txt" type="text" id="subject-input-box" placeholder="Search setting" class="form-control" autocomplete="off">
                                                     <input type="submit" style="display: none;">
                                                 </form>
                                             </div>

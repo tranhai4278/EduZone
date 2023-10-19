@@ -83,6 +83,25 @@ public class Class_TraineeDAO extends MySqlConnection {
         }
     }
 
+    public ArrayList<Class_Trainee> getClassesByTraineeID(int traineeID) {
+        ArrayList<Class_Trainee> data = new ArrayList<>();
+        String sql = "SELECT * FROM class_student WHERE trainee_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, traineeID);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int ID = result.getInt(1);
+                int classID = result.getInt(2);
+                Class_Trainee c = new Class_Trainee(ID, classID);
+                data.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
+
     public static void main(String[] args) {
         Class_TraineeDAO classTDAO = new Class_TraineeDAO();
         ArrayList<Class_Trainee> data = classTDAO.getAllTrainees();

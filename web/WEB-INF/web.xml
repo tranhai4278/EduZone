@@ -128,6 +128,38 @@
         <welcome-file>home</welcome-file>
         <!-- Specify the URL pattern of the default page -->
     </welcome-file-list>
+    <servlet>
+        <servlet-name>ClassListServlet</servlet-name>
+        <servlet-class>controller.classListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClassDetailServlet</servlet-name>
+        <servlet-class>controller.classDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterClassServlet</servlet-name>
+        <servlet-class>controller.filterClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchClassesServlet</servlet-name>
+        <servlet-class>controller.searchClassesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateClassServlet</servlet-name>
+        <servlet-class>controller.updateClassSevlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClassStudentListServlet</servlet-name>
+        <servlet-class>controller.classStudentListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewClassServlet</servlet-name>
+        <servlet-class>controller.newClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <servlet-class>controller.classSearchStudentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -199,6 +231,38 @@
     <servlet-mapping>
         <servlet-name>SubjectList</servlet-name>
         <url-pattern>/subjectList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassListServlet</servlet-name>
+        <url-pattern>/classlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassDetailServlet</servlet-name>
+        <url-pattern>/classdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterClassServlet</servlet-name>
+        <url-pattern>/filterclasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchClassesServlet</servlet-name>
+        <url-pattern>/searchclasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateClassServlet</servlet-name>
+        <url-pattern>/updateclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassStudentListServlet</servlet-name>
+        <url-pattern>/classstudentlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewClassServlet</servlet-name>
+        <url-pattern>/newclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

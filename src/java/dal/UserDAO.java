@@ -435,41 +435,6 @@ public class UserDAO extends MySqlConnection {
         }
     }
     
-    public ArrayList<User> getUsersWithRoleId3() {
-    ArrayList<User> userList = new ArrayList<>();
-    String sql = "SELECT * FROM user WHERE role_id = 3";
-
-    try {
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet result = statement.executeQuery();
-
-        while (result.next()) {
-            int userId = result.getInt(1);
-            String password = result.getString(2);
-            String fullName = result.getString(3);
-            boolean gender = result.getBoolean(4);
-            String avatarUrl = result.getString(5);
-            String phoneNumber = result.getString(6);
-            String email = result.getString(7);
-            int roleId = result.getInt(8);
-            boolean status = result.getBoolean(9);
-            Date createAt = result.getDate(10);
-            int createBy = result.getInt(11);
-            Date updateAt = result.getDate(12);
-            int updateBy = result.getInt(13);
-
-            User user = new User(userId, password, fullName, gender, avatarUrl, phoneNumber, email, roleId, status, createAt, createBy, updateAt, updateBy);
-            userList.add(user);
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-    return userList;
-}
-
-    
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
 //        ArrayList<User> list = dao.getAllUser();

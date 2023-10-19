@@ -22,11 +22,11 @@
 
         <!-- FAVICONS ICON ============================================= -->
         <link rel="icon" href="../error-404.html" type="image/x-icon" />
-                <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
 
 
         <!-- PAGE TITLE HERE ============================================= -->
-                <title>EduNext : Education HTML Template </title>
+        <title>EduNext : Education HTML Template </title>
 
 
         <!-- MOBILE SPECIFIC ============================================= -->
@@ -74,23 +74,13 @@
                 </div>	
                 <!-- Card -->
                 <div class="row">
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <c:forEach items="listS" var="s">
                         <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
                             <div class="widget-card widget-bg1">					 
-=======
-                    <c:forEach items="${listS}" var="s">
-                       
-                        <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                             <a href="subjectDetail?sid=${s.subjectId}">
-                            <div class="widget-card widget-bg1" style="height: 150px">					 
->>>>>>> HaiTTT
                                 <div class="wc-item">
                                     <h3 class="wc-title">
                                         ${s.subjectCode}
                                     </h3>
-<<<<<<< HEAD
                                     <span class="wc-des">
                                         ${s.subjectName}
 
@@ -104,37 +94,7 @@
                                 </div>				      
                             </div>
                         </div>
-=======
-                                    <span class="wc-des" style="font-size: 15px; font-weight: 500">
-                                        ${s.subjectName}
-=======
-                    <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                        <div class="widget-card widget-bg1">					 
-                            <div class="wc-item">
-                                <h3 class="wc-title">
-                                    Total Frofit
-                                </h3>
-                                <span class="wc-des">
-                                    All Customs Value
-                                </span>
-                                <span class="wc-progress-bx">
-                                    <span class="wc-change">
-                                        Change
->>>>>>> parent of f2fb055 (add Subject list and detail, updata SubjectSetting model)
-                                    </span>
-                                    <span class="wc-number ml-auto">
-                                        78%
-                                    </span>
-                                </span>
-                            </div>				      
-                        </div>
-<<<<<<< HEAD
-                                        
->>>>>>> HaiTTT
                     </c:forEach>
-=======
-                    </div>
->>>>>>> parent of f2fb055 (add Subject list and detail, updata SubjectSetting model)
                 </div>
                 <!-- Card END -->
             </div>

@@ -164,6 +164,10 @@
         <servlet-name>classSearchStudentServlet</servlet-name>
         <servlet-class>controller.classSearchStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QuestionDetailController</servlet-name>
+        <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -265,13 +269,16 @@
         <url-pattern>/newclass</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>QuestionsListController</servlet-name>
         <url-pattern>/QuestionsList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>classSearchStudentServlet</servlet-name>
         <url-pattern>/classsearchstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuestionDetailController</servlet-name>
+        <url-pattern>/QuestionDetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

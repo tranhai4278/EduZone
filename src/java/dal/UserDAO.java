@@ -467,6 +467,44 @@ public class UserDAO extends MySqlConnection {
         }
     }
 
+    public ArrayList<User> getUsersBySearchString(String searchString) {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM user WHERE full_name LIKE ? OR email LIKE ? OR phone_number LIKE ?";
+
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            searchString = "%" + searchString + "%"; // Add wildcards to the searchString
+            statement.setString(1, searchString);
+            statement.setString(2, searchString);
+            statement.setString(3, searchString);
+
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setUserId(resultSet.getInt(1));
+                    user.setPassword(resultSet.getString(2));
+                    user.setFullName(resultSet.getString(3));
+                    user.setGender(resultSet.getBoolean(4));
+                    user.setAvatarUrl(resultSet.getString(5));
+                    user.setPhone(resultSet.getString(6));
+                    user.setEmail(resultSet.getString(7));
+                    user.setRoleId(resultSet.getInt(8));
+                    user.setStatus(resultSet.getBoolean(9));
+                    user.setCreateAt(resultSet.getDate(10));
+                    user.setCreateBy(resultSet.getInt(11));
+                    user.setUpdateAt(resultSet.getDate(12));
+                    user.setUpdateBy(resultSet.getInt(13));
+                    users.add(user);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users; // Return an ArrayList of users with partial similarity to the searchString
+    }
+
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
 //        ArrayList<User> list = dao.getAllUser();

@@ -2,19 +2,20 @@ package model;
 
 import java.util.Date;
 
+
 /**
  *
  * @author Nết
  */
 public class SubjectSetting {
 
+
     private int settingId;
     private int subjectId;
-    private String settingType;
+    private int settingType;
     private String settingName;
     private String description;
     private int displayOrder;
-    private boolean status;
     private Date createAt;
     private int createBy;
     private Date updateAt;
@@ -23,14 +24,13 @@ public class SubjectSetting {
     public SubjectSetting() {
     }
 
-    public SubjectSetting(int settingId, int subjectId, String settingType, String settingName, String description, int displayOrder, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public SubjectSetting(int settingId, int subjectId, int settingType, String settingName, String description, int displayOrder, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingId = settingId;
         this.subjectId = subjectId;
         this.settingType = settingType;
         this.settingName = settingName;
         this.description = description;
         this.displayOrder = displayOrder;
-        this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
         this.updateAt = updateAt;
@@ -53,11 +53,11 @@ public class SubjectSetting {
         this.subjectId = subjectId;
     }
 
-    public String getSettingType() {
+    public int getSettingType() {
         return settingType;
     }
 
-    public void setSettingType(String settingType) {
+    public void setSettingType(int settingType) {
         this.settingType = settingType;
     }
 
@@ -83,14 +83,6 @@ public class SubjectSetting {
 
     public void setDisplayOrder(int displayOrder) {
         this.displayOrder = displayOrder;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public Date getCreateAt() {
@@ -125,4 +117,5 @@ public class SubjectSetting {
         this.updateBy = updateBy;
     }
 
+   
 }

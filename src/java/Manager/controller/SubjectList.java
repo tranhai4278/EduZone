@@ -67,8 +67,9 @@ public class SubjectList extends HttpServlet {
         List<Subject> listS = dao.getAllSubjectbyManager(uid);
         request.setAttribute("listS", listS);
         request.getRequestDispatcher("subjectList.jsp").forward(request, response);
+        }
 
-    }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.

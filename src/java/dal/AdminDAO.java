@@ -413,5 +413,37 @@ public class AdminDAO extends MySqlConnection {
         }
         return null;
     }
+    
+    public ArrayList<Setting> getSemesters() {
+    ArrayList<Setting> semesters = new ArrayList<>();
+    String sql = "SELECT * FROM setting WHERE setting_group = 3";
+
+    try {
+        statement = connection.prepareStatement(sql);
+        result = statement.executeQuery();
+
+        while (result.next()) {
+            Setting semester = new Setting(
+                result.getInt(1),
+                result.getInt(2),
+                result.getString(3),
+                result.getBoolean(4),
+                result.getInt(5),
+                result.getString(6),
+                result.getDate(7),
+                result.getInt(8),
+                result.getDate(9),
+                result.getInt(10)
+            );
+
+            semesters.add(semester);
+        }
+    } catch (SQLException e) {
+        // Handle any potential exceptions here
+    }
+
+    return semesters;
+}
+    
 
 }

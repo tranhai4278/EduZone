@@ -37,7 +37,6 @@ public class ForgetPasswordServlet extends HttpServlet {
 
         // Check if the email exists in the database
         if (userDAO.doesEmailExist(userEmail)) {
-
             HttpSession session = request.getSession();
             session.setAttribute("userEmail", userEmail);
 

@@ -49,7 +49,6 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-    
     public void addSubject(int mID, String name, String code, String des, String image) {
         try {
             String strSelect = "INSERT INTO subject (manager_id, subject_name, subject_code, description, img_url, \n"
@@ -62,7 +61,7 @@ public class SubjectDAO extends MySqlConnection {
             pstm.setString(3, code);
             pstm.setString(4, des);
             pstm.setString(5, image);
-            pstm.setBoolean(6, true );
+            pstm.setBoolean(6, true);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
@@ -77,7 +76,6 @@ public class SubjectDAO extends MySqlConnection {
             System.out.println("addAccount: " + e.getMessage());
         }
     }
-
 
     public ArrayList getAllSubjectsWithUser() {
         UserDAO userDao = new UserDAO();
@@ -249,7 +247,6 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
-    
     public Subject getSubjectWithId(int subject_id) {
         Subject subject = new Subject();
         String sql = "SELECT *\n"
@@ -291,7 +288,7 @@ public class SubjectDAO extends MySqlConnection {
     }
 
     public Subject getSubjectByCode(String code) {
-        String query ="SELECT * FROM `subject` WHERE subject_code = ?";
+        String query = "SELECT * FROM `subject` WHERE subject_code = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, code);
             try ( ResultSet resultSet = statement.executeQuery()) {
@@ -316,7 +313,6 @@ public class SubjectDAO extends MySqlConnection {
         }
         return null;
     }
-    
 
     public Subject getSubjectAndManagerWithId(int subject_id) {
         UserDAO userDao = new UserDAO();
@@ -355,6 +351,49 @@ public class SubjectDAO extends MySqlConnection {
             }
 
             return subject;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Subject> getSubjectsByManagerId(int managerId) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        String sql = "SELECT * FROM subject WHERE manager_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, managerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int subjectId = resultSet.getInt(1);
+                String subjectName = resultSet.getString(3);
+                String subjectCode = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                boolean status = resultSet.getBoolean(6);
+                Date createAt = resultSet.getDate(7);
+                int createBy = resultSet.getInt(8);
+                Date updateAt = resultSet.getDate(9);
+                int updateBy = resultSet.getInt(10);
+
+                Subject subject = new Subject(
+                        subjectId,
+                        managerId,
+                        subjectName,
+                        subjectCode,
+                        description,
+                        status,
+                        createAt,
+                        createBy,
+                        updateAt,
+                        updateBy
+                );
+
+                subjects.add(subject);
+            }
+
+            return subjects;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

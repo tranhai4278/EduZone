@@ -85,8 +85,9 @@
                                     <div class="mail-toolbar">
                                         <form action = "classsearchstudent" method="post">
                                             <div class="search-bar">
-                                                <input type="text" class="form-control" placeholder="Search by Student Name, Email, or Phone Number" />
-                                                <button class="btn btn-primary">Search</button>
+                                                <input type="hidden" name="code" value="${Classcode}">
+                                                <input type="text" name="search" class="form-control" placeholder="Search by Student Name, Email, or Phone Number" />
+                                                <input type="submit" class="btn btn-primary" value="Search">
                                             </div>
                                         </form>
 

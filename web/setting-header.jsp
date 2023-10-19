@@ -225,6 +225,24 @@
                     </li>
                     
                 </c:if>
+                    
+                       <c:if test="${sessionScope.user.roleId == 2}">
+                    <li>
+                        <a href="classlist" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">Class List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newclass" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Create a New Class</span>
+                        </a>
+                    </li>
+                    
+                </c:if>
+                    
+
 
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">

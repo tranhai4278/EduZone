@@ -66,6 +66,7 @@
 
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
+        
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
@@ -82,10 +83,12 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="search-bar">
-                                            <input type="text" class="form-control" placeholder="Search by Student Name, Email, or Phone Number" />
-                                            <button class="btn btn-primary">Search</button>
-                                        </div>
+                                        <form action = "classsearchstudent" method="post">
+                                            <div class="search-bar">
+                                                <input type="text" class="form-control" placeholder="Search by Student Name, Email, or Phone Number" />
+                                                <button class="btn btn-primary">Search</button>
+                                            </div>
+                                        </form>
 
                                     </div>
 

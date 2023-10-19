@@ -3,19 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/header.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/home.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/User.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/MyUtil.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/utils/Mailtrap.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/Subject.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Login/controller/RegisterController.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
-        </group>
-        <group>
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
         </group>
         <group>
@@ -131,6 +118,9 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/UserDAO.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
         </group>
     </open-files>
 </project-private>

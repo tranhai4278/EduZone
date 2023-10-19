@@ -4,7 +4,6 @@
  */
 package Manager.controller;
 
-import Admin.controller.SettingSubject;
 import dal.AdminDAO;
 import dal.ManagerDAO;
 import java.io.IOException;
@@ -14,20 +13,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import model.Subject;
 import model.SubjectSetting;
-import model.User;
 
 /**
  *
  * @author Nết
  */
-@WebServlet(name = "SubjectDetail", urlPatterns = {"/subjectDetail"})
-public class SubjectDetail extends HttpServlet {
+@WebServlet(name = "UpdateStatusChapter", urlPatterns = {"/updateStatusChapter"})
+public class UpdateStatusChapter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +41,10 @@ public class SubjectDetail extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubjectDetail</title>");
+            out.println("<title>Servlet UpdateStatusChapter</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SubjectDetail at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateStatusChapter at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +52,7 @@ public class SubjectDetail extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.s
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -67,16 +62,28 @@ public class SubjectDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String sid = request.getParameter("sid");
-        int id = Integer.parseInt(sid);
+        String stid = request.getParameter("id");
+        String sbid = request.getParameter("sid");
+        String action = request.getParameter("status");
+        int id = Integer.parseInt(stid);
+        int sid = Integer.parseInt(sbid);
+        boolean status = "true".equals(action); // Chuyển đổi từ kiểu String sang boolean
+        ManagerDAO Mdao = new ManagerDAO();
+        
+        try {
+            Mdao.updateSatusSubjectSetting(id, status);
+        } catch (NumberFormatException e) {
+            e.printStackTrace(); // Xử lý nếu có lỗi chuyển đổi
+        }
+        String successMessage = "Cập nhật thành công";
         AdminDAO dao = new AdminDAO();
-        ManagerDAO Sdao = new ManagerDAO();
-        List<SubjectSetting> listC = Sdao.getChapterbySubject(id);
-        List<SubjectSetting> listD = Sdao.getDimensionbySubject(id);
-        Subject s = dao.getSubjectbyId(id);
+        Subject s = dao.getSubjectbyId(sid);
+        List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
+        List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
         request.setAttribute("detail", s);
         request.setAttribute("listC", listC);
         request.setAttribute("listD", listD);
+        request.setAttribute("successMessage", "Add success");
         request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
     }
 
@@ -91,47 +98,7 @@ public class SubjectDetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("user");
-        int id = u.getUserId();
-        String sbid = request.getParameter("sid");
-        String name = request.getParameter("name");
-        String dimension = request.getParameter("type");
-        String displayOrder = request.getParameter("displayOrder");
-        String action = request.getParameter("on");
-        String description = request.getParameter("description");
-        boolean status = "on".equals(action);
-        int order = Integer.parseInt(displayOrder);
-        int sid = Integer.parseInt(sbid);
-        Date uDate = new Date();
-        Timestamp timestamp = new Timestamp(uDate.getTime());
-        AdminDAO dao = new AdminDAO();
-        ManagerDAO Mdao = new ManagerDAO();
-        SubjectSetting ss = new SubjectSetting(sid, dimension, name, description, order, status, timestamp, id, timestamp, id);
-
-        SubjectSetting scheck = Mdao.checkSettingNameinGroup(sid, name, dimension);
-        if (scheck == null) {
-            Mdao.addSubjectSetting(ss);
-            List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
-            List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
-            Subject s = dao.getSubjectbyId(sid);
-            request.setAttribute("detail", s);
-            request.setAttribute("listC", listC);
-            request.setAttribute("listD", listD);
-            request.setAttribute("successMessage", "Add success");
-            request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
-        } else {
-            List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
-            List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
-            Subject s = dao.getSubjectbyId(sid);
-            request.setAttribute("detail", s);
-            request.setAttribute("listC", listC);
-            request.setAttribute("listD", listD);
-            request.setAttribute("error", "Already exist");
-            request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
-
-        }
-
+        processRequest(request, response);
     }
 
     /**

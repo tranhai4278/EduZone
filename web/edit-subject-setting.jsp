@@ -73,11 +73,12 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Edit Setting</h4>
+                    <h4 class="breadcrumb-title">${detail.settingName}</h4>
                     <ul class="db-breadcrumb-list">
-                        <li><a href="home.jsp"><i class="fa fa-home"></i>Home</a></li>
-                        <li><a href="setting">Setting</a></li>
-                        <li>Add Setting</li>
+                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                        <li><a href="subjectList">Subject Setting</a></li>
+                        <li><a href="subjectDetail?sid=${detail.subjectId}">Subject</a></li>
+                        <li>${detail.settingName}</li>
                     </ul>
                 </div>	
                 <div class="row">
@@ -85,59 +86,61 @@
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="wc-title">
-                                <h4>Add Setting</h4>
+                                <h4>Edit Setting</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30" action="addsetting" method="post">
+                                <form class="edit-profile m-b30" action="editSubjectSetting" method="post">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="ml-auto">
                                                 <h3>1. Basic info</h3>
                                             </div>
                                         </div>
+                                        <input name="settingId" value="${detail.settingId}" hidden>
+
+                                        <input name="sid"  value="${detail.subjectId}" hidden>
+
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Group</label>
-                                            <select
-                                                name="gid"
-                                                id="group"
-                                                required
-                                                >
-                                                    <option value="1">
-                                                        Role
-                                                    </option>
-                                                    <option value="2">
-                                                        Email Domain
-                                                    </option>
-                                                    <option value="3">
-                                                        Semester
-                                                    </option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Name</label>
+                                            <label class="col-form-label">Dimention Type</label>
                                             <div>
-                                                <input class="form-control" type="text"  name="sname" required>
+                                                <input class="form-control" type="text" value="${detail.settingType}" name="type" required maxlength="20" ${detail.settingType =="Chapter" ? 'readonly' : ' '} >
                                             </div>
-                                            <p style="color: red">${requestScope.error}</p>
                                         </div>
-
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Dimention Name</label>
+                                            <div>
+                                                <input class="form-control" type="text" value="${detail.settingName}"  name="name" required maxlength="50">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Display Order</label>
+                                            <div>
+                                                <input class="form-control" type="text" value="${detail.displayOrder}"   name="displayOrder" required maxlength="50" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Status</label>
+                                            <div class="form-check form-switch">
+                                                <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
+                                            </div>
+                                        </div>
                                         <div class="seperator"></div>
-
+                                        <input name="dimension"  value="Chapter" hidden>
                                         <div class="col-12 m-t20">
                                             <div class="ml-auto m-b5">
                                                 <h3>2. Description</h3>
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
-                                            <label class="col-form-label">Setting description</label>
+                                            <label class="col-form-label">Dimention description</label>
                                             <div>
-                                                <textarea class="form-control" name="note" > </textarea>
+                                                <textarea class="form-control"  name="description" maxlength="250" >${detail.description}</textarea>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <button  type="reset" class="btn-secondry add-item m-r5" ><i class="fa fa-fw fa-arrow-left"></i>Cancel</button>
-                                            <button type="submit" onclick="setSellDate()" class="btn">Add</button>
-                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <a class="btn-secondry add-item m-r5" href="subjectDetail?sid=${detail.subjectId}" > <i class="fa fa-fw fa-arrow-left"> </i></a>
+                                        <button type="submit" onclick="setSellDate()" class="btn">Submit</button>
                                     </div>
                                 </form>
                             </div>

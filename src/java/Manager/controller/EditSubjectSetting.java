@@ -4,7 +4,6 @@
  */
 package Manager.controller;
 
-import Admin.controller.SettingSubject;
 import dal.AdminDAO;
 import dal.ManagerDAO;
 import java.io.IOException;
@@ -26,8 +25,8 @@ import model.User;
  *
  * @author Nết
  */
-@WebServlet(name = "SubjectDetail", urlPatterns = {"/subjectDetail"})
-public class SubjectDetail extends HttpServlet {
+@WebServlet(name = "EditSubjectSetting", urlPatterns = {"/editSubjectSetting"})
+public class EditSubjectSetting extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +45,10 @@ public class SubjectDetail extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SubjectDetail</title>");
+            out.println("<title>Servlet EditSubjectSetting</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SubjectDetail at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditSubjectSetting at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +56,7 @@ public class SubjectDetail extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.s
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -69,15 +68,11 @@ public class SubjectDetail extends HttpServlet {
             throws ServletException, IOException {
         String sid = request.getParameter("sid");
         int id = Integer.parseInt(sid);
-        AdminDAO dao = new AdminDAO();
-        ManagerDAO Sdao = new ManagerDAO();
-        List<SubjectSetting> listC = Sdao.getChapterbySubject(id);
-        List<SubjectSetting> listD = Sdao.getDimensionbySubject(id);
-        Subject s = dao.getSubjectbyId(id);
+        ManagerDAO Mdao = new ManagerDAO();
+        SubjectSetting s = Mdao.getSubjectSeting(id);
         request.setAttribute("detail", s);
-        request.setAttribute("listC", listC);
-        request.setAttribute("listD", listD);
-        request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
+        request.getRequestDispatcher("edit-subject-setting.jsp").forward(request, response);
+
     }
 
     /**
@@ -93,32 +88,33 @@ public class SubjectDetail extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
-        int id = u.getUserId();
+        int uid = u.getUserId();
         String sbid = request.getParameter("sid");
+        String settingId = request.getParameter("settingId");
         String name = request.getParameter("name");
         String dimension = request.getParameter("type");
         String displayOrder = request.getParameter("displayOrder");
         String action = request.getParameter("on");
         String description = request.getParameter("description");
+        Date uDate = new Date();
+        Timestamp timestamp = new Timestamp(uDate.getTime());
+        ManagerDAO Mdao = new ManagerDAO();
         boolean status = "on".equals(action);
         int order = Integer.parseInt(displayOrder);
         int sid = Integer.parseInt(sbid);
-        Date uDate = new Date();
-        Timestamp timestamp = new Timestamp(uDate.getTime());
+        int id = Integer.parseInt(settingId);
         AdminDAO dao = new AdminDAO();
-        ManagerDAO Mdao = new ManagerDAO();
-        SubjectSetting ss = new SubjectSetting(sid, dimension, name, description, order, status, timestamp, id, timestamp, id);
-
-        SubjectSetting scheck = Mdao.checkSettingNameinGroup(sid, name, dimension);
+        SubjectSetting ss = new SubjectSetting(id, sid, dimension, name, description, order, status, timestamp, uid);
+        SubjectSetting scheck = Mdao.checkSettingEditNameinGroup(id, sid, name, dimension);
         if (scheck == null) {
-            Mdao.addSubjectSetting(ss);
+            Mdao.editDimension(ss);
             List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
             List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
             Subject s = dao.getSubjectbyId(sid);
             request.setAttribute("detail", s);
             request.setAttribute("listC", listC);
             request.setAttribute("listD", listD);
-            request.setAttribute("successMessage", "Add success");
+            request.setAttribute("successMessage", "Edit success");
             request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
         } else {
             List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);

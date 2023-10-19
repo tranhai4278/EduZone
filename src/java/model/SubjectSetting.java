@@ -39,6 +39,31 @@ public class SubjectSetting {
         this.updateBy = updateBy;
     }
 
+    public SubjectSetting(int subjectId, String settingType, String settingName, String description, int displayOrder, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.subjectId = subjectId;
+        this.settingType = settingType;
+        this.settingName = settingName;
+        this.description = description;
+        this.displayOrder = displayOrder;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
+    public SubjectSetting(int settingId, int subjectId, String settingType, String settingName, String description, int displayOrder, boolean status, Date updateAt, int updateBy) {
+        this.settingId = settingId;
+        this.subjectId = subjectId;
+        this.settingType = settingType;
+        this.settingName = settingName;
+        this.description = description;
+        this.displayOrder = displayOrder;
+        this.status = status;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
     public int getSettingId() {
         return settingId;
     }

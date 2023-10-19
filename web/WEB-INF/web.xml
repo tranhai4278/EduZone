@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
@@ -126,34 +125,6 @@
         <servlet-class>Admin.controller.AddSubjectController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ClassStudentListServlet</servlet-name>
-        <servlet-class>controller.classStudentListServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClassListServlet</servlet-name>
-        <servlet-class>controller.classListServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClassDetailServlet</servlet-name>
-        <servlet-class>controller.classDetailServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FilterClassServlet</servlet-name>
-        <servlet-class>controller.filterClassServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateClassServlet</servlet-name>
-        <servlet-class>controller.updateClassSevlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchClassServlet</servlet-name>
-        <servlet-class>controller.searchClassesServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>NewClassServlet</servlet-name>
-        <servlet-class>controller.newClassServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
@@ -184,14 +155,6 @@
     <servlet-mapping>
         <servlet-name>SettingSubject</servlet-name>
         <url-pattern>/settingSubject</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SubjectListController</servlet-name>
-        <url-pattern>/SubjectList</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SubjectDetailController</servlet-name>
-        <url-pattern>/SubjectDetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
@@ -238,34 +201,6 @@
         <url-pattern>/userEdit</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ClassStudentListServlet</servlet-name>
-        <url-pattern>/classstudentlist</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ClassListServlet</servlet-name>
-        <url-pattern>/classlist</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ClassDetailServlet</servlet-name>
-        <url-pattern>/classdetail</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FilterClassServlet</servlet-name>
-        <url-pattern>/filterclass</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateClassServlet</servlet-name>
-        <url-pattern>/updateclass</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchClassServlet</servlet-name>
-        <url-pattern>/searchclass</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewClassServlet</servlet-name>
-        <url-pattern>/newclass</url-pattern>
-        </servlet-mapping>
-        <servlet-mapping>
         <servlet-name>SubjectList</servlet-name>
         <url-pattern>/subjectList</url-pattern>
     </servlet-mapping>

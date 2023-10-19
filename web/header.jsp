@@ -163,6 +163,7 @@
                                     <li><a href="newclass">Create A New Class</a></li>
                                 </ul>
                             </li>
+                            </c:if>
                     </ul>
                     <div class="nav-social-link">
                         <a href="javascript:;"><i class="fa fa-google-plus"></i></a>
@@ -207,4 +208,6 @@
         });
     });
 </script>
-<script src="assets/js/autocomplete.js"></script>
+<script src="assets/js/autocomplete.js">
+    
+</script>

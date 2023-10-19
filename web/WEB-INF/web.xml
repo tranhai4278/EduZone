@@ -160,6 +160,10 @@
         <servlet-name>NewClassServlet</servlet-name>
         <servlet-class>controller.newClassServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <servlet-class>controller.classSearchStudentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -261,8 +265,13 @@
         <url-pattern>/newclass</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
         <servlet-name>QuestionsListController</servlet-name>
         <url-pattern>/QuestionsList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

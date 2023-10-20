@@ -21,10 +21,12 @@ public class authen extends HttpServlet {
         MyUtil util = new MyUtil();
         String captcha = util.getCaptcha();
 
+
         HttpSession session = request.getSession();
         session.setAttribute("captcha_rgt", captcha);
 
         User user = (User) session.getAttribute("user_rgt");
+
 
         String reciveEmail = user.getEmail();
         String title = "recive Email";
@@ -45,6 +47,7 @@ public class authen extends HttpServlet {
         //Get session of OTP code, user account
         HttpSession session = request.getSession();
         String code_be = session.getAttribute("captcha_rgt").toString();
+
         User user = (User) session.getAttribute("user_rgt");
         //check confim OTP, notification error exists
         if (code_fe.trim().equals(code_be.trim())) {
@@ -56,4 +59,5 @@ public class authen extends HttpServlet {
             request.getRequestDispatcher("checkauthen.jsp").forward(request, response);
         }
     }
+
 }

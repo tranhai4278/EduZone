@@ -129,7 +129,7 @@
         <servlet-name>QuestionsListController</servlet-name>
         <servlet-class>Manager.controller.QuestionsListController</servlet-class>
     </servlet>
-
+    <servlet>
         <servlet-name>LessonListController</servlet-name>
         <servlet-class>Manager.controller.LessonListController</servlet-class>
     </servlet>

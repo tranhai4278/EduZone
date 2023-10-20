@@ -9,6 +9,49 @@ import model.Subject;
 import model.User;
 
 public class SubjectDAO extends MySqlConnection {
+    public ArrayList<Subject> getSubjectsByManagerId(int managerId) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        String sql = "SELECT * FROM subject WHERE manager_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, managerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int subjectId = resultSet.getInt(1);
+                String subjectName = resultSet.getString(3);
+                String subjectCode = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                boolean status = resultSet.getBoolean(6);
+                Date createAt = resultSet.getDate(7);
+                int createBy = resultSet.getInt(8);
+                Date updateAt = resultSet.getDate(9);
+                int updateBy = resultSet.getInt(10);
+
+                Subject subject = new Subject(
+                        subjectId,
+                        managerId,
+                        subjectName,
+                        subjectCode,
+                        description,
+                        status,
+                        createAt,
+                        createBy,
+                        updateAt,
+                        updateBy
+                );
+
+                subjects.add(subject);
+            }
+
+            return subjects;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public ArrayList getAllSubjects() {
         ArrayList<Subject> list = new ArrayList<>();

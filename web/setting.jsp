@@ -78,25 +78,20 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="">
-                                            <div class="">
-                                                <div class="row">
+                                        <div class="row">
 
-                                                    <div class="col-sm-5">
-                                                        <a class="btn" href="add-setting.jsp">
-                                                            Add a new setting   
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <form id="subject-search-form" action="settingSubject" method="POST">
-                                                            <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
-                                                            <input type="submit" style="display: none;">
-                                                        </form>
-                                                    </div>
-                                                </div>
+                                            <div class="col-sm-5">
+                                                <a class="btn" href="add-setting.jsp">
+                                                    Add a new setting   
+                                                </a>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <form id="subject-search-form" action="settingSubject" method="POST">
+                                                    <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
+                                                    <input type="submit" style="display: none;">
+                                                </form>
                                             </div>
                                         </div>
-
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
@@ -150,11 +145,12 @@
                                         </section>
                                     </div>
                                 </div>
-                            </div> 
+                                <!-- Your Profile Views Chart END-->
+                            </div>
                         </div>
-                        <!-- Your Profile Views Chart END-->
                     </div>
                 </div>
+            </div>
         </main>
         <div class="ttr-overlay"></div>
         <!-- External JavaScripts -->

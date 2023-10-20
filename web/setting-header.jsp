@@ -74,11 +74,6 @@
                 <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
                     <div class="ttr-header-submenu">
-                        <ul>
-                            <!--                            <li><a href="../courses.html">Subject</a></li>-->
-                            <!--                                    <li><a href="../event.html">New Event</a></li>
-                                                                <li><a href="../membership.html">Membership</a></li>-->
-                        </ul>
                     </div>
                 </li>
             </ul>
@@ -87,34 +82,6 @@
         <div class="ttr-header-right ttr-with-seperator">
             <!-- header right menu start -->
             <ul class="ttr-header-navigation">
-                <li>
-                    <a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-search"></i></a>
-                </li>
-                <li>
-                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
-                    <div class="ttr-header-submenu noti-menu">
-                        <div class="ttr-notify-header">
-                            <span class="ttr-notify-text-top">9 New</span>
-                            <span class="ttr-notify-text">User Notifications</span>
-                        </div>
-                        <div class="noti-box-list">
-                            <ul>
-                                <li>
-                                    <span class="notification-icon dashbg-gray">
-                                        <i class="fa fa-check"></i>
-                                    </span>
-                                    <span class="notification-text">
-                                        <span>Sneha Jogi</span> sent you a message.
-                                    </span>
-                                    <span class="notification-time">
-                                        <a href="#" class="fa fa-close"></a>
-                                        <span> 02:14</span>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
                 <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
                     <div class="ttr-header-submenu">
@@ -129,19 +96,7 @@
             </ul>
             <!-- header right menu end -->
         </div>
-        <!--header search panel start -->
-        <!--                <div class="ttr-search-bar">
-                            <form class="ttr-search-form">
-                                <div class="ttr-search-input-wrapper">
-                                    <input type="text" name="qq" placeholder="search something..." class="ttr-search-input">
-                                    <button type="submit" name="search" class="ttr-search-submit"><i class="ti-arrow-right"></i></button>
-                                </div>
-                                <span class="ttr-search-close ttr-search-toggle">
-                                    <i class="ti-close"></i>
-                                </span>
-                            </form>
-                        </div>-->
-        <!--header search panel end -->
+
     </div>
 </header>
 <!-- header end -->
@@ -178,36 +133,6 @@
                     </a>
                 </li>
                 <li class="ttr-seperate"></li>     
-                <!--                        <li>
-                                            <a href="index.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-home"></i></span>
-                                                <span class="ttr-label">Dashborad</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="courses.html" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-book"></i></span>
-                                                <span class="ttr-label">Courses</span>
-                                            </a>
-                                        </li>-->
-                <!--                        <li>
-                                            <a href="#" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-email"></i></span>
-                                                <span class="ttr-label"></span>
-                                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="mailbox.html" class="ttr-material-button"><span class="ttr-label">Mail Box</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="mailbox-compose.html" class="ttr-material-button"><span class="ttr-label">Compose</span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="mailbox-read.html" class="ttr-material-button"><span class="ttr-label">Mail Read</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>-->
                 <c:if test="${sessionScope.user.roleId == 1}">
                     <li>
                         <a href="userList" class="ttr-material-button">
@@ -260,13 +185,31 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="subjectList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-agenda"></i></span>
                             <span class="ttr-label">Subject Setting</span>
                         </a>
                     </li>
 
                 </c:if>
+                    
+                       <c:if test="${sessionScope.user.roleId == 2}">
+                    <li>
+                        <a href="classlist" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">Class List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newclass" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Create a New Class</span>
+                        </a>
+                    </li>
+                    
+                </c:if>
+                    
+
 
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">

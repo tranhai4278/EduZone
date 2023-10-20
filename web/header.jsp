@@ -134,14 +134,12 @@
                             </ul>
                         </li>
                         </c:if>
-                        <c:if test="${sessionScope.user != null}">
-                            <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
+                        
+                           <c:if test="${sessionScope.user.roleId == 2}">
+                            <li class="nav-dashboard"><a href="javascript:;">Manage Class <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
-                                    <li><a href="profile">My Profile</a></li>
-                                    <li><a href="changepassword">Change Password</a></li>
-                                    <li><c:if test="${sessionScope.user!=null}">
-                                            <a href="logout">Logout</a>
-                                        </c:if></li>
+                                    <li><a href="classlist">Class List</a></li>
+                                    <li><a href="newclass">New Class</a></li>
                                 </ul>
                             </li>
                         </c:if>

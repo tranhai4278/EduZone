@@ -92,20 +92,6 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-5">
-                                                <a class="btn" href="add-setting.jsp">
-                                                    Add a new setting   
-                                                </a>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <form id="subject-search-form" action="settingSubject" method="POST">
-                                                    <input name="txt" type="text" id="subject-input-box" placeholder="Search setting" class="form-control" autocomplete="off">
-                                                    <input type="submit" style="display: none;">
-                                                </form>
-                                            </div>
-                                        </div>
-
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>

@@ -160,6 +160,10 @@
         <servlet-name>classSearchStudentServlet</servlet-name>
         <servlet-class>controller.classSearchStudentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OnlineLearning</servlet-name>
+        <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -263,6 +267,10 @@
     <servlet-mapping>
         <servlet-name>classSearchStudentServlet</servlet-name>
         <url-pattern>/classsearchstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OnlineLearning</servlet-name>
+        <url-pattern>/onlineLearning</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

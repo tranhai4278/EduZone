@@ -85,7 +85,7 @@
                                                     <div class="col-sm-5">
                                                         <a class="btn" href="addSubject.jsp">
                                                             Add a new subject   
-                                                        </a></td>
+                                                        </a>
                                                     </div>
                                                     <div class="col-sm-5">
                                                         <form id="subject-search-form" action="settingSubject" method="POST">

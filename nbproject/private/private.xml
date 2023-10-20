@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subjectList.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectList.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/SubjectSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/EditSubjectSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subjectDetail.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

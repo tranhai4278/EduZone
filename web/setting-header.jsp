@@ -74,11 +74,6 @@
                 <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
                     <div class="ttr-header-submenu">
-                        <ul>
-                            <!--                            <li><a href="../courses.html">Subject</a></li>-->
-                            <!--                                    <li><a href="../event.html">New Event</a></li>
-                                                                <li><a href="../membership.html">Membership</a></li>-->
-                        </ul>
                     </div>
                 </li>
             </ul>
@@ -87,34 +82,6 @@
         <div class="ttr-header-right ttr-with-seperator">
             <!-- header right menu start -->
             <ul class="ttr-header-navigation">
-                <li>
-                    <a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-search"></i></a>
-                </li>
-                <li>
-                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
-                    <div class="ttr-header-submenu noti-menu">
-                        <div class="ttr-notify-header">
-                            <span class="ttr-notify-text-top">9 New</span>
-                            <span class="ttr-notify-text">User Notifications</span>
-                        </div>
-                        <div class="noti-box-list">
-                            <ul>
-                                <li>
-                                    <span class="notification-icon dashbg-gray">
-                                        <i class="fa fa-check"></i>
-                                    </span>
-                                    <span class="notification-text">
-                                        <span>Sneha Jogi</span> sent you a message.
-                                    </span>
-                                    <span class="notification-time">
-                                        <a href="#" class="fa fa-close"></a>
-                                        <span> 02:14</span>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
                 <li>
                     <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
                     <div class="ttr-header-submenu">

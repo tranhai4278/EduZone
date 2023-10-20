@@ -163,8 +163,8 @@
         <!-- sidebar menu start -->
         <nav class="ttr-sidebar-navi">
             <ul>
-                
-               
+
+
                 <li>
                     <a href="profile" class="ttr-material-button">
                         <span class="ttr-icon"><i class="ti-face-smile"></i></span>
@@ -228,7 +228,7 @@
                         </a>
                     </li>
                 </c:if>
-                    <c:if test="${sessionScope.user.roleId == 2}">
+                <c:if test="${sessionScope.user.roleId == 2}">
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
@@ -236,9 +236,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="quizlist" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                             <span class="ttr-label">Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newquiz" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">New Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newquiz" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz Detail</span>
                         </a>
                     </li>
                     <li>
@@ -253,7 +265,7 @@
                             <span class="ttr-label">Subject Setting</span>
                         </a>
                     </li>
-                    
+
                 </c:if>
 
                 <!--                        <li>

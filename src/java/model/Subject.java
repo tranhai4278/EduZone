@@ -88,6 +88,10 @@ public class Subject {
         this.u = u;
     }
 
+    public Subject(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
     public String getManagerName() {
         return managerName;
     }

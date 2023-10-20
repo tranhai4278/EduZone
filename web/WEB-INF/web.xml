@@ -11,11 +11,9 @@
         <url-pattern>/setting</url-pattern>
         <url-pattern>/userDetail</url-pattern>
         <url-pattern>/userList</url-pattern>
-
         <!-- Add other URL patterns for the admin role here -->
     </filter-mapping>
     <!-- END Authentication Filter for Admin Page -->
-    
     <!-- START Authentication Filter for Manager Page -->
     <filter>
         <filter-name>ManagerAuthenticationFilter</filter-name>
@@ -30,7 +28,6 @@
         <!-- Add other URL patterns for the manager role here -->
     </filter-mapping>
     <!-- END Authentication Filter for Manager Page -->
-    
     <!-- START Authentication Filter for Trainer Page -->
     <filter>
         <filter-name>TrainerAuthenticationFilter</filter-name>
@@ -38,11 +35,10 @@
     </filter>
     <filter-mapping>
         <filter-name>TrainerAuthenticationFilter</filter-name>
-        <url-pattern></url-pattern>
+        <url-pattern/>
         <!-- Add URL patterns for the trainer role here -->
     </filter-mapping>
     <!-- END Authentication Filter for Trainer Page -->
-
     <!-- START Authentication Filter for Normal Page -->
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
@@ -132,6 +128,18 @@
         <welcome-file>home</welcome-file>
         <!-- Specify the URL pattern of the default page -->
     </welcome-file-list>
+    <servlet>
+        <servlet-name>QuizList</servlet-name>
+        <servlet-class>Manager.controller.QuizList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewQuiz</servlet-name>
+        <servlet-class>Manager.controller.NewQuiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizDetail</servlet-name>
+        <servlet-class>Manager.controller.QuizDetail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -203,6 +211,18 @@
     <servlet-mapping>
         <servlet-name>SubjectList</servlet-name>
         <url-pattern>/subjectList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizList</servlet-name>
+        <url-pattern>/quizlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewQuiz</servlet-name>
+        <url-pattern>/newquiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizDetail</servlet-name>
+        <url-pattern>/quizdetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

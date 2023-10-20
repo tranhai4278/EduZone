@@ -36,6 +36,10 @@ public class SubjectSetting {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+    
+        public SubjectSetting(String settingName) {
+        this.settingName = settingName;
+    }
 
     public int getSettingId() {
         return settingId;

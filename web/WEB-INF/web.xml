@@ -129,7 +129,6 @@
         <!-- Specify the URL pattern of the default page -->
     </welcome-file-list>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>QuizList</servlet-name>
         <servlet-class>Manager.controller.QuizList</servlet-class>
     </servlet>
@@ -140,7 +139,6 @@
     <servlet>
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
-=======
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>
     </servlet>
@@ -175,7 +173,6 @@
     <servlet>
         <servlet-name>OnlineLearning</servlet-name>
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
->>>>>>> 93a96b2e86cda6ed287555764c713b76e1c7efea
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -250,7 +247,6 @@
         <url-pattern>/subjectList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>QuizList</servlet-name>
         <url-pattern>/quizlist</url-pattern>
     </servlet-mapping>
@@ -261,7 +257,6 @@
     <servlet-mapping>
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
-=======
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
     </servlet-mapping>
@@ -296,7 +291,6 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
->>>>>>> 93a96b2e86cda6ed287555764c713b76e1c7efea
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -121,11 +121,11 @@ public class newClassServlet extends HttpServlet {
         if (classAdded) {
             // Class added successfully
             // You may want to redirect or show a success message
-            response.sendRedirect("success.jsp");
+            response.sendRedirect("classlist");
         } else {
             // Class addition failed
             // You may want to redirect or show an error message
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("newclass");
         }
     }
 

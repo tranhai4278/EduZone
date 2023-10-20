@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="col-12">
                                             <button  type="reset" class="btn-secondry add-item m-r5" ><i class="fa fa-fw fa-arrow-left"></i>Cancel</button>
-                                            <button type="submit" onclick="setSellDate()" class="btn">Save changes</button>
+                                            <button type="submit" onclick="setSellDate()" class="btn">Add</button>
                                         </div>
                                     </div>
                                 </form>

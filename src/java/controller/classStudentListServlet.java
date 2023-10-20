@@ -73,6 +73,7 @@ public class classStudentListServlet extends HttpServlet {
             System.out.println(c.getClassID() + ", " + c.getTraineeID());
         }
 
+        request.setAttribute("Classcode", ID);
         request.setAttribute("users", users);
         request.setAttribute("trainee", data);
 

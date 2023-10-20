@@ -16,6 +16,7 @@ public class Subject {
     private Date updateAt;
     private int updateBy;
     private User u;
+    private SubjectSetting ss;
 
     public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy, User u) {
         this.subjectId = subjectId;
@@ -88,10 +89,37 @@ public class Subject {
         this.u = u;
     }
 
+<<<<<<< HEAD
     public Subject(String subjectName) {
         this.subjectName = subjectName;
     }
 
+=======
+    public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy,  SubjectSetting ss) {
+        this.subjectId = subjectId;
+        this.managerId = managerId;
+        this.managerName = managerName;
+        this.subjectName = subjectName;
+        this.subjectCode = subjectCode;
+        this.description = description;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.ss = ss;
+    }
+
+    public SubjectSetting getSs() {
+        return ss;
+    }
+
+    public void setSs(SubjectSetting ss) {
+        this.ss = ss;
+    }
+    
+
+>>>>>>> 93a96b2e86cda6ed287555764c713b76e1c7efea
     public String getManagerName() {
         return managerName;
     }

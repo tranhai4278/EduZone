@@ -89,12 +89,10 @@ public class Subject {
         this.u = u;
     }
 
-<<<<<<< HEAD
     public Subject(String subjectName) {
         this.subjectName = subjectName;
     }
 
-=======
     public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy,  SubjectSetting ss) {
         this.subjectId = subjectId;
         this.managerId = managerId;
@@ -119,7 +117,6 @@ public class Subject {
     }
     
 
->>>>>>> 93a96b2e86cda6ed287555764c713b76e1c7efea
     public String getManagerName() {
         return managerName;
     }

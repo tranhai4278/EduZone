@@ -41,6 +41,12 @@
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/autocomplete-subject-only.js</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/QuizDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Subject.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/QuizList.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Quiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
         </group>
     </open-files>
 </project-private>

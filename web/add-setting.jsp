@@ -96,10 +96,22 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Group ID</label>
-                                            <div>
-                                                <input class="form-control" type="text"  value="${gid}" readonly="" name="gid">
-                                            </div>
+                                            <label class="col-form-label">Group</label>
+                                            <select
+                                                name="gid"
+                                                id="group"
+                                                required
+                                                >
+                                                    <option value="1">
+                                                        Role
+                                                    </option>
+                                                    <option value="2">
+                                                        Email Domain
+                                                    </option>
+                                                    <option value="3">
+                                                        Semester
+                                                    </option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Name</label>

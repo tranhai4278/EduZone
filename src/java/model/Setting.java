@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.Date;
 
-/**
- *
- * @author Nết
- */
 public class Setting {
     private int settingId;
     private int settingGroup;
@@ -48,8 +40,6 @@ public class Setting {
         this.status = status;
         this.displayOrder = displayOrder;
         this.note = note;
-        this.createAt = createAt;
-        this.createBy = createBy;
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }

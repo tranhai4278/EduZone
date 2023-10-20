@@ -78,28 +78,6 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-
-                                        <!--                                        <div class="dropdown all-msg-toolbar">
-                                                                                    <select name="subject" class="input-select">
-                                                                                        <option>All Status</option>
-                                                                                        <option value="0">Inactive</option>
-                                                                                        <option value="1">Active</option>
-                                                                                    </select>
-                                                                                </div> 
-                                                                                <div class="mail-search-bar">
-                                                                                    <input type="text" class="form-control" placeholder="Search"/>
-                                                                                </div>-->
-
-                                        <!--                                        <div class="dropdown all-msg-toolbar">
-                                                                                    <select name="subject" class="input-select">
-                                                                                        <option>All Status</option>
-                                                                                        <option value="0">Inactive</option>
-                                                                                        <option value="1">Active</option>
-                                                                                    </select>
-                                                                                </div> 
-                                                                                <div class="mail-search-bar">
-                                                                                    <input type="text" class="form-control" placeholder="Search"/>
-                                                                                </div>-->
                                         <div class="">
                                             <div class="">
                                                 <div class="row">
@@ -129,10 +107,10 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
+                                          
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
-                                                        <th scope="col">Subject Manager ID </th>
+                                                        <th scope="col">Manager </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -140,12 +118,10 @@
                                                 <tbody>
                                                     <c:forEach var="s" items="${listS}" >
                                                         <tr>
-                                                            <td>
-                                                                ${s.subjectId}
-                                                            </td>
+                                            
                                                             <td>${s.subjectName}</td>
                                                             <td>${s.subjectCode}</td>
-                                                            <td>${s.managerId}</td>
+                                                            <td>${s.u.fullName}</td>
 
                                                             <td>
                                                                 <div class="form-check form-switch">

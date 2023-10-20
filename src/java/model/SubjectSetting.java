@@ -1,43 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.Date;
+
 
 /**
  *
  * @author Nết
  */
-public class Subject_setting {
+public class SubjectSetting {
+
+
     private int settingId;
     private int subjectId;
-    private int settingGroup;
+    private int settingType;
     private String settingName;
-    private int settingValue;
-    private int displayOrder;
     private String description;
-    private Date createBy;
-    private int createAt;
+    private int displayOrder;
+    private Date createAt;
+    private int createBy;
     private Date updateAt;
     private int updateBy;
 
-    public Subject_setting() {
+    public SubjectSetting() {
     }
 
-    public Subject_setting(int settingId, int subjectId, int settingGroup, String settingName, int settingValue, int displayOrder, String description, Date createBy, int createAt, Date updateAt, int updateBy) {
+    public SubjectSetting(int settingId, int subjectId, int settingType, String settingName, String description, int displayOrder, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.settingId = settingId;
         this.subjectId = subjectId;
-        this.settingGroup = settingGroup;
+        this.settingType = settingType;
         this.settingName = settingName;
-        this.settingValue = settingValue;
-        this.displayOrder = displayOrder;
         this.description = description;
-        this.createBy = createBy;
+        this.displayOrder = displayOrder;
         this.createAt = createAt;
+        this.createBy = createBy;
         this.updateAt = updateAt;
         this.updateBy = updateBy;
+    }
+    
+        public SubjectSetting(String settingName) {
+        this.settingName = settingName;
     }
 
     public int getSettingId() {
@@ -56,12 +57,12 @@ public class Subject_setting {
         this.subjectId = subjectId;
     }
 
-    public int getSettingGroup() {
-        return settingGroup;
+    public int getSettingType() {
+        return settingType;
     }
 
-    public void setSettingGroup(int settingGroup) {
-        this.settingGroup = settingGroup;
+    public void setSettingType(int settingType) {
+        this.settingType = settingType;
     }
 
     public String getSettingName() {
@@ -72,12 +73,12 @@ public class Subject_setting {
         this.settingName = settingName;
     }
 
-    public int getSettingValue() {
-        return settingValue;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSettingValue(int settingValue) {
-        this.settingValue = settingValue;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getDisplayOrder() {
@@ -88,28 +89,20 @@ public class Subject_setting {
         this.displayOrder = displayOrder;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(Date createBy) {
-        this.createBy = createBy;
-    }
-
-    public int getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(int createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public int getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(int createBy) {
+        this.createBy = createBy;
     }
 
     public Date getUpdateAt() {

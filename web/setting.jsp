@@ -78,32 +78,39 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-<!--                                        <div class="dropdown all-msg-toolbar">
-                                            <select name="subject" class="input-select">
-                                                <option>All Status</option>
-                                                <option value="0">Inactive</option>
-                                                <option value="1">Active</option>
-                                            </select>
-                                        </div> 
-                                        <div class="mail-search-bar">
-                                            <input type="text" class="form-control" placeholder="Search"/>
-                                        </div>-->
-<!--
+                                        <div class="">
+                                            <div class="">
+                                                <div class="row">
+
+                                                    <div class="col-sm-5">
+                                                        <a class="btn" href="add-setting.jsp">
+                                                            Add a new setting   
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <form id="subject-search-form" action="settingSubject" method="POST">
+                                                            <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
+                                                            <input type="submit" style="display: none;">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
-                                        </div>-->
+                                        </div>
                                     </div>
                                     <div class="mail-box-list">
                                         <section id="role">
-                                            Role Setting
-                                            <a href="addsetting?gid=1"><i class="fa fa-plus"></i>Add New</a>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Description</th>
                                                         <th scope="col">Display Order </th>
+                                                        <th scope="col">Type </th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
@@ -114,84 +121,23 @@
                                                             <td>${s.settingName}</td>
                                                             <td>${s.note}</td>
                                                             <td>${s.displayOrder}</td>
+                                                            <td> <c:choose>
+                                                                    <c:when test="${s.settingGroup == 1}">
+                                                                        Role
+                                                                    </c:when>
+                                                                    <c:when test="${s.settingGroup == 2}">
+                                                                        Email Domain
+                                                                    </c:when>
+                                                                    <c:when test="${s.settingGroup == 3}">
+                                                                        Semester
+                                                                    </c:when>
+                                                                </c:choose>
+                                                            </td>
+
                                                             <td>
                                                                 <div class="form-check form-switch">
                                                                     <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
                                                                 </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
-                                                                    <i> Edit</i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </section>
-                                        
-                                    </div>
-                                    <div class="mail-box-list">
-                                        <section id="email">
-                                            Email Domain
-                                            <a href="addsetting?gid=2"><i class="fa fa-plus"></i>Add New</a>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Description</th>
-                                                        <th scope="col">Display Order </th>
-                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="s" items="${listE}" >
-                                                        <tr>
-                                                            <td>${s.settingName}</td>
-                                                            <td>${s.note}</td>
-                                                            <td>${s.displayOrder}</td>
-                                                            <td>
-                                                                <div class="form-check form-switch">
-                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
-                                                                    <i> Edit</i>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                        </section>
-                                    </div>
-                                    <div class="mail-box-list">
-                                        <section id="semester">
-                                            Semester
-                                            <a href="addsetting?gid=3"><i class="fa fa-plus"></i>Add New</a>
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Description</th>
-                                                        <th scope="col">Display Order </th>
-                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="s" items="${listS}" >
-                                                        <tr>
-                                                            <td>${s.settingName}</td>
-                                                            <td>${s.note}</td>
-                                                            <td>${s.displayOrder}</td>
-                                                            <td>
-                                                                <div class="form-check form-switch">
-                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                                </div>
-                                                            </td>
                                                             <td>
                                                                 <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
                                                                     <i> Edit</i>
@@ -216,8 +162,9 @@
             function updateStatus(id, checkbox) {
                 let status = checkbox.checked;
                 if (confirm('Are you sure?'))
-                        window.location.href='updateStatusSetting?id='+id + '&status='+status;
-                        else checkbox.checked = !status;
+                    window.location.href = 'updateStatusSetting?id=' + id + '&status=' + status;
+                else
+                    checkbox.checked = !status;
             }
         </script>
         <script src="assets/js/jquery.min.js"></script>

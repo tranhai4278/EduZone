@@ -104,14 +104,14 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject code</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode">
+                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11">
                                             </div>
                                             <p style="color: red">${requestScope.error}</p>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject name</label>
                                             <div>
-                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname">
+                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50">
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
@@ -129,13 +129,6 @@
                                                 </c:forEach>
                                             </select>
                                         </div>
-                                            
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Image URL</label>
-                                            <div>
-                                                <input class="form-control" type="text" value="${detail.imgUrl}" name="img">
-                                            </div>
-                                        </div>
                                         <div class="form-group col-3">
                                             <label class="col-form-label">Status</label>
                                             <div class="form-check form-switch">
@@ -152,7 +145,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Subject description</label>
                                             <div>
-                                                <textarea class="form-control" name="description" >${detail.description} </textarea>
+                                                <textarea class="form-control" name="description" required maxlength="250" >${detail.description} </textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -206,7 +199,6 @@
                                                     });
                                                 }
         </script>
-
     </body>
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->

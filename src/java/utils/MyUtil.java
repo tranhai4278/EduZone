@@ -5,6 +5,8 @@
 package utils;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Authenticator;
@@ -61,9 +63,9 @@ public class MyUtil {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.mailtrap.io"); // Mailtrap SMTP server
-        properties.put("mail.smtp.port", "2525"); // Mailtrap port
-        String myAccountEmail = "69842ba7772f9c";
-        String password = "aa288898d12b0a";
+        properties.put("mail.smtp.port", "587"); // Mailtrap port
+        String myAccountEmail = "bff45630c9c041";
+        String password = "1ebf9a7e83640f";
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -96,5 +98,23 @@ public class MyUtil {
     public String extractDomain(String email) {
         return StringUtils.substringAfter(email, "@");
     }
+    
+    public static List<Integer> getRandomNumbers(List<Integer> sourceList, int count) {
+        if (count > sourceList.size()) {
+            throw new IllegalArgumentException("Số lượng số ngẫu nhiên lớn hơn kích thước danh sách ban đầu.");
+        }
 
+        List<Integer> randomNumbers = new ArrayList<>();
+        List<Integer> copyList = new ArrayList<>(sourceList); // Tạo một bản sao của danh sách ban đầu
+
+        Random random = new Random();
+
+        for (int i = 0; i < count; i++) {
+            int randomIndex = random.nextInt(copyList.size()); // Chọn một chỉ mục ngẫu nhiên
+            randomNumbers.add(copyList.get(randomIndex)); // Thêm số tại chỉ mục đó vào danh sách kết quả
+            copyList.remove(randomIndex); // Loại bỏ số đã được chọn để tránh trùng lặp
+        }
+
+        return randomNumbers;
+    }
 }

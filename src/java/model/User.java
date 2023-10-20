@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.util.Date;
 
-/**
- *
- * @author Nết
- */
 public class User {
     private int userId;
     private String password;
@@ -179,31 +171,31 @@ public class User {
         }
         return null;
     }
-    
-    public String getRoleName(){
+ 
+    public String getRoleName() {
         return roleName(getRoleId());
     }
-    
+
     public String getStatusDisplay() {
-    if (status) {
-        return "Active";
-    } else {
-        return "Inactive";
+        if (status) {
+            return "Active";
+        } else {
+            return "Inactive";
+        }
     }
-}
 
-public String getGenderDisplay() {
-    if (status) {
-        return "Female";
-    } else {
-        return "Male";
+    public String getGenderDisplay() {
+        if (!status) {
+            return "Male";
+        }else {
+            return "Female";
+        }
     }
-}
 
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", password=" + password + ", fullName=" + fullName + ", gender=" + gender + ", avatarUrl=" + avatarUrl + ", phone=" + phone + ", email=" + email + ", roleId=" + roleId + ", status=" + status + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + '}';
+    }
 
-
-
-
-
-    
+  
 }

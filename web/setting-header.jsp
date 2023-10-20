@@ -75,7 +75,7 @@
                     <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
                     <div class="ttr-header-submenu">
                         <ul>
-<!--                            <li><a href="../courses.html">Subject</a></li>-->
+                            <!--                            <li><a href="../courses.html">Subject</a></li>-->
                             <!--                                    <li><a href="../event.html">New Event</a></li>
                                                                 <li><a href="../membership.html">Membership</a></li>-->
                         </ul>
@@ -163,6 +163,21 @@
         <!-- sidebar menu start -->
         <nav class="ttr-sidebar-navi">
             <ul>
+
+
+                <li>
+                    <a href="profile" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-face-smile"></i></span>
+                        <span class="ttr-label">User Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="changepassword" class="ttr-material-button">
+                        <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
+                        <span class="ttr-label">Change Password</span>
+                    </a>
+                </li>
+                <li class="ttr-seperate"></li>     
                 <!--                        <li>
                                             <a href="index.html" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-home"></i></span>
@@ -194,26 +209,65 @@
                                             </ul>
                                         </li>-->
                 <c:if test="${sessionScope.user.roleId == 1}">
-                                        <li>
-                                            <a href="userList" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-user"></i></span>
-                                                <span class="ttr-label">User</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="settingSubject" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-book"></i></span>
-                                                <span class="ttr-label">Subject</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="setting" class="ttr-material-button">
-                                                <span class="ttr-icon"><i class="ti-settings"></i></span>
-                                                <span class="ttr-label">Setting</span>
-                                            </a>
-                                        </li>
-                                        </c:if>
-                                        
+                    <li>
+                        <a href="userList" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-user"></i></span>
+                            <span class="ttr-label">User</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settingSubject" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-book"></i></span>
+                            <span class="ttr-label">Subject</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="setting" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-settings"></i></span>
+                            <span class="ttr-label">Setting</span>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.roleId == 2}">
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">Question</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quizlist" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newquiz" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">New Quiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newquiz" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz Detail</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
+                            <span class="ttr-label">Lesson</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-agenda"></i></span>
+                            <span class="ttr-label">Subject Setting</span>
+                        </a>
+                    </li>
+
+                </c:if>
+
                 <!--                        <li>
                                             <a href="review.html" class="ttr-material-button">
                                                 <span class="ttr-icon"><i class="ti-comments"></i></span>
@@ -226,25 +280,25 @@
                                                 <span class="ttr-label">Add listing</span>
                                             </a>
                                         </li>-->
-<!--                <li>
-                    <a href="#" class="ttr-material-button">
-                        <span class="ttr-icon"><i class="ti-settings"></i></span>
-                        <span class="ttr-label">Setting List</span>
-                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
-                        </li>
-                        <li>
-                            <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
-                        </li>
-                        <li>
-                            <a href="" class="ttr-material-button"><span class="ttr-label">Setting</span></a>
-                        </li>
-                    </ul>
-                </li>-->
-                <li class="ttr-seperate"></li>
+                <!--                <li>
+                                    <a href="#" class="ttr-material-button">
+                                        <span class="ttr-icon"><i class="ti-settings"></i></span>
+                                        <span class="ttr-label">Setting List</span>
+                                        <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="userList" class="ttr-material-button"><span class="ttr-label">User Setting</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="settingSubject" class="ttr-material-button"><span class="ttr-label">Subject Setting</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="" class="ttr-material-button"><span class="ttr-label">Setting</span></a>
+                                        </li>
+                                    </ul>
+                                </li>-->     
+
             </ul>
 
         </nav>

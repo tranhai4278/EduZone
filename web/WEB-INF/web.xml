@@ -168,6 +168,10 @@
         <servlet-name>QuestionDetailController</servlet-name>
         <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddQuestionController</servlet-name>
+        <servlet-class>Manager.controller.AddQuestionController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -279,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>QuestionDetailController</servlet-name>
         <url-pattern>/QuestionDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestionController</servlet-name>
+        <url-pattern>/AddQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

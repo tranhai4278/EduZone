@@ -72,7 +72,7 @@
                                         <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                         </div>
                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                            <a class="btn" href="#">Add new question</a>
+                                            <a class="btn" href="QuestionDetail">Add new question</a>
                                         </div>
                                     </div>
                                 </div>

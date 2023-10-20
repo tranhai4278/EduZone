@@ -133,6 +133,16 @@
         <!-- Specify the URL pattern of the default page -->
     </welcome-file-list>
     <servlet>
+        <servlet-name>QuizList</servlet-name>
+        <servlet-class>Manager.controller.QuizList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewQuiz</servlet-name>
+        <servlet-class>Manager.controller.NewQuiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizDetail</servlet-name>
+        <servlet-class>Manager.controller.QuizDetail</servlet-class>
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>
     </servlet>
@@ -252,6 +262,16 @@
         <url-pattern>/subjectList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>QuizList</servlet-name>
+        <url-pattern>/quizlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewQuiz</servlet-name>
+        <url-pattern>/newquiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizDetail</servlet-name>
+        <url-pattern>/quizdetail</url-pattern>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
     </servlet-mapping>

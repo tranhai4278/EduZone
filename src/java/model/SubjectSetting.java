@@ -38,6 +38,10 @@ public class SubjectSetting {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
+    
+        public SubjectSetting(String settingName) {
+        this.settingName = settingName;
+    }
 
     public SubjectSetting(int subjectId, String settingType, String settingName, String description, int displayOrder, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.subjectId = subjectId;

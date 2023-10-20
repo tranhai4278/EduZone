@@ -4,7 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group>
-<<<<<<< HEAD
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
@@ -129,7 +128,6 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/lessonList.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
-=======
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/contact.js</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.scroller.js</file>
@@ -188,7 +186,6 @@
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
->>>>>>> 3f1b71ffb02a2e065286210036e0406509225f6e
         </group>
     </open-files>
 </project-private>

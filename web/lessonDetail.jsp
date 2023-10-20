@@ -5,8 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="model.Lesson" %>
+<c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
+
 <html lang="en">
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
@@ -67,77 +69,67 @@
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
             <div class="container-fluid">
-                
                 <div class="row">
                     <!-- Your Profile Views Chart -->
+                    <c:set var="lesson" value="${lesson}"/>
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="wc-title">
                                 <h4>Lesson Details</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30">
+                                <form class="edit-profile m-b30" action="lessonEdit" method="post" >
+                                    <input class="form-control" type="text" name="id"  value="${lesson.lessonId}" hidden>
                                     <div class="row">
-                                        
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject</label>
                                             <div>
-                                                <select name="subject">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>SWT301-Software Testing</option>
-                                                </select>
+                                                <input class="form-control" type="text" name="subject"  value="${lessonDAO.getSubjectName(lesson.lessonId)}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Chapter</label>
                                             <div>
-                                                <select name="chapter">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>Chap 1</option>
-                                                </select> 
+                                                <input class="form-control" type="text" name="chapter"  value="${lessonDAO.getChapterName(lesson.lessonId)}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Lesson type</label>
                                             <div>
-                                                <select name="type">
-                                                    <option value="Video" ${user.getRoleId() == 1 ? "selected" : ""}>Video</option>
-                                                    <option value="Quiz" ${user.getRoleId() == 1 ? "selected" : ""}>Quiz</option>
-                                                    <option value="Assignment" ${user.getRoleId() == 1 ? "selected" : ""}>Assignment</option>
-                                                </select>
+                                                <input class="form-control" type="text" name="type"  value="${lesson.getLessonType()}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Status</label>
                                             <div>
                                                 <select name="chapter">
-                                                    <option value="0" ${user.isStatus() == false ? "selected" : ""}>Unpublished</option>
-                                                    <option value="1" ${user.isStatus() == true ? "selected" : ""}>Published</option>
+                                                    <option value="0" ${lesson.isStatus() == false ? "selected" : ""}>Unpublished</option>
+                                                    <option value="1" ${lesson.isStatus() == true ? "selected" : ""}>Published</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Lesson title</label>
                                             <div>
-                                                <input class="form-control" type="text" name="title" value="">
+                                                <input class="form-control" type="text" name="title" value="${lesson.title}">
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Video link</label>
                                             <div>
-                                                <input class="form-control" type="text" name="video" value="">
+                                                <input class="form-control" type="text" name="video" value="${lesson.videoLink}">
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Quiz</label>
                                             <div>
-                                                <select name="quiz">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>Quiz</option>
-                                                </select> 
+                                                <input class="form-control" type="text" name="quiz" value="${lesson.quizId}">
                                             </div>
                                         </div>
                                         <div class="form-group col-10">
                                             <label class="col-form-label">File attack</label>
                                             <div>
-                                                <input class="form-control" type="text" name="file" value="">
+                                                <input class="form-control" type="text" name="file" value="${lesson.file}">
                                             </div>
                                         </div>
                                         <div class="form-group col-2">
@@ -149,7 +141,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
-                                                <textarea class="form-control"> </textarea>
+                                                <textarea class="form-control" value="${lesson.description}"> </textarea>
                                             </div>
                                         </div>
                                         

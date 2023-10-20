@@ -88,20 +88,15 @@
                                                 <ul class="card-courses-view">
                                                     <li class="card-courses-categories">
                                                         <h5>Subject</h5>
-                                                        <h4>10/12/2019</h4>
-                                                    </li>
-                                                    <li class="card-courses-user">
-                                                        <div class="card-courses-user-info">
-                                                            <h5>Class</h5>
-                                                            <h4><c:out value="${l.classId}"/></h4>
-                                                        </div>
+                                                        <h4><c:out value="${lessonDAO.getSubjectName(l.lessonId)}"/></h4>
                                                     </li>
                                                     <li class="card-courses-review">
                                                         <div class="card-courses-user-info">
                                                             <h5>Chapter</h5>
-                                                            <h4><c:out value="${l.chapterId}"/></h4>
+                                                            <h4><c:out value="${lessonDAO.getChapterName(l.lessonId)}"/></h4>
                                                         </div>
                                                     </li>
+                                                </ul>
                                             </div>
                                             <div class="row card-courses-dec">
                                                 <div class="col-md-12">
@@ -121,20 +116,13 @@
                                                     <p><c:out value="${l.file}"/></p>	
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <a href="#" class="btn" data-toggle="modal" data-target="#exampleModal">Reply Review</a>
+                                                    <a href="lessonDetail?lessonId=${l.lessonId}" class="btn">View</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-<!--                                
-                                    <td><c:out value="${userDAO.getStatusDisplay(u.userId)}"/></td>
-                                    <td><a href="userDetail?email=${u.email}">
-                                            Detail   
-                                        </a></td>
-                                </tr>-->
                             </c:forEach>
-
                             <div class="modal fade review-bx-reply" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">

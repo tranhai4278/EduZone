@@ -132,6 +132,14 @@
         <servlet-name>LessonListController</servlet-name>
         <servlet-class>Manager.controller.LessonListController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LessonDetailController</servlet-name>
+        <servlet-class>Manager.controller.LessonDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LessonEditController</servlet-name>
+        <servlet-class>Manager.controller.LessonEditController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>LessonListController</servlet-name>
         <url-pattern>/lessonList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LessonDetailController</servlet-name>
+        <url-pattern>/lessonDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LessonEditController</servlet-name>
+        <url-pattern>/lessonEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

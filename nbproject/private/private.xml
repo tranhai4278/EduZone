@@ -3,9 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
-        </group>
-        <group>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
@@ -120,6 +117,15 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/UserDAO.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/model/Class.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/lessonDetail.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/userList.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/lessonList.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
         </group>
     </open-files>

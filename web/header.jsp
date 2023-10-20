@@ -102,7 +102,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="javascript:;">${sessionScope.user.getFullName()} <i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                              
+
                                 <li><a href="profile">My Profile</a></li>
                                 <li><a href="changepassword">Change Password</a></li>
                                 <li><c:if test="${sessionScope.user!=null}">
@@ -110,32 +110,32 @@
                                     </c:if></li>
                             </ul>
                         </li>
-                        <c:if test="${sessionScope.user.roleId == 2}">
-                        <li class="add-mega-menu"><a href="javascript:;">Manage Subjects <i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu add-menu">
-                                <li class="add-menu-left">
-                                    <h5 class="menu-adv-title">Manage Subjects</h5>
-                                    <ul>
-                                        <li><a href="#">Subjects </a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Lesson </a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Quession </a></li>
-                                    </ul>
-                                    <ul>
-                                        <li><a href="#">Quiz </a></li>
-                                    </ul>
-                                </li>
-                                <li class="add-menu-right">
-                                    <img src="assets/images/adv/adv.jpg" alt=""/>
-                                </li>
-                            </ul>
-                        </li>
+                        <c:if test="${sessionScope.user.roleId == 1}">
+                            <li class="add-mega-menu"><a href="javascript:;">Manage Subjects <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu add-menu">
+                                    <li class="add-menu-left">
+                                        <h5 class="menu-adv-title">Manage Subjects</h5>
+                                        <ul>
+                                            <li><a href="#">Subjects </a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="#">Lesson </a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="QuestionsList">Question </a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="#">Quiz </a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="add-menu-right">
+                                        <img src="assets/images/adv/adv.jpg" alt=""/>
+                                    </li>
+                                </ul>
+                            </li>
                         </c:if>
-                        
-                           <c:if test="${sessionScope.user.roleId == 2}">
+
+                        <c:if test="${sessionScope.user.roleId == 2}">
                             <li class="nav-dashboard"><a href="javascript:;">Manage Class <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="classlist">Class List</a></li>

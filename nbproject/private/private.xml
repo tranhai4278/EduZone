@@ -2,9 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group/>
-=======
         <group>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/contact.js</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
@@ -65,6 +63,5 @@
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
         </group>
->>>>>>> 111c9eb1833ac03b824aed7e50bbc404ec2da50e
     </open-files>
 </project-private>

@@ -10,6 +10,39 @@ import model.User;
 
 public class UserDAO extends MySqlConnection {
 
+    public ArrayList<User> getUsersWithRoleId3() {
+        ArrayList<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE role_id = 3";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                int userId = result.getInt(1);
+                String password = result.getString(2);
+                String fullName = result.getString(3);
+                boolean gender = result.getBoolean(4);
+                String avatarUrl = result.getString(5);
+                String phoneNumber = result.getString(6);
+                String email = result.getString(7);
+                int roleId = result.getInt(8);
+                boolean status = result.getBoolean(9);
+                Date createAt = result.getDate(10);
+                int createBy = result.getInt(11);
+                Date updateAt = result.getDate(12);
+                int updateBy = result.getInt(13);
+
+                User user = new User(userId, password, fullName, gender, avatarUrl, phoneNumber, email, roleId, status, createAt, createBy, updateAt, updateBy);
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
     public ArrayList getAllUser() {
         ArrayList<User> list = new ArrayList<>();
         String sql = "select * from user";
@@ -39,9 +72,8 @@ public class UserDAO extends MySqlConnection {
             return null;
         }
     }
-    
-    
-    public String getStatusDisplay (int id) {
+
+    public String getStatusDisplay(int id) {
         String query = "SELECT CASE WHEN status IS NULL THEN 'Unverified' "
                 + "WHEN status = true THEN 'Active' ELSE 'Inactive' END AS user_status "
                 + "FROM user WHERE user_id = ?;";
@@ -58,7 +90,7 @@ public class UserDAO extends MySqlConnection {
         }
         return null;
     }
-    
+
     public void addUser(User acc) {
         try {
             String strSelect = "INSERT INTO user (user_id, password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
@@ -89,8 +121,8 @@ public class UserDAO extends MySqlConnection {
             System.out.println("addAccount: " + e.getMessage());
         }
     }
-    
-    public void addUser(String name, boolean gender,String avatar, String phone, String email, int role) {
+
+    public void addUser(String name, boolean gender, String avatar, String phone, String email, int role) {
         try {
             String strSelect = "INSERT INTO user ( password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
                     + " create_at, create_by, update_at, update_by)\n"
@@ -103,7 +135,7 @@ public class UserDAO extends MySqlConnection {
             pstm.setString(4, avatar);
             pstm.setString(5, phone);
             pstm.setString(6, email);
-            pstm.setInt(7,role);
+            pstm.setInt(7, role);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
@@ -225,7 +257,7 @@ public class UserDAO extends MySqlConnection {
             return null;
         }
     }
-    
+
     public User getUserTest() {
         User user = null; // Initialize the user as null
         MySqlConnection dbContext = new MySqlConnection();
@@ -264,8 +296,8 @@ public class UserDAO extends MySqlConnection {
 
         return user; // Return the single User object
     }
-    
-    public void updateUserByAdmin ( String role, int status, String id){
+
+    public void updateUserByAdmin(String role, int status, String id) {
         MySqlConnection dbContext = new MySqlConnection();
         try {
             String sql = "UPDATE user SET role_id = ?, status = ? WHERE user_id = ?";
@@ -408,33 +440,71 @@ public class UserDAO extends MySqlConnection {
         }
         return false; // Return false if an error occurred
     }
-    
+
     public boolean resetPassword(String email, String newPassword) {
-    try {
-        // Check if the email exists in the database
-        if (!doesEmailExist(email)) {
-            return false; // Email does not exist
-        }
+        try {
+            // Check if the email exists in the database
+            if (!doesEmailExist(email)) {
+                return false; // Email does not exist
+            }
 
-        // Update the user's password
-        String updatePasswordSql = "UPDATE user SET password = ?, update_at = CURRENT_TIMESTAMP WHERE email = ?";
-        PreparedStatement updatePasswordStatement = connection.prepareStatement(updatePasswordSql);
-        updatePasswordStatement.setString(1, newPassword);
-        updatePasswordStatement.setString(2, email);
+            // Update the user's password
+            String updatePasswordSql = "UPDATE user SET password = ?, update_at = CURRENT_TIMESTAMP WHERE email = ?";
+            PreparedStatement updatePasswordStatement = connection.prepareStatement(updatePasswordSql);
+            updatePasswordStatement.setString(1, newPassword);
+            updatePasswordStatement.setString(2, email);
 
-        int rowsUpdated = updatePasswordStatement.executeUpdate();
+            int rowsUpdated = updatePasswordStatement.executeUpdate();
 
-        // Close resources
-        updatePasswordStatement.close();
+            // Close resources
+            updatePasswordStatement.close();
 
-        return rowsUpdated == 1; // Password reset successful if one row was updated
-    } catch (SQLException ex) {
+            return rowsUpdated == 1; // Password reset successful if one row was updated
+        } catch (SQLException ex) {
             ex.printStackTrace();
             System.out.println("Error: SQL Exception - " + ex.getMessage());
             return false;
         }
     }
-    
+
+    public ArrayList<User> getUsersBySearchString(String searchString) {
+        ArrayList<User> users = new ArrayList<>();
+        String query = "SELECT * FROM user WHERE full_name LIKE ? OR email LIKE ? OR phone_number LIKE ?";
+
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            searchString = "%" + searchString + "%"; // Add wildcards to the searchString
+            statement.setString(1, searchString);
+            statement.setString(2, searchString);
+            statement.setString(3, searchString);
+
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    User user = new User();
+                    user.setUserId(resultSet.getInt(1));
+                    user.setPassword(resultSet.getString(2));
+                    user.setFullName(resultSet.getString(3));
+                    user.setGender(resultSet.getBoolean(4));
+                    user.setAvatarUrl(resultSet.getString(5));
+                    user.setPhone(resultSet.getString(6));
+                    user.setEmail(resultSet.getString(7));
+                    user.setRoleId(resultSet.getInt(8));
+                    user.setStatus(resultSet.getBoolean(9));
+                    user.setCreateAt(resultSet.getDate(10));
+                    user.setCreateBy(resultSet.getInt(11));
+                    user.setUpdateAt(resultSet.getDate(12));
+                    user.setUpdateBy(resultSet.getInt(13));
+                    users.add(user);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users; // Return an ArrayList of users with partial similarity to the searchString
+    }
+
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
 //        ArrayList<User> list = dao.getAllUser();
@@ -442,6 +512,6 @@ public class UserDAO extends MySqlConnection {
 //        for (User u : list) {
 //            System.out.println(u.getFullName() + " "+ u.getEmail() + " " + u.getPhone() + " " + u.getStatusDisplay());
 //        }
-        dao.updateUserByAdmin( "3", 1, "2");
+        dao.updateUserByAdmin("3", 1, "2");
     }
 }

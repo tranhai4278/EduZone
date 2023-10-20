@@ -124,11 +124,12 @@
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
-    <welcome-file-list>
-        <welcome-file>home</welcome-file>
-        <!-- Specify the URL pattern of the default page -->
-    </welcome-file-list>
+
     <servlet>
+        <servlet-name>QuestionsListController</servlet-name>
+        <servlet-class>Manager.controller.QuestionsListController</servlet-class>
+    </servlet>
+
         <servlet-name>LessonListController</servlet-name>
         <servlet-class>Manager.controller.LessonListController</servlet-class>
     </servlet>
@@ -139,6 +140,63 @@
     <servlet>
         <servlet-name>LessonEditController</servlet-name>
         <servlet-class>Manager.controller.LessonEditController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizList</servlet-name>
+        <servlet-class>Manager.controller.QuizList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewQuiz</servlet-name>
+        <servlet-class>Manager.controller.NewQuiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizDetail</servlet-name>
+        <servlet-class>Manager.controller.QuizDetail</servlet-class>
+        <servlet-name>ClassListServlet</servlet-name>
+        <servlet-class>controller.classListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClassDetailServlet</servlet-name>
+        <servlet-class>controller.classDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterClassServlet</servlet-name>
+        <servlet-class>controller.filterClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchClassesServlet</servlet-name>
+        <servlet-class>controller.searchClassesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateClassServlet</servlet-name>
+        <servlet-class>controller.updateClassSevlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClassStudentListServlet</servlet-name>
+        <servlet-class>controller.classStudentListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewClassServlet</servlet-name>
+        <servlet-class>controller.newClassServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <servlet-class>controller.classSearchStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+
+        <servlet-name>QuestionDetailController</servlet-name>
+        <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuestionController</servlet-name>
+        <servlet-class>Manager.controller.AddQuestionController</servlet-class>
+
+    </servlet>
+    <servlet>
+        <servlet-name>OnlineLearning</servlet-name>
+        <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -223,6 +281,66 @@
     <servlet-mapping>
         <servlet-name>LessonEditController</servlet-name>
         <url-pattern>/lessonEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>  
+        <servlet-name>QuizList</servlet-name>
+        <url-pattern>/quizlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewQuiz</servlet-name>
+        <url-pattern>/newquiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizDetail</servlet-name>
+        <url-pattern>/quizdetail</url-pattern>
+        <servlet-name>ClassListServlet</servlet-name>
+        <url-pattern>/classlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassDetailServlet</servlet-name>
+        <url-pattern>/classdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterClassServlet</servlet-name>
+        <url-pattern>/filterclasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchClassesServlet</servlet-name>
+        <url-pattern>/searchclasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateClassServlet</servlet-name>
+        <url-pattern>/updateclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassStudentListServlet</servlet-name>
+        <url-pattern>/classstudentlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewClassServlet</servlet-name>
+        <url-pattern>/newclass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuestionsListController</servlet-name>
+        <url-pattern>/QuestionsList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classSearchStudentServlet</servlet-name>
+        <url-pattern>/classsearchstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+
+        <servlet-name>QuestionDetailController</servlet-name>
+        <url-pattern>/QuestionDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestionController</servlet-name>
+        <url-pattern>/AddQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OnlineLearning</servlet-name>
+        <url-pattern>/onlineLearning</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

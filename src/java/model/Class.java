@@ -3,109 +3,136 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.util.Date;
 
 /**
  *
- * @author Nết
+ * @author Admin
  */
 public class Class {
-    private int classId;
-    private String classCode;
-    private int subjectId;
-    private int semesterId;
-    private int trainerId;
-    private Date createAt;
-    private int createBy;
-    private Date updateAt;
-    private int updateBy;
+    int ID; 
+    String ClassCode; 
+    int SubjectID;
+    int SemesterID;
+    int TrainerID;
+    boolean Status;
+    Date CreateAt;
+    int CreateBy; 
+    Date UpdateAt;
+    int UpdateBy;
+   
+    public Class(){}
 
-    public Class() {
+    public Class(int ID, String ClassCode, int SubjectID, int SemesterID,int TrainerID, boolean Status, Date CreateAt, int CreateBy, Date UpdateAt, int UpdateBy) {
+        this.ID = ID;
+        this.ClassCode = ClassCode;
+        this.SubjectID = SubjectID;
+        this.SemesterID = SemesterID;
+        this.TrainerID = TrainerID;
+        this.Status = Status;
+        this.CreateAt = CreateAt;
+        this.CreateBy = CreateBy;
+        this.UpdateAt = UpdateAt;
+        this.UpdateBy = UpdateBy;
     }
 
-    public Class(int classId, String classCode, int subjectId, int semesterId, int trainerId, Date createAt, int createBy, Date updateAt, int updateBy) {
-        this.classId = classId;
-        this.classCode = classCode;
-        this.subjectId = subjectId;
-        this.semesterId = semesterId;
-        this.trainerId = trainerId;
-        this.createAt = createAt;
-        this.createBy = createBy;
-        this.updateAt = updateAt;
-        this.updateBy = updateBy;
+    public Class(String ClassCode, int SubjectID, int SemesterID, int TrainerID, boolean Status, int CreateBy) {
+        this.ClassCode = ClassCode;
+        this.SubjectID = SubjectID;
+        this.SemesterID = SemesterID;
+        this.TrainerID = TrainerID;
+        this.Status = Status;
+        this.CreateBy = CreateBy;
     }
 
-    public int getClassId() {
-        return classId;
+    
+    
+    
+
+    public int getID() {
+        return ID;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getClassCode() {
-        return classCode;
+        return ClassCode;
     }
 
-    public void setClassCode(String classCode) {
-        this.classCode = classCode;
+    public void setClassCode(String ClassCode) {
+        this.ClassCode = ClassCode;
     }
 
-    public int getSubjectId() {
-        return subjectId;
+    public int getSubjectID() {
+        return SubjectID;
     }
 
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
+    public void setSubjectID(int SubjectID) {
+        this.SubjectID = SubjectID;
     }
 
-    public int getSemesterId() {
-        return semesterId;
+    public int getSemesterID() {
+        return SemesterID;
     }
 
-    public void setSemesterId(int semesterId) {
-        this.semesterId = semesterId;
+    public void setSemesterID(int SemesterID) {
+        this.SemesterID = SemesterID;
     }
 
-    public int getTrainerId() {
-        return trainerId;
+    public int getTrainerID() {
+        return TrainerID;
     }
 
-    public void setTrainerId(int trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainerID(int TrainerID) {
+        this.TrainerID = TrainerID;
+    }
+
+    public boolean isStatus() {
+        return Status;
+    }
+
+    public void setStatus(boolean Status) {
+        this.Status = Status;
     }
 
     public Date getCreateAt() {
-        return createAt;
+        return CreateAt;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCreateAt(Date CreateAt) {
+        this.CreateAt = CreateAt;
     }
 
     public int getCreateBy() {
-        return createBy;
+        return CreateBy;
     }
 
-    public void setCreateBy(int createBy) {
-        this.createBy = createBy;
+    public void setCreateBy(int CreateBy) {
+        this.CreateBy = CreateBy;
     }
 
     public Date getUpdateAt() {
-        return updateAt;
+        return UpdateAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdateAt(Date UpdateAt) {
+        this.UpdateAt = UpdateAt;
     }
 
     public int getUpdateBy() {
-        return updateBy;
+        return UpdateBy;
     }
 
-    public void setUpdateBy(int updateBy) {
-        this.updateBy = updateBy;
+    public void setUpdateBy(int UpdateBy) {
+        this.UpdateBy = UpdateBy;
     }
+
+   
+    
     
 }
+
+
+

@@ -24,6 +24,16 @@ public class Question {
     public Question() {
     }
 
+    public Question(String question, int lessonId, int chapterId, int subjectId, Date createAt) {
+        this.question = question;
+        this.lessonId = lessonId;
+        this.chapterId = chapterId;
+        this.subjectId = subjectId;
+        this.createAt = createAt;
+    }
+    
+    
+
     public Question(int questionId, String question, int lessonId, int chapterId, int subjectId, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.questionId = questionId;
         this.question = question;

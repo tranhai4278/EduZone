@@ -89,6 +89,10 @@ public class Subject {
         this.u = u;
     }
 
+    public Subject(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
     public Subject(int subjectId, int managerId, String managerName, String subjectName, String subjectCode, String description, boolean status, Date createAt, int createBy, Date updateAt, int updateBy,  SubjectSetting ss) {
         this.subjectId = subjectId;
         this.managerId = managerId;

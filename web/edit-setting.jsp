@@ -88,7 +88,7 @@
                                 <h4>Edit Setting</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30" action="editsetting" method="post">
+                                <form class="edit-profile m-b30" action="editSubjectSetting" method="post">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="ml-auto">

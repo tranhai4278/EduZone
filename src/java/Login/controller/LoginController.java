@@ -1,7 +1,9 @@
+
 package Login.controller;
 
 import dal.UserDAO;
 import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +33,7 @@ public class LoginController extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         //Check email, user active
         User user = userDAO.getUserByEmail(email);
+
         if (user == null || !user.getPassword().equals(md5)) {
             request.setAttribute("message", "Email or password is wrong");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -50,4 +53,5 @@ public class LoginController extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
+
 }

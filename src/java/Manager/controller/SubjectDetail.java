@@ -4,7 +4,9 @@
  */
 package Manager.controller;
 
+import Admin.controller.SettingSubject;
 import dal.AdminDAO;
+import dal.ManagerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,8 +14,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import model.Subject;
+import model.SubjectSetting;
 import model.User;
 
 /**
@@ -64,8 +70,13 @@ public class SubjectDetail extends HttpServlet {
         String sid = request.getParameter("sid");
         int id = Integer.parseInt(sid);
         AdminDAO dao = new AdminDAO();
+        ManagerDAO Sdao = new ManagerDAO();
+        List<SubjectSetting> listC = Sdao.getChapterbySubject(id);
+        List<SubjectSetting> listD = Sdao.getDimensionbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         request.setAttribute("detail", s);
+        request.setAttribute("listC", listC);
+        request.setAttribute("listD", listD);
         request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
     }
 
@@ -80,7 +91,47 @@ public class SubjectDetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
+        int id = u.getUserId();
+        String sbid = request.getParameter("sid");
+        String name = request.getParameter("name");
+        String dimension = request.getParameter("type");
+        String displayOrder = request.getParameter("displayOrder");
+        String action = request.getParameter("on");
+        String description = request.getParameter("description");
+        boolean status = "on".equals(action);
+        int order = Integer.parseInt(displayOrder);
+        int sid = Integer.parseInt(sbid);
+        Date uDate = new Date();
+        Timestamp timestamp = new Timestamp(uDate.getTime());
+        AdminDAO dao = new AdminDAO();
+        ManagerDAO Mdao = new ManagerDAO();
+        SubjectSetting ss = new SubjectSetting(sid, dimension, name, description, order, status, timestamp, id, timestamp, id);
+
+        SubjectSetting scheck = Mdao.checkSettingNameinGroup(sid, name, dimension);
+        if (scheck == null) {
+            Mdao.addSubjectSetting(ss);
+            List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
+            List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
+            Subject s = dao.getSubjectbyId(sid);
+            request.setAttribute("detail", s);
+            request.setAttribute("listC", listC);
+            request.setAttribute("listD", listD);
+            request.setAttribute("successMessage", "Add success");
+            request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
+        } else {
+            List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
+            List<SubjectSetting> listD = Mdao.getDimensionbySubject(sid);
+            Subject s = dao.getSubjectbyId(sid);
+            request.setAttribute("detail", s);
+            request.setAttribute("listC", listC);
+            request.setAttribute("listD", listD);
+            request.setAttribute("error", "Already exist");
+            request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
+
+        }
+
     }
 
     /**

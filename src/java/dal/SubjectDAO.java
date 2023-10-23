@@ -5,7 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import model.Subject;
+import model.SubjectSetting;
 import model.User;
 
 public class SubjectDAO extends MySqlConnection {
@@ -400,6 +402,38 @@ public class SubjectDAO extends MySqlConnection {
             return subject;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<SubjectSetting> getAllSubjectSetting() {
+        ArrayList<SubjectSetting> subjectSettingList = new ArrayList<>();
+        String sql = "SELECT * FROM `subject_setting`";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+            
+            while (result.next()) {
+                int settingId = result.getInt(1);
+                int subjectId = result.getInt(2);
+                String settingType = result.getString(3);
+                String settingName = result.getString(4);
+                String description = result.getString(5);
+                int displayOrder = result.getInt(6);
+                int status = result.getInt(7);
+                boolean boolStatus = (status == 1);
+                java.util.Date createAt = result.getDate(8);
+                int createBy = result.getInt(9);
+                java.util.Date updateAt = result.getDate(10);
+                int updateBy = result.getInt(11);
+                SubjectSetting subjectSetting = new SubjectSetting(settingId, subjectId, settingType, settingName, description, displayOrder, boolStatus, createAt, createBy, updateAt, updateBy);
+                subjectSettingList.add(subjectSetting);
+            }
+            
+            return subjectSettingList;
+        } catch (Exception e) {
+            Logger.getLogger(e.toString());
             return null;
         }
     }

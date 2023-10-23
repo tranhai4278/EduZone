@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.AdminDAO;
 import dal.ClassDAO;
 import dal.SubjectDAO;
 import dal.UserDAO;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.User;
 import model.Class;
+import model.Setting;
 import model.Subject;
 
 /**
@@ -67,12 +69,19 @@ public class classListServlet extends HttpServlet {
         ClassDAO classDAO = new ClassDAO();
         SubjectDAO subjectDAO = new SubjectDAO();
         UserDAO userDAO = new UserDAO();
+        AdminDAO adminDAO = new AdminDAO();
+        
+        
         ArrayList<Class> c = classDAO.getAllClass();
         ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
         ArrayList<User> u = userDAO.getAllUser();
+        ArrayList<User> t = userDAO.getUsersWithRoleId3();
+        ArrayList<Setting> setting = adminDAO.getSemesters();
         System.out.println("Number of classes retrieved: " + c.size());
 
+        request.setAttribute("trainers", t);
         request.setAttribute("users", u);
+        request.setAttribute("semesters", setting);
         request.setAttribute("subjects", s);
         request.setAttribute("classes", c);
         request.getRequestDispatcher("classlist.jsp").forward(request, response);

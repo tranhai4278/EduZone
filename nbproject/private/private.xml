@@ -3,10 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/classdetail-studentlist.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/model/Question.java</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/dal/Class_TraineeDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/controller/classSearchStudentServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/controller/classListServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/model/Class_Trainee.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/controller/classStudentListServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/classdetail.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/dal/ClassDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/newclass.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/controller/newClassServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/dal/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

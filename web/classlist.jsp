@@ -7,8 +7,108 @@
 <html>
 
     <head>
-        <!-- Your existing head content -->
+        <!-- META ============================================= -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="robots" content="" />
+
+        <!-- DESCRIPTION -->
+        <meta name="description" content="EduNext : Education HTML Template" />
+
+        <!-- OG -->
+        <meta uperty="og:title" content="EduNext : Education HTML Template" />
+        <meta uperty="og:description" content="EduNext : Education HTML Template" />
+        <meta uperty="og:image" content="" />
+        <meta name="format-detection" content="telephone=no">
+
+        <!-- FAVICONS ICON ============================================= -->
+        <link rel="icon" href="../error-404.html" type="image/x-icon" />
+        <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
+
+        <!-- PAGE TITLE HERE ============================================= -->
+        <title>EduNext : Education HTML Template </title>
+
+        <!-- MOBILE SPECIFIC ============================================= -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- All PLUGINS CSS ============================================= -->
+        <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
+        <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
+
+        <!-- TYPOGRAPHY ============================================= -->
+        <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
+
+        <!-- SHORTCODES ============================================= -->
+        <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
+
+        <!-- STYLESHEETS ============================================= -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
+        <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+
     </head>
+
+    <style>
+        /* Style for the pop-up overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Style for the pop-up dialog */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        /* Style for the table and buttons */
+        table {
+            font-size: 16px; /* Adjust the font size as needed */
+            width: 100%; /* Make the table full width */
+        }
+
+        .btn {
+            font-size: 16px; /* Adjust the font size for buttons */
+        }
+
+        /* Style for the pop-up dialog */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            max-width: 80%; /* Adjust the maximum width as needed */
+            max-height: 80%; /* Adjust the maximum height as needed */
+            overflow-y: auto; /* Enable vertical scrolling if content overflows */
+        }
+
+    </style>
+
 
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
         <%@include file="setting-header.jsp" %>
@@ -100,17 +200,112 @@
 
                                         <button type="submit" class="btn btn-primary" name="action" value="activate">Activate</button>
                                         <button type="submit" class="btn btn-primary" name="action" value="deactivate">Deactivate</button>
-                                        <button type="button" class="btn-secondry" onclick="window.location.href = 'newclass'">Create a new Class</button>
+                                        <button type="button" class="btn btn-secondary" id="newClassButton">Create a new Class</button>
                                     </form>
-                                
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div id="newClassPopup" class="popup">
+                <main class="ttr-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 m-b30">
+                            <div class="widget-box">
+                                <div class="wc-title">
+                                    <h4>Create a New Class</h4>
+                                </div>
+                                <div class="widget-inner">
+                                    <form class="new-class-form m-b30" action="newclass" method="post">
+                                        <div class="col-sm-10 ml-auto">
+                                            <% String errorMessage = (String) request.getAttribute("error"); %>
+                                            <% if (errorMessage != null) { %>
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>Error:</strong> <%= errorMessage %>
+                                            </div>
+                                            <% } %>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Class Code</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" name="class_code" placeholder="Class Code">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Semester</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="semester">
+                                                    <c:forEach var="semester" items="${semesters}">
+                                                        <option value="<c:out value='${semester.settingId}'/>"><c:out value='${semester.settingName}'/></option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Lecturer</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="trainer">
+                                                    <c:forEach var="user" items="${trainers}">
+                                                        <option value="<c:out value='${user.userId}'/>"><c:out value='${user.fullName}'/></option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Subject</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" name="subject">
+                                                    <c:forEach var="subject" items="${subjects}">
+                                                        <option value="<c:out value='${subject.subjectId}'/>"><c:out value='${subject.subjectCode}'/></option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-7">
+                                                <button type="submit" class="btn">Create Class</button>
+                                                <button type="reset" class="btn">Reset</button>
+                                                <button type="button" class="btn-secondry" id="closePopupButton">Cancel</button>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                </main>
+            </div>
         </main>
         <div class="ttr-overlay"></div>
+
+        <script>
+            document.getElementById('newClassButton').addEventListener('click', function () {
+                // Show the overlay
+                document.querySelector('.ttr-overlay').style.display = 'block';
+                // Show the pop-up dialog
+                document.querySelector('#newClassPopup').style.display = 'block';
+            });
+
+            // Add functionality to close the pop-up
+            document.getElementById('closePopupButton').addEventListener('click', function () {
+                // Hide the overlay and pop-up dialog
+                document.querySelector('.ttr-overlay').style.display = 'none';
+                document.querySelector('#newClassPopup').style.display = 'none';
+            });
+
+            document.querySelector('.ttr-overlay').addEventListener('click', function () {
+                // Hide the overlay and pop-up dialog
+                this.style.display = 'none';
+                document.querySelector('#newClassPopup').style.display = 'none';
+            });
+        </script>
+
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

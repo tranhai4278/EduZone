@@ -152,6 +152,8 @@
     <servlet>
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
+        </servlet>
+    <servlet>
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>
     </servlet>
@@ -293,6 +295,8 @@
     <servlet-mapping>
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
+        </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
     </servlet-mapping>

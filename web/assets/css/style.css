@@ -3302,6 +3302,13 @@ button.back-to-top {
         display:none;
     }
 }
+        .sort-active{
+            color: black;
+        }
+        th {
+            position: relative;
+        }
+
 @media only screen and (max-width: 576px) {
     .footer-title{
         font-size:14px;
@@ -3360,5 +3367,6 @@ button.back-to-top {
         font-size: 24px;
         margin-bottom: 5px;
     }
+
 }
 

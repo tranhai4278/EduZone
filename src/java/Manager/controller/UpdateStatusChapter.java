@@ -75,7 +75,6 @@ public class UpdateStatusChapter extends HttpServlet {
         } catch (NumberFormatException e) {
             e.printStackTrace(); // Xử lý nếu có lỗi chuyển đổi
         }
-        String successMessage = "Cập nhật thành công";
         AdminDAO dao = new AdminDAO();
         Subject s = dao.getSubjectbyId(sid);
         List<SubjectSetting> listC = Mdao.getChapterbySubject(sid);
@@ -83,7 +82,7 @@ public class UpdateStatusChapter extends HttpServlet {
         request.setAttribute("detail", s);
         request.setAttribute("listC", listC);
         request.setAttribute("listD", listD);
-        request.setAttribute("successMessage", "Add success");
+        request.setAttribute("successMessage", "Update success");
         request.getRequestDispatcher("subjectDetail.jsp").forward(request, response);
     }
 

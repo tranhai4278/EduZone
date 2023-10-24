@@ -71,6 +71,14 @@
 
         <!--Main container start -->
         <main class="ttr-wrapper">
+            <c:if test="${not empty requestScope.successMessage}">
+                <div class="alert alert-success" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.successMessage}
+                </div>
+            </c:if>
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Edit Setting</h4>
@@ -88,7 +96,7 @@
                                 <h4>Edit Setting</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30" action="editSubjectSetting" method="post">
+                                <form class="edit-profile m-b30" action="editsetting" method="post">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="ml-auto">
@@ -114,7 +122,7 @@
                                                 <input class="form-control" type="text" value="${detail.displayOrder}" name="order">
                                             </div>
                                         </div>
-                                                <input class="form-control" type="text" value="${detail.settingGroup}" name="gid" hidden="">
+                                        <input class="form-control" type="text" value="${detail.settingGroup}" name="gid" hidden="">
                                         <div class="form-group col-3">
                                             <label class="col-form-label">Status</label>
                                             <div class="form-check form-switch">
@@ -147,8 +155,16 @@
                 </div>
             </div>
         </main>
-
         <div class="ttr-overlay"></div>
+
+        <script>
+            setTimeout(function () {
+                var notificationMessage = document.getElementById("notificationMessage");
+                if (notificationMessage) {
+                    notificationMessage.style.display = "none";
+                }
+            }, 5000);
+        </script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

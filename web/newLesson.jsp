@@ -5,7 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
+<c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
+<%@page import="model.Lesson" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +86,7 @@
                                             <label class="col-form-label">Subject</label>
                                             <div>
                                                 <select name="subject">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>SWT301-Software Testing</option>
+                                                    <option></option>
                                                 </select>
                                             </div>
                                         </div>

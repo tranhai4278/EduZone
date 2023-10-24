@@ -69,7 +69,6 @@
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
             <div class="container-fluid">
-
                 <div class="row">
                     <!-- Your Profile Views Chart -->
                     <div class="col-lg-12 m-b30">
@@ -77,7 +76,13 @@
                             <div class="wc-title">
                                 <h4>Lesson List</h4>
                             </div>
+                            <a class="btn" href="newLesson.jsp">
+                                Add a new lesson   
+                            </a></td>
                             <c:forEach var="l" items="${list}">
+                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
                                 <div class="widget-inner">
                                     <div class="card-courses-list admin-review">
                                         <div class="card-courses-full-dec">
@@ -100,20 +105,22 @@
                                             </div>
                                             <div class="row card-courses-dec">
                                                 <div class="col-md-12">
-                                                    <h6 class="m-b10">Description</h6>
-                                                    <p><c:out value="${l.description}"/></p>	
+                                                    <h6 class="m-b10">Lesson Content</h6>
+                                                    <c:choose>
+                                                        <c:when test="${l.getLessonType() eq 'Video'}">
+                                                            <p class="m-b10"><c:out value="${l.videoLink}"/></p>
+                                                        </c:when>
+                                                        <c:when test="${l.getLessonType() eq 'Quiz'}">
+                                                            <p class="m-b10"><c:out value="${l.quizId}"/></p>
+                                                        </c:when>
+                                                        <c:when test="${l.getLessonType() eq 'Assignment'}">
+                                                            <p class="m-b10"><c:out value="${l.file}"/></p>
+                                                        </c:when>
+                                                    </c:choose>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <h6 class="m-b10">Video link</h6>
-                                                    <p><c:out value="${l.videoLink}"/></p>	
-                                                </div>
-                                                 <div class="col-md-12">
-                                                    <h6 class="m-b10">Quiz</h6>
-                                                    <p><c:out value="${l.quizId}"/></p>	
-                                                </div>
-                                                 <div class="col-md-12">
-                                                    <h6 class="m-b10">Assignment</h6>
-                                                    <p><c:out value="${l.file}"/></p>	
+                                                    <h6 class="m-b10">Description</h6>
+                                                    <p><c:out value="${l.description}"/></p>	
                                                 </div>
                                                 <div class="col-md-12">
                                                     <a href="lessonDetail?lessonId=${l.lessonId}" class="btn">View</a>

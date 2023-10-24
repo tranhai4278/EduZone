@@ -102,7 +102,7 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Status</label>
                                             <div>
-                                                <select name="chapter">
+                                                <select name="status">
                                                     <option value="0" ${lesson.isStatus() == false ? "selected" : ""}>Unpublished</option>
                                                     <option value="1" ${lesson.isStatus() == true ? "selected" : ""}>Published</option>
                                                 </select>
@@ -115,36 +115,27 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
-                                            <label class="col-form-label">Video link</label>
+                                            <label class="col-form-label">Lesson Content</label>
                                             <div>
-                                                <input class="form-control" type="text" name="video" value="${lesson.videoLink}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <label class="col-form-label">Quiz</label>
-                                            <div>
-                                                <input class="form-control" type="text" name="quiz" value="${lesson.quizId}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-10">
-                                            <label class="col-form-label">File attack</label>
-                                            <div>
-                                                <input class="form-control" type="text" name="file" value="${lesson.file}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-2">
-                                            <label class="col-form-label"></label>
-                                            <div>
-                                                <button type="button" class="btn">Browse</button>
+                                                <c:choose>
+                                                    <c:when test="${lesson.getLessonType() eq 'Video'}">
+                                                        <input class="form-control" type="text" name="video" value="${lesson.videoLink}">
+                                                    </c:when>
+                                                    <c:when test="${lesson.getLessonType() eq 'Quiz'}">
+                                                        <input class="form-control" type="text" name="quiz" value="${lesson.quizId}">
+                                                    </c:when>
+                                                    <c:when test="${lesson.getLessonType() eq 'Assignment'}">
+                                                        <input class="form-control" type="text" name="assignment" value="${lesson.file}">
+                                                    </c:when>
+                                                </c:choose>
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
-                                                <textarea class="form-control" value="${lesson.description}"> </textarea>
+                                                <textarea class="form-control" type="text" name="des" value="${lesson.getDescription()}"> </textarea>
                                             </div>
                                         </div>
-                                        
                                         <div class="col-12">
                                             <button type="submit" class="btn">Save</button>
                                             <button type="reset" class="btn-secondry">Cancel</button>

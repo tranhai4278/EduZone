@@ -76,60 +76,53 @@
                             <div class="wc-title">
                                 <h4>Lesson List</h4>
                             </div>
-                            <a class="btn" href="newLesson.jsp">
-                                Add a new lesson   
-                            </a></td>
-                            <c:forEach var="l" items="${list}">
-                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                            </div>
-                            <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                                <div class="widget-inner">
-                                    <div class="card-courses-list admin-review">
-                                        <div class="card-courses-full-dec">
-                                            <div class="card-courses-title">
-                                                <h4><c:out value="${l.title}"/></h4>
-                                            </div>
-                                            <div class="card-courses-list-bx">
-                                                <ul class="card-courses-view">
-                                                    <li class="card-courses-categories">
-                                                        <h5>Subject</h5>
-                                                        <h4><c:out value="${lessonDAO.getSubjectName(l.lessonId)}"/></h4>
-                                                    </li>
-                                                    <li class="card-courses-review">
-                                                        <div class="card-courses-user-info">
-                                                            <h5>Chapter</h5>
-                                                            <h4><c:out value="${lessonDAO.getChapterName(l.lessonId)}"/></h4>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="row card-courses-dec">
-                                                <div class="col-md-12">
-                                                    <h6 class="m-b10">Lesson Content</h6>
-                                                    <c:choose>
-                                                        <c:when test="${l.getLessonType() eq 'Video'}">
-                                                            <p class="m-b10"><c:out value="${l.videoLink}"/></p>
-                                                        </c:when>
-                                                        <c:when test="${l.getLessonType() eq 'Quiz'}">
-                                                            <p class="m-b10"><c:out value="${l.quizId}"/></p>
-                                                        </c:when>
-                                                        <c:when test="${l.getLessonType() eq 'Assignment'}">
-                                                            <p class="m-b10"><c:out value="${l.file}"/></p>
-                                                        </c:when>
-                                                    </c:choose>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <h6 class="m-b10">Description</h6>
-                                                    <p><c:out value="${l.description}"/></p>	
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <a href="lessonDetail?lessonId=${l.lessonId}" class="btn">View</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="col-sm-5">
+                                <a class="btn" href="newLesson.jsp">
+                                    Add a new lesson 
+                                </a>
+                            </div><br>
+                            <div class="mail-box-list">
+                                        <section id="subject">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Lesson title</th>
+                                                        <th scope="col">Subject</th>
+                                                        <th scope="col">Chapter</th>
+                                                        <th scope="col">Lesson Content</th>
+                                                        <th scope="col">Lesson Type</th>
+<!--                                                        <th scope="col">Status</th>-->
+                                                        <th scope="col">Detail</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="l" items="${list}">
+                                                        <tr>
+                                                            <td><c:out value="${l.title}"/></td>
+                                                            <td><c:out value="${lessonDAO.getSubjectName(l.lessonId)}"/></td>
+                                                            <td><c:out value="${lessonDAO.getChapterName(l.lessonId)}"/></td>
+                                                            <td>
+                                                                <c:choose>
+                                                                    <c:when test="${l.getLessonType() eq 'Video'}">
+                                                                        <c:out value="${l.videoLink}"/>
+                                                                    </c:when>
+                                                                    <c:when test="${l.getLessonType() eq 'Quiz'}">
+                                                                        <c:out value="${lessonDAO.getQuizName(l.lessonId)}"/>
+                                                                    </c:when>
+                                                                    <c:when test="${l.getLessonType() eq 'Assignment'}">
+                                                                        <c:out value="${l.file}"/>
+                                                                    </c:when>
+                                                                </c:choose> 
+                                                            </td>
+                                                            <td><c:out value="${l.lessonType}"/></td>
+                                                            <td><a href="lessonDetail?lessonId=${l.lessonId}" class="btn">View</a>
+                                                                </a></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </section>
                                     </div>
-                                </div>
-                            </c:forEach>
                             <div class="modal fade review-bx-reply" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">

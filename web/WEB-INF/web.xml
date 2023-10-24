@@ -340,7 +340,6 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>

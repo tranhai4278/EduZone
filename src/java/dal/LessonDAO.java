@@ -79,6 +79,22 @@ public class LessonDAO extends MySqlConnection{
         return null;
     }
     
+    public String getQuizName(int lessonId){
+        String query = "SELECT quiz.quiz_name FROM lesson JOIN quiz ON lesson.quiz_id = quiz.quiz_id WHERE lesson_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, lessonId);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                return result.getString("quiz_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public Lesson getLessonById(String id) {
         String query = "SELECT * FROM `lesson` WHERE lesson_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
@@ -141,6 +157,11 @@ public class LessonDAO extends MySqlConnection{
         }
     }
     
+    
+    public static void main(String[] args) {
+        LessonDAO dao = new LessonDAO();
+        System.out.println(dao.getQuizName(2));
+    }
     
 }
     

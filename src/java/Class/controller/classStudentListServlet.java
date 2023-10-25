@@ -2,29 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package Class.controller;
 
-import dal.AdminDAO;
-import dal.ClassDAO;
-import dal.SubjectDAO;
-import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Setting;
-import model.Subject;
-import model.User;
 import model.Class;
+import model.User;
+import dal.ClassDAO;
+import dal.Class_TraineeDAO;
+import dal.UserDAO;
+import java.util.ArrayList;
+import model.Class_Trainee;
 
 /**
  *
  * @author Admin
  */
-public class newClassServlet extends HttpServlet {
+public class classStudentListServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +41,10 @@ public class newClassServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet newClassServlet</title>");
+            out.println("<title>Servlet classStudentListServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet newClassServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet classStudentListServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,19 +62,31 @@ public class newClassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         User user = (User) request.getSession().getAttribute("user");
+        int ID = Integer.parseInt(request.getParameter("code"));
+        System.out.println(ID);
+        Class_TraineeDAO ClassTDAO = new Class_TraineeDAO();
         UserDAO userDAO = new UserDAO();
-        SubjectDAO subjectDAO = new SubjectDAO();
-        AdminDAO adminDAO = new AdminDAO();
+        ArrayList<User> users = userDAO.getAllUser();
+        ArrayList<Class_Trainee> data = ClassTDAO.getTraineesByClassID(ID);
+        for (Class_Trainee c : data) {
+            System.out.println(c.getClassID() + ", " + c.getTraineeID());
+        }
 
-        ArrayList<Subject> s = subjectDAO.getAllSubjects();
-        ArrayList<User> u = userDAO.getUsersWithRoleId3();
-        ArrayList<Setting> setting = adminDAO.getSemesters();
+        request.setAttribute("Classcode", ID);
+        request.setAttribute("users", users);
+        request.setAttribute("trainee", data);
 
-        request.setAttribute("subjects", s);
-        request.setAttribute("users", u);
-        request.setAttribute("semesters", setting);
+        request.getRequestDispatcher("classdetail-studentlist.jsp").forward(request, response);
+    }
 
-        request.getRequestDispatcher("newclass.jsp").forward(request, response);
+    private boolean studentInClass(int userId, ArrayList<Class_Trainee> trainee) {
+        for (Class_Trainee classTrainee : trainee) {
+            if (classTrainee.getTraineeID() == userId) {
+                return true; // The student is already in the class.
+            }
+        }
+        return false; // The student is not in the class.
     }
 
     /**
@@ -90,43 +100,7 @@ public class newClassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get parameters from the request
-         User user = (User) request.getSession().getAttribute("user");
-        String classCode = request.getParameter("class_code");
-        int subjectId = Integer.parseInt(request.getParameter("subject"));
-        int semesterId = Integer.parseInt(request.getParameter("semester"));
-        int trainerId = Integer.parseInt(request.getParameter("trainer"));
-        boolean status = true; // Set the default value to true
-
-// Check if the 'status' parameter is provided in the request
-        String statusParam = request.getParameter("status");
-        if (statusParam != null) {
-            // If 'status' parameter is provided, parse it
-            status = Boolean.parseBoolean(statusParam);
-        }
-
-// Rest of your code remains the same
-//        int createBy = Integer.parseInt(request.getParameter("create_by"));
-        int createBy = 1;
-
-        // Create a new Class object
-        Class newClass = new Class(classCode, subjectId, semesterId, trainerId, status, createBy);
-
-        // Create a ClassDAO instance (replace this with your actual DAO initialization)
-        ClassDAO classDAO = new ClassDAO();
-
-        // Attempt to add the new class to the database
-        boolean classAdded = classDAO.addClass(newClass);
-
-        if (classAdded) {
-            // Class added successfully
-            // You may want to redirect or show a success message
-            response.sendRedirect("classlist");
-        } else {
-            // Class addition failed
-            // You may want to redirect or show an error message
-            response.sendRedirect("newclass");
-        }
+        processRequest(request, response);
     }
 
     /**

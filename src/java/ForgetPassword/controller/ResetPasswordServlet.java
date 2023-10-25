@@ -1,4 +1,4 @@
-package controller;
+package ForgetPassword.controller;
 
 import dal.UserDAO;
 import java.io.IOException;

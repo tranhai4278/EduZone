@@ -91,21 +91,6 @@
             font-size: 16px; /* Adjust the font size for buttons */
         }
 
-        /* Style for the pop-up dialog */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            z-index: 1000;
-            max-width: 80%; /* Adjust the maximum width as needed */
-            max-height: 80%; /* Adjust the maximum height as needed */
-            overflow-y: auto; /* Enable vertical scrolling if content overflows */
-        }
 
     </style>
 
@@ -213,74 +198,74 @@
             </div>
 
             <div id="newClassPopup" class="popup">
-                <main class="ttr-wrapper">
-                    <div class="row">
-                        <div class="col-lg-12 m-b30">
-                            <div class="widget-box">
-                                <div class="wc-title">
-                                    <h4>Create a New Class</h4>
-                                </div>
-                                <div class="widget-inner">
-                                    <form class="new-class-form m-b30" action="newclass" method="post">
-                                        <div class="col-sm-10 ml-auto">
-                                            <% String errorMessage = (String) request.getAttribute("error"); %>
-                                            <% if (errorMessage != null) { %>
-                                            <div class="alert alert-danger" role="alert">
-                                                <strong>Error:</strong> <%= errorMessage %>
-                                            </div>
-                                            <% } %>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Class Code</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" type="text" name="class_code" placeholder="Class Code">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Semester</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" name="semester">
-                                                    <c:forEach var="semester" items="${semesters}">
-                                                        <option value="<c:out value='${semester.settingId}'/>"><c:out value='${semester.settingName}'/></option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Lecturer</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" name="trainer">
-                                                    <c:forEach var="user" items="${trainers}">
-                                                        <option value="<c:out value='${user.userId}'/>"><c:out value='${user.fullName}'/></option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Subject</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" name="subject">
-                                                    <c:forEach var="subject" items="${subjects}">
-                                                        <option value="<c:out value='${subject.subjectId}'/>"><c:out value='${subject.subjectCode}'/></option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-2"></div>
-                                            <div class="col-sm-7">
-                                                <button type="submit" class="btn">Create Class</button>
-                                                <button type="reset" class="btn">Reset</button>
-                                                <button type="button" class="btn-secondry" id="closePopupButton">Cancel</button>
 
-                                            </div>
+                <div class="row">
+                    <div class="col-lg-12 m-b30">
+                        <div class="widget-box">
+                            <div class="wc-title">
+                                <h4>Create a New Class</h4>
+                            </div>
+                            <div class="widget-inner">
+                                <form class="new-class-form m-b30" action="newclass" method="post">
+                                    <div class="col-sm-10 ml-auto">
+                                        <% String errorMessage = (String) request.getAttribute("error"); %>
+                                        <% if (errorMessage != null) { %>
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>Error:</strong> <%= errorMessage %>
                                         </div>
-                                    </form>
-                                </div>
+                                        <% } %>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Class Code</label>
+                                        <div class="col-sm-7">
+                                            <input class="form-control" type="text" name="class_code" placeholder="Class Code">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Semester</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="semester">
+                                                <c:forEach var="semester" items="${semesters}">
+                                                    <option value="<c:out value='${semester.settingId}'/>"><c:out value='${semester.settingName}'/></option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Lecturer</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="trainer">
+                                                <c:forEach var="user" items="${trainers}">
+                                                    <option value="<c:out value='${user.userId}'/>"><c:out value='${user.fullName}'/></option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Subject</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" name="subject">
+                                                <c:forEach var="subject" items="${subjects}">
+                                                    <option value="<c:out value='${subject.subjectId}'/>"><c:out value='${subject.subjectCode}'/></option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-7">
+                                            <button type="submit" class="btn">Create Class</button>
+                                            <button type="reset" class="btn">Reset</button>
+                                            <button type="button" class="btn-secondry" id="closePopupButton">Cancel</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
-                    </div>                </main>
-            </div>
+                    </div>               
+                </div>
         </main>
         <div class="ttr-overlay"></div>
 

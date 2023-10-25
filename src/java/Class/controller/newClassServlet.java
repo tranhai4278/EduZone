@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package Class.controller;
 
+import dal.AdminDAO;
 import dal.ClassDAO;
 import dal.SubjectDAO;
 import dal.UserDAO;
@@ -14,16 +15,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.List;
-import model.Class;
+import model.Setting;
 import model.Subject;
 import model.User;
+import model.Class;
 
 /**
  *
  * @author Admin
  */
-public class filterClassServlet extends HttpServlet {
+public class newClassServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +43,10 @@ public class filterClassServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet filterClassServlet</title>");
+            out.println("<title>Servlet newClassServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet filterClassServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet newClassServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +64,19 @@ public class filterClassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        UserDAO userDAO = new UserDAO();
+        SubjectDAO subjectDAO = new SubjectDAO();
+        AdminDAO adminDAO = new AdminDAO();
+
+        ArrayList<Subject> s = subjectDAO.getAllSubjects();
+        ArrayList<User> u = userDAO.getUsersWithRoleId3();
+        ArrayList<Setting> setting = adminDAO.getSemesters();
+
+        request.setAttribute("subjects", s);
+        request.setAttribute("users", u);
+        request.setAttribute("semesters", setting);
+
+        request.getRequestDispatcher("newclass.jsp").forward(request, response);
     }
 
     /**
@@ -77,27 +90,43 @@ public class filterClassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        String selectedSubject = request.getParameter("selectedSubject");
-        ClassDAO classDAO = new ClassDAO();
-        SubjectDAO subjectDAO = new SubjectDAO();
-         UserDAO userDAO = new UserDAO();
-        ArrayList<Class> filteredClasses; // Change the type to ArrayList
+        // Get parameters from the request
+         User user = (User) request.getSession().getAttribute("user");
+        String classCode = request.getParameter("class_code");
+        int subjectId = Integer.parseInt(request.getParameter("subject"));
+        int semesterId = Integer.parseInt(request.getParameter("semester"));
+        int trainerId = Integer.parseInt(request.getParameter("trainer"));
+        boolean status = true; // Set the default value to true
 
-        if (selectedSubject != null && !selectedSubject.isEmpty()) {
-            // Filter classes based on the selected subject
-            filteredClasses = classDAO.getClassesBySubject(selectedSubject);
-        } else {
-            // If no subject is selected, return all classes
-            filteredClasses = classDAO.getAllClass();
+// Check if the 'status' parameter is provided in the request
+        String statusParam = request.getParameter("status");
+        if (statusParam != null) {
+            // If 'status' parameter is provided, parse it
+            status = Boolean.parseBoolean(statusParam);
         }
-        ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
-        ArrayList<User> u = userDAO.getAllUser();
 
-        request.setAttribute("users", u);
-        request.setAttribute("classes", filteredClasses);
-        request.setAttribute("subjects", s);
-        request.getRequestDispatcher("classlist.jsp").forward(request, response);
+// Rest of your code remains the same
+//        int createBy = Integer.parseInt(request.getParameter("create_by"));
+        int createBy = 1;
+
+        // Create a new Class object
+        Class newClass = new Class(classCode, subjectId, semesterId, trainerId, status, createBy);
+
+        // Create a ClassDAO instance (replace this with your actual DAO initialization)
+        ClassDAO classDAO = new ClassDAO();
+
+        // Attempt to add the new class to the database
+        boolean classAdded = classDAO.addClass(newClass);
+
+        if (classAdded) {
+            // Class added successfully
+            // You may want to redirect or show a success message
+            response.sendRedirect("classlist");
+        } else {
+            // Class addition failed
+            // You may want to redirect or show an error message
+            response.sendRedirect("newclass");
+        }
     }
 
     /**

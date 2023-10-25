@@ -1,4 +1,4 @@
-package controller;
+package ForgetPassword.controller;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;

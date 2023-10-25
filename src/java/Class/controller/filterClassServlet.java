@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package Class.controller;
 
-import dal.*;
-import model.Class;
-import model.User;
-import model.Subject;
+import dal.ClassDAO;
+import dal.SubjectDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,12 +14,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.List;
+import model.Class;
+import model.Subject;
+import model.User;
 
 /**
  *
  * @author Admin
  */
-public class searchClassesServlet extends HttpServlet {
+public class filterClassServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +42,10 @@ public class searchClassesServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchClassesServlet</title>");
+            out.println("<title>Servlet filterClassServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchClassesServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet filterClassServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,22 +78,26 @@ public class searchClassesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
-        String searchKeyword = request.getParameter("search");
-
+        String selectedSubject = request.getParameter("selectedSubject");
         ClassDAO classDAO = new ClassDAO();
-        UserDAO userDAO = new UserDAO();
         SubjectDAO subjectDAO = new SubjectDAO();
+         UserDAO userDAO = new UserDAO();
+        ArrayList<Class> filteredClasses; // Change the type to ArrayList
 
-        ArrayList<Class> searchResults = classDAO.searchClasses(searchKeyword);
+        if (selectedSubject != null && !selectedSubject.isEmpty()) {
+            // Filter classes based on the selected subject
+            filteredClasses = classDAO.getClassesBySubject(selectedSubject);
+        } else {
+            // If no subject is selected, return all classes
+            filteredClasses = classDAO.getAllClass();
+        }
         ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
         ArrayList<User> u = userDAO.getAllUser();
 
         request.setAttribute("users", u);
+        request.setAttribute("classes", filteredClasses);
         request.setAttribute("subjects", s);
-        request.setAttribute("classes", searchResults);
-
         request.getRequestDispatcher("classlist.jsp").forward(request, response);
-
     }
 
     /**

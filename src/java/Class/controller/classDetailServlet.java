@@ -3,23 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller;
+package Class.controller;
 
-import dal.ClassDAO;
+import dal.AdminDAO;
 import model.Class;
+        
+import dal.ClassDAO;
+import dal.SubjectDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.Setting;
+import model.Subject;
 import model.User;
 
 /**
  *
  * @author Admin
  */
-public class updateClassSevlet extends HttpServlet {
+public class classDetailServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,10 +43,10 @@ public class updateClassSevlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet updateClassSevlet</title>");  
+            out.println("<title>Servlet classDetailServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet updateClassSevlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet classDetailServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,7 +63,25 @@ public class updateClassSevlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
+        User user = (User) request.getSession().getAttribute("user");
+        String code = request.getParameter("Code");
+        ClassDAO classDAO = new ClassDAO();
+        UserDAO userDAO = new UserDAO();
+        SubjectDAO subjectDAO = new SubjectDAO();
+        AdminDAO adminDAO = new AdminDAO();
+        
+        Class c = classDAO.getClassByCode(code);
+        ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+        ArrayList<User> u = userDAO.getUsersWithRoleId3();
+        ArrayList<Setting> setting = adminDAO.getSemesters();
+        
+        request.setAttribute("classObj", c);
+        request.setAttribute("subjects", s);
+        request.setAttribute("users", u);
+        request.setAttribute("semesters", setting);
+        
+        request.getRequestDispatcher("classdetail.jsp").forward(request, response);
     } 
 
     /** 
@@ -68,39 +93,8 @@ public class updateClassSevlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        int classID = Integer.parseInt(request.getParameter("classID"));
-        String classCode = request.getParameter("classCode");
-        int semesterId = Integer.parseInt(request.getParameter("semester"));
-        int lecturerId = Integer.parseInt(request.getParameter("lecturer"));
-        int subjectId = Integer.parseInt(request.getParameter("subject"));
-        boolean status = request.getParameter("status").equals("1"); // Convert to boolean
-
-        // Create a Class object with updated information
-        Class updatedClass = new Class();
-        updatedClass.setID(classID);
-        updatedClass.setClassCode(classCode);
-        updatedClass.setSemesterID(semesterId);
-        updatedClass.setTrainerID(lecturerId);
-        updatedClass.setSubjectID(subjectId);
-        updatedClass.setStatus(status);
-
-        // You should set the updateBy field with the user's ID
-        // updatedClass.setUpdateBy(yourUserId);
-
-        // Update the class details in the database using the DAO
-        ClassDAO classDAO = new ClassDAO();
-        boolean updated = classDAO.updateClass(updatedClass);
-
-        if (updated) {
-            // Class updated successfully
-            response.sendRedirect("classdetail?Code=" + classCode);
-        } else {
-            // Handle the case where the update failed
-            // You can redirect to an error page or show an error message
-            response.sendRedirect("errorPage.jsp");
-        }
+    throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /** 

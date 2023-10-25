@@ -1,4 +1,4 @@
-package controller;
+package ForgetPassword.controller;
 
 import utils.Mailtrap;
 import utils.EmailChecker;

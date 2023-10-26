@@ -90,42 +90,108 @@ public class newClassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get parameters from the request
-         User user = (User) request.getSession().getAttribute("user");
-        String classCode = request.getParameter("class_code");
-        int subjectId = Integer.parseInt(request.getParameter("subject"));
-        int semesterId = Integer.parseInt(request.getParameter("semester"));
-        int trainerId = Integer.parseInt(request.getParameter("trainer"));
-        boolean status = true; // Set the default value to true
 
-// Check if the 'status' parameter is provided in the request
-        String statusParam = request.getParameter("status");
-        if (statusParam != null) {
-            // If 'status' parameter is provided, parse it
-            status = Boolean.parseBoolean(statusParam);
+        String classCode = request.getParameter("class_code");
+        User user = (User) request.getSession().getAttribute("user");
+        ClassDAO classDAO = new ClassDAO();
+        if (classCode == null || classCode.trim().isEmpty()) {
+            SubjectDAO subjectDAO = new SubjectDAO();
+            UserDAO userDAO = new UserDAO();
+            AdminDAO adminDAO = new AdminDAO();
+
+            ArrayList<Class> c = classDAO.getAllClass();
+            ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+            ArrayList<User> u = userDAO.getAllUser();
+            ArrayList<User> t = userDAO.getUsersWithRoleId3();
+            ArrayList<Setting> setting = adminDAO.getSemesters();
+            System.out.println("Number of classes retrieved: " + c.size());
+
+            request.setAttribute("trainers", t);
+            request.setAttribute("users", u);
+            request.setAttribute("semesters", setting);
+            request.setAttribute("subjects", s);
+            request.setAttribute("classes", c);
+            request.setAttribute("classAddFailed", "Class name cannot be empty.");
+            request.getRequestDispatcher("classlist.jsp").forward(request, response);
+            return; // Exit the method
         }
 
-// Rest of your code remains the same
-//        int createBy = Integer.parseInt(request.getParameter("create_by"));
-        int createBy = 1;
+        // Check if a class with the same class code already exists
+        Class existingClass = classDAO.getClassByCode(classCode);
 
-        // Create a new Class object
-        Class newClass = new Class(classCode, subjectId, semesterId, trainerId, status, createBy);
+        if (existingClass != null) {
+            SubjectDAO subjectDAO = new SubjectDAO();
+            UserDAO userDAO = new UserDAO();
+            AdminDAO adminDAO = new AdminDAO();
 
-        // Create a ClassDAO instance (replace this with your actual DAO initialization)
-        ClassDAO classDAO = new ClassDAO();
+            ArrayList<Class> c = classDAO.getAllClass();
+            ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+            ArrayList<User> u = userDAO.getAllUser();
+            ArrayList<User> t = userDAO.getUsersWithRoleId3();
+            ArrayList<Setting> setting = adminDAO.getSemesters();
+            System.out.println("Number of classes retrieved: " + c.size());
 
-        // Attempt to add the new class to the database
-        boolean classAdded = classDAO.addClass(newClass);
-
-        if (classAdded) {
-            // Class added successfully
-            // You may want to redirect or show a success message
-            response.sendRedirect("classlist");
+            request.setAttribute("trainers", t);
+            request.setAttribute("users", u);
+            request.setAttribute("semesters", setting);
+            request.setAttribute("subjects", s);
+            request.setAttribute("classes", c);
+            request.setAttribute("classAddFailed", "A class with the same class code already exists.");
+            request.getRequestDispatcher("classlist.jsp").forward(request, response);
         } else {
-            // Class addition failed
-            // You may want to redirect or show an error message
-            response.sendRedirect("newclass");
+            int subjectId = Integer.parseInt(request.getParameter("subject"));
+            int semesterId = Integer.parseInt(request.getParameter("semester"));
+            int trainerId = Integer.parseInt(request.getParameter("trainer"));
+            boolean status = true;
+
+            String statusParam = request.getParameter("status");
+            if (statusParam != null) {
+                status = Boolean.parseBoolean(statusParam);
+            }
+
+            int createBy = user.getUserId();
+            Class newClass = new Class(classCode, subjectId, semesterId, trainerId, status, createBy);
+            boolean classAdded = classDAO.addClass(newClass);
+
+            if (classAdded) {
+                SubjectDAO subjectDAO = new SubjectDAO();
+                UserDAO userDAO = new UserDAO();
+                AdminDAO adminDAO = new AdminDAO();
+
+                ArrayList<Class> c = classDAO.getAllClass();
+                ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+                ArrayList<User> u = userDAO.getAllUser();
+                ArrayList<User> t = userDAO.getUsersWithRoleId3();
+                ArrayList<Setting> setting = adminDAO.getSemesters();
+                System.out.println("Number of classes retrieved: " + c.size());
+
+                request.setAttribute("trainers", t);
+                request.setAttribute("users", u);
+                request.setAttribute("semesters", setting);
+                request.setAttribute("subjects", s);
+                request.setAttribute("classes", c);
+                request.setAttribute("classAddSuccess", "Class added successfully.");
+                request.getRequestDispatcher("classlist.jsp").forward(request, response);
+            } else {
+                SubjectDAO subjectDAO = new SubjectDAO();
+                UserDAO userDAO = new UserDAO();
+                AdminDAO adminDAO = new AdminDAO();
+
+                ArrayList<Class> c = classDAO.getAllClass();
+                ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+                ArrayList<User> u = userDAO.getAllUser();
+                ArrayList<User> t = userDAO.getUsersWithRoleId3();
+                ArrayList<Setting> setting = adminDAO.getSemesters();
+                System.out.println("Number of classes retrieved: " + c.size());
+
+                request.setAttribute("trainers", t);
+                request.setAttribute("users", u);
+                request.setAttribute("semesters", setting);
+                request.setAttribute("subjects", s);
+                request.setAttribute("classes", c);
+                request.setAttribute("classAddFailed", "Failed to add the class.");
+                request.getRequestDispatcher("classlist.jsp").forward(request, response);
+            }
         }
     }
 

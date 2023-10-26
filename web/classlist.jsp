@@ -53,50 +53,31 @@
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Show the General section by default
+                $('#general').show();
+                $('#add').hide();
+
+                // Click event for "General" button
+                $('#btn-general').click(function () {
+                    $('#general').show();
+                    $('#add').hide();
+                });
+
+                // Click event for "Add a new Class" button
+                $('#btn-add').click(function () {
+                    $('#general').hide();
+                    $('#add').show();
+                });
+            });
+        </script>
+
     </head>
 
-    <style>
-        /* Style for the pop-up overlay */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        /* Style for the pop-up dialog */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            z-index: 1000;
-        }
-
-        /* Style for the table and buttons */
-        table {
-            font-size: 16px; /* Adjust the font size as needed */
-            width: 100%; /* Make the table full width */
-        }
-
-        .btn {
-            font-size: 16px; /* Adjust the font size for buttons */
-        }
-
-
-    </style>
-
-
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-        <%@include file="setting-header.jsp" %>
+        <%@ include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
@@ -106,191 +87,177 @@
                         <li>Setting</li>
                     </ul>
                 </div>
+
+                <!-- Buttons for switching between General and Add sections -->
+                <button class="btn btn-light" id="btn-general">General</button>
+                <button class="btn btn-light" id="btn-add">Add a new Class</button>
+
                 <div class="row">
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
-                            <div class="email-wrapper">
-                                <div class="">
-                                    <!-- Search Bar Section -->
-                                    <form action="searchclasses" method="post">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                <input type="text" class="form-control" name="search" placeholder="Search by Class Code or Teacher" />
-                                            </div>
-                                            <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                <input type="submit" class="btn btn-primary" value="Search" />
-                                            </div>
-                                        </div>
-                                    </form>
+                            <!-- General Section -->
+                            <div id="general">
+                                <div class="widget-box">
+                                    <% if (request.getAttribute("classAddSuccess") != null) { %>
+                                    <div class="alert alert-success">
+                                        <%= request.getAttribute("classAddSuccess") %>
+                                    </div>
+                                    <% } %>
+                                    <% if (request.getAttribute("classAddFailed") != null) { %>
+                                    <div class="alert alert-danger">
+                                        <%= request.getAttribute("classAddFailed") %>
+                                    </div>
+                                    <% } %>
 
+
+                                    <div class="search-bar-section">
+                                        <form action="searchclasses" method="post">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                    <input type="text" class="form-control" name="search"
+                                                           placeholder="Search by Class Code or Teacher" />
+                                                </div>
+                                                <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                    <input type="submit" class="btn btn-primary" value="Search" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <!-- Subject Filter Section -->
-                                    <form action="filterclasses" method="post">
+                                    <div class="subject-filter-section">
+                                        <form action="filterclasses" method="post">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                    <select name="selectedSubject" class="form-control-sm">
+                                                        <option value="">Select Subject</option>
+                                                        <c:forEach var="subject" items="${subjects}">
+                                                            <option value="${subject.subjectCode}">${subject.subjectCode}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+                                                    <button class="btn btn-primary">Filter</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- Class List Table and Action Buttons -->
+                                    <form action="classlist" method="post">
+
+                                        <!-- Card -->
                                         <div class="row">
-                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                <select name="selectedSubject" class="form-control-sm">
-                                                    <option value="">Select Subject</option>
-                                                    <c:forEach var="subject" items="${subjects}">
-                                                        <option value="${subject.subjectCode}">${subject.subjectCode}</option>
-                                                    </c:forEach>
-                                                </select>
-                                                <div class="row"></div>
-                                            </div>
-                                            <div class="col-12 col-sm-2 col-md-2 col-lg-2">
-                                                <button class="btn btn-primary">Filter</button>
-                                            </div>
+                                            <c:forEach items="${classes}" var="classObj">
+                                                <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+                                                    
+                                                    <a href="classdetail?Code=${classObj.classCode}">
+                                                        <div class="widget-card widget-bg1" style="height: 150px">					 
+                                                            <div class="wc-item">
+                                                                
+                                                                <h3 class="wc-title">
+                                                                    <input type="checkbox" name="selectedClasses" value="${classObj.ID}" />
+                                                                    ${classObj.classCode}
+                                                                </h3>
+                                                              <span class="wc-progress-bx">
+                                                                    <c:forEach var="subjects" items="${subjects}">
+                                                                        <c:if test="${subjects.subjectId eq classObj.subjectID}">
+                                                                           Subject: <c:out value="${subjects.subjectCode}" />
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </span>
+                                                                <span class="wc-progress-bx">
+                                                                    <span class="wc-change" >
+                                                                        <c:forEach var="subjects" items="${semesters}">
+                                                                            <c:if test="${subjects.settingId eq classObj.semesterID}">
+                                                                                Semester: <c:out value="${subjects.settingName}" />
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                    </span>
+                                                                </span>
+                                                                <span class="wc-progress-bx">
+                                                                    <span class="wc-change" >
+                                                                        <c:forEach var="users" items="${users}">
+                                                                            <c:if test="${users.userId eq classObj.trainerID}">
+                                                                              Trainer: <c:out value="${users.fullName}" />
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                    </span>
+                                                                </span>
+                                                                <span class="wc-progress-bx">
+                                                                    <span class="wc-change" >
+                                                                       Status: <c:out value="${classObj.status ? 'Active' : 'Inactive'}" />
+                                                                    </span>
+                                                                </span>
+                                                            </div>				      
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
+
+                                        <!-- Card END -->
+
+                                        <div class="action-buttons">
+                                            <button type="submit" class="btn btn-primary" name="action" value="activate">Activate</button>
+                                            <button type="submit" class="btn btn-primary" name="action" value="deactivate">Deactivate</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
 
-                                    <form action="classlist" method="post">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Select</th>
-                                                    <th scope="col">Class Code</th>
-                                                    <th scope="col">Subject</th>
-                                                    <th scope="col">Teacher's Name</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach var="classObj" items="${classes}">
-                                                    <tr>
-                                                        <td>
-                                                            <input type="checkbox" name="selectedClasses" value="${classObj.ID}" />
-                                                        </td>
-                                                        <td>
-                                                            <a href="classdetail?Code=${classObj.classCode}">
-                                                                ${classObj.classCode}
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <c:forEach var="subjects" items="${subjects}">
-                                                                <c:if test="${subjects.subjectId eq classObj.subjectID}">
-                                                                    <c:out value="${subjects.subjectCode}" />
-                                                                </c:if>
+                            <!-- Add Section -->
+                            <div class="mail-list-container" id="add">
+                                <div class="row">
+                                    <div class="col-lg-12 m-b30">
+                                        <div class="widget-box">
+                                            <div class="wc-title">
+                                                <h4>Create a New Class</h4>
+                                            </div>
+                                            <div class="widget-inner">
+                                                <form class="new-class-form" action="newclass" method="post">
+                                                    <div class="form-group">
+                                                        <label for="class_code">Class Code</label>
+                                                        <input type="text" class="form-control" id="class_code" name="class_code" placeholder="Class Code">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="semester">Semester</label>
+                                                        <select class="form-control" id="semester" name="semester">
+                                                            <c:forEach var="semester" items="${semesters}">
+                                                                <option value="${semester.settingId}">${semester.settingName}</option>
                                                             </c:forEach>
-                                                        </td>
-                                                        <td>
-                                                            <c:forEach var="users" items="${users}">
-                                                                <c:if test="${users.userId eq classObj.trainerID}">
-                                                                    <c:out value="${users.fullName}" />
-                                                                </c:if>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="trainer">Lecturer</label>
+                                                        <select class="form-control" id="trainer" name="trainer">
+                                                            <c:forEach var="user" items="${trainers}">
+                                                                <option value="${user.userId}">${user.fullName}</option>
                                                             </c:forEach>
-                                                        </td>
-                                                        <td><c:out value="${classObj.status ? 'Active' : 'Inactive'}" /></td>
-                                                    </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                        </table>
-
-                                        <button type="submit" class="btn btn-primary" name="action" value="activate">Activate</button>
-                                        <button type="submit" class="btn btn-primary" name="action" value="deactivate">Deactivate</button>
-                                        <button type="button" class="btn btn-secondary" id="newClassButton">Create a new Class</button>
-                                    </form>
-
-
-
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="subject">Subject</label>
+                                                        <select class="form-control" id="subject" name="subject">
+                                                            <c:forEach var="subject" items="${subjects}">
+                                                                <option value="${subject.subjectId}">${subject.subjectCode}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary">Create Class</button>
+                                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="newClassPopup" class="popup">
-
-                <div class="row">
-                    <div class="col-lg-12 m-b30">
-                        <div class="widget-box">
-                            <div class="wc-title">
-                                <h4>Create a New Class</h4>
-                            </div>
-                            <div class="widget-inner">
-                                <form class="new-class-form m-b30" action="newclass" method="post">
-                                    <div class="col-sm-10 ml-auto">
-                                        <% String errorMessage = (String) request.getAttribute("error"); %>
-                                        <% if (errorMessage != null) { %>
-                                        <div class="alert alert-danger" role="alert">
-                                            <strong>Error:</strong> <%= errorMessage %>
-                                        </div>
-                                        <% } %>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Class Code</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" type="text" name="class_code" placeholder="Class Code">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Semester</label>
-                                        <div class="col-sm-7">
-                                            <select class="form-control" name="semester">
-                                                <c:forEach var="semester" items="${semesters}">
-                                                    <option value="<c:out value='${semester.settingId}'/>"><c:out value='${semester.settingName}'/></option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Lecturer</label>
-                                        <div class="col-sm-7">
-                                            <select class="form-control" name="trainer">
-                                                <c:forEach var="user" items="${trainers}">
-                                                    <option value="<c:out value='${user.userId}'/>"><c:out value='${user.fullName}'/></option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Subject</label>
-                                        <div class="col-sm-7">
-                                            <select class="form-control" name="subject">
-                                                <c:forEach var="subject" items="${subjects}">
-                                                    <option value="<c:out value='${subject.subjectId}'/>"><c:out value='${subject.subjectCode}'/></option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-7">
-                                            <button type="submit" class="btn">Create Class</button>
-                                            <button type="reset" class="btn">Reset</button>
-                                            <button type="button" class="btn-secondry" id="closePopupButton">Cancel</button>
-
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>               
-                </div>
         </main>
         <div class="ttr-overlay"></div>
-
-        <script>
-            document.getElementById('newClassButton').addEventListener('click', function () {
-                // Show the overlay
-                document.querySelector('.ttr-overlay').style.display = 'block';
-                // Show the pop-up dialog
-                document.querySelector('#newClassPopup').style.display = 'block';
-            });
-
-            // Add functionality to close the pop-up
-            document.getElementById('closePopupButton').addEventListener('click', function () {
-                // Hide the overlay and pop-up dialog
-                document.querySelector('.ttr-overlay').style.display = 'none';
-                document.querySelector('#newClassPopup').style.display = 'none';
-            });
-
-            document.querySelector('.ttr-overlay').addEventListener('click', function () {
-                // Hide the overlay and pop-up dialog
-                this.style.display = 'none';
-                document.querySelector('#newClassPopup').style.display = 'none';
-            });
-        </script>
-
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -307,7 +274,9 @@
         <script src="assets/js/functions.js"></script>
         <script src="assets/vendors/chart/chart.min.js"></script>
         <script src="assets/js/admin.js"></script>
+        <script src='assets/vendors/calendar/moment.min.js'></script>
+        <script src='assets/vendors/calendar/fullcalendar.js'></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

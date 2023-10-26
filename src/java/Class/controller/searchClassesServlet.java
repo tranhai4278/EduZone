@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import model.Setting;
 
 /**
  *
@@ -80,7 +81,9 @@ public class searchClassesServlet extends HttpServlet {
         ClassDAO classDAO = new ClassDAO();
         UserDAO userDAO = new UserDAO();
         SubjectDAO subjectDAO = new SubjectDAO();
+        AdminDAO adminDAO = new AdminDAO();
 
+        ArrayList<Setting> setting = adminDAO.getSemesters();
         ArrayList<Class> searchResults = classDAO.searchClasses(searchKeyword);
         ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
         ArrayList<User> u = userDAO.getAllUser();
@@ -88,6 +91,7 @@ public class searchClassesServlet extends HttpServlet {
         request.setAttribute("users", u);
         request.setAttribute("subjects", s);
         request.setAttribute("classes", searchResults);
+        request.setAttribute("semesters", setting);
 
         request.getRequestDispatcher("classlist.jsp").forward(request, response);
 

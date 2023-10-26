@@ -4,6 +4,7 @@
  */
 package Class.controller;
 
+import dal.AdminDAO;
 import dal.ClassDAO;
 import dal.SubjectDAO;
 import dal.UserDAO;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import model.Class;
+import model.Setting;
 import model.Subject;
 import model.User;
 
@@ -82,6 +84,9 @@ public class filterClassServlet extends HttpServlet {
         ClassDAO classDAO = new ClassDAO();
         SubjectDAO subjectDAO = new SubjectDAO();
          UserDAO userDAO = new UserDAO();
+          AdminDAO adminDAO = new AdminDAO();
+          
+        ArrayList<Setting> setting = adminDAO.getSemesters();
         ArrayList<Class> filteredClasses; // Change the type to ArrayList
 
         if (selectedSubject != null && !selectedSubject.isEmpty()) {
@@ -97,6 +102,7 @@ public class filterClassServlet extends HttpServlet {
         request.setAttribute("users", u);
         request.setAttribute("classes", filteredClasses);
         request.setAttribute("subjects", s);
+        request.setAttribute("semesters", setting);
         request.getRequestDispatcher("classlist.jsp").forward(request, response);
     }
 

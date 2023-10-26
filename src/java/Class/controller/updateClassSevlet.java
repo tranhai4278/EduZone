@@ -95,11 +95,11 @@ public class updateClassSevlet extends HttpServlet {
 
         if (updated) {
             // Class updated successfully
-            response.sendRedirect("classdetail?Code=" + classCode);
+            response.sendRedirect("classlist");
         } else {
             // Handle the case where the update failed
             // You can redirect to an error page or show an error message
-            response.sendRedirect("errorPage.jsp");
+            response.sendRedirect("classdetail?Code=" + classCode);
         }
     }
 

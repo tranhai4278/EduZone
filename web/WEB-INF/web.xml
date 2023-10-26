@@ -140,6 +140,7 @@
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
     </servlet>
+
     <servlet>
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>

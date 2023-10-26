@@ -1,5 +1,6 @@
 package Manager.controller;
 
+import dal.SubjectDAO;
 import dal.QuestionDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -7,20 +8,47 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import model.Question;
+import model.QuestionChoise;
+import model.Subject;
+import model.SubjectSetting;
 import model.User;
 
-public class AddQuestionController extends HttpServlet {
+public class EditQuestionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("QuestionDetail");
+        int questionId = Integer.parseInt(request.getParameter("questionId"));
+        
+        SubjectDAO subjectDao = new SubjectDAO();
+        QuestionDAO qDao = new QuestionDAO();
+        
+        ArrayList<Subject> subjectList = subjectDao.getAllSubjects();
+        ArrayList<SubjectSetting> subjectSettingList = subjectDao.getAllSubjectSetting();
+        
+        
+        Question q = qDao.getQuestionById(questionId);
+        int subjectId = q.getSubjectId();
+        String qContent = q.getQuestion();
+        ArrayList<QuestionChoise> answerList = qDao.getAllAnswerByQuestionId(questionId);
+        
+        request.setAttribute("questionId", questionId);
+        request.setAttribute("answerList", answerList);
+        request.setAttribute("qContent", qContent);
+        request.setAttribute("subjectId", subjectId);
+        request.setAttribute("subjectList", subjectList);
+        request.setAttribute("subjectSettingList", subjectSettingList);
+        request.getRequestDispatcher("editQuestion.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         try {
+            int questionId = Integer.parseInt(request.getParameter("questionId"));
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             int subjectId = 0;
@@ -37,10 +65,9 @@ public class AddQuestionController extends HttpServlet {
             }
 
             QuestionDAO questionDao = new QuestionDAO();
-            questionDao.addQuestion(user.getUserId(), questionString, settingId, settingId, subjectId, user.getUserId(), user.getUserId());
-            int questionId = questionDao.getQuestionIdByQuestion(questionString);
-            questionDao.addQuestionDimension(questionId, settingId);
-
+            questionDao.updateQuestionWithId(questionId, questionString, settingId, settingId, subjectId, user.getUserId());
+            questionDao.deleteAnswerWithQuestionId(questionId);
+            
             for (int i = 0; i < answers.length; i++) {
                 int isTrue = 0;
                 for (int j = i; j < trueAnswers.length; j++) {
@@ -55,6 +82,5 @@ public class AddQuestionController extends HttpServlet {
             String message = "Must fill out all information.";
             response.sendRedirect("QuestionDetail?message=" + message);
         }
-
     }
 }

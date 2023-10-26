@@ -124,7 +124,6 @@
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>QuestionsListController</servlet-name>
         <servlet-class>Manager.controller.QuestionsListController</servlet-class>
@@ -152,7 +151,7 @@
     <servlet>
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>
@@ -186,19 +185,20 @@
         <servlet-class>controller.classSearchStudentServlet</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>QuestionDetailController</servlet-name>
         <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddQuestionController</servlet-name>
         <servlet-class>Manager.controller.AddQuestionController</servlet-class>
-
     </servlet>
     <servlet>
         <servlet-name>OnlineLearning</servlet-name>
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.EditQuestionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -284,7 +284,7 @@
         <servlet-name>LessonEditController</servlet-name>
         <url-pattern>/lessonEdit</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>  
+    <servlet-mapping>
         <servlet-name>QuizList</servlet-name>
         <url-pattern>/quizlist</url-pattern>
     </servlet-mapping>
@@ -295,7 +295,7 @@
     <servlet-mapping>
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
-        </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
@@ -333,7 +333,6 @@
         <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>QuestionDetailController</servlet-name>
         <url-pattern>/QuestionDetail</url-pattern>
     </servlet-mapping>
@@ -344,7 +343,10 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <url-pattern>/EditQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

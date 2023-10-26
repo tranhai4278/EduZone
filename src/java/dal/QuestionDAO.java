@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 import model.Question;
+import model.QuestionChoise;
 import model.Subject;
 import model.SubjectSetting;
 
@@ -189,4 +190,84 @@ public class QuestionDAO extends MySqlConnection {
         }
     }
 
+    public Question getQuestionById(int questionId) {
+        Question q = new Question();
+        String sql = "SELECT * FROM `question` WHERE question_id = " + questionId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+            while (result.next()) {
+                String question = result.getString(2);
+                int lessonId = result.getInt(3);
+                int chapterId = result.getInt(4);
+                int subjectId = result.getInt(5);
+                Date createAt = result.getDate(6);
+                int createBy = result.getInt(7);
+                Date updateAt = result.getDate(8);
+                int updateBy = result.getInt(9);
+
+                q = new Question(questionId, question, lessonId, chapterId, subjectId, createAt, createBy, updateAt, updateBy);
+            }
+            return q;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<QuestionChoise> getAllAnswerByQuestionId(int questionId) {
+        ArrayList<QuestionChoise> list = new ArrayList<>();
+        String sql = "SELECT * FROM `question_choice` WHERE question_id = " + questionId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int choice_id = result.getInt(1);
+                String choice = result.getString(2);
+                boolean trueAnswer = result.getInt(4) != 0;
+                QuestionChoise answer = new QuestionChoise(choice_id, choice, questionId, trueAnswer);
+                list.add(answer);
+            }
+
+            return list;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public void updateQuestionWithId(int questionId, String question, int lessonId, int chapterId, int subjectId, int userId) {
+        String sql = "UPDATE question SET\n"
+                + "    question = '" + question + "',\n"
+                + "    lesson_id = " + lessonId + ",\n"
+                + "    chapter_id = " + chapterId + ",\n"
+                + "    subject_id = " + subjectId + ",\n"
+                + "    create_at = NOW(),\n"
+                + "    create_by = " + userId + ",\n"
+                + "    update_at = NOW(),\n"
+                + "    update_by = " + userId + "\n"
+                + "WHERE\n"
+                + "    question_id = " + questionId + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.execute();
+        } catch (Exception e) {
+            Logger.getLogger(e.toString());
+        }
+    }
+
+    public void deleteAnswerWithQuestionId(int questionId) {
+        String sql = "DELETE FROM question_choice\n"
+                + "WHERE question_id = " + questionId + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.execute();
+        } catch (Exception e) {
+            Logger.getLogger(e.toString());
+        }
+    }
 }

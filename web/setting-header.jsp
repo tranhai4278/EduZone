@@ -179,7 +179,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="lessonList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
                             <span class="ttr-label">Lesson</span>
                         </a>

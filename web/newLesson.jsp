@@ -5,7 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
+<c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
+<c:set var="subjectSettingDAO" value="<%= new dal.SubjectSettingDAO() %>" />
+<%@page import="model.Lesson" %>
+<%@page import="model.Subject" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +73,7 @@
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
             <div class="container-fluid">
-                
+
                 <div class="row">
                     <!-- Your Profile Views Chart -->
                     <div class="col-lg-12 m-b30">
@@ -76,71 +82,75 @@
                                 <h4>Lesson Details</h4>
                             </div>
                             <div class="widget-inner">
-                                <form class="edit-profile m-b30">
+                                <form class="edit-profile m-b30" action="addLesson" method="post">
                                     <div class="row">
-                                        
+
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Subject</label>
+                                            <label class="col-form-label">Subject* </label>
                                             <div>
-                                                <select name="subject">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>SWT301-Software Testing</option>
+                                                <select name="subject" required="true">
+                                                    <c:forEach items="${subjectDAO.getAllSubjects()}" var="subject">
+                                                        <option value="${subject.subjectId}">${subject.subjectName}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Chapter</label>
+                                            <label class="col-form-label">Chapter* </label>
                                             <div>
-                                                <select name="chapter">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>Chap 1</option>
-                                                </select> 
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Lesson type</label>
-                                            <div>
-                                                <select name="type">
-                                                    <option value="Video" ${user.getRoleId() == 1 ? "selected" : ""}>Video</option>
-                                                    <option value="Quiz" ${user.getRoleId() == 1 ? "selected" : ""}>Quiz</option>
-                                                    <option value="Assignment" ${user.getRoleId() == 1 ? "selected" : ""}>Assignment</option>
+                                                <select name="chapter" required="true">
+                                                    <c:forEach items="${subjectSettingDAO.getAllChapters()}" var="subjectSetting">
+                                                        <option value="${subjectSetting.settingId}">${subjectSetting.settingName}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label class="col-form-label">Status</label>
+                                            <label class="col-form-label">Lesson type*</label>
                                             <div>
-                                                <select name="chapter">
-                                                    <option value="0" ${user.isStatus() == false ? "selected" : ""}>Unpublished</option>
-                                                    <option value="1" ${user.isStatus() == true ? "selected" : ""}>Published</option>
+                                                <select name="type" id="lessonType" required="true">
+                                                    <option value="Video" >Video</option>
+                                                    <option value="Quiz">Quiz</option>
+                                                    <option value="Assignment">Assignment</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Status* </label>
+                                            <div>
+                                                <select name="status" required="true">
+                                                    <option value="0">Unpublished</option>
+                                                    <option value="1">Published</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group col-12">
-                                            <label class="col-form-label">Lesson title</label>
+                                            <label class="col-form-label">Lesson title* </label>
                                             <div>
-                                                <input class="form-control" type="text" name="title" value="">
+                                                <input class="form-control" type="text" name="title" required="true">
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
+                                        <div class="form-group col-12" id="videoSection">
                                             <label class="col-form-label">Video link</label>
                                             <div>
-                                                <input class="form-control" type="text" name="video" value="">
+                                                <input class="form-control" type="text" name="video">
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
+                                        <div class="form-group col-12" id="quizSection">
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <option value="" ${user.getRoleId() == 1 ? "selected" : ""}>Quiz</option>
+                                                    <option>Quiz</option>
                                                 </select> 
                                             </div>
                                         </div>
-                                        <div class="form-group col-10">
+                                        <div class="form-group col-10" id="fileSection">
                                             <label class="col-form-label">File attack</label>
                                             <div>
-                                                <input class="form-control" type="text" name="file" value="">
+                                                <input class="form-control" type="text" name="file">
                                             </div>
                                         </div>
-                                        <div class="form-group col-2">
+                                        <div class="form-group col-2" id="browseButton">
                                             <label class="col-form-label"></label>
                                             <div>
                                                 <button type="button" class="btn">Browse</button>
@@ -149,10 +159,9 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
-                                                <textarea class="form-control"> </textarea>
+                                                <textarea class="form-control" type="text" name="des"> </textarea>
                                             </div>
                                         </div>
-                                        
                                         <div class="col-12">
                                             <button type="submit" class="btn">Save</button>
                                             <button type="reset" class="btn-secondry">Cancel</button>
@@ -189,6 +198,30 @@
         <script src='assets/vendors/calendar/moment.min.js'></script>
         <script src='assets/vendors/calendar/fullcalendar.js'></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
+
+        <script>
+        document.getElementById('lessonType').addEventListener('change', function () {
+        var selectedType = this.value;
+
+        // Ẩn tất cả các phần tử
+        document.getElementById('videoSection').style.display = 'none';
+        document.getElementById('quizSection').style.display = 'none';
+        document.getElementById('fileSection').style.display = 'none';
+        document.getElementById('browseButton').style.display = 'none';
+        // Hiển thị phần tử tương ứng
+        if (selectedType === 'Video') {
+            document.getElementById('videoSection').style.display = 'block';
+        } else if (selectedType === 'Quiz') {
+            document.getElementById('quizSection').style.display = 'block';
+        } else if (selectedType === 'Assignment') {
+            document.getElementById('fileSection').style.display = 'block';
+            document.getElementById('browseButton').style.display = 'block';
+        }
+    });
+        </script>
+
+
+
 
     </body>
 

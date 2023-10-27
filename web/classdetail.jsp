@@ -96,7 +96,7 @@
                                                 </div>
                                                 <div class="edit-profile">
                                                     <form class="edit-profile" action="updateclass" method="post">
-                                                        <div class="form-group row">
+                                                        <div class="form-group row" hidden>
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Class ID</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                                 <input class="form-control" type="text" name="classID" value="<c:out value="${classObj.ID}"/>" readonly>
@@ -105,7 +105,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Class Code</label>
                                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <input class="form-control" type="text" name="classCode" value="<c:out value="${classObj.classCode}"/>">
+                                                                <input class="form-control" type="text" name="classCode" value="<c:out value="${classObj.classCode}"/>" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -184,7 +184,7 @@
                                                                     </div>
                                                                     <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                                         <button type="submit" class="btn">Save Change</button>
-                                                                        <button type="button" class="btn-secondry" onclick="window.location.href = 'classstudentlist?code=${classObj.ID}'">View Student List</button>
+                                                                       
                                                                         <button type="button" class="btn-secondry" onclick="window.location.href = 'classlist'">Return to Class List</button>
                                                                     </div>
                                                                 </div>

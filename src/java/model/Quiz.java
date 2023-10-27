@@ -35,6 +35,15 @@ public class Quiz {
         this.quizType = quizType;
         this.numberQuestion = numberQuestion;
     }
+    
+    public Quiz(int quizId, String quizName, int subjectId) {
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.subjectId = subjectId;
+        
+    }
+    
+    
 
     public int getQuizId() {
         return quizId;

@@ -123,6 +123,7 @@
                                                         <th scope="col">Subject</th>
                                                         <th scope="col">Type</th>
                                                         <th scope="col">Number of Question</th>
+                                                        <th scope="col">Action</th>
                                                         
                                                         
                                                     </tr>

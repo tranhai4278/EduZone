@@ -293,6 +293,8 @@
     <servlet-mapping>
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>    
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
     </servlet-mapping>
@@ -329,7 +331,6 @@
         <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>QuestionDetailController</servlet-name>
         <url-pattern>/QuestionDetail</url-pattern>
     </servlet-mapping>
@@ -340,7 +341,6 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>

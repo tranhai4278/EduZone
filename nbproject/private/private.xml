@@ -2,27 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/AddSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/add-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
-        </group>
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/EditSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Admin/controller/AddSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/add-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/AdminDAO.java</file>
-        </group>
         <group>
             <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/D:/EduZone/web/header.jsp</file>
@@ -186,6 +165,33 @@
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
         </group>
     </open-files>
 </project-private>

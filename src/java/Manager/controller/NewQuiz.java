@@ -55,7 +55,7 @@ public class NewQuiz extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+         processRequest(request, response);
     } 
 
     /** 
@@ -71,7 +71,8 @@ public class NewQuiz extends HttpServlet {
         String subName = request.getParameter("subject");
         SubjectSettingDAO daost = new SubjectSettingDAO();
         List<SubjectSetting> listSt = daost.getAllChapterNamesBySubjectId(subName);
-        
+        request.setAttribute("listSt", listSt);
+        request.getRequestDispatcher("newQuiz.jsp").forward(request, response);
         
         
         //sau khi add xong

@@ -157,6 +157,35 @@ public class LessonDAO extends MySqlConnection{
         }
     }
     
+    public void addLesson(String title, int chapterId, int classId, String type, int quizId, String videoLink, String file, boolean status, String des) {
+        try {
+            String strSelect = "INSERT INTO `lesson` (`lesson_id`, `title`, `chapter_id`, `class_id`, `lesson_type`, "
+                    + "`quiz_id`, `video_link`, `file`, `status`, `description`, `create_at`, `create_by`, `update_at`, `update_by`) "
+                    + "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            Connection cnn = (new MySqlConnection()).connection;
+            PreparedStatement pstm = cnn.prepareStatement(strSelect);
+            pstm.setString(1, title);
+            pstm.setInt(2, chapterId);
+            pstm.setInt(3, classId);
+            pstm.setString(4, type);
+            pstm.setInt(5, quizId);
+            pstm.setString(6, videoLink);
+            pstm.setString(7, file);
+            pstm.setBoolean(8, status);
+            pstm.setString(9, des);
+            java.util.Date d = new java.util.Date();
+            java.sql.Date createdAt = new java.sql.Date(d.getTime());
+            java.sql.Date updatedAt = new java.sql.Date(d.getTime());
+            pstm.setDate(10, createdAt);
+            pstm.setInt(11, 0);
+            pstm.setDate(12, updatedAt);
+            pstm.setInt(13, 0);
+            pstm.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("addAccount: " + e.getMessage());
+        }
+    }
     
     public static void main(String[] args) {
         LessonDAO dao = new LessonDAO();

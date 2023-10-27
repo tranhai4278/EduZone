@@ -179,7 +179,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="lessonList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-layout-accordion-list"></i></span>
                             <span class="ttr-label">Lesson</span>
                         </a>
@@ -199,14 +199,7 @@
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Class List</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="newclass" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                            <span class="ttr-label">Create a New Class</span>
-                        </a>
-                    </li>
-                    
+                    </li>               
                 </c:if>
                     
 

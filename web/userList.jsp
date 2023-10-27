@@ -102,8 +102,7 @@
                                         <div class="">
                                             <div class="">
                                                 <div class="row">
-                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                    </div>
+                                                    
                                                     <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                         <a class="btn" href="addUser.jsp">
                                                             Add a new user   

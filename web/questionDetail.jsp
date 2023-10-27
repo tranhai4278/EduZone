@@ -212,7 +212,7 @@
 
 
                                                 <label for="questionArea" class="question-area">Question:</label>
-                                                <label class="answer-area">Answer: (Must put true answer on top)</label>
+                                                <label class="answer-area">Answer: </label>
                                                 <div class="clearfix">
 
                                                     <div class="question-section">
@@ -223,9 +223,7 @@
                                                     <div class="answer-section"> 
                                                         <div class="asc">
                                                             <div id="answers-container">
-                                                                <input type="text" name="answer" placeholder="Enter answer text">
-                                                                <input type="checkbox" name="true-answer"> True Answer
-                                                                <button class="delete-answer btn-secondry">Delete</button>
+                                                                
                                                             </div>
                                                             <button id="add-answer-button" class="btn">Add Answer</button>
                                                         </div>
@@ -275,18 +273,20 @@
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
         <script>
+            let answerIndex = 0;
             document.getElementById('add-answer-button').addEventListener('click', function () {
                 event.preventDefault();
                 const answersContainer = document.getElementById('answers-container');
                 const answerDiv = document.createElement('div');
                 answerDiv.classList.add('answer');
                 answerDiv.innerHTML = `
-                    <input type="text" placeholder="Enter answer text">
-                    <input type="checkbox" name="true-answer"> True Answer
+                    <input type="text" name="answer" data-index="${answerIndex}" placeholder="Enter answer text">
+                    <input type="checkbox" name="true-answer" data-index="${answerIndex}"> True Answer
                     <button class="delete-answer btn-secondry">Delete</button>`;
 
                 answersContainer.appendChild(answerDiv);
-
+                // Increment index for next answer
+                answerIndex++;
                 // Add event listener to delete button
                 answerDiv.querySelector('.delete-answer').addEventListener('click', function () {
                     event.preventDefault();

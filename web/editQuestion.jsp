@@ -157,11 +157,30 @@
             }
 
             .answer-area {
-                padding-left: 695px;
+                padding-left: 600px;
             }
 
             .dimension {
                 margin-top: 10px;
+            }
+
+            #dimension-container {
+                display: flex; /* Use Flexbox to layout children horizontally */
+                align-items: center; /* Vertically align items in the center */
+            }
+
+            .select-container {
+                display: flex; /* Use Flexbox to layout children horizontally */
+                align-items: center; /* Vertically align items in the center */
+            }
+
+            /* Adjust styling as needed */
+            label {
+                margin-right: 10px; /* Add spacing between label and select */
+            }
+            
+            .question-area {
+                padding-left: 45px;
             }
         </style>
     </head>
@@ -186,16 +205,21 @@
                                     <div class="page-content bg-white">
                                         <div class="content-block">
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
-                                                <h3>Add new Question</h3>
+                                                <h3>Edit Question</h3>
                                             </div>
-                                            <form class="edit-profile" method="post" action="AddQuestion">
+                                            <form class="edit-profile" method="post" action="EditQuestion">
+                                                <input type="hidden" name="questionId" value="${questionId}">
+
                                                 <!--<h6 class="dimension-header">Dimension:</h6>-->
                                                 <div class="sd-section">
                                                     <div class="subject-dropdown">
                                                         <label for="subject"><h6>Subject:</h6></label>
                                                         <select id="subject" name="subject">
                                                             <c:forEach var="subject" items="${subjectList}">
-                                                                <option value="${subject.getSubjectId()}">${subject.getSubjectCode()}</option>
+                                                                <option value="${subject.getSubjectId()}" 
+                                                                        <c:if test="${subject.getSubjectId() == subjectId}">
+                                                                            selected
+                                                                        </c:if>>${subject.getSubjectCode()}</option>
                                                             </c:forEach>
                                                         </select>
                                                     </div>
@@ -204,55 +228,72 @@
 
                                                         <div id="dimension-container">
                                                             <label>Dimension:</label>
-
-                                                        </div>
-                                                        <button id="add-dimension-button" class="btn">Add Dimension</button>
-                                                    </div>
-                                                </div>
-
-
-                                                <label for="questionArea" class="question-area">Question:</label>
-                                                <label class="answer-area">Answer: </label>
-                                                <div class="clearfix">
-
-                                                    <div class="question-section">
-
-                                                        <textarea id="questionArea" name="questionString" rows="6" cols="70"></textarea>
-                                                    </div>
-                                                    <div class="divider"></div>
-                                                    <div class="answer-section"> 
-                                                        <div class="asc">
-                                                            <div id="answers-container">
-                                                                
-                                                            </div>
-                                                            <button id="add-answer-button" class="btn">Add Answer</button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="ac-section">
-                                                    <div class="">
-                                                        <div class="row">
-                                                            <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                            </div>
-                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                                <button type="submit" class="btn">Add</button>
-                                                                <button type="reset" class="btn-secondry">Cancel</button>
-                                                                ${message}
+                                                            <div class="select-container">
+                                                                <select name="dimension">
+                                                                    <c:forEach var="ss" items="${subjectSettingList}">
+                                                                        <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                                <button class="delete-dimension btn-secondry">Delete</button>
                                                             </div>
                                                         </div>
+
                                                     </div>
+                                                    <button id="add-dimension-button" class="btn">Add Dimension</button>
                                                 </div>
-                                            </form>
                                         </div>
+
+
+                                        <label for="questionArea" class="question-area">Question:</label>
+                                        <label class="answer-area">Answer:</label>
+                                        <div class="clearfix">
+
+                                            <div class="question-section">
+
+                                                <textarea id="questionArea" name="questionString" rows="6" cols="70">${qContent}</textarea>
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="answer-section"> 
+                                                <div class="asc">
+                                                    <div id="answers-container">
+                                                        <c:forEach var="answer" items="${answerList}">
+                                                            <input type="text" name="answer" placeholder="Enter answer text" value="${answer.getChoice()}">
+                                                            <input type="checkbox" name="true-answer" 
+                                                                   <c:if test="${answer.isTrueAnswer() == true}">
+                                                                       checked
+                                                                   </c:if>
+                                                                   > True Answer
+                                                            <button class="delete-answer btn-secondry">Delete</button><br>
+                                                        </c:forEach>
+                                                    </div>
+                                                    <button id="add-answer-button" class="btn">Add Answer</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="ac-section">
+                                            <div class="">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                    </div>
+                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                        <button type="submit" class="btn">Update</button>
+                                                        <button type="reset" class="btn-secondry">Cancel</button>
+                                                        ${message}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div> 
-                        </div>
-                        <!-- Your Profile Views Chart END-->
+                            </div>
+                        </div> 
                     </div>
+                    <!-- Your Profile Views Chart END-->
                 </div>
+            </div>
         </main>
         <div class="ttr-overlay"></div>
         <script src="assets/js/jquery.min.js"></script>
@@ -280,13 +321,11 @@
                 const answerDiv = document.createElement('div');
                 answerDiv.classList.add('answer');
                 answerDiv.innerHTML = `
-                    <input type="text" name="answer" data-index="${answerIndex}" placeholder="Enter answer text">
-                    <input type="checkbox" name="true-answer" data-index="${answerIndex}"> True Answer
+                    <input type="text" name="answer" placeholder="Enter answer text">
+                    <input type="checkbox" name="true-answer" > True Answer
                     <button class="delete-answer btn-secondry">Delete</button>`;
 
                 answersContainer.appendChild(answerDiv);
-                // Increment index for next answer
-                answerIndex++;
                 // Add event listener to delete button
                 answerDiv.querySelector('.delete-answer').addEventListener('click', function () {
                     event.preventDefault();
@@ -302,11 +341,9 @@
                 dimensionDiv.innerHTML = `
                     <select name="dimension">
             <c:forEach var="ss" items="${subjectSettingList}">
-                            <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                        <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
             </c:forEach>
-                        
                     </select>
-        
                     <button class="delete-dimension btn-secondry">Delete</button>`;
 
                 dimensionContainer.appendChild(dimensionDiv);

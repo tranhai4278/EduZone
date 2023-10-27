@@ -79,6 +79,22 @@ public class LessonDAO extends MySqlConnection{
         return null;
     }
     
+    public String getQuizName(int lessonId){
+        String query = "SELECT quiz.quiz_name FROM lesson JOIN quiz ON lesson.quiz_id = quiz.quiz_id WHERE lesson_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, lessonId);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                return result.getString("quiz_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     public Lesson getLessonById(String id) {
         String query = "SELECT * FROM `lesson` WHERE lesson_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
@@ -109,12 +125,43 @@ public class LessonDAO extends MySqlConnection{
         }
         return null;
     }
-    public static void main(String[] args) {
-        LessonDAO dao = new LessonDAO();
-        System.out.println(dao.getChapterName(3));
-        System.out.println(dao.getSubjectName(3));
+    
+    public void updateLessonById (String title, String type, String description, String video, String quiz, String file , int status, String id) {
+        MySqlConnection dbContext = new MySqlConnection();
+        try {
+            String sql = "UPDATE lesson SET title = ?, status = ?, description = ?, video_link = ?, quiz_id = ?, file = ? WHERE lesson_id = ?;";
+            PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
+            preparedStatement.setString(1, title);
+            preparedStatement.setInt(2, status);
+            preparedStatement.setString(3, description);
+            if (type.equals("Video")) {
+                preparedStatement.setString(4, video);
+                preparedStatement.setNull(5, java.sql.Types.VARCHAR); // Quiz
+                preparedStatement.setNull(6, java.sql.Types.VARCHAR); // Assignment
+            } else if (type.equals("Quiz")) {
+                preparedStatement.setNull(4, java.sql.Types.VARCHAR); // Video
+                preparedStatement.setString(5, quiz);
+                preparedStatement.setNull(6, java.sql.Types.VARCHAR); // Assignment
+            } else if (type.equals("Assignment")) {
+                preparedStatement.setNull(4, java.sql.Types.VARCHAR); // Video
+                preparedStatement.setNull(5, java.sql.Types.VARCHAR); // Quiz
+                preparedStatement.setString(6, file);
+            }
+            preparedStatement.setString(7, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            dbContext.connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
+    
+    public static void main(String[] args) {
+        LessonDAO dao = new LessonDAO();
+        System.out.println(dao.getQuizName(2));
+    }
     
 }
     

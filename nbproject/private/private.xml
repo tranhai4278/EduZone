@@ -2,8 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-=======
         <group>
             <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/D:/EduZone/web/header.jsp</file>
@@ -20,7 +18,6 @@
             <file>file:/D:/EduZone/src/java/controller/ProfileServlet.java</file>
             <file>file:/D:/EduZone/web/changepassword.jsp</file>
         </group>
->>>>>>> c99b1ee52c1229e5b20533d5b0ed64c5afd6f6c0
         <group>
             <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/D:/EduZone/web/assets/vendors/themify/themify-icons.css</file>
@@ -170,7 +167,6 @@
             <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
         </group>
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -212,7 +208,6 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionsList.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editQuestion.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/model/QuestionChoise.java</file>
-=======
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/addUser.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/Manager/controller/EditSubjectSetting.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/SubjectDAO.java</file>
@@ -239,7 +234,6 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/SubjectSettingDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/newLesson.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
->>>>>>> c99b1ee52c1229e5b20533d5b0ed64c5afd6f6c0
         </group>
     </open-files>
 </project-private>

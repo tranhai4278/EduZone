@@ -87,7 +87,6 @@
                                         <th>Question <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Dimension <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Subject Code <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Date <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -98,11 +97,9 @@
                                             <td> ${question.getQuestion()} </td>
                                             <td>${question.getDimension()}</td>
                                             <td> ${question.getSubjectCode()} </td>
-                                            <td> ${question.getCreateBy()} </td>
-                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="EditQuestion?questionId=${question.getQuestionId()}">Edit</a></td>
                                         </tr>
                                     </c:forEach>
-
                                 </tbody>
                             </table>
                         </section>

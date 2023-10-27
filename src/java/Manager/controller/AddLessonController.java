@@ -5,6 +5,7 @@
 
 package Manager.controller;
 
+import dal.LessonDAO;
 import dal.SubjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -69,10 +70,27 @@ public class AddLessonController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        LessonDAO dao = new LessonDAO();
+        String title = request.getParameter("title");
+        int subject = Integer.parseInt(request.getParameter("subject"));
+        int chapter = Integer.parseInt(request.getParameter("chapter"));
+        String type = request.getParameter("type");
+        boolean status = Boolean.parseBoolean(request.getParameter("status"));
+        String video = request.getParameter("video");
+        int quiz = Integer.parseInt(request.getParameter("quiz"));
+        String file = request.getParameter("file");
+        String des = request.getParameter("des");
+
+        String mess = null; // Initialize the error message as null
+        if (title.length() > 100) {
+            mess = "Your input title is too long!";
+        }
+        dao.addLesson(title, subject, chapter, type, quiz, video, file, status, des);
+        response.sendRedirect("lessonList");
     }
 
-    /** 
+        /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

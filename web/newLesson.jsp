@@ -9,8 +9,11 @@
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
 <c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
 <c:set var="subjectSettingDAO" value="<%= new dal.SubjectSettingDAO() %>" />
+<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <%@page import="model.Lesson" %>
 <%@page import="model.Subject" %>
+<%@page import="model.Quiz" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +143,9 @@
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <option>Quiz</option>
+                                                    <c:forEach items="${quizDAO.getAllQuizes()}" var="quiz">
+                                                        <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
+                                                    </c:forEach>
                                                 </select> 
                                             </div>
                                         </div>
@@ -175,6 +180,28 @@
                 </div>
             </div>
         </main>
+        <script>
+        document.getElementById('lessonType').addEventListener('change', function () {
+        var selectedType = this.value;
+        // Hiển thị phần tử tương ứng
+        if (selectedType === 'Video') {
+            document.getElementById('videoSection').style.display = 'block';
+            document.getElementById('quizSection').style.display = 'none';
+            document.getElementById('fileSection').style.display = 'none';
+            document.getElementById('browseButton').style.display = 'none';
+        } else if (selectedType === 'Quiz') {
+            document.getElementById('quizSection').style.display = 'block';
+            document.getElementById('videoSection').style.display = 'none';
+            document.getElementById('fileSection').style.display = 'none';
+            document.getElementById('browseButton').style.display = 'none';
+        } else if (selectedType === 'Assignment') {
+            document.getElementById('fileSection').style.display = 'block';
+            document.getElementById('browseButton').style.display = 'block';
+            document.getElementById('videoSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'none';
+        }
+    });
+        </script>
 
         <div class="ttr-overlay"></div>
 
@@ -199,28 +226,7 @@
         <script src='assets/vendors/calendar/fullcalendar.js'></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
 
-        <script>
-        document.getElementById('lessonType').addEventListener('change', function () {
-        var selectedType = this.value;
-
-        // Ẩn tất cả các phần tử
-        document.getElementById('videoSection').style.display = 'none';
-        document.getElementById('quizSection').style.display = 'none';
-        document.getElementById('fileSection').style.display = 'none';
-        document.getElementById('browseButton').style.display = 'none';
-        // Hiển thị phần tử tương ứng
-        if (selectedType === 'Video') {
-            document.getElementById('videoSection').style.display = 'block';
-        } else if (selectedType === 'Quiz') {
-            document.getElementById('quizSection').style.display = 'block';
-        } else if (selectedType === 'Assignment') {
-            document.getElementById('fileSection').style.display = 'block';
-            document.getElementById('browseButton').style.display = 'block';
-        }
-    });
-        </script>
-
-
+        
 
 
     </body>

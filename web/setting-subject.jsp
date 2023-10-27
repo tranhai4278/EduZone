@@ -78,28 +78,31 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-                                        <div class="">
-                                            <div class="">
-                                                <div class="row">
-
-                                                    <div class="col-sm-5">
-                                                        <a class="btn" href="addSubject.jsp">
-                                                            Add a new subject   
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-sm-5">
-                                                        <form id="subject-search-form" action="settingSubject" method="POST">
-                                                            <input name="txt" type="text" id="subject-input-box" placeholder="Search subject" class="form-control" autocomplete="off">
-                                                            <input type="submit" style="display: none;">
-                                                        </form>
-                                                    </div>
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-md-2">
+                                                <input value="${search}" name="search" type="text" id="filterSubject" placeholder="Search subject" class="form-control" autocomplete="off" onchange="this.form.submit()">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="filter-section">
+                                                    <select id="filterType" name="manager" onchange="this.form.submit()">
+                                                        <option ${type == -1 ? ' selected' : ' '} value="-1">Manager</option>
+                                                        <option ${type == 1 ? ' selected' : ' '}  value="1">Role</option>
+                                                        <option ${type == 2 ? ' selected' : ' '}  value="2">Email Domain</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="next-prev-btn">
-                                            <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                                            <div class="col-md-2">
+                                                <select id="filterStatus" name="status" onchange="this.form.submit()">
+                                                    <option   value="-1">Status</option>
+                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
+                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 offset-md-4">
+                                                <a href="addSubject.jsp" class="btn btn-primary">
+                                                    Add a new subject
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="mail-box-list">
@@ -107,7 +110,6 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                          
                                                         <th scope="col">Subject Name</th>
                                                         <th scope="col">Subject Code</th>
                                                         <th scope="col">Manager </th>
@@ -118,11 +120,9 @@
                                                 <tbody>
                                                     <c:forEach var="s" items="${listS}" >
                                                         <tr>
-                                            
                                                             <td>${s.subjectName}</td>
                                                             <td>${s.subjectCode}</td>
                                                             <td>${s.u.fullName}</td>
-
                                                             <td>
                                                                 <div class="form-check form-switch">
                                                                     <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
@@ -142,6 +142,33 @@
                                 </div>
                             </div> 
                         </div>
+                        <c:if test="${totalPage!=0}">
+                            <nav aria-label="Page navigation example" style="margin-top: 20px;">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item ${pageNo == 1 ? ' disabled' : ' '}">
+                                        <a class="page-link" style="cursor: pointer"
+                                           onclick="goToPage(${pageNo} - 1)">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <input type="hidden" name="pageNo" id="pageNoInput" value="${pageNo}">
+                                    <c:forEach begin="1" var="i" end="${totalPage}">
+                                        <li class="page-item  ${pageNo == i  ? ' active' : ' '}">
+                                            <a class="page-link"  style="cursor: pointer"
+                                               onclick="goToPage(${i})">
+                                                ${i}
+                                            </a>
+                                        </li>
+                                    </c:forEach>
+                                    <li class="page-item ${pageNo == (totalPage) ? ' disabled' : ' '}">
+                                        <a class="page-link user-select-all" style="cursor: pointer"
+                                           onclick="goToPage(${pageNo+1})">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:if>
                     </div>
                 </div>
         </main>
@@ -154,6 +181,17 @@
                     window.location.href = 'updateStatus?id=' + id + '&status=' + status;
                 else
                     checkbox.checked = !status;
+            }
+        </script>
+
+        <script>
+            function goToPage(i) {
+                document.getElementById('pageNoInput').value = i;
+                document.getElementById('form').submit();
+            }
+            function sortData(order) {
+                document.getElementById('order').value = order;
+                document.getElementById('form').submit();
             }
         </script>
         <!-- External JavaScripts -->

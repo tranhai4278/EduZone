@@ -185,7 +185,6 @@
                                         </table>
                                     </section>
                                 </div>
-
                             </div>
                             <c:if test="${totalPage!=0}">
                                 <nav aria-label="Page navigation example" style="margin-top: 20px;">

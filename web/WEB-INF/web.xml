@@ -295,11 +295,8 @@
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet-mapping>    
-=======
     <servlet-mapping>
->>>>>>> 6aff52c277d221b85d0b5e33fee9874db6983266
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
     </servlet-mapping>
@@ -346,8 +343,6 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-<<<<<<< HEAD
-=======
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditQuestionServlet</servlet-name>
@@ -356,7 +351,6 @@
     <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
         <url-pattern>/addLesson</url-pattern>
->>>>>>> 6aff52c277d221b85d0b5e33fee9874db6983266
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

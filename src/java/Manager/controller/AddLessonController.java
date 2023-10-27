@@ -5,19 +5,20 @@
 
 package Manager.controller;
 
-import dal.LessonDAO;
+import dal.SubjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
  * @author PHAM NGOC
  */
-public class LessonEditController extends HttpServlet {
+public class AddLessonController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -28,14 +29,34 @@ public class LessonEditController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet addLessonController</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet addLessonController at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     } 
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
     } 
 
     /** 
@@ -48,27 +69,7 @@ public class LessonEditController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-        String type = request.getParameter("type");
-        String title = request.getParameter("title");
-        String des = request.getParameter("des");
-        String video = request.getParameter("video");
-        String quiz = request.getParameter("quiz");
-        String file = request.getParameter("file");
-
-        String status = request.getParameter("status");
-        int stt;
-        if (status.matches("1")) {
-            stt = 1;
-        } else {
-            stt = 0;
-        }
-        LessonDAO lesDAO = new LessonDAO();
-        String userId = request.getParameter("userId");
-        lesDAO.updateLessonById(title,type,des, video, quiz, file, stt, id);
-        // Redirect 
-        response.sendRedirect("lessonDetail?lessonId=" + id);
+        processRequest(request, response);
     }
 
     /** 

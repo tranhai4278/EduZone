@@ -1,57 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
         <filter-class>security.AdminAuthenticationFilter</filter-class>
     </filter>
-    <filter-mapping>
-        <filter-name>AdminAuthenticationFilter</filter-name>
-        <url-pattern>/settingSubject</url-pattern>
-        <url-pattern>/setting</url-pattern>
-        <url-pattern>/userDetail</url-pattern>
-        <url-pattern>/userList</url-pattern>
-        <!-- Add other URL patterns for the admin role here -->
-    </filter-mapping>
-    <!-- END Authentication Filter for Admin Page -->
-    <!-- START Authentication Filter for Manager Page -->
     <filter>
         <filter-name>ManagerAuthenticationFilter</filter-name>
         <filter-class>security.ManagerAuthenticationFilter</filter-class>
     </filter>
-    <filter-mapping>
-        <filter-name>ManagerAuthenticationFilter</filter-name>
-        <url-pattern>/settingSubject</url-pattern>
-        <url-pattern>/setting</url-pattern>
-        <url-pattern>/userDetail</url-pattern>
-        <url-pattern>/userList</url-pattern>
-        <!-- Add other URL patterns for the manager role here -->
-    </filter-mapping>
-    <!-- END Authentication Filter for Manager Page -->
-    <!-- START Authentication Filter for Trainer Page -->
     <filter>
         <filter-name>TrainerAuthenticationFilter</filter-name>
         <filter-class>security.TrainerAuthenticationFilter</filter-class>
     </filter>
-    <filter-mapping>
-        <filter-name>TrainerAuthenticationFilter</filter-name>
-        <url-pattern/>
-        <!-- Add URL patterns for the trainer role here -->
-    </filter-mapping>
-    <!-- END Authentication Filter for Trainer Page -->
-    <!-- START Authentication Filter for Normal Page -->
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>security.AuthenticationFilter</filter-class>
     </filter>
     <filter-mapping>
+        <filter-name>AdminAuthenticationFilter</filter-name>
+        <url-pattern>/settingSubject</url-pattern>
+        <url-pattern>/setting</url-pattern>
+        <url-pattern>/userDetail</url-pattern>
+        <url-pattern>/userList</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ManagerAuthenticationFilter</filter-name>
+        <url-pattern>/settingSubject</url-pattern>
+        <url-pattern>/setting</url-pattern>
+        <url-pattern>/userDetail</url-pattern>
+        <url-pattern>/userList</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>TrainerAuthenticationFilter</filter-name>
+        <url-pattern/>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/logout</url-pattern>
         <url-pattern>/profile</url-pattern>
         <url-pattern>/changepassword</url-pattern>
-        <!-- Add other URL patterns for the normal role here -->
     </filter-mapping>
-    <!-- END Authentication Filter for Normal Page -->
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>Login.controller.RegisterController</servlet-class>
@@ -124,7 +112,6 @@
         <servlet-name>SubjectList</servlet-name>
         <servlet-class>Manager.controller.SubjectList</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>QuestionsListController</servlet-name>
         <servlet-class>Manager.controller.QuestionsListController</servlet-class>
@@ -152,7 +139,8 @@
     <servlet>
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
-        </servlet>
+    </servlet>
+
     <servlet>
         <servlet-name>ClassListServlet</servlet-name>
         <servlet-class>controller.classListServlet</servlet-class>
@@ -186,19 +174,20 @@
         <servlet-class>controller.classSearchStudentServlet</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>QuestionDetailController</servlet-name>
         <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddQuestionController</servlet-name>
         <servlet-class>Manager.controller.AddQuestionController</servlet-class>
-
     </servlet>
     <servlet>
         <servlet-name>OnlineLearning</servlet-name>
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
-
+    </servlet>
+    <servlet>
+        <servlet-name>addLessonController</servlet-name>
+        <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -284,7 +273,7 @@
         <servlet-name>LessonEditController</servlet-name>
         <url-pattern>/lessonEdit</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>  
+    <servlet-mapping>
         <servlet-name>QuizList</servlet-name>
         <url-pattern>/quizlist</url-pattern>
     </servlet-mapping>
@@ -295,7 +284,7 @@
     <servlet-mapping>
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
-        </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
@@ -333,7 +322,6 @@
         <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>QuestionDetailController</servlet-name>
         <url-pattern>/QuestionDetail</url-pattern>
     </servlet-mapping>
@@ -344,11 +332,12 @@
     <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addLessonController</servlet-name>
+        <url-pattern>/addLesson</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>

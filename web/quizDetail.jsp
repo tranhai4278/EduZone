@@ -129,7 +129,7 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-primary btn-block" id="createQuiz">Create</button>
                                             </form>
-<!--                                            <div id="randomPopup">
+                                            <div id="randomPopup">
                                                  Popup cho tùy chọn Random 
                                                 <h2>Random Options</h2>
                                                 <div class="form-group">
@@ -145,7 +145,7 @@
                                                 <input type="number" id="numberOfQuestions">
                                                 <br>
                                                 <button id="randomSubmit">Create</button>
-                                            </div>-->
+                                            </div>
 
                                         </div> 
                                     </div>
@@ -155,7 +155,7 @@
                     </div>
                 </div>
 
-<!--                <div id="questionTable" style="display: none;">
+                <div id="questionTable" style="display: none;">
                     <div class="mail-box-list">
                         <table class="table">
                             <thead>
@@ -185,11 +185,11 @@
                         <button type="submit" class="btn btn-primary btn-block" id="CreateQuiz">Create</button>
                     </div>
 
-                </div>-->
+                </div>
         </main>
         <div class="ttr-overlay"></div>
 
-<!--        <script>
+        <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const quizForm = document.getElementById("quizForm");
                 const randomPopup = document.getElementById("randomPopup");
@@ -239,7 +239,7 @@
                     randomPopup.style.display = "none";
                 });
             });
-        </script>-->
+        </script>
 
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>

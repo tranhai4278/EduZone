@@ -295,6 +295,7 @@
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>    
     <servlet-mapping>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>

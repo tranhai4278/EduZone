@@ -239,5 +239,32 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/web/newLesson.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EDUZONE/EduZone/src/java/dal/LessonDAO.java</file>
         </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/subjectList.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/newQuiz.jsp</file>
+        </group>
     </open-files>
 </project-private>

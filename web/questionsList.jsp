@@ -45,6 +45,12 @@
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
         <link rel="stylesheet" href="assets/css/questionListStyle.css" />
+        <style>
+            .table__header {
+                
+                min-height: 113px; /* Add a minimum height */
+            }
+        </style>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -69,12 +75,12 @@
                             <div class="">
                                 <div class="">
                                     <div class="row">
-                                        <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                        </div>
-                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                        <div class="col-12 col-sm-7 col-md-7 col-lg-7">
                                             <a class="btn" href="QuestionDetail">Add new question</a>
                                         </div>
+                                        
                                     </div>
+
                                 </div>
                             </div>
                         </section>

@@ -192,7 +192,7 @@ public class SubjectDAO extends MySqlConnection {
         String sql = "SELECT subject_code FROM `subject`";
 
         try {
-            statement = connection.prepareStatement(sql);
+                statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
 
             while (result.next()) {

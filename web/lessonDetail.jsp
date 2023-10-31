@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Lesson" %>
+<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
 
 <html lang="en">
@@ -130,9 +131,14 @@
                                                     <c:when test="${lesson.getLessonType() eq 'Video'}">
                                                         <input class="form-control" type="text" name="video" value="${lesson.videoLink}">
                                                     </c:when>
-                                                    <c:when test="${lesson.getLessonType() eq 'Quiz'}">
-                                                        <input class="form-control" type="text" name="quiz" value="${lesson.quizId}">
-                                                    </c:when>
+                                                        <c:when test="${lesson.getLessonType() eq 'Quiz'}">
+                                                            <select class="form-control" name="quiz">
+                                                                <c:forEach items="${quizDAO.getAllQuizes()}" var="quizOption">
+                                                                    <option value="${quizOption.getQuizId()}" ${quizOption.getQuizId() == lesson.quizId ? "selected" : ""}>${quizOption.getQuizName()}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </c:when>
+
                                                     <c:when test="${lesson.getLessonType() eq 'Assignment'}">
                                                         <input class="form-control" type="text" name="assignment" value="${lesson.file}">
                                                     </c:when>

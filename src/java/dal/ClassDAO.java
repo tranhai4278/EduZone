@@ -277,6 +277,59 @@ public class ClassDAO extends MySqlConnection {
             return false;
         }
     }
+    
+  public ArrayList<Class> filterClass(String subjectCode, String semesterCode, String trainerCode) {
+    ArrayList<Class> data = new ArrayList<>();
+    String sql = "SELECT * FROM class WHERE 1=1"; // Start with a true condition
+
+    if (!subjectCode.isEmpty()) {
+        sql += " AND subject_id = ?";
+    }
+    if (!semesterCode.isEmpty()) {
+        sql += " AND semester_id = ?";
+    }
+    if (!trainerCode.isEmpty()) {
+        sql += " AND trainer_id = ?";
+    }
+
+    try {
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        int parameterIndex = 1; // Start with the first parameter index
+
+        if (!subjectCode.isEmpty()) {
+            statement.setString(parameterIndex, subjectCode);
+            parameterIndex++;
+        }
+        if (!semesterCode.isEmpty()) {
+            statement.setString(parameterIndex, semesterCode);
+            parameterIndex++;
+        }
+        if (!trainerCode.isEmpty()) {
+            statement.setString(parameterIndex, trainerCode);
+        }
+
+        ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int ID = result.getInt(1);
+                String code = result.getString(2);
+                int subject_ID = result.getInt(3);
+                int semester_ID = result.getInt(4);
+                int trainer_ID = result.getInt(5);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
+
+                Class c = new Class(ID, code, subject_ID, semester_ID, trainer_ID, status, create_at, create_by, update_at, update_by);
+                data.add(c);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
 
     public static void main(String[] args) {
         ClassDAO classDAO = new ClassDAO();

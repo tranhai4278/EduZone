@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Class.controller;
 
+import dal.AdminDAO;
 import dal.ClassDAO;
+import dal.SubjectDAO;
+import dal.UserDAO;
 import model.Class;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +15,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import model.Setting;
+import model.Subject;
 import model.User;
 
 /**
@@ -20,52 +25,7 @@ import model.User;
  * @author Admin
  */
 public class updateClassSevlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet updateClassSevlet</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet updateClassSevlet at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
-    } 
-
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -88,28 +48,59 @@ public class updateClassSevlet extends HttpServlet {
 
         // You should set the updateBy field with the user's ID
         // updatedClass.setUpdateBy(yourUserId);
-
         // Update the class details in the database using the DAO
         ClassDAO classDAO = new ClassDAO();
         boolean updated = classDAO.updateClass(updatedClass);
 
         if (updated) {
-            // Class updated successfully
-            response.sendRedirect("classlist");
+            classListLoader(request, response);
+            request.setAttribute("classAddSuccess", "Class updated successfully");
+            request.getRequestDispatcher("classlist.jsp").forward(request, response);
         } else {
-            // Handle the case where the update failed
-            // You can redirect to an error page or show an error message
-            response.sendRedirect("classdetail?Code=" + classCode);
+            classDetailLoader(request, response);
+            request.setAttribute("classAddFailed", "Failed to edit the class. The class's data you inputted was found to be similar to another class");
+            request.getRequestDispatcher("classdetail.jsp").forward(request, response);
         }
     }
 
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    public void classListLoader(HttpServletRequest request, HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        ClassDAO classDAO = new ClassDAO();
+        SubjectDAO subjectDAO = new SubjectDAO();
+        UserDAO userDAO = new UserDAO();
+        AdminDAO adminDAO = new AdminDAO();
 
+        ArrayList<Class> c = classDAO.getAllClass();
+        ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+        ArrayList<User> u = userDAO.getAllUser();
+        ArrayList<User> t = userDAO.getUsersWithRoleId3();
+        ArrayList<Setting> setting = adminDAO.getSemesters();
+        System.out.println("Number of classes retrieved: " + c.size());
+
+        request.setAttribute("trainers", t);
+        request.setAttribute("users", u);
+        request.setAttribute("semesters", setting);
+        request.setAttribute("subjects", s);
+        request.setAttribute("classes", c);
+    }
+    
+    public void classDetailLoader(HttpServletRequest request, HttpServletResponse response) {
+            User user = (User) request.getSession().getAttribute("user");
+            String classCode = request.getParameter("classCode");
+            System.out.println(classCode);
+            UserDAO userDAO = new UserDAO();
+            SubjectDAO subjectDAO = new SubjectDAO();
+            AdminDAO adminDAO = new AdminDAO();
+            ClassDAO classDAO = new ClassDAO();
+
+            Class c = classDAO.getClassByCode(classCode);
+            ArrayList<Subject> s = subjectDAO.getSubjectsByManagerId(user.getUserId());
+            ArrayList<User> u = userDAO.getUsersWithRoleId3();
+            ArrayList<Setting> setting = adminDAO.getSemesters();
+
+            request.setAttribute("classObj", c);
+            request.setAttribute("subjects", s);
+            request.setAttribute("users", u);
+            request.setAttribute("semesters", setting);
+    }
 }

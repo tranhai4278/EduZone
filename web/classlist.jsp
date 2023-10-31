@@ -109,20 +109,6 @@
                                     </div>
                                     <% } %>
 
-
-                                    <div class="search-bar-section">
-                                        <form action="searchclasses" method="post">
-                                            <div class="row">
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input type="text" class="form-control" name="search"
-                                                           placeholder="Search by Class Code or Teacher" />
-                                                </div>
-                                                <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                    <input type="submit" class="btn btn-primary" value="Search" />
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                     <!-- Subject Filter Section -->
                                     <div class="subject-filter-section">
                                         <form action="filterclasses" method="post">
@@ -131,76 +117,106 @@
                                                     <select name="selectedSubject" class="form-control-sm">
                                                         <option value="">Select Subject</option>
                                                         <c:forEach var="subject" items="${subjects}">
-                                                            <option value="${subject.subjectCode}">${subject.subjectCode}</option>
-                                                        </c:forEach>
+                                                            <option value="${subject.subjectId}">${subject.subjectCode}</option>
+                                                        </c:forEach>                                                         
                                                     </select>
-                                                </div>
-                                                <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+
+                                                    <select name="selectedSemester" class="form-control-sm">
+                                                        <option value="">Select Semester</option>
+                                                        <c:forEach var="semester" items="${semesters}">
+                                                            <option value="${semester.settingId}">${semester.settingName}</option>
+                                                        </c:forEach>                                                       
+                                                    </select>
+
+                                                    <select name="selectedTrainer" class="form-control-sm">
+                                                        <option value="">Select Trainer</option>
+                                                        <c:forEach var="user" items="${trainers}">
+                                                            <option value="${user.userId}">${user.fullName}</option>
+                                                        </c:forEach>                                                       
+                                                    </select>
                                                     <button class="btn btn-primary">Filter</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- Class List Table and Action Buttons -->
-                                    <form action="classlist" method="post">
 
-                                        <!-- Card -->
-                                        <div class="row">
-                                            <c:forEach items="${classes}" var="classObj">
-                                                <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                                                    
-                                                    <a href="classdetail?Code=${classObj.classCode}">
-                                                        <div class="widget-card widget-bg1" style="height: 150px">					 
-                                                            <div class="wc-item">
-                                                                
-                                                                <h3 class="wc-title">
-                                                                    <input type="checkbox" name="selectedClasses" value="${classObj.ID}" />
-                                                                    ${classObj.classCode}
-                                                                </h3>
-                                                              <span class="wc-progress-bx">
-                                                                    <c:forEach var="subjects" items="${subjects}">
-                                                                        <c:if test="${subjects.subjectId eq classObj.subjectID}">
-                                                                           Subject: <c:out value="${subjects.subjectCode}" />
-                                                                        </c:if>
-                                                                    </c:forEach>
-                                                                </span>
-                                                                <span class="wc-progress-bx">
-                                                                    <span class="wc-change" >
-                                                                        <c:forEach var="subjects" items="${semesters}">
-                                                                            <c:if test="${subjects.settingId eq classObj.semesterID}">
-                                                                                Semester: <c:out value="${subjects.settingName}" />
-                                                                            </c:if>
-                                                                        </c:forEach>
-                                                                    </span>
-                                                                </span>
-                                                                <span class="wc-progress-bx">
-                                                                    <span class="wc-change" >
-                                                                        <c:forEach var="users" items="${users}">
-                                                                            <c:if test="${users.userId eq classObj.trainerID}">
-                                                                              Trainer: <c:out value="${users.fullName}" />
-                                                                            </c:if>
-                                                                        </c:forEach>
-                                                                    </span>
-                                                                </span>
-                                                                <span class="wc-progress-bx">
-                                                                    <span class="wc-change" >
-                                                                       Status: <c:out value="${classObj.status ? 'Active' : 'Inactive'}" />
-                                                                    </span>
-                                                                </span>
-                                                            </div>				      
-                                                        </div>
-                                                    </a>
+                                    <div class="search-section">
+                                        <form action="searchclasses" method="post">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search by Class Code or Teacher" />
                                                 </div>
+                                                <div class="col-12 col-sm-3 col-md-3 col-lg-5">
+                                                    <input type="submit" class="btn btn-primary" value="Search" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <!-- Class List Table and Action Buttons -->
+
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Class Code</th>
+                                                <th scope="col">Subject</th>
+                                                <th scope="col">Semesters</th>
+                                                <th scope="col">Teacher's Name</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="classObj" items="${classes}">
+                                                <tr>
+                                                    <td>
+                                                        <a href="classdetail?Code=${classObj.classCode}">
+                                                            ${classObj.classCode}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <c:forEach var="subjects" items="${subjects}">
+                                                            <c:if test="${subjects.subjectId eq classObj.subjectID}">
+                                                                <c:out value="${subjects.subjectCode}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>
+                                                        <c:forEach var="subjects" items="${semesters}">
+                                                            <c:if test="${subjects.settingId eq classObj.semesterID}">
+                                                                <c:out value="${subjects.settingName}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>
+                                                        <c:forEach var="users" items="${users}">
+                                                            <c:if test="${users.userId eq classObj.trainerID}">
+                                                                <c:out value="${users.fullName}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td><c:out value="${classObj.status ? 'Active' : 'Inactive'}" /></td>
+
+                                                    <td>
+                                                        <form action="classlist" method="post">
+                                                            <input type="hidden" name="selectedClasses" value="${classObj.ID}" />
+                                                            <c:choose>
+                                                                <c:when test="${classObj.status}">
+                                                                    <button type="submit" class="btn btn-primary" name="action" value="deactivate">Deactivate</button>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <button type="submit" class="btn btn-primary" name="action" value="activate">Activate</button>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                            <input type="button" class="btn" onclick="location.href = 'classdetail?Code=${classObj.classCode}';" value="Detail" /> 
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             </c:forEach>
-                                        </div>
+                                        </tbody>
+                                    </table>
 
-                                        <!-- Card END -->
-
-                                        <div class="action-buttons">
-                                            <button type="submit" class="btn btn-primary" name="action" value="activate">Activate</button>
-                                            <button type="submit" class="btn btn-primary" name="action" value="deactivate">Deactivate</button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
 

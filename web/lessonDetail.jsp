@@ -68,6 +68,15 @@
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
+            <c:if test="${not empty requestScope.successMessage}">
+                <div class="alert alert-success" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.successMessage}
+                </div>
+            </c:if>
+
             <div class="container-fluid">
                 <div class="row">
                     <!-- Your Profile Views Chart -->
@@ -133,8 +142,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
-                                                <textarea class="form-control" type="text" name="des" value="${lesson.getDescription()}"> </textarea>
-                                            </div>
+                                                <input class="form-control" type="text" name="des" value="${lesson.description}">                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" class="btn">Save</button>

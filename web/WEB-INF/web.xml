@@ -192,6 +192,14 @@
         <servlet-name>addLessonController</servlet-name>
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadFile</servlet-name>
+        <servlet-class>Manager.controller.UploadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchLesson</servlet-name>
+        <servlet-class>Manager.controller.SearchLesson</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -343,6 +351,14 @@
     <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
         <url-pattern>/addLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadFile</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchLesson</servlet-name>
+        <url-pattern>/searchLesson</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

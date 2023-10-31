@@ -1,20 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+
 package Manager.controller;
 
-import dal.LessonDAO;
-import dal.SubjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collection;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.io.InputStream;
+
+
 
 /**
  *
  * @author PHAM NGOC
  */
-public class AddLessonController extends HttpServlet {
+public class UploadFile extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,10 +43,10 @@ public class AddLessonController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet addLessonController</title>");  
+            out.println("<title>Servlet UploadFile</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet addLessonController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet UploadFile at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -51,8 +63,7 @@ public class AddLessonController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        //processRequest(request, response);
-        
+        processRequest(request, response);
     } 
 
     /** 
@@ -66,26 +77,30 @@ public class AddLessonController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         //processRequest(request, response);
-        LessonDAO dao = new LessonDAO();
-        String title = request.getParameter("title");
-        int subject = Integer.parseInt(request.getParameter("subject"));
-        int chapter = Integer.parseInt(request.getParameter("chapter"));
-        String type = request.getParameter("type");
-        boolean status = Boolean.parseBoolean(request.getParameter("status"));
-        String video = request.getParameter("video");
-        int quiz = Integer.parseInt(request.getParameter("quiz"));
-        String file = request.getParameter("file");
-        String des = request.getParameter("des");
+        response.setContentType("text/html;charset=UTF-8");
+        // Lấy dữ liệu từ tệp đã tải lên
+        Part filePart = request.getPart("file");
+        String fileName = getFileName(filePart);
+        InputStream fileContent = filePart.getInputStream();
 
-        String mess = null; // Initialize the error message as null
-        if (title.length() > 100) {
-            mess = "Your input title is too long!";
-        }
-        dao.addLesson(title, subject, chapter, type, quiz, video, file, status, des);
-        response.sendRedirect("lessonList");
+
+        PrintWriter out = response.getWriter();
+        out.println("File " + fileName + " has been uploaded successfully.");
+
+        
     }
 
-        /**
+    private String getFileName(Part part) {
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return "unknown";
+    }
+    
+
+    /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

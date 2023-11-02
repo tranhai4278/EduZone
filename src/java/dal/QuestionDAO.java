@@ -270,4 +270,15 @@ public class QuestionDAO extends MySqlConnection {
             Logger.getLogger(e.toString());
         }
     }
+    
+        public void deleteQuestionById(int questionId) {
+        String sql = "DELETE FROM question WHERE question_id = " + questionId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.execute();
+        } catch (Exception e) {
+            Logger.getLogger(e.toString());
+        }
+    }
 }

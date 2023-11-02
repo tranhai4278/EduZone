@@ -25,7 +25,6 @@ main.table {
 
 .table__header {
     width: 100%;
-    height: 10%;
     background-color: inherit;
     display: flex;
     justify-content: space-between;

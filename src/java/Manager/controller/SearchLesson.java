@@ -1,7 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+
 package Manager.controller;
 
 import dal.LessonDAO;
-import dal.SubjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -9,12 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import model.Lesson;
 
 /**
  *
  * @author PHAM NGOC
  */
-public class AddLessonController extends HttpServlet {
+public class SearchLesson extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -31,10 +36,10 @@ public class AddLessonController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet addLessonController</title>");  
+            out.println("<title>Servlet SearchLesson</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet addLessonController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SearchLesson at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -51,8 +56,7 @@ public class AddLessonController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        //processRequest(request, response);
-        
+        processRequest(request, response);
     } 
 
     /** 
@@ -66,26 +70,33 @@ public class AddLessonController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         //processRequest(request, response);
-        LessonDAO dao = new LessonDAO();
-        String title = request.getParameter("title");
-        int subject = Integer.parseInt(request.getParameter("subject"));
-        int chapter = Integer.parseInt(request.getParameter("chapter"));
-        String type = request.getParameter("type");
-        boolean status = Boolean.parseBoolean(request.getParameter("status"));
-        String video = request.getParameter("video");
-        int quiz = Integer.parseInt(request.getParameter("quiz"));
-        String file = request.getParameter("file");
-        String des = request.getParameter("des");
-
-        String mess = null; // Initialize the error message as null
-        if (title.length() > 100) {
-            mess = "Your input title is too long!";
+                response.setContentType("text/html;charset=UTF-8");
+        String search = request.getParameter("criteria");
+        String key = request.getParameter("key");
+        String criteria = null;
+        switch (search) {
+            case "subject_name":
+                criteria = "s.subject_name";
+                break;
+            case "setting_name":
+                criteria = "ss.setting_name";
+                break;
+            case "title":
+                criteria = "l.title";
+                break;
+            case "lesson_type":
+                criteria = "l.lesson_type";
+                break;
+            default:
+                break;
         }
-        dao.addLesson(title, subject, chapter, type, quiz, video, file, status, des);
-        response.sendRedirect("lessonList");
+        LessonDAO dao = new LessonDAO();
+        ArrayList<Lesson> list = dao.searchLesson(criteria, key);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("lessonList.jsp").forward(request, response);
     }
 
-        /**
+    /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

@@ -2,9 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group/>
-=======
         <group>
             <file>file:/D:/EduZone/src/java/dal/UserDAO.java</file>
             <file>file:/D:/EduZone/web/assets/vendors/themify/themify-icons.css</file>
@@ -259,6 +257,5 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/deleteQuestionController.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/LessonDAO.java</file>
         </group>
->>>>>>> b4723cc1c8106ee2d8c0b4812858a8669c9e8af5
     </open-files>
 </project-private>

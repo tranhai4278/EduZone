@@ -139,7 +139,6 @@
                             <li class="nav-dashboard"><a href="javascript:;">Manage Class <i class="fa fa-chevron-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="classlist">Class List</a></li>
-                                    <li><a href="newclass">New Class</a></li>
                                 </ul>
                             </li>
                         </c:if>

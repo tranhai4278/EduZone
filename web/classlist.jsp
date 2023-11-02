@@ -81,10 +81,10 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Setting</h4>
+                    <h4 class="breadcrumb-title">Class Setting</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
+                        <li>Class Setting</li>
                     </ul>
                 </div>
 

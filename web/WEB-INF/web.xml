@@ -198,7 +198,7 @@
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
+
         <servlet-name>UploadFile</servlet-name>
         <servlet-class>Manager.controller.UploadFile</servlet-class>
     </servlet>

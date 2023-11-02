@@ -256,14 +256,39 @@ public class LessonDAO extends MySqlConnection{
             return null;
         }
     }
-    public static void main(String[] args) {
-        LessonDAO dao = new LessonDAO();
+    public ArrayList<Lesson> getLessonByChapterId(int chapterId) {
         ArrayList<Lesson> list = new ArrayList<>();
-        list = dao.searchLesson("ss.setting_name", "chap");
-        for (Lesson lesson : list) {
-            System.out.println(lesson);
+        String sql = "SELECT * FROM `lesson` WHERE chapter_id = " + chapterId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int lessonId = result.getInt(1);
+                String title = result.getString(2);
+                int classId = result.getInt(4);
+                String lessonType = result.getString(5);
+                int quizId = result.getInt(6);
+                String videoLink = result.getString(7);
+                String file = result.getString(8);
+                boolean status = result.getInt(9) != 0;
+                String description = result.getString(10);
+                java.util.Date create_at = result.getDate(11);
+                int create_by = result.getInt(12);
+                java.util.Date update_at = result.getDate(13);
+                int update_by = result.getInt(14);
+                Lesson lesson = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, create_at, create_by, update_at, update_by);
+                list.add(lesson);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
+    
+    
     
 }
     

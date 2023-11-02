@@ -46,141 +46,25 @@
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
         <style>
             .content-block {
-                padding-top: 20px;
-                padding-left: 10px;
-            }
-
-            .answer {
-                margin-top: 10px;
-            }
-
-            .delete-answer {
-                margin-left: 10px;
-            }
-
-            #add-answer-button {
-                margin-top: 10px;
-
-            }
-
-            .ac-section {
-                margin-top: 10px;
-            }
-
-            .question-section,
-            .answer-section {
-                width: 50%;
-                float: left;
-                box-sizing: border-box;
-                padding: 20px;
-            }
-
-            .question-section {
-                margin-top: 33px;
-            }
-
-            .clearfix::after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-
-            .divider {
-                width: 1px;
-                background-color: black;
-                height: 100%;
-                display: inline-block;
-                margin: 0 10px;
-            }
-
-            #dimension-select {
                 display: flex;
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .top-part, .bottom-part {
+                display: flex;
+                margin: 10px 0;
                 flex-wrap: wrap;
-                align-items: center;
-                justify-content: space-between;
             }
 
-            .dimension-type,
-            .dimension-name,
-            #add-dimension-button {
-                flex: 0 0 auto;
-                margin-right: 10px; /* Adjust the margin to control spacing */
-            }
-
-            .sd-section {
-                display: flex;
-                width: 100%;
-                justify-content: space-between;
-                gap: 70px;
-            }
-
-            .subject-dropdown,
-            #dimension-select {
+            .top-part > div, .bottom-part > div {
                 flex: 1;
+                width: 50%;
+                margin: 5px;
             }
 
-            #add-dimension-button {
-                margin-top: 36px;
-            }
-
-            .answer-section {
-                margin-top: 32px;
-            }
-
-            .dimension-header {
-                padding-left: 770px;
-            }
-
-            #dimension-select {
-                margin-top: 8px;
-            }
-
-            .question-area,
-            answer-area {
-                padding-top: 30px;
-            }
-
-            .subject-dropdown select {
-                max-width: 40%;
-            }
-
-            #questionArea {
-                margin-top: -40px;
-            }
-
-            .answer-section {
-                margin-top: -40px;
-            }
-
-            .asc {
-                margin-left: 14px;
-            }
-
-            .answer-area {
-                padding-left: 600px;
-            }
-
-            .dimension {
-                margin-top: 10px;
-            }
-
-            #dimension-container {
-                display: flex; /* Use Flexbox to layout children horizontally */
-                align-items: center; /* Vertically align items in the center */
-            }
-
-            .select-container {
-                display: flex; /* Use Flexbox to layout children horizontally */
-                align-items: center; /* Vertically align items in the center */
-            }
-
-            /* Adjust styling as needed */
-            label {
-                margin-right: 10px; /* Add spacing between label and select */
-            }
-            
-            .question-area {
-                padding-left: 45px;
+            .page-content {
+                padding-bottom: 10px;
             }
         </style>
     </head>
@@ -209,69 +93,107 @@
                                             </div>
                                             <form class="edit-profile" method="post" action="EditQuestion">
                                                 <input type="hidden" name="questionId" value="${questionId}">
+                                                <input type="hidden" name="lessonId" value="${lessonId}">
+                                                <input type="hidden" name="ChapterId" value="${ChapterId}">
 
-                                                <!--<h6 class="dimension-header">Dimension:</h6>-->
-                                                <div class="sd-section">
-                                                    <div class="subject-dropdown">
-                                                        <label for="subject"><h6>Subject:</h6></label>
-                                                        <select id="subject" name="subject">
-                                                            <c:forEach var="subject" items="${subjectList}">
-                                                                <option value="${subject.getSubjectId()}" 
-                                                                        <c:if test="${subject.getSubjectId() == subjectId}">
-                                                                            selected
-                                                                        </c:if>>${subject.getSubjectCode()}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </div>
-
-                                                    <div id="dimension-select">
-
-                                                        <div id="dimension-container">
-                                                            <label>Dimension:</label>
-                                                            <div class="select-container">
-                                                                <select name="dimension">
-                                                                    <c:forEach var="ss" items="${subjectSettingList}">
-                                                                        <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
-                                                                    </c:forEach>
-                                                                </select>
-                                                                <button class="delete-dimension btn-secondry">Delete</button>
+                                                <div class="top-part">
+                                                    <div class="ssc-section">
+                                                        <div id="ssc-section">
+                                                            <div class="subject-section">
+                                                                <label>Subject:</label>
+                                                                <div style="width: 50%;">
+                                                                    <select id="subject" name="subject" onchange="getChapter(this);">
+                                                                        <option value="" disabled selected>Nothing selected</option>
+                                                                        <c:forEach var="subject" items="${subjectList}">
+                                                                            <option value="${subject.getSubjectId()}" 
+                                                                                    <c:if test="${subject.getSubjectId() == subjectId}">
+                                                                                        selected
+                                                                                    </c:if>>${subject.getSubjectCode()}</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
 
+                                                        <div id="c-section">
+                                                            <div class="chapter-section new-box">
+                                                                <label >Chapter:</label>
+                                                                <div style="width: 50%;">
+                                                                    <select class="form-control" name="chapter" onchange="getLesson(this);">
+                                                                        <option value="" disabled selected>Nothing selected</option>
+                                                                        <c:forEach var="c" items="${listc}">
+                                                                            <option value="${c.getSettingId()}">${c.getSettingName()}</option>
+                                                                        </c:forEach>
+                                                                    </select>    
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div id="l-section">
+                                                            <div class="lesson-section new-box2">
+                                                                <label for="lesson">Lesson:</label>
+                                                                <div style="width: 50%;">
+                                                                    <select class="form-control" id="lesson" name="lesson" onchange="disableSelect(this);">
+                                                                        <option value="" disabled>Nothing selected</option>
+                                                                        <c:forEach var="l" items="${listl}">
+                                                                            <option value="${l.getLessonId()}">${l.getTitle()}</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <button id="add-dimension-button" class="btn">Add Dimension</button>
+
+                                                    <div class="dimension-section">
+                                                        <div id="dimension-container">
+                                                            <label>Dimension:</label>
+                                                            <div style="width: 50%; margin: 5px;">
+                                                                <c:forEach var="sq" items="${ssqList}">
+                                                                    <div style="display: flex; align-items: center;">
+                                                                        <select name="dimension" class="form-control">
+                                                                            <c:forEach var="ss" items="${subjectSettingList}">
+                                                                                <option value="${ss.getSettingId()}" 
+                                                                                        <c:if test="${sq.getSettingId() == ss.getSettingId()}">
+                                                                                            selected
+                                                                                        </c:if>
+                                                                                        >${ss.getSettingType()}/${ss.getSettingName()}</option>
+                                                                            </c:forEach>
+                                                                        </select>
+                                                                        <button class="delete-dimension btn-secondry" style="margin: 3px;">Delete</button>
+                                                                    </div>
+                                                                </c:forEach>
+                                                            </div>
+
+                                                        </div>
+                                                        <button id="add-dimension-button" class="btn">Add Dimension</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="bottom-part">
+                                                    <div class="question-section">
+                                                        <label for="questionArea" class="question-area">Question:</label>
+                                                        <textarea id="questionArea" name="questionString" rows="6" cols="70">${qContent}</textarea>
+                                                    </div>
+
+                                                    <div class="answer-section">
+                                                        <label>Answer: </label>
+                                                        <div class="asc">
+                                                            <div id="answers-container" style="margin: 5px;">
+                                                                <c:forEach var="answer" items="${answerList}">
+                                                                    <input type="text" name="answer" placeholder="Enter answer text" value="${answer.getChoice()}">
+                                                                    <input type="checkbox" name="true-answer" 
+                                                                           <c:if test="${answer.isTrueAnswer() == true}">
+                                                                               checked
+                                                                           </c:if>
+                                                                           > True Answer
+                                                                    <button class="delete-answer btn-secondry" style="margin: 3px;">Delete</button><br>
+                                                                </c:forEach>
+                                                            </div>
+                                                            <button id="add-answer-button" class="btn">Add Answer</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                         </div>
-
-
-                                        <label for="questionArea" class="question-area">Question:</label>
-                                        <label class="answer-area">Answer:</label>
-                                        <div class="clearfix">
-
-                                            <div class="question-section">
-
-                                                <textarea id="questionArea" name="questionString" rows="6" cols="70">${qContent}</textarea>
-                                            </div>
-                                            <div class="divider"></div>
-                                            <div class="answer-section"> 
-                                                <div class="asc">
-                                                    <div id="answers-container">
-                                                        <c:forEach var="answer" items="${answerList}">
-                                                            <input type="text" name="answer" placeholder="Enter answer text" value="${answer.getChoice()}">
-                                                            <input type="checkbox" name="true-answer" 
-                                                                   <c:if test="${answer.isTrueAnswer() == true}">
-                                                                       checked
-                                                                   </c:if>
-                                                                   > True Answer
-                                                            <button class="delete-answer btn-secondry">Delete</button><br>
-                                                        </c:forEach>
-                                                    </div>
-                                                    <button id="add-answer-button" class="btn">Add Answer</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
                                         <div class="ac-section">
                                             <div class="">
                                                 <div class="row">
@@ -279,7 +201,8 @@
                                                     </div>
                                                     <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                         <button type="submit" class="btn">Update</button>
-                                                        <button type="reset" class="btn-secondry">Cancel</button>
+                                                        <button class="btn-secondry" onclick="reloadPage()">Cancel</button>
+                                                        <button class="btn-secondry" style="background-color: red;" onclick="redirectServlet()">Delete</button>
                                                         ${message}
                                                     </div>
                                                 </div>
@@ -323,10 +246,8 @@
                 answerDiv.innerHTML = `
                     <input type="text" name="answer" placeholder="Enter answer text">
                     <input type="checkbox" name="true-answer" > True Answer
-                    <button class="delete-answer btn-secondry">Delete</button>`;
-
+                    <button class="delete-answer btn-secondry" style="margin: 2px;">Delete</button>`;
                 answersContainer.appendChild(answerDiv);
-                // Add event listener to delete button
                 answerDiv.querySelector('.delete-answer').addEventListener('click', function () {
                     event.preventDefault();
                     answersContainer.removeChild(answerDiv);
@@ -339,22 +260,90 @@
                 const dimensionDiv = document.createElement('div');
                 dimensionDiv.classList.add('dimension');
                 dimensionDiv.innerHTML = `
-                    <select name="dimension">
-            <c:forEach var="ss" items="${subjectSettingList}">
-                        <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
-            </c:forEach>
+                <div style="width: 50%; display: flex; align-items: center; margin: 5px;">
+                    <select name="dimension" class="form-control">
+                        <c:forEach var="ss" items="${subjectSettingList}">
+                            <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                        </c:forEach>
                     </select>
-                    <button class="delete-dimension btn-secondry">Delete</button>`;
-
+                    <button class="delete-dimension btn-secondry" style="margin: 3px;">Delete</button>
+                </div>`;
                 dimensionContainer.appendChild(dimensionDiv);
-
-                // Add event listener to delete button
                 dimensionDiv.querySelector('.delete-dimension').addEventListener('click', function () {
                     event.preventDefault();
                     dimensionContainer.removeChild(dimensionDiv);
                 });
             });
+        </script>
+        <script>
+            function getChapter(selectElement) {
+                var subject = selectElement.value;
+                console.log(subject);
+                $.ajax({
+                    url: "/eduzone/getChapter",
+                    type: "get",
+                    data: {
+                        subject: subject
+                    },
+                    success: function (data) {
+                        var sscSection = document.getElementById("c-section");
+                        var newContainer = document.createElement("div");
+                        newContainer.classList.add("new-box");
 
+                        var divToDelete = document.querySelector(".new-box");
+                        if (divToDelete) {
+                            var parentElement = divToDelete.parentNode;
+
+                            parentElement.removeChild(divToDelete);
+                        }
+                        newContainer.innerHTML = data;
+
+                        sscSection.appendChild(newContainer);
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+            }
+
+            function getLesson(selectElement) {
+                var chapter = selectElement.value;
+                $.ajax({
+                    url: "/eduzone/getLesson",
+                    type: "get",
+                    data: {
+                        chapter: chapter
+                    },
+                    success: function (data) {
+                        var sscSection = document.getElementById("l-section");
+                        var newContainer = document.createElement("div");
+                        newContainer.classList.add("new-box2");
+
+                        var divToDelete = document.querySelector(".new-box2");
+                        if (divToDelete) {
+                            var parentElement = divToDelete.parentNode;
+
+                            parentElement.removeChild(divToDelete);
+                        }
+                        newContainer.innerHTML = data;
+
+                        sscSection.appendChild(newContainer);
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+            }
+
+            function reloadPage() {
+                event.preventDefault();
+                window.location.reload();
+            }
+
+            function redirectServlet() {
+                event.preventDefault();
+                window.location.href = '/eduzone/deleteQuestion?questionId=${questionId}';
+            }
 
         </script>
     </body>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <!-- WELCOME FILE LIST -->
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
-    </welcome-file-list>  
-
+    </welcome-file-list>
     <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
@@ -200,12 +198,25 @@
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>UploadFile</servlet-name>
         <servlet-class>Manager.controller.UploadFile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchLesson</servlet-name>
         <servlet-class>Manager.controller.SearchLesson</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getChapter</servlet-name>
+        <servlet-class>utils.getChapter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getLesson</servlet-name>
+        <servlet-class>utils.getLesson</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteQuestionController</servlet-name>
+        <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -366,6 +377,18 @@
     <servlet-mapping>
         <servlet-name>SearchLesson</servlet-name>
         <url-pattern>/searchLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getChapter</servlet-name>
+        <url-pattern>/getChapter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getLesson</servlet-name>
+        <url-pattern>/getLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteQuestionController</servlet-name>
+        <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

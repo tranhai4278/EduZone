@@ -70,10 +70,6 @@
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Setting</h4>
-                    <ul class="db-breadcrumb-list">
-                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
-                    </ul>
                 </div>	
                 <div class="row">
                     <!-- Your Profile Views Chart -->
@@ -82,35 +78,32 @@
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
-<!--                                        <div class="dropdown all-msg-toolbar">
-                                            <select name="subject" class="input-select">
-                                                <option>All Status</option>
-                                                <option value="0">Inactive</option>
-                                                <option value="1">Active</option>
-                                            </select>
-                                        </div> 
-                                        <div class="mail-search-bar">
-                                            <input type="text" class="form-control" placeholder="Search"/>
-                                        </div>
-                                        <div class="dropdown all-msg-toolbar">
-                                            <span class="btn btn-info-icon" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></span>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#"><i class="fa fa-arrow-down"></i>A-Z</a></li>
-                                                <li><a href="#"><i class="fa fa-arrow-up"></i>Z-A</a></li>
-                                            </ul>
-                                        </div>-->
-                                        <div class="">
-                                            <div class="">
-                                                <div class="row">
-                                                    
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <a class="btn" href="addUser.jsp">
-                                                            Add a new user   
-                                                        </a></td>
-                                                    </div>
+
+                                                <form action="searchLesson" method="post">
+                                                    <div class="row">
+                                                        <p>Search by</p>
+                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-4">
+                                                            <select name="criteria">
+                                                                <option value="subject_name">Subject Name</option>
+                                                                <option value="setting_name">Chapter</option>
+                                                                <option value="title">Lesson title</option>
+                                                                <option value="lesson_type">Lesson type</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-4">
+                                                            <input type="text" class="form-control" name="key" placeholder="Search key" />
+                                                        </div>
+                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-1">
+                                                            <input type="submit" class="btn btn-primary" value="Search" />
+                                                        </div>
+                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-2">
+                                                            <a class="btn" href="addUser.jsp">
+                                                                Add a new user   
+                                                            </a>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                    </div>
+                                                </form>
+                                                
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
@@ -140,7 +133,8 @@
                                                             <td><c:out value="${u.phone}"/></td>
                                                             <td><c:out value="${u.email}"/></td>
                                                             <td><c:out value="${u.roleName}"/></td>
-                                                            <td><c:out value="${userDAO.getStatusDisplay(u.userId)}"/></td>
+                                                            <td><c:out value="${userDAO.getStatusDisplay(u.userId)}"/>
+                                                            </td>
                                                             <td><a href="userDetail?email=${u.email}">
                                                                     Detail   
                                                                 </a></td>

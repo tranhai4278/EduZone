@@ -10,7 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import model.Lesson;
+import model.SubjectSetting;
+
 
 public class LessonDAO extends MySqlConnection{
     public ArrayList getAllLessons() {
@@ -156,7 +159,26 @@ public class LessonDAO extends MySqlConnection{
             e.printStackTrace();
         }
     }
-    
+    public List<SubjectSetting> getAllChapterNamesBySubjectName(String subjectName) {
+        List<SubjectSetting> list = new ArrayList<>();
+        String sql = "SELECT ss.setting_name FROM subject AS s JOIN subject_setting AS ss ON s.subject_id = ss.subject_id WHERE ss.display_order = 1 AND s.subject_name = ?";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, subjectName);  // Đặt giá trị cho tham số ? trong truy vấn
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                String settingName = result.getString("setting_name");  // Sử dụng tên cột thay vì chỉ số cột
+                SubjectSetting st = new SubjectSetting(settingName);
+                list.add(st);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();  
+            return null;
+        }
+    }
     
     public static void main(String[] args) {
         LessonDAO dao = new LessonDAO();

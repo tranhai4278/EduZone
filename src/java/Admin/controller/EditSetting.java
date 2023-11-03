@@ -63,7 +63,7 @@ public class EditSetting extends HttpServlet {
             dao.editSetting(s);
             List<Setting> listR = dao.getAllSetting();
             request.setAttribute("listR", listR);
-            request.setAttribute("successMessage", "Add success");
+            request.setAttribute("successMessage", "Edit success");
             request.getRequestDispatcher("setting.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Already exist");

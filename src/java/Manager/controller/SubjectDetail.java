@@ -74,6 +74,8 @@ public class SubjectDetail extends HttpServlet {
         List<SubjectSetting> listC = Sdao.getChapterbySubject(id);
         List<SubjectSetting> listD = Sdao.getDimensionbySubject(id);
         Subject s = dao.getSubjectbyId(id);
+        List<User> listSM = dao.getAllSubManager();
+        request.setAttribute("listSM", listSM);
         request.setAttribute("detail", s);
         request.setAttribute("listC", listC);
         request.setAttribute("listD", listD);

@@ -68,8 +68,6 @@
             });
         </script>
 
-
-
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -101,7 +99,7 @@
                     <h4 class="breadcrumb-title">${detail.subjectCode}</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li><a href="subjectList">Subject Setting</a></li>
+                        <li><a href="settingSubject">Subject Setting</a></li>
 
                         <li>${detail.subjectCode}</li>
                     </ul>
@@ -122,54 +120,79 @@
 
                             <div class="widget-inner">
                                 <div id="general">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="ml-auto">
-                                                <h3>1. Basic info</h3>
+                                    <form class="edit-profile m-b30" action="editsubject" method="post">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="ml-auto">
+                                                    <h3>1. Basic info</h3>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group col-6">
+                                                <input class="form-control" type="text" value="${detail.subjectId}" hidden="" name="id">
 
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Subject code</label>
-                                            <div>
-                                                <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11" readonly="">
+                                                <label class="col-form-label">Subject code</label>
+                                                <div>
+                                                    <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11">
+                                                </div>
+                                                <p style="color: red">${requestScope.error}</p>
                                             </div>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label class="col-form-label">Subject name</label>
-                                            <div>
-                                                <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50" readonly>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label">Subject name</label>
+                                                <div>
+                                                    <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="seperator"></div>
+                                            <div class="form-group col-6">
+                                                <label class="col-form-label" >Manager</label>
+                                                <select
+                                                    name="mid"
+                                                    id="manager"
+                                                    >
+                                                    <c:forEach items="${listSM}" var="s">
+                                                        <option <c:if test="${detail.managerId eq s.userId}">
+                                                                selected
+                                                            </c:if> value="${s.userId}">
+                                                            ${s.fullName}
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-3">
+                                                <label class="col-form-label">Status</label>
+                                                <div class="form-check form-switch">
+                                                    <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
+                                                </div>
+                                            </div>
+                                            <div class="seperator"></div>
 
-                                        <div class="col-12 m-t20">
-                                            <div class="ml-auto m-b5">
-                                                <h3>2. Description</h3>
+                                            <div class="col-12 m-t20">
+                                                <div class="ml-auto m-b5">
+                                                    <h3>2. Description</h3>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-12">
+                                                <label class="col-form-label">Subject description</label>
+                                                <div>
+                                                    <textarea class="form-control" name="description" required maxlength="250" >${detail.description} </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <a href="settingSubject" type="button" class="btn-secondry add-item m-r5" ><i class="fa fa-fw fa-arrow-left"></i>Cancel</a>
+                                                <button type="submit" onclick="setSellDate()" class="btn">Save changes</button>
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
-                                            <label class="col-form-label">Subject description</label>
-                                            <div>
-                                                <textarea class="form-control" name="description" required maxlength="250" readonly >${detail.description} </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
 
                                 <div class="mail-list-container" id="chapter">
                                     <h3>Chapter</h3>
                                     <div class="mail-toolbar">
-                                        <div class="row">
-                                            <div class="col-sm-5">
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-sm-2 offset-10">
                                                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal">
                                                     Add a new Chapter   
                                                 </a>
                                             </div>
-                                        </div>
-                                        <div class="next-prev-btn">
-                                            <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="mail-box-list">
@@ -209,18 +232,12 @@
                                 <div class="mail-list-container" id="dimension">
                                     <h3>Dimension</h3>
                                     <div class="mail-toolbar">
-                                        <div class="row">
-                                            <div class="col-sm-5">
-                                                <div class="col-sm-5">
-                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dimentionModal">
-                                                        Add a new Dimension   
-                                                    </a>
-                                                </div>
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-sm-2 offset-sm-10">
+                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dimentionModal">
+                                                    Add a new Dimension   
+                                                </a>
                                             </div>
-                                        </div>
-                                        <div class="next-prev-btn">
-                                            <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="mail-box-list">
@@ -283,11 +300,10 @@
                                             <h3>1. Basic info</h3>
                                         </div>
                                     </div>
-                                                                        <input name="sid" value="${detail.subjectId}" hidden>
-
+                                    <input name="sid" value="${detail.subjectId}" hidden>
                                     <input name="sid" value="${detail.subjectId}" hidden>
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Chapter Name</label>
+                                        <label class="col-form-label">Chapter Name<span style="color: red">*</span></label>
                                         <div>
                                             <input class="form-control" type="text"  name="name" required maxlength="50" >
                                         </div>
@@ -295,9 +311,9 @@
                                     <input name="type"  value="Chapter" hidden>
 
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Display Order</label>
+                                        <label class="col-form-label">Display Order<span style="color: red">*</span></label>
                                         <div>
-                                            <input class="form-control" type="text"  name="displayOrder" required maxlength="250" >
+                                            <input class="form-control" type="number"  name="displayOrder" required maxlength="11" >
                                         </div>
                                     </div>
                                     <div class="form-group col-6">
@@ -333,7 +349,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Dimention</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add Dimention<span style="color: red">*</span></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -346,21 +362,21 @@
                                     </div>
                                     <input name="sid" value="${detail.subjectId}" hidden>
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Dimention Type</label>
+                                        <label class="col-form-label">Dimention Type<span style="color: red">*</span></label>
                                         <div>
                                             <input class="form-control" type="text"  name="type" required maxlength="20" >
                                         </div>
                                     </div>
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Dimention Name</label>
+                                        <label class="col-form-label">Dimention Name<span style="color: red">*</span></label>
                                         <div>
                                             <input class="form-control" type="text"  name="name" required maxlength="50" >
                                         </div>
                                     </div>
                                     <div class="form-group col-6">
-                                        <label class="col-form-label">Display Order</label>
+                                        <label class="col-form-label">Display Order<span style="color: red">*</span></label>
                                         <div>
-                                            <input class="form-control" type="text"  name="displayOrder" required maxlength="50" >
+                                            <input class="form-control" type="number"  name="displayOrder" required maxlength="11" >
                                         </div>
                                     </div>
                                     <div class="form-group col-6">
@@ -397,10 +413,10 @@
         </main>
         <div class="ttr-overlay"></div>
         <script>
-            function updateStatus(id,sid ,checkbox) {
+            function updateStatus(id, sid, checkbox) {
                 let status = checkbox.checked;
                 if (confirm('Are you sure?'))
-                    window.location.href = 'updateStatusChapter?id=' + id +'&sid='+sid+ '&status=' + status;
+                    window.location.href = 'updateStatusChapter?id=' + id + '&sid=' + sid + '&status=' + status;
                 else
                     checkbox.checked = !status;
             }

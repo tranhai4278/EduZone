@@ -19,7 +19,7 @@ public class ManagerDAO extends MySqlConnection {
 
     public List<Subject> getAllSubjectbyManager(int id) {
         List<Subject> list = new ArrayList<>();
-        String sql = " SELECT s.* FROM subject s, user u WHERE u.user_id = s.manager_id and s.manager_id=?";
+        String sql = " SELECT s.* FROM subject s, user u WHERE u.user_id = s.manager_id and s.manager_id=? and s.status = 1";
         try {
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);

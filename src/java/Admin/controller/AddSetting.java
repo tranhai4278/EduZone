@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import model.Setting;
 import model.User;
 
@@ -34,13 +35,21 @@ public class AddSetting extends HttpServlet {
         int group = Integer.parseInt(gid);
         Date uDate = new Date();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-
         AdminDAO dao = new AdminDAO();
         Setting scheck = dao.checkSettingNameinGroup(name, group);
         if (scheck == null) {
             Setting s = new Setting(group, name, true, 0, note, timestamp, uid, timestamp, uid);
             dao.addSetting(s);
-            response.sendRedirect("setting");
+            List<Setting> listR = dao.getAllSetting();
+            request.setAttribute("listR", listR);
+            request.setAttribute("successMessage", "Add success");
+            request.getRequestDispatcher("setting.jsp").forward(request, response);
+
+        } else {
+            request.setAttribute("error", "Already exist");
+            List<Setting> listR = dao.getAllSetting();
+            request.setAttribute("listR", listR);
+            request.getRequestDispatcher("setting.jsp").forward(request, response);
         }
     }
 }

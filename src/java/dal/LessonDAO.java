@@ -195,7 +195,26 @@ public class LessonDAO extends MySqlConnection{
             e.printStackTrace();
         }
     }
-    
+    public List<SubjectSetting> getAllChapterNamesBySubjectName(String subjectName) {
+        List<SubjectSetting> list = new ArrayList<>();
+        String sql = "SELECT ss.setting_name FROM subject AS s JOIN subject_setting AS ss ON s.subject_id = ss.subject_id WHERE ss.display_order = 1 AND s.subject_name = ?";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, subjectName);  // Đặt giá trị cho tham số ? trong truy vấn
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                String settingName = result.getString("setting_name");  // Sử dụng tên cột thay vì chỉ số cột
+                SubjectSetting st = new SubjectSetting(settingName);
+                list.add(st);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();  
+            return null;
+        }
+    }
     public void addLesson(String title, int chapterId, int classId, String type, int quizId, String videoLink, String file, boolean status, String des) {
         try {
             String strSelect = "INSERT INTO `lesson` (`lesson_id`, `title`, `chapter_id`, `class_id`, `lesson_type`, "

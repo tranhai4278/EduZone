@@ -153,7 +153,7 @@
                         </a>
                     </li>
                 </c:if>
-                <c:if test="${sessionScope.user.roleId == 2}">
+                <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
@@ -193,7 +193,7 @@
 
                 </c:if>
                     
-                       <c:if test="${sessionScope.user.roleId == 2}">
+                       <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
                         <a href="classlist" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>

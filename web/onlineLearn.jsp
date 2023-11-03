@@ -51,11 +51,17 @@
 
         <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+        <script>
+            $(document).ready(function () {
+                
+            });
+        </script>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -135,14 +141,12 @@
                     </div>
                 </div>
 
-
-
                 <!-- side menu logo end -->
                 <!-- sidebar menu start -->
                 <nav class="ttr-sidebar-navi">
                     <ul>
 
-                        <li>
+                        <li class="show">
                             <a href="#" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-book"></i></span>
                                 <span class="ttr-label">Subject Material</span>
@@ -151,7 +155,7 @@
                             <ul>
                                 <c:forEach var="s" items="${listC}" >
                                     <li>
-                                        <a href="chapterLesson?cid=${s.settingId}&sid=${s.subjectId}" ><span class="ttr-label">${s.settingName}</span></a>
+                                        <a onclick="getChapter(${s.settingId})">${s.settingName} </a>
                                     </li>
                                 </c:forEach>
                             </ul>
@@ -168,13 +172,8 @@
                                 <span class="ttr-label">Discussion</span>
                             </a>
                         </li>
-
                     </ul>
-
                 </nav>
-
-
-
             </div>
         </div>
         <!-- header end -->
@@ -187,32 +186,31 @@
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="widget-inner" id="chapter">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="ml-auto">
-                                        <h3>Chapter </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-10 offset-2 ">
-                                    <c:forEach var="s" items="${listL}" >
-                                        <div>
-                                            <h4>${s.title}</h4>
-                                            <p>Type:${s.lessonType}</p>
-                                            <p><iframe width="560" height="315" src="${s.videoLink}" title="${s.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
-                                            
-                                        </div>
-                                    </c:forEach>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-
+        <script>
+            function getChapter(cid) {
+                console.log(cid);
+                $.ajax({
+                    url: "/eduzone/chapterLesson",
+                    type: "get",
+                    data: {
+                        cid: cid
+                    },
+                    success: function (data) {
+                        var content = document.getElementById("chapter");
+                        content.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+            }
+        </script>
         <div class="ttr-overlay"></div>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

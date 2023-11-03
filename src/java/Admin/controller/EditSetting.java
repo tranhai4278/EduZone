@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import model.Setting;
 import model.User;
 
@@ -60,7 +61,10 @@ public class EditSetting extends HttpServlet {
         if (scheck == null) {
             Setting s = new Setting(id, gid, name, status, order, note, timestamp, uid);
             dao.editSetting(s);
-            response.sendRedirect("setting");
+            List<Setting> listR = dao.getAllSetting();
+            request.setAttribute("listR", listR);
+            request.setAttribute("successMessage", "Edit success");
+            request.getRequestDispatcher("setting.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Already exist");
             Setting s = dao.getSetting(gid, id);

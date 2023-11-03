@@ -192,7 +192,7 @@ public class SubjectDAO extends MySqlConnection {
         String sql = "SELECT subject_code FROM `subject`";
 
         try {
-            statement = connection.prepareStatement(sql);
+                statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
 
             while (result.next()) {
@@ -408,7 +408,7 @@ public class SubjectDAO extends MySqlConnection {
     
     public ArrayList<SubjectSetting> getAllSubjectSetting() {
         ArrayList<SubjectSetting> subjectSettingList = new ArrayList<>();
-        String sql = "SELECT * FROM `subject_setting`";
+        String sql = "SELECT * FROM `subject_setting` WHERE setting_type != 'Chapter'";
 
         try {
             statement = connection.prepareStatement(sql);

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-        <welcome-file-list>
+    <!-- WELCOME FILE LIST -->
+    <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
-    </welcome-file-list>  
-
+    </welcome-file-list>
+    <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
         <filter-class>security.AdminAuthenticationFilter</filter-class>
@@ -36,7 +37,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>TrainerAuthenticationFilter</filter-name>
-        <url-pattern/>
+        <url-pattern>/</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
@@ -70,27 +71,27 @@
     </servlet>
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
-        <servlet-class>controller.ProfileServlet</servlet-class>
+        <servlet-class>User.controller.ProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>controller.UpdateProfileServlet</servlet-class>
+        <servlet-class>User.controller.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+        <servlet-class>User.controller.ChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ForgetPasswordServlet</servlet-name>
-        <servlet-class>controller.ForgetPasswordServlet</servlet-class>
+        <servlet-class>ForgetPassword.controller.ForgetPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ResendEmailServlet</servlet-name>
-        <servlet-class>controller.ResendEmailServlet</servlet-class>
+        <servlet-class>ForgetPassword.controller.ResendEmailServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ResetPasswordServlet</servlet-name>
-        <servlet-class>controller.ResetPasswordServlet</servlet-class>
+        <servlet-class>ForgetPassword.controller.ResetPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddUserController</servlet-name>
@@ -144,38 +145,37 @@
         <servlet-name>QuizDetail</servlet-name>
         <servlet-class>Manager.controller.QuizDetail</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>ClassListServlet</servlet-name>
-        <servlet-class>controller.classListServlet</servlet-class>
+        <servlet-class>Class.controller.classListServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ClassDetailServlet</servlet-name>
-        <servlet-class>controller.classDetailServlet</servlet-class>
+        <servlet-class>Class.controller.classDetailServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FilterClassServlet</servlet-name>
-        <servlet-class>controller.filterClassServlet</servlet-class>
+        <servlet-class>Class.controller.filterClassServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchClassesServlet</servlet-name>
-        <servlet-class>controller.searchClassesServlet</servlet-class>
+        <servlet-class>Class.controller.searchClassesServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateClassServlet</servlet-name>
-        <servlet-class>controller.updateClassSevlet</servlet-class>
+        <servlet-class>Class.controller.updateClassSevlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ClassStudentListServlet</servlet-name>
-        <servlet-class>controller.classStudentListServlet</servlet-class>
+        <servlet-class>Class.controller.classStudentListServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewClassServlet</servlet-name>
-        <servlet-class>controller.newClassServlet</servlet-class>
+        <servlet-class>Class.controller.newClassServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>classSearchStudentServlet</servlet-name>
-        <servlet-class>controller.classSearchStudentServlet</servlet-class>
+        <servlet-class>Class.controller.classSearchStudentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>QuestionDetailController</servlet-name>
@@ -190,8 +190,33 @@
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.EditQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>addLessonController</servlet-name>
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
+    </servlet>
+    <servlet>
+
+        <servlet-name>UploadFile</servlet-name>
+        <servlet-class>Manager.controller.UploadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchLesson</servlet-name>
+        <servlet-class>Manager.controller.SearchLesson</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getChapter</servlet-name>
+        <servlet-class>utils.getChapter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getLesson</servlet-name>
+        <servlet-class>utils.getLesson</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteQuestionController</servlet-name>
+        <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -338,8 +363,32 @@
         <url-pattern>/onlineLearning</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <url-pattern>/EditQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
         <url-pattern>/addLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadFile</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchLesson</servlet-name>
+        <url-pattern>/searchLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getChapter</servlet-name>
+        <url-pattern>/getChapter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getLesson</servlet-name>
+        <url-pattern>/getLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteQuestionController</servlet-name>
+        <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

@@ -111,9 +111,7 @@
                                                 <div class="form-group">
                                                     <label for="chapter">Chapter:</label>
                                                     <select class="form-control" id="chapter" name="chapter">
-                                                        <c:forEach var="st" items="${listSt}">
-                                                            <option value="chapter1"><c:out value="${st.settingName}"/></option>
-                                                        </c:forEach>
+                                                            <option value="chapter1">hihi</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">

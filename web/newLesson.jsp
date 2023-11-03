@@ -1,16 +1,13 @@
-<%-- 
-    Document   : lessonDetail
-    Created on : Oct 17, 2023, 11:26:08 PM
-    Author     : PHAM NGOC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
 <c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
 <c:set var="subjectSettingDAO" value="<%= new dal.SubjectSettingDAO() %>" />
+<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <%@page import="model.Lesson" %>
 <%@page import="model.Subject" %>
+<%@page import="model.Quiz" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,26 +42,26 @@
 
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- All PLUGINS CSS ============================================= -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
-
-        <!-- TYPOGRAPHY ============================================= -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
-
-        <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-
-        <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+        <script>
+            $(document).ready(function () {
+                // Ẩn toàn bộ các thông tin khi trang tải
+
+                $('#videoSection').hide();
+                $('#quizSection').hide();
+                $('#fileSection').hide();
+            });
+        </script>
 
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
@@ -79,7 +76,7 @@
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="wc-title">
-                                <h4>Lesson Details</h4>
+                                <h4>Add new lesson</h4>
                             </div>
                             <div class="widget-inner">
                                 <form class="edit-profile m-b30" action="addLesson" method="post">
@@ -88,7 +85,7 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject* </label>
                                             <div>
-                                                <select name="subject" required="true">
+                                                <select name="subject" required="true" onchange="getSubject(this)">
                                                     <c:forEach items="${subjectDAO.getAllSubjects()}" var="subject">
                                                         <option value="${subject.subjectId}">${subject.subjectName}</option>
                                                     </c:forEach>
@@ -108,7 +105,8 @@
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Lesson type*</label>
                                             <div>
-                                                <select name="type" id="lessonType" required="true">
+                                                <select name="type" id="lessonType" required="true" onchange="getType(this)">
+                                                    <option value="0" >Choose lesson type</option>
                                                     <option value="Video" >Video</option>
                                                     <option value="Quiz">Quiz</option>
                                                     <option value="Assignment">Assignment</option>
@@ -140,22 +138,27 @@
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <option>Quiz</option>
+                                                    <c:forEach items="${quizDAO.getAllQuizes()}" var="quiz">
+                                                        <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
+                                                    </c:forEach>
                                                 </select> 
                                             </div>
                                         </div>
-                                        <div class="form-group col-10" id="fileSection">
-                                            <label class="col-form-label">File attack</label>
-                                            <div>
-                                                <input class="form-control" type="text" name="file">
+                                        <div>
+                                            <div class="form-group col-10" id="fileSection">
+                                                <label class="col-form-label">File attachment</label>
+                                                <div>
+                                                    <input class="form-control" type="file" name="file">
+                                                </div>
                                             </div>
+<!--                                            <div class="form-group col-2">
+                                                <label class="col-form-label"></label>
+                                                <div>
+                                                    <button type="submit" class="btn">Browse</button>
+                                                </div>
+                                            </div>-->
                                         </div>
-                                        <div class="form-group col-2" id="browseButton">
-                                            <label class="col-form-label"></label>
-                                            <div>
-                                                <button type="button" class="btn">Browse</button>
-                                            </div>
-                                        </div>
+                                            
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
@@ -175,6 +178,28 @@
                 </div>
             </div>
         </main>
+        <script>
+            function getType(selectElement) {
+                var type = selectElement.value;
+                if (type === "Video") {
+                    $('#videoSection').show();
+                    $('#quizSection').hide();
+                    $('#fileSection').hide();
+                } else if (type === "Quiz") {
+                    $('#videoSection').hide();
+                    $('#quizSection').show();
+                    $('#fileSection').hide();
+                } else if (type === "Assignment") {
+                    $('#videoSection').hide();
+                    $('#quizSection').hide();
+                    $('#fileSection').show();
+                } else {
+                    $('#videoSection').hide();
+                    $('#quizSection').hide();
+                    $('#fileSection').hide();
+                }
+            }
+        </script>
 
         <div class="ttr-overlay"></div>
 
@@ -199,28 +224,7 @@
         <script src='assets/vendors/calendar/fullcalendar.js'></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
 
-        <script>
-        document.getElementById('lessonType').addEventListener('change', function () {
-        var selectedType = this.value;
-
-        // Ẩn tất cả các phần tử
-        document.getElementById('videoSection').style.display = 'none';
-        document.getElementById('quizSection').style.display = 'none';
-        document.getElementById('fileSection').style.display = 'none';
-        document.getElementById('browseButton').style.display = 'none';
-        // Hiển thị phần tử tương ứng
-        if (selectedType === 'Video') {
-            document.getElementById('videoSection').style.display = 'block';
-        } else if (selectedType === 'Quiz') {
-            document.getElementById('quizSection').style.display = 'block';
-        } else if (selectedType === 'Assignment') {
-            document.getElementById('fileSection').style.display = 'block';
-            document.getElementById('browseButton').style.display = 'block';
-        }
-    });
-        </script>
-
-
+        
 
 
     </body>

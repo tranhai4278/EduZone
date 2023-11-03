@@ -50,6 +50,42 @@ public class LessonDAO extends MySqlConnection{
         }
     }
     
+    public ArrayList searchLesson(String criteria, String key) {
+        ArrayList<Lesson> list = new ArrayList<>();
+        String sql = "SELECT l.lesson_id, l.title, l.chapter_id, l.class_id, l.lesson_type, l.quiz_id, l.video_link, l.file, l.status, l.description, l.create_at, l.create_by, l.update_at, l.update_by "
+                + " FROM lesson l JOIN subject_setting ss ON l.chapter_id = ss.setting_id JOIN subject s ON s.subject_id = ss.subject_id "
+                + "WHERE " + criteria + " LIKE '%" + key + "%'";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int lessonId = result.getInt(1);
+                String title = result.getString(2);
+                int chapterId = result.getInt(3);
+                int classId = result.getInt(4);
+                String lessonType = result.getString(5);
+                int quizId = result.getInt(6);
+                String videoLink = result.getString(7);
+                String file = result.getString(8);
+                boolean status = result.getBoolean(9);
+                String description = result.getString(10);
+                Date create_at = result.getDate(11);
+                int create_by = result.getInt(12);
+                Date update_at = result.getDate(13);
+                int update_by = result.getInt(14);
+                Lesson l = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, create_at, create_by, update_at, update_by);
+                list.add(l);
+            }
+            return list;
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public String getChapterName(int lessonId){
         String query = "SELECT ss.setting_name FROM lesson l JOIN subject_setting ss ON l.chapter_id = ss.setting_id WHERE l.lesson_id = ?";
         try {
@@ -179,11 +215,99 @@ public class LessonDAO extends MySqlConnection{
             return null;
         }
     }
-    
-    public static void main(String[] args) {
-        LessonDAO dao = new LessonDAO();
-        System.out.println(dao.getQuizName(2));
+    public void addLesson(String title, int chapterId, int classId, String type, int quizId, String videoLink, String file, boolean status, String des) {
+        try {
+            String strSelect = "INSERT INTO `lesson` (`lesson_id`, `title`, `chapter_id`, `class_id`, `lesson_type`, "
+                    + "`quiz_id`, `video_link`, `file`, `status`, `description`, `create_at`, `create_by`, `update_at`, `update_by`) "
+                    + "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            Connection cnn = (new MySqlConnection()).connection;
+            PreparedStatement pstm = cnn.prepareStatement(strSelect);
+            pstm.setString(1, title);
+            pstm.setInt(2, chapterId);
+            pstm.setInt(3, classId);
+            pstm.setString(4, type);
+            pstm.setInt(5, quizId);
+            pstm.setString(6, videoLink);
+            pstm.setString(7, file);
+            pstm.setBoolean(8, status);
+            pstm.setString(9, des);
+            java.util.Date d = new java.util.Date();
+            java.sql.Date createdAt = new java.sql.Date(d.getTime());
+            java.sql.Date updatedAt = new java.sql.Date(d.getTime());
+            pstm.setDate(10, createdAt);
+            pstm.setInt(11, 0);
+            pstm.setDate(12, updatedAt);
+            pstm.setInt(13, 0);
+            pstm.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("addAccount: " + e.getMessage());
+        }
     }
+    
+        public List<SubjectSetting> getAllChapterNamesBySubjectName(String subjectId) {
+        List<SubjectSetting> list = new ArrayList<>();
+        String sql = "SELECT * FROM `subject_setting` WHERE subject_id = ? and `setting_type`='Chapter'";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, subjectId);  // Đặt giá trị cho tham số ? trong truy vấn
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int setting_id = result.getInt(1);
+                int subject_id = result.getInt(2);
+                String setting_type = result.getString(3);
+                String setting_name = result.getString(4);
+                String description = result.getString(5);
+                int display_order = result.getInt(6);
+                boolean status = result.getBoolean(7);
+                java.util.Date create_at = result.getDate(8);
+                int create_by = result.getInt(9);
+                java.util.Date update_at = result.getDate(10);
+                int update_by = result.getInt(11);
+                SubjectSetting st = new SubjectSetting(setting_id, subject_id, setting_type, setting_name, description, display_order, status, create_at, create_by, update_at, update_by);
+                list.add(st);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();  
+            return null;
+        }
+    }
+    public ArrayList<Lesson> getLessonByChapterId(int chapterId) {
+        ArrayList<Lesson> list = new ArrayList<>();
+        String sql = "SELECT * FROM `lesson` WHERE chapter_id = " + chapterId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int lessonId = result.getInt(1);
+                String title = result.getString(2);
+                int classId = result.getInt(4);
+                String lessonType = result.getString(5);
+                int quizId = result.getInt(6);
+                String videoLink = result.getString(7);
+                String file = result.getString(8);
+                boolean status = result.getInt(9) != 0;
+                String description = result.getString(10);
+                java.util.Date create_at = result.getDate(11);
+                int create_by = result.getInt(12);
+                java.util.Date update_at = result.getDate(13);
+                int update_by = result.getInt(14);
+                Lesson lesson = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, create_at, create_by, update_at, update_by);
+                list.add(lesson);
+            }
+            return list;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
     
 }
     

@@ -531,7 +531,7 @@ public class SubjectDAO extends MySqlConnection {
    
     public static void main(String[] args) {
         SubjectDAO dao = new SubjectDAO();
-        List<Subject> listS = dao.getSubjectsByTrainee(2);
+        List<Subject> listS = dao.getSubjectsByTrainer(5);
         for (Subject s : listS) {
             System.out.println(s.getSubjectCode());
         }

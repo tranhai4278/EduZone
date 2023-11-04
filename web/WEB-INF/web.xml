@@ -202,17 +202,16 @@
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< Updated upstream
         <servlet-name>DashboardController</servlet-name>
         <servlet-class>User.controller.DashboardController</servlet-class>
-=======
+    </servlet>
+    <servlet>
         <servlet-name>addQuestion</servlet-name>
         <servlet-class>Manager.controller.addQuestion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>editQuestionServlet</servlet-name>
         <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
->>>>>>> Stashed changes
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -371,17 +370,16 @@
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< Updated upstream
         <servlet-name>DashboardController</servlet-name>
         <url-pattern>/dashboardController</url-pattern>
-=======
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addQuestion</servlet-name>
         <url-pattern>/addQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>editQuestionServlet</servlet-name>
         <url-pattern>/editQuestion</url-pattern>
->>>>>>> Stashed changes
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

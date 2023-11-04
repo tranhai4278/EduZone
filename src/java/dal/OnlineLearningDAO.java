@@ -34,9 +34,12 @@ public class OnlineLearningDAO extends MySqlConnection {
                         result.getBoolean(9),
                         result.getString(10),
                         result.getDate(11),
-                        result.getInt(12),
-                        result.getDate(13),
-                        result.getInt(14));
+                        result.getDate(12),
+                        result.getInt(13),
+                        result.getDate(14),
+                        result.getInt(15),
+                        result.getDate(16),
+                        result.getInt(17));
                 list.add(s);
 
             }

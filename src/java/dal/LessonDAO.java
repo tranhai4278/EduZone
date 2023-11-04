@@ -14,8 +14,8 @@ import java.util.List;
 import model.Lesson;
 import model.SubjectSetting;
 
+public class LessonDAO extends MySqlConnection {
 
-public class LessonDAO extends MySqlConnection{
     public ArrayList getAllLessons() {
         ArrayList<Lesson> list = new ArrayList<>();
         String sql = "select * from lesson";
@@ -35,21 +35,24 @@ public class LessonDAO extends MySqlConnection{
                 String file = result.getString(8);
                 boolean status = result.getBoolean(9);
                 String description = result.getString(10);
-                Date create_at = result.getDate(11);
-                int create_by = result.getInt(12);
-                Date update_at = result.getDate(13);
-                int update_by = result.getInt(14);
-                Lesson l = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, create_at, create_by, update_at, update_by);
+                Date start_date = result.getDate(11);
+                Date end_date = result.getDate(12);
+                int display_order = result.getInt(13);
+                Date create_at = result.getDate(14);
+                int create_by = result.getInt(15);
+                Date update_at = result.getDate(16);
+                int update_by = result.getInt(17);
+                Lesson l = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, start_date, end_date, display_order, create_at, create_by, update_at, update_by);
                 list.add(l);
             }
             return list;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    
+
     public ArrayList searchLesson(String criteria, String key) {
         ArrayList<Lesson> list = new ArrayList<>();
         String sql = "SELECT l.lesson_id, l.title, l.chapter_id, l.class_id, l.lesson_type, l.quiz_id, l.video_link, l.file, l.status, l.description, l.create_at, l.create_by, l.update_at, l.update_by "
@@ -80,13 +83,13 @@ public class LessonDAO extends MySqlConnection{
             }
             return list;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    
-    public String getChapterName(int lessonId){
+
+    public String getChapterName(int lessonId) {
         String query = "SELECT ss.setting_name FROM lesson l JOIN subject_setting ss ON l.chapter_id = ss.setting_id WHERE l.lesson_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -101,8 +104,8 @@ public class LessonDAO extends MySqlConnection{
         }
         return null;
     }
-    
-    public String getSubjectName(int lessonId){
+
+    public String getSubjectName(int lessonId) {
         String query = "SELECT subject.subject_name FROM lesson JOIN subject_setting ON lesson.chapter_id = subject_setting.setting_id JOIN subject ON subject.subject_id = subject_setting.subject_id WHERE lesson.lesson_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -117,8 +120,8 @@ public class LessonDAO extends MySqlConnection{
         }
         return null;
     }
-    
-    public String getQuizName(int lessonId){
+
+    public String getQuizName(int lessonId) {
         String query = "SELECT quiz.quiz_name FROM lesson JOIN quiz ON lesson.quiz_id = quiz.quiz_id WHERE lesson_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -133,7 +136,7 @@ public class LessonDAO extends MySqlConnection{
         }
         return null;
     }
-    
+
     public Lesson getLessonById(String id) {
         String query = "SELECT * FROM `lesson` WHERE lesson_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
@@ -164,8 +167,8 @@ public class LessonDAO extends MySqlConnection{
         }
         return null;
     }
-    
-    public void updateLessonById (String title, String type, String description, String video, String quiz, String file , int status, String id) {
+
+    public void updateLessonById(String title, String type, String description, String video, String quiz, String file, int status, String id) {
         MySqlConnection dbContext = new MySqlConnection();
         try {
             String sql = "UPDATE lesson SET title = ?, status = ?, description = ?, video_link = ?, quiz_id = ?, file = ? WHERE lesson_id = ?;";
@@ -195,6 +198,7 @@ public class LessonDAO extends MySqlConnection{
             e.printStackTrace();
         }
     }
+
     public List<SubjectSetting> getAllChapterNamesBySubjectName(String subjectName) {
         List<SubjectSetting> list = new ArrayList<>();
         String sql = "SELECT ss.setting_name FROM subject AS s JOIN subject_setting AS ss ON s.subject_id = ss.subject_id WHERE ss.display_order = 1 AND s.subject_name = ?";
@@ -211,10 +215,11 @@ public class LessonDAO extends MySqlConnection{
             }
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();  
+            e.printStackTrace();
             return null;
         }
     }
+
     public void addLesson(String title, int chapterId, int classId, String type, int quizId, String videoLink, String file, boolean status, String des) {
         try {
             String strSelect = "INSERT INTO `lesson` (`lesson_id`, `title`, `chapter_id`, `class_id`, `lesson_type`, "
@@ -245,7 +250,8 @@ public class LessonDAO extends MySqlConnection{
         }
     }
     
-        public List<SubjectSetting> getAllChapterNamesBySubjectId(String subjectId) {
+
+    public List<SubjectSetting> getAllChapterNamesBySubjectId(String subjectId) {
         List<SubjectSetting> list = new ArrayList<>();
         String sql = "SELECT * FROM `subject_setting` WHERE subject_id = ? and `setting_type`='Chapter'";
 
@@ -271,10 +277,11 @@ public class LessonDAO extends MySqlConnection{
             }
             return list;
         } catch (SQLException e) {
-            e.printStackTrace();  
+            e.printStackTrace();
             return null;
         }
     }
+
     public ArrayList<Lesson> getLessonByChapterId(int chapterId) {
         ArrayList<Lesson> list = new ArrayList<>();
         String sql = "SELECT * FROM `lesson` WHERE chapter_id = " + chapterId + "";
@@ -306,12 +313,5 @@ public class LessonDAO extends MySqlConnection{
             return null;
         }
     }
-    
-    
-    
-}
-    
-    
-   
-    
 
+}

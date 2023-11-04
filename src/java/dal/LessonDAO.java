@@ -245,7 +245,7 @@ public class LessonDAO extends MySqlConnection{
         }
     }
     
-        public List<SubjectSetting> getAllChapterNamesBySubjectName(String subjectId) {
+        public List<SubjectSetting> getAllChapterNamesBySubjectId(String subjectId) {
         List<SubjectSetting> list = new ArrayList<>();
         String sql = "SELECT * FROM `subject_setting` WHERE subject_id = ? and `setting_type`='Chapter'";
 

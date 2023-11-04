@@ -145,20 +145,7 @@
                 <!-- sidebar menu start -->
                 <nav class="ttr-sidebar-navi">
                     <ul>
-                        <c:forEach var="s" items="${listC}" >
-                            <li class="show">
-                                <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
-                                    <span class="ttr-icon"><i class="ti-book"></i></span>
-                                    <span class="ttr-label">${s.settingName}</span>
-                                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a> </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </c:forEach>
+
 
                         <li>
                             <a href="#" class="ttr-material-button">
@@ -168,20 +155,8 @@
                         </li>
                         <li>
                             <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-comments"></i></span>
+                                <span class="ttr-icon"><i class="ti-comments-smiley"></i></span>
                                 <span class="ttr-label">Discussion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assigment</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                                <span class="ttr-label">Practice Quizzes</span>
                             </a>
                         </li>
                     </ul>
@@ -196,33 +171,62 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="col-lg-12 m-b30">
-                    <div class="widget-box">
-                        <div class="widget-inner" id="chapter">
+                    <h1>Quiz</h1>
 
+                    <div class="widget-box">
+                        <div class="email-wrapper">
+                            <div class="email-menu-bar">
+                                <div class="email-menu-bar-inner">
+                                    <ul>
+                                        <li class="active"><a href="mailbox.html"><i class="fa fa-envelope-o"></i>Inbox <span class="badge badge-success">8</span></a></li>
+                                        <li><a href="mailbox.html"><i class="fa fa-send-o"></i>Sent</a></li>
+                                        <li><a href="mailbox.html"><i class="fa fa-file-text-o"></i>Drafts <span class="badge badge-warning">8</span></a></li>
+                                        <li><a href="mailbox.html"><i class="fa fa-cloud-upload"></i>Outbox <span class="badge badge-danger">8</span></a></li>
+                                        <li><a href="mailbox.html"><i class="fa fa-trash-o"></i>Trash</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="email-wrapper">
+                                <div class="col-9">
+                                    <div class="question ml-sm-5 pl-sm-5 pt-2">
+                                        <div class="py-2 h5"><b>Q. which option best describes your job role?</b></div>
+                                        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                                            <label class="options">Small Business Owner or Employee
+                                                <input type="radio" name="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="options">Nonprofit Owner or Employee
+                                                <input type="radio" name="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="options">Journalist or Activist
+                                                <input type="radio" name="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="options">Other
+                                                <input type="radio" name="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center pt-3">
+                                        <div id="prev">
+                                            <button class="btn btn-primary">Previous</button>
+                                        </div>
+                                        <div class="ml-auto mr-sm-5">
+                                            <button class="btn btn-success">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </main>
-        <script>
-            function getChapter(cid) {
-                console.log(cid);
-                $.ajax({
-                    url: "/eduzone/chapterLesson",
-                    type: "get",
-                    data: {
-                        cid: cid
-                    },
-                    success: function (data) {
-                        var content = document.getElementById("chapter");
-                        content.innerHTML = data;
-                    },
-                    error: function (xhr) {
-                        // Xử lý lỗi ở đây nếu cần
-                    }
-                });
-            }
-        </script>
+
         <div class="ttr-overlay"></div>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

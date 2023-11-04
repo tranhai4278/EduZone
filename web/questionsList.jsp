@@ -50,6 +50,10 @@
                 
                 min-height: 113px; /* Add a minimum height */
             }
+            
+            .no-display img {
+                display: none;
+            }
         </style>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
@@ -68,7 +72,7 @@
                 <div class="row">
                     <div class="table">
                         <section class="table__header">
-                            <div class="input-group">
+                            <div class="input-group" style="height: 40px;">
                                 <input type="search" placeholder="Search Data...">
                                 <img src="assets/images/search.png" alt="">
                             </div>
@@ -76,7 +80,7 @@
                                 <div class="">
                                     <div class="row">
                                         <div class="col-12 col-sm-7 col-md-7 col-lg-7">
-                                            <a class="btn" href="QuestionDetail">Add new question</a>
+                                            <a class="btn" href="addQuestion">Add new question</a>
                                         </div>
                                         
                                     </div>
@@ -91,8 +95,10 @@
                                     <tr>
                                         <th>ID <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Question <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Dimension <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Subject Code <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Chapter <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Dimension <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Question Type <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -100,10 +106,19 @@
                                     <c:forEach var="question" items="${list}">
                                         <tr>
                                             <td> ${question.getQuestionId()} </td>
-                                            <td> ${question.getQuestion()} </td>
-                                            <td>${question.getDimension()}</td>
+                                            <td class="no-display"> ${question.getQuestion()} </td>
                                             <td> ${question.getSubjectCode()} </td>
-                                            <td><a href="EditQuestion?questionId=${question.getQuestionId()}">Edit</a></td>
+                                            <td> ${question.getChapter()} </td>
+                                            <td>${question.getDimension()}</td>
+                                            <td> <c:choose>
+                                                    <c:when test="${question.getFlag() == 1}">
+                                                        Restricted
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        Free
+                                                    </c:otherwise>
+                                                </c:choose></td>
+                                            <td><a href="editQuestion?questionId=${question.getQuestionId()}">Edit</a>/<a href="deleteQuestion?questionId=${question.getQuestionId()}">Delete</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

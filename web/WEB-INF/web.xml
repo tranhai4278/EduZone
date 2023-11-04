@@ -178,20 +178,8 @@
         <servlet-class>Class.controller.classSearchStudentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>QuestionDetailController</servlet-name>
-        <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddQuestionController</servlet-name>
-        <servlet-class>Manager.controller.AddQuestionController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>OnlineLearning</servlet-name>
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditQuestionServlet</servlet-name>
-        <servlet-class>Manager.controller.EditQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addLessonController</servlet-name>
@@ -210,16 +198,21 @@
         <servlet-class>utils.getChapter</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>getLesson</servlet-name>
-        <servlet-class>utils.getLesson</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< Updated upstream
         <servlet-name>DashboardController</servlet-name>
         <servlet-class>User.controller.DashboardController</servlet-class>
+=======
+        <servlet-name>addQuestion</servlet-name>
+        <servlet-class>Manager.controller.addQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
+>>>>>>> Stashed changes
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -354,20 +347,8 @@
         <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>QuestionDetailController</servlet-name>
-        <url-pattern>/QuestionDetail</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddQuestionController</servlet-name>
-        <url-pattern>/AddQuestion</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditQuestionServlet</servlet-name>
-        <url-pattern>/EditQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
@@ -386,16 +367,21 @@
         <url-pattern>/getChapter</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>getLesson</servlet-name>
-        <url-pattern>/getLesson</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< Updated upstream
         <servlet-name>DashboardController</servlet-name>
         <url-pattern>/dashboardController</url-pattern>
+=======
+        <servlet-name>addQuestion</servlet-name>
+        <url-pattern>/addQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <url-pattern>/editQuestion</url-pattern>
+>>>>>>> Stashed changes
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

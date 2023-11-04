@@ -25,9 +25,8 @@ public class getChapter extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<div class=\"chapter-section\">");
         out.println("<label >Chapter:</label>");
-        out.println("<div style=\"width: 50%;\">");
-        out.println("<select class=\"form-control\" name=\"chapter\" onchange=\"getLesson(this);\">");
-        out.println("<option value=\"\" disabled selected>Nothing selected</option>");
+        out.println("<div style=\"width: 90%;\">");
+        out.println("<select class=\"form-control\" name=\"chapter\" style=\"height: 40px;\">");
         for (SubjectSetting c : listc) {
             out.println("<option value=\"" + c.getSettingId() + "\">" + c.getSettingName() + "</option>");
         }

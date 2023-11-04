@@ -1,9 +1,8 @@
 package Manager.controller;
 
-import static Manager.controller.addQuestion.hasDuplicates;
 import dal.SubjectDAO;
-import dal.QuestionDAO;
 import dal.SubjectSettingDAO;
+import dal.QuestionDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -11,66 +10,45 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import model.Question;
-import model.QuestionChoise;
+import java.util.Set;
 import model.Subject;
 import model.SubjectSetting;
 import model.User;
 
-public class editQuestionServlet extends HttpServlet {
+public class addQuestion extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String message = request.getParameter("message");
-        int questionId = Integer.parseInt(request.getParameter("questionId"));
-        
-        SubjectDAO subjectDao = new SubjectDAO();
-        QuestionDAO qDao = new QuestionDAO();
-        SubjectSettingDAO ssDao = new SubjectSettingDAO();
-        
-        ArrayList<Subject> subjectList = subjectDao.getAllSubjects();
-        ArrayList<SubjectSetting> ssList = subjectDao.getAllSubjectSetting();
-        ArrayList<SubjectSetting> ssqList = qDao.getSubjectSettingWithQuestionId(questionId);
 
-        Question q = qDao.getQuestionById(questionId);
-        int flag = q.getFlag();
-        int subjectId = q.getSubjectId();
-        int chapterId = q.getChapterId();
-        String qContent = q.getQuestion();
+        SubjectDAO subjectDao = new SubjectDAO();
+        ArrayList<Subject> subjectList = subjectDao.getAllSubjects();
+
+        SubjectSettingDAO ssDao = new SubjectSettingDAO();
+        ArrayList<SubjectSetting> ssList = ssDao.getSubjectSetting();
+        List<SubjectSetting> cList = ssDao.getAllChapterBySubjectId(1);
         
-        List<SubjectSetting> cList = ssDao.getAllChapterBySubjectId(subjectId);
-        ArrayList<QuestionChoise> answerList = qDao.getAllAnswerByQuestionId(questionId);
-        
-        request.setAttribute("questionId", q.getQuestionId());
-        request.setAttribute("subjectList", subjectList);
-        request.setAttribute("flag", flag);
-        request.setAttribute("subjectId", subjectId);
         request.setAttribute("cList", cList);
-        request.setAttribute("chapterId", chapterId);
-        request.setAttribute("ssqList", ssqList);
-        request.setAttribute("ssList", ssList);
-        request.setAttribute("qContent", qContent);
-        request.setAttribute("answerList", answerList);
-        request.setAttribute("listc", cList);
         request.setAttribute("message", message);
-        request.getRequestDispatcher("editQuestion.jsp").forward(request, response);
+        request.setAttribute("ssList", ssList);
+        request.setAttribute("subjectList", subjectList);
+        request.getRequestDispatcher("addQuestion.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int questionId = Integer.parseInt(request.getParameter("questionId"));
-        
         try {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            
+
             int flag = Integer.parseInt(request.getParameter("flag"));
             int subjectId = Integer.parseInt(request.getParameter("subject"));
             int chapterId = Integer.parseInt(request.getParameter("chapter"));
-            
+
             String[] dimensionIds = request.getParameterValues("dimension");
             if (hasDuplicates(dimensionIds)) {
                 throw new Exception("Dimension cannot have two or more of the same type.");
@@ -92,12 +70,12 @@ public class editQuestionServlet extends HttpServlet {
             if (answers.length == trueAnswers.length) {
                 throw new Exception("All answers cannot be true answer.");
             }
-            
+
             QuestionDAO questionDao = new QuestionDAO();
-            questionDao.updateQuestionWithId(questionId, questionString, flag, chapterId, subjectId, user.getUserId());
-            
-            SubjectSettingDAO ssDao = new SubjectSettingDAO();
-            ssDao.deleteDimensionWithQuestionId(questionId);
+            questionDao.addQuestion(user.getUserId(), questionString, flag, chapterId, subjectId, user.getUserId(), user.getUserId());
+
+            int questionId = questionDao.getQuestionIdByQuestion(questionString);
+
             for (int i = 0; i < dimensionIds.length; i++) {
                 for (int j = i; j < dimensionIds.length; j++) {
                     if (dimensionIds[j].equals(dimensionIds[i])) {
@@ -105,8 +83,7 @@ public class editQuestionServlet extends HttpServlet {
                     }
                 }
             }
-            
-            questionDao.deleteAnswerWithQuestionId(questionId);
+
             for (int i = 0; i < answers.length; i++) {
                 int isTrue = 0;
                 for (int j = i; j < trueAnswers.length; j++) {
@@ -117,9 +94,21 @@ public class editQuestionServlet extends HttpServlet {
                 questionDao.addAnswer(answers[i], questionId, isTrue);
             }
             response.sendRedirect("QuestionsList");
-        } catch(Exception e) {
+
+        } catch (Exception e) {
             String message = e.getLocalizedMessage();
-            response.sendRedirect("editQuestion?questionId=" + questionId + "&message=" + message);
+            response.sendRedirect("addQuestion?message=" + message);
+
         }
+    }
+
+    public static boolean hasDuplicates(String[] array) {
+        Set<String> uniqueValues = new HashSet<>();
+        for (String item : array) {
+            if (!uniqueValues.add(item)) {
+                return true; // Found a duplicate
+            }
+        }
+        return false;
     }
 }

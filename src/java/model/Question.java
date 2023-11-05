@@ -13,7 +13,7 @@ import java.util.Date;
 public class Question {
     private int questionId;
     private String question;
-    private int lessonId;
+    private int flag;
     private int chapterId;
     private int subjectId;
     private Date createAt;
@@ -25,13 +25,14 @@ public class Question {
     private String dimensionName;
     private String dimension;
     private String subjectCode;
+    private String chapter;
 
     public Question() {
     }
 
-    public Question(String question, int lessonId, int chapterId, int subjectId, Date createAt) {
+    public Question(String question, int flag , int chapterId, int subjectId, Date createAt) {
         this.question = question;
-        this.lessonId = lessonId;
+        this.flag  = flag ;
         this.chapterId = chapterId;
         this.subjectId = subjectId;
         this.createAt = createAt;
@@ -39,10 +40,10 @@ public class Question {
     
     
 
-    public Question(int questionId, String question, int lessonId, int chapterId, int subjectId, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public Question(int questionId, String question, int flag , int chapterId, int subjectId, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.questionId = questionId;
         this.question = question;
-        this.lessonId = lessonId;
+        this.flag = flag ;
         this.chapterId = chapterId;
         this.subjectId = subjectId;
         this.createAt = createAt;
@@ -51,11 +52,13 @@ public class Question {
         this.updateBy = updateBy;
     }
     
-    public Question(int questionId, String question, String dimenstion, String subjectCode, Date createAt) {
+    public Question(int questionId, String question, String dimension, String subjectCode, String chapter, int flag, Date createAt) {
         this.questionId = questionId;
         this.question = question;
-        this.dimension = dimenstion;
+        this.dimension = dimension;
         this.subjectCode = subjectCode;
+        this.chapter = chapter;
+        this.flag = flag;
         this.createAt = createAt;
     }
 
@@ -75,12 +78,12 @@ public class Question {
         this.question = question;
     }
 
-    public int getLessonId() {
-        return lessonId;
+    public int getFlag() {
+        return flag ;
     }
 
-    public void setLessonId(int lessonId) {
-        this.lessonId = lessonId;
+    public void setFlag(int flag ) {
+        this.flag  = flag ;
     }
 
     public int getChapterId() {
@@ -162,5 +165,12 @@ public class Question {
     public void setSubjectCode(String subjectCode) {
         this.subjectCode = subjectCode;
     }
-    
+
+    public String getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(String chapter) {
+        this.chapter = chapter;
+    }
 }

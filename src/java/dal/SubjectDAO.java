@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import model.Subject;
 import model.SubjectSetting;
@@ -433,6 +434,104 @@ public class SubjectDAO extends MySqlConnection {
         } catch (Exception e) {
             Logger.getLogger(e.toString());
             return null;
+        }
+    }
+    
+   public ArrayList<Subject> getSubjectsByTrainer(int id) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        String sql = "SELECT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
+                + "FROM `class`c JOIN subject s ON c.subject_id = s.subject_id  WHERE c.trainer_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int subjectId = resultSet.getInt(1);
+                int managerId = resultSet.getInt(2);
+                String subjectName = resultSet.getString(3);
+                String subjectCode = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                boolean status = resultSet.getBoolean(6);
+                Date createAt = resultSet.getDate(7);
+                int createBy = resultSet.getInt(8);
+                Date updateAt = resultSet.getDate(9);
+                int updateBy = resultSet.getInt(10);
+
+                Subject subject = new Subject(
+                        subjectId,
+                        managerId,
+                        subjectName,
+                        subjectCode,
+                        description,
+                        status,
+                        createAt,
+                        createBy,
+                        updateAt,
+                        updateBy
+                );
+
+                subjects.add(subject);
+            }
+
+            return subjects;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+   
+   public ArrayList<Subject> getSubjectsByTrainee(int id) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        String sql = "SELECT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
+                + "FROM `class`c JOIN subject s ON c.subject_id = s.subject_id JOIN class_student cs ON c.class_id = cs.class_id WHERE cs.trainee_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int subjectId = resultSet.getInt(1);
+                int managerId = resultSet.getInt(2);
+                String subjectName = resultSet.getString(3);
+                String subjectCode = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                boolean status = resultSet.getBoolean(6);
+                Date createAt = resultSet.getDate(7);
+                int createBy = resultSet.getInt(8);
+                Date updateAt = resultSet.getDate(9);
+                int updateBy = resultSet.getInt(10);
+
+                Subject subject = new Subject(
+                        subjectId,
+                        managerId,
+                        subjectName,
+                        subjectCode,
+                        description,
+                        status,
+                        createAt,
+                        createBy,
+                        updateAt,
+                        updateBy
+                );
+
+                subjects.add(subject);
+            }
+
+            return subjects;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+   
+    public static void main(String[] args) {
+        SubjectDAO dao = new SubjectDAO();
+        List<Subject> listS = dao.getSubjectsByTrainer(5);
+        for (Subject s : listS) {
+            System.out.println(s.getSubjectCode());
         }
     }
 

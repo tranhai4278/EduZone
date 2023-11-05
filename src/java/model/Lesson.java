@@ -21,6 +21,9 @@ public class Lesson {
     private String file;
     private boolean status;
     private String description;
+    private Date startDate;
+    private Date endDate;
+    private int displayOrder;
     private Date createAt;
     private int createBy;
     private Date updateAt;
@@ -28,6 +31,28 @@ public class Lesson {
 
     public Lesson() {
     }
+
+    public Lesson(int lessonId, String title, int chapterId, int classId, String lessonType, int quizId, String videoLink, String file, boolean status, String description, Date startDate, Date endDate, int displayOrder, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.lessonId = lessonId;
+        this.title = title;
+        this.chapterId = chapterId;
+        this.classId = classId;
+        this.lessonType = lessonType;
+        this.quizId = quizId;
+        this.videoLink = videoLink;
+        this.file = file;
+        this.status = status;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.displayOrder = displayOrder;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+    
+    
 
     public Lesson(int lessonId, String title, int chapterId, int classId, String lessonType, int quizId, String videoLink, String file, boolean status, String description, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.lessonId = lessonId;
@@ -157,5 +182,30 @@ public class Lesson {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+    
     
 }

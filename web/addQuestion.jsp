@@ -44,6 +44,11 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+
+        <!-- include libraries(jQuery, bootstrap) -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
             .content-block {
                 display: flex;
@@ -67,6 +72,16 @@
                 padding-bottom: 10px;
             }
 
+            .no-style {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                color: inherit;
+                background: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
         </style>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
@@ -92,15 +107,24 @@
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
                                                 <h3>Add new Question</h3>
                                             </div>
-                                            <form class="edit-profile" method="post" action="AddQuestion">
+                                            <form class="edit-profile" method="post" action="addQuestion">
+                                                <input type="hidden" name="message" value="" />
+                                                <div>
+                                                    <label>Question Type:</label><br>
+                                                    <label class="no-style">
+                                                        <input type="radio" name="flag" value="0" checked /> Free&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </label>
+                                                    <label class="no-style">
+                                                        <input type="radio" name="flag" value="1" /> Restricted
+                                                    </label>
+                                                </div>
                                                 <div class="top-part">
                                                     <div class="ssc-section">
                                                         <div id="ssc-section">
                                                             <div class="subject-section">
                                                                 <label>Subject:</label>
-                                                                <div style="width: 50%;">
+                                                                <div style="width: 90%;">
                                                                     <select id="subject" name="subject" onchange="getChapter(this);">
-                                                                        <option value="" disabled selected>Nothing selected</option>
                                                                         <c:forEach var="subject" items="${subjectList}">
                                                                             <option value="${subject.getSubjectId()}">${subject.getSubjectCode()}</option>
                                                                         </c:forEach>
@@ -109,15 +133,20 @@
                                                             </div>
                                                         </div>
                                                         <div id="c-section">
-                                                            
+                                                            <div class="chapter-section new-box">
+                                                                <label >Chapter:</label>
+                                                                <div style="width: 90%;">
+                                                                    <select class="form-control" name="chapter">
+                                                                        <c:forEach var="c" items="${cList}">
+                                                                            <option value="${c.getSettingId()}">${c.getSettingName()}</option>
+                                                                        </c:forEach>
+                                                                    </select>    
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div id="l-section">
-                                                            
-                                                        </div>
-
                                                     </div>
 
-                                                    <div class="dimension-section">
+                                                    <div class="dimension-section" style="margin-left: 60px;">
                                                         <div id="dimension-container">
                                                             <label>Dimension:</label>
 
@@ -128,10 +157,10 @@
                                                 <div class="bottom-part">
                                                     <div class="question-section">
                                                         <label for="questionArea" class="question-area">Question:</label>
-                                                        <textarea id="questionArea" name="questionString" rows="6" cols="70"></textarea>
+                                                        <textarea id="summernote" name="summernote" ></textarea>
                                                     </div>
 
-                                                    <div class="answer-section">
+                                                    <div class="answer-section" style="margin-left: 60px;">
                                                         <label>Answer: </label>
                                                         <div class="asc">
                                                             <div id="answers-container">
@@ -192,7 +221,7 @@
                 const answerDiv = document.createElement('div');
                 answerDiv.classList.add('answer');
                 answerDiv.innerHTML = `
-                    <input type="text" name="answer" placeholder="Enter answer text">
+                    <input type="text" name="answer" placeholder="Enter answer text" style="width: 63%;">
                     <input type="checkbox" name="true-answer"> True Answer
                     <button class="delete-answer btn-secondry" style="margin: 2px;">Delete</button>`;
                 answersContainer.appendChild(answerDiv);
@@ -208,9 +237,9 @@
                 const dimensionDiv = document.createElement('div');
                 dimensionDiv.classList.add('dimension');
                 dimensionDiv.innerHTML = `
-                <div style="width: 50%; display: flex; align-items: center; margin: 5px;">
-                    <select name="dimension" class="form-control">
-                        <c:forEach var="ss" items="${subjectSettingList}">
+                <div style="width: 90%; display: flex; align-items: center; margin: 5px;">
+                    <select name="dimension" class="form-control" style="height: 40px;">
+                        <c:forEach var="ss" items="${ssList}">
                             <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
                         </c:forEach>   
                     </select>
@@ -254,39 +283,18 @@
                 });
             }
 
-            function getLesson(selectElement) {
-                var chapter = selectElement.value;
-                $.ajax({
-                    url: "/eduzone/getLesson",
-                    type: "get",
-                    data: {
-                        chapter: chapter
-                    },
-                    success: function (data) {
-                        var sscSection = document.getElementById("l-section");
-                        var newContainer = document.createElement("div");
-                        newContainer.classList.add("new-box2");
-
-                        var divToDelete = document.querySelector(".new-box2");
-                        if (divToDelete) {
-                            var parentElement = divToDelete.parentNode;
-
-                            parentElement.removeChild(divToDelete);
-                        }
-                        newContainer.innerHTML = data;
-
-                        sscSection.appendChild(newContainer);
-                    },
-                    error: function (xhr) {
-                        // Xử lý lỗi ở đây nếu cần
-                    }
-                });
-            }
-
             function reloadPage() {
                 event.preventDefault();
                 window.location.reload();
             }
+        </script>
+        <!-- include summernote css/js -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#summernote').summernote();
+            });
         </script>
     </body>
 </html>

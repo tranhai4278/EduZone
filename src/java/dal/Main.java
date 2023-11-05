@@ -1,24 +1,22 @@
 package dal;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class Main {
 
     public static void main(String[] args) {
-        // Create an instance of UserDAO
-        UserDAO userDAO = new UserDAO();
-
-        // Example user ID, current password, and new password
-        int userId = 1; // Replace with the actual user ID
-        String currentPassword = "newPassword"; // Replace with the actual current password
-        String newPassword = "Password"; // Replace with the new password
-
-        // Attempt to change the user's password
-        boolean passwordChangeSuccess = userDAO.changePassword(userId, currentPassword, newPassword);
-
-        if (passwordChangeSuccess) {
-            System.out.println("Password changed successfully.");
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime targetTime = LocalDateTime.of(currentTime.toLocalDate(), LocalTime.of(12, 0));
+        System.out.println(currentTime);
+        System.out.println(targetTime);
+        // Compare the two times
+        if (currentTime.isAfter(targetTime)) {
+            System.out.println("The current time has passed the target time.");
+        } else if (currentTime.isBefore(targetTime)) {
+            System.out.println("The current time is before the target time.");
         } else {
-            System.out.println("Password change failed. Please check the current password.");
+            System.out.println("The current time is the same as the target time.");
         }
     }
 }
-

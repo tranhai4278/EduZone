@@ -35,11 +35,14 @@ public class LessonDAO extends MySqlConnection {
                 String file = result.getString(8);
                 boolean status = result.getBoolean(9);
                 String description = result.getString(10);
-                Date create_at = result.getDate(11);
-                int create_by = result.getInt(12);
-                Date update_at = result.getDate(13);
-                int update_by = result.getInt(14);
-                Lesson l = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, create_at, create_by, update_at, update_by);
+                Date start_date = result.getDate(11);
+                Date end_date = result.getDate(12);
+                int display_order = result.getInt(13);
+                Date create_at = result.getDate(14);
+                int create_by = result.getInt(15);
+                Date update_at = result.getDate(16);
+                int update_by = result.getInt(17);
+                Lesson l = new Lesson(lessonId, title, chapterId, classId, lessonType, quizId, videoLink, file, status, description, start_date, end_date, display_order, create_at, create_by, update_at, update_by);
                 list.add(l);
             }
             return list;

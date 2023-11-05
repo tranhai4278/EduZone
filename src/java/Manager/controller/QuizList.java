@@ -49,10 +49,7 @@ public class QuizList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        QuizDAO dao = new QuizDAO();
-        List<Quiz> listQ = dao.getAllQuiz();
-        request.setAttribute("listQ", listQ);
-        request.getRequestDispatcher("quizList.jsp").forward(request, response);
+
     }
 
     /**

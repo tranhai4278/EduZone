@@ -1,8 +1,9 @@
 <%-- 
-    Document   : quizList
-    Created on : Oct 19, 2023, 6:06:41 PM
+    Document   : practiceQuiz
+    Created on : Nov 5, 2023, 2:39:55 PM
     Author     : MinhDQ
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -105,7 +106,7 @@
                                 <div class="modal-content" id="deleteModal">
                                     <p>Are you sure you want to delete this quiz?</p>
                                     <div style="display:flex;justify-content: space-between">
-                                        <a class="btn btn-primary" id="delete-confirm" href="quizs?action=delete&quizID=${q.getQuizId()}&page=${page}">Delete</a>  
+                                        <a class="btn btn-primary" id="delete-confirm">Delete</a>  
                                         <!--<button id="delete-confirm">Delete</button>-->
                                         <button id="delete-cancel">Cancel</button>
                                     </div>
@@ -121,27 +122,11 @@
                                             <div class="col-md-2" style="padding-right: 0">
                                                 <select name="searchBySubject">
                                                     <option value="">Subject</option>
-                                                    <c:forEach items="${subjectList}" var="i">
-                                                        <c:if test="${searchBySubject == i.subjectId}">
-                                                            <option value="${i.subjectId}" selected style="text-align: left">${i.subjectCode}</option>
-                                                        </c:if>
-                                                        <c:if test="${searchBySubject != i.subjectId}">
-                                                            <option value="${i.subjectId}"  style="text-align: left">${i.subjectCode}</option>
-                                                        </c:if>        
-                                                    </c:forEach>
                                                 </select>
                                             </div>
                                             <div class="col-md-3">
                                                 <select name="searchByChapter">
                                                     <option value="" style="text-align: left">Chapter</option>
-                                                    <c:forEach items="${chapterList}" var="i">
-                                                        <c:if test="${searchByChapter == i.getSettingId()}">
-                                                            <option value="${i.getSettingId()}" selected style="text-align: left">${i.getSettingName()}</option>
-                                                        </c:if>
-                                                        <c:if test="${searchByChapter != i.getSettingId()}">
-                                                            <option value="${i.getSettingId()}"  style="text-align: left">${i.getSettingName()}</option>
-                                                        </c:if>
-                                                    </c:forEach>
                                                 </select>
                                             </div>                                           
                                             <button type="submit" class="col-md-2 button" style="border-radius: 5px">Search</button>
@@ -149,7 +134,7 @@
                                     </div>
                                     <div class="adbutton" style="padding: 0;margin-left: auto">
                                         <div>
-                                            <button class="button" type="button" data-toggle="modal" data-target="#NewQuiz"><i class="fa-solid fa-plus" style="padding-right:5px"></i>Add Quiz</button>                                                                                      
+                                            <button class="button" type="button" data-toggle="modal" data-target="#NewQuiz"><i class="fa-solid fa-plus" style="padding-right:5px"></i>New Quiz</button>                                                                                      
                                         </div>
                                     </div>
                                 </div>
@@ -158,79 +143,75 @@
                                     <table style="max-width: 100%;margin-top: 5px">
                                         <thead>
                                             <tr class="row">
-                                                <th class="col-md-2" style="text-align: center" onclick ="window.location.href = 'quizs?action=sort&type=name&page=${page}&nasc=${nasc}'"><span>Name<i class="fa-solid fa-arrow-down-wide-short" style="margin-left:auto"></i></span></th>
-                                                <th class="col-md-2" style="text-align: center" onclick ="window.location.href = 'quizs?action=sort&type=subject&page=${page}&sasc=${sasc}'"><span>Subject<i class="fa-solid fa-arrow-down-wide-short" style="margin-left:auto"></i></span></th>
-                                                <th class="col-md-2" style="text-align: center" onclick ="window.location.href = 'quizs?action=sort&type=chapter&page=${page}&casc=${casc}'"><span>Chapter<i class="fa-solid fa-arrow-down-wide-short" style="margin-left:auto"></i></span></th>
-                                                <th class="col-md-1" style="text-align: center" ><span>Type</span></th>
-                                                <th class="col-md-1" style="text-align: center" ><span>Duration</span></th>
-                                                <th class="col-md-1" style="text-align: center" ><span>Total</span></th>
-                                                <th class="col-md-2" style="text-align: center" ><span>Status</span></th>
-                                                <th class="col-md-1" style="text-align: center"><span>Action</span></th>
+                                                <th class="col-md-2" style="text-align: center"><span>Practice Quiz</span></th>
+                                                <th class="col-md-2" style="text-align: center"><span>Question Group</span></th>
+                                                <th class="col-md-2" style="text-align: center"><span>Question Source</span></th>
+                                                <th class="col-md-1" style="text-align: center" ><span>Question</span></th>
+                                                <th class="col-md-2" style="text-align: center" ><span>Quiz Time</span></th>
+                                                <th class="col-md-1" style="text-align: center" ><span>Spent Time</span></th>
+                                                <th class="col-md-1" style="text-align: center" ><span>Result</span></th>
+                                                <th class="col-md-1" style="text-align: center" ><span>Retake</span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${requestScope.quizList}" var="q">
-                                                <tr class="row" style="line-height: 30px">       
-                                                    <td class="col-md-2" style="text-align: start">${q.getQuizName()}</td>
-                                                    <td class="col-md-2" style="text-align: center">${q.s.getSubjectCode()}</td>
-                                                    <td class="col-md-2" style="text-align: start">${q.ss.getSettingName()}</td>
-                                                    <td class="col-md-1" style="text-align: center">${q.isQuizType()==true?"Fix":"Random"}</td>
-                                                    <td class="col-md-1" style="text-align: center">${q.getQuizTime()}</td>
-                                                    <td class="col-md-1" style="text-align: center">${q.getNumberQuestion()}</td>
-                                                    <c:if test="${q.status==true}">
-                                                        <td class="col-md-2" style="text-align: center">
-                                                            <div class="row">
-                                                                <div class="col-md-3" style="text-align: right;padding-right: 0">
-                                                                    <i class="fa-solid fa-circle" style="font-size: 8px;color:#B6FFBD"></i>
-                                                                </div>
-                                                                <div class="col-md-9" style="text-align: left">
-                                                                    Activated
-                                                                </div>                                                               
-                                                            </div>
-                                                        </td>
-                                                    </c:if>                                         
-                                                    <c:if test="${q.status==false}">
-                                                        <td class="col-md-2" style="text-align: center">
-                                                            <div class="row">
-                                                                <div class="col-md-3"style="text-align: right;padding-right: 0">
-                                                                    <i class="fa-solid fa-circle"style="font-size: 8px;color:red"></i>
-                                                                </div>
-                                                                <div class="col-md-9" style="text-align: left">
-                                                                    Deactivated
-                                                                </div>                                                               
-                                                            </div>
-                                                        </td>
-                                                    </c:if>
-                                                    <td class="col-md-1" style="text-align: center">
-                                                        <div>
-                                                            <c:if test="${q.status==false}">
-                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-check" id="active_icon" style = "cursor: pointer"></i>&nbsp;&nbsp;
-                                                            </c:if>
-                                                            <c:if test="${q.status==true}">
-                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-xmark" id="deactive_icon" style = "cursor: pointer"></i>&nbsp;&nbsp;
-                                                            </c:if>
-                                                            <i onclick="window.location.href = 'quizs?action=detailQuiz&quizID=${q.getQuizId()}'" class="fa fa-eye" id="view_icon" style = "cursor: pointer"  ></i>
-                                                            &nbsp;&nbsp;
-                                                            <i onclick="openDeleteModal('${q.quizId}')" class="fa fa-trash"style = "cursor: pointer"></i>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
+                                            <tr class="row" style="line-height: 30px">       
+                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
+                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
+                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
+                                                <td class="col-md-1" style="text-align: center">60</td>
+                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
+                                                <td class="col-md-1" style="text-align: center">70</td>
+                                                <td class="col-md-1" style="text-align: center">90%</td>
+                                                <td class="col-md-1" style="text-align: center">
+                                                    <button >Retake</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="row" style="line-height: 30px">       
+                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
+                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
+                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
+                                                <td class="col-md-1" style="text-align: center">60</td>
+                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
+                                                <td class="col-md-1" style="text-align: center">70</td>
+                                                <td class="col-md-1" style="text-align: center">90%</td>
+                                                <td class="col-md-1" style="text-align: center">
+                                                    <button >Retake</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="row" style="line-height: 30px">       
+                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
+                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
+                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
+                                                <td class="col-md-1" style="text-align: center">60</td>
+                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
+                                                <td class="col-md-1" style="text-align: center">70</td>
+                                                <td class="col-md-1" style="text-align: center">90%</td>
+                                                <td class="col-md-1" style="text-align: center">
+                                                    <button >Retake</button>
+                                                </td>
+                                            </tr>
+                                            <tr class="row" style="line-height: 30px">       
+                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
+                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
+                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
+                                                <td class="col-md-1" style="text-align: center">60</td>
+                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
+                                                <td class="col-md-1" style="text-align: center">70</td>
+                                                <td class="col-md-1" style="text-align: center">90%</td>
+                                                <td class="col-md-1" style="text-align: center">
+                                                    <button >Retake</button>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <c:if test="${page!=null}">
-                                    <div style="text-align: center;padding-bottom: 20px">
-                                        <c:set var="page" value="${page}"/>
-                                        <div class="paging">
-                                            <a href="quizs?action=list&page=${1}">&laquo;</a>
-                                            <c:forEach begin="${startPage}" end="${endPage}" var="i">
-                                                <a class="${i==page?"active":""}" href="quizs?action=list&page=${i}">${i}</a>                                       
-                                            </c:forEach>
-                                            <a href="quizs?action=list&page=${maxPage}">&raquo;</a>
-                                        </div>
+                                <div style="text-align: center;padding-bottom: 20px">
+                                    <div class="paging">
+                                        <a>&laquo;</a>
+                                        <a>1</a>                                       
+                                        <a >&raquo;</a>
                                     </div>
-                                </c:if>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,7 +220,7 @@
             </div>
         </main>
 
-        <jsp:include page="newQuiz.jsp"></jsp:include>
+        <jsp:include page="newPracticeQuiz.jsp"></jsp:include>
             <div class="ttr-overlay"></div>
             <style>
                 @media (max-width:768px){
@@ -410,7 +391,7 @@
                     margin: 15% auto;
                     padding: 20px;
                     border: 1px solid #888;
-                    width: 91%;
+                    width: 150%;
                     max-width: 1000px;
                 }
                 #deleteModal {
@@ -509,8 +490,8 @@
                     document.getElementById('confirm-modal').style.display = 'none';
                 }
         </script>
-        
-        
+
+
 
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
@@ -535,4 +516,3 @@
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
 </html>
-

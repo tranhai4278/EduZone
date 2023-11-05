@@ -8,159 +8,144 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
     <head>
-
-        <!-- META ============================================= -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="keywords" content="" />
-        <meta name="author" content="" />
-        <meta name="robots" content="" />
-
-        <!-- DESCRIPTION -->
-        <meta name="description" content="EduNext : Education HTML Template" />
-
-        <!-- OG -->
-        <meta uperty="og:title" content="EduNext : Education HTML Template" />
-        <meta uperty="og:description" content="EduNext : Education HTML Template" />
-        <meta uperty="og:image" content="" />
-        <meta name="format-detection" content="telephone=no">
-
-        <!-- FAVICONS ICON ============================================= -->
-        <link rel="icon" href="../error-404.html" type="image/x-icon" />
-        <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
-
-        <!-- PAGE TITLE HERE ============================================= -->
-        <title>EduNext : Education HTML Template </title>
-
-        <!-- MOBILE SPECIFIC ============================================= -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- All PLUGINS CSS ============================================= -->
-        <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
-        <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
-
-        <!-- TYPOGRAPHY ============================================= -->
-        <link rel="stylesheet" type="text/css" href="assets/css/typography.css">
-
-        <!-- SHORTCODES ============================================= -->
-        <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-
-        <!-- STYLESHEETS ============================================= -->
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
-        <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <style>
-            /* CSS cho hộp thoại popup */
-            #randomPopup {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: #fff;
-                padding: 20px;
-                border: 1px solid #ccc;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-                z-index: 2;
+            .error {
+                color: red;
             }
         </style>
     </head>
-    <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-
-        <!-- header start -->
-        <%@include file="setting-header.jsp" %>
-        <main class="ttr-wrapper">
-            <div class="container-fluid">
-                <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Quiz</h4>
-                    <ul class="db-breadcrumb-list">
-                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>New Quiz</li>
-                    </ul>
-                </div>	
-                <div class="row">
-                    <!-- Your Profile Views Chart -->
-                    <div class="col-lg-12 m-b30">
-                        <div class="widget-box">
-                            <div class="email-wrapper">
-                                <div class="mail-list-container">
-                                    <div class="mail-toolbar">
-                                        <div class="container">
-                                            <form id="quizForm" action="/eduzone/newquiz" method="post">
-                                                <!-- Các trường thông tin cho Quiz -->
-                                                <div class="form-group">
-                                                    <label for="quizTitle">Quiz title:</label>
-                                                    <input type="text" class="form-control" id="quizTitle" name="quizTitle" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="subject">Subject:</label>
-                                                    <select class="form-control" id="subject" name="subject">
-                                                        <c:forEach items="listS" var="s">
-                                                            <option value="subject1"><c:out value="${s.subjectName}"/></option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="chapter">Chapter:</label>
-                                                    <select class="form-control" id="chapter" name="chapter">
-                                                            <option value="chapter1">hihi</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="questionType">Question list:</label>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                        <label class="form-check-label" for="inlineRadio1">Random</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                        <label class="form-check-label" for="inlineRadio2">Fix</label>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary btn-block" id="createQuiz">Create</button>
-                                            </form>
-
-                                        </div> 
-                                    </div>
+    <body>
+        <div class="modal fade" id="NewQuiz" tabindex="-1" role="dialog" aria-labelledby="NewQuizLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addProductModalLabel">Add Quiz</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addQuizForm" action="quizs" method="get" >
+                            <input type="text" name="action" style="display: none" value="addQuiz">
+                            <div class="row">
+                                <!--Subject-->
+                                <div class="col-md-6">
+                                    <select name="subject">
+                                        <option value="">Subject</option>
+                                        <c:forEach items="${subjectList}" var="i">
+                                            <c:if test="${searchBySubject == i.subjectId}">
+                                                <option value="${i.subjectId}" selected style="text-align: left">${i.subjectCode}</option>
+                                            </c:if>
+                                            <c:if test="${searchBySubject != i.subjectId}">
+                                                <option value="${i.subjectId}"  style="text-align: left">${i.subjectCode}</option>
+                                            </c:if>        
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <!--Chapter-->
+                                <div class="col-md-6">
+                                    <select name="chapter">
+                                        <option value="" style="text-align: left">Chapter</option>
+                                        <c:forEach items="${chapterList}" var="i">
+                                            <c:if test="${searchByChapter == i.getSettingId()}">
+                                                <option value="${i.getSettingId()}" selected style="text-align: left">${i.getSettingName()}</option>
+                                            </c:if>
+                                            <c:if test="${searchByChapter != i.getSettingId()}">
+                                                <option value="${i.getSettingId()}"  style="text-align: left">${i.getSettingName()}</option>
+                                            </c:if>
+                                        </c:forEach>
+                                    </select>
+                                </div>   
+                            </div>  
+                            <!--Name-->
+                            <div class="form-group" style="margin-top:10px; margin-top: 20px">
+                                <label for="name">Quiz Name:</label>
+                                <input type="text" class="form-control" id="nameInput" name="name">
+                                <div id="nameError" class="error"></div>
+                            </div>
+                            <!--Type-->
+                            <div>
+                                <label for="type">Type:</label><br>
+                                <div class="form-check form-check-inline" style="margin-right: 60px">
+                                    <input class="form-check-input" type="radio" name="type" id="randomQues" value="false" checked/>
+                                    <label class="form-check-label" for="randomQues">Random Questions</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="type" id="fixedQues" value="true" />
+                                    <label class="form-check-label" for="fixedQues">Fixed Questions</label>
                                 </div>
                             </div>
-                        </div>
+
+                            <!--Total-->
+                            <div class="form-group" style="margin-top: 23px">
+                                <label for="total">Total of questions:</label>
+                                <input type="number" class="form-control" id="totalInput" name="total">
+                                <div id="totalError" class="error"></div>
+                            </div>
+                            
+                            <!--Time-->
+                            <div class="form-group" style="margin-top: 23px">
+                                <label for="time">Duration:</label>
+                                <input type="number" class="form-control" id="totalInput" name="time">
+                                <div id="totalError" class="error"></div>
+                            </div>
+
+                            <!--Status-->
+                            <div style="margin-bottom: 25px">
+                                <label for="status">Status:</label><br>
+                                <div class="form-check form-check-inline" style="margin-right: 142px">
+                                    <input class="form-check-input" type="radio" name="status" id="Inactive" value="false" checked/>
+                                    <label class="form-check-label" for="Inactive">Inactive</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="status" id="Active" value="true" />
+                                    <label class="form-check-label" for="Active">Active</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="justify-content: flex-start">
+                        <button type="submit" class="btn btn-primary" form="addQuizForm" onclick="validateForm()">Add</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
-        </main>
-        <div class="ttr-overlay"></div>
+            </div>
+        </div>
+
+        <script>
+            function validateForm() {
+                let name = $('#nameInput').val();
+//                let total = $('#totalInput').val();
+                //xoá thông báo lỗi hiện tại
+                $('.error').html('');
+                if (name === '') {
+                    $('#nameError').html('Name of quiz must not be empty');
+                } else if (name.length > 100) {
+                    $('#nameError').html('Name of quiz must less than or equal 100 characters');
+                }
+                if (total === '') {
+//                    $('#totalError').html('Total questions must not be empty');
+                } else if (!$.isNumeric(total) || parseInt(total) < 0) {
+                    $('#totalError').html('Total questions must be digits and greater than 0');
+                }
 
 
-
-        <!-- External JavaScripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
-        <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-        <script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
-        <script src="assets/vendors/counter/waypoints-min.js"></script>
-        <script src="assets/vendors/counter/counterup.min.js"></script>
-        <script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
-        <script src="assets/vendors/masonry/masonry.js"></script>
-        <script src="assets/vendors/masonry/filter.js"></script>
-        <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
-        <script src='assets/vendors/scroll/scrollbar.min.js'></script>
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/vendors/chart/chart.min.js"></script>
-        <script src="assets/js/admin.js"></script>
-        <script src='assets/vendors/switcher/switcher.js'></script>
-
+                // Kiểm tra nếu không có lỗi thì submit form
+                let error = '';
+                $('.error').each(function () {
+                    error += $(this).html();
+                });
+                if (error === '') {
+                    $('#addQuizForm').submit();
+                } else {
+                    event.preventDefault();
+                }
+            }           
+        </script>
     </body>
-
-    <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
 </html>
+
 

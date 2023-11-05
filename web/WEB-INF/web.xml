@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <!-- WELCOME FILE LIST -->
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
-    </welcome-file-list>  
-
+    </welcome-file-list>
     <!-- START Authentication Filter for Admin Page -->
     <filter>
         <filter-name>AdminAuthenticationFilter</filter-name>
@@ -199,6 +197,10 @@
         <servlet-name>addLessonController</servlet-name>
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Quizs</servlet-name>
+        <servlet-class>Manager.controller.Quizs</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -295,7 +297,6 @@
         <servlet-name>QuizDetail</servlet-name>
         <url-pattern>/quizdetail</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>    
     <servlet-mapping>
         <servlet-name>ClassListServlet</servlet-name>
         <url-pattern>/classlist</url-pattern>
@@ -351,6 +352,10 @@
     <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
         <url-pattern>/addLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Quizs</servlet-name>
+        <url-pattern>/quizs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

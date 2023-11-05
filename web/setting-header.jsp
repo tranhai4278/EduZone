@@ -155,7 +155,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
-                        <a href="/QuestionsList"" class="ttr-material-button">
+                        <a href="QuestionsList"" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Question</span>
                         </a>

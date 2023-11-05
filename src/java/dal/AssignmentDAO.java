@@ -66,4 +66,5 @@ public class AssignmentDAO extends MySqlConnection {
              System.out.println(a.getFile() + " " + a.getMark());
          }
     }
+
 }

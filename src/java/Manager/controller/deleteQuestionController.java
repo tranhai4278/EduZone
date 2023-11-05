@@ -18,9 +18,9 @@ public class deleteQuestionController extends HttpServlet {
         QuestionDAO qDao = new QuestionDAO();
         SubjectSettingDAO ssDao = new SubjectSettingDAO();
         
-        qDao.deleteQuestionById(questionId);
         qDao.deleteAnswerWithQuestionId(questionId);
         ssDao.deleteDimensionWithQuestionId(questionId);
+        qDao.deleteQuestionById(questionId);
         
         response.sendRedirect("QuestionsList");
     }

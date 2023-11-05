@@ -221,6 +221,10 @@
         <servlet-name>Quiz</servlet-name>
         <servlet-class>OnlineLearn.Quiz</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DashboardController</servlet-name>
+        <servlet-class>User.controller.DashboardController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -396,6 +400,10 @@
     <servlet-mapping>
         <servlet-name>Quiz</servlet-name>
         <url-pattern>/quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardController</servlet-name>
+        <url-pattern>/dashboardController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

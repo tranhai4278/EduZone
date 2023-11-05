@@ -43,7 +43,7 @@ public class AssignmentDAO extends MySqlConnection {
         }
     }
     
-     public String getTraineeName (int id) {
+    public String getTraineeName (int id) {
         String query = "SELECT u.full_name FROM `assignment` a JOIN user u ON a.trainee_id = u.user_id WHERE a.trainee_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);

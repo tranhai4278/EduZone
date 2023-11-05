@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin
-    Created on : Sep 24, 2023, 12:30:41 AM
-    Author     : Nết
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -65,22 +59,6 @@
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
-            <c:if test="${not empty requestScope.error}">
-                <div class="alert alert-danger" id="notificationMessage" role="alert" >
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="True">&times;</span>
-                    </button>
-                    ${requestScope.error}
-                </div>
-            </c:if>
-            <c:if test="${not empty requestScope.successMessage}">
-                <div class="alert alert-success" id="notificationMessage" role="alert" >
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="True">&times;</span>
-                    </button>
-                    ${requestScope.successMessage}
-                </div>
-            </c:if>
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Setting</h4>
@@ -90,9 +68,7 @@
                     </ul>
                 </div>	
                 <div class="row">
-                    <form action="settingSubject" method="post" id="form">
-
-                        <!-- Your Profile Views Chart -->
+                    <form action="#" method="post" id="form">
                         <div class="col-lg-12 m-b30">
                             <div class="widget-box">
                                 <div class="email-wrapper">
@@ -144,23 +120,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <c:forEach var="s" items="${listS}" >
-                                                            <tr>
-                                                                <td>${s.subjectName}</td>
-                                                                <td>${s.subjectCode}</td>
-                                                                <td>${s.u.fullName}</td>
-                                                                <td>
-                                                                    <div class="form-check form-switch">
-                                                                        <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="subjectDetail?sid=${s.subjectId}" class="tm-product-delete-link">
-                                                                        <i> Edit</i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </c:forEach>
+                                                    <c:forEach var="s" items="${listS}" >
+                                                        <tr>
+                                                            <td>${s.subjectName}</td>
+                                                            <td>${s.subjectCode}</td>
+                                                            <td>${s.u.fullName}</td>
+                                                            <td>
+                                                                <div class="form-check form-switch">
+                                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.subjectId}, this)">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="subjectDetail?sid=${s.subjectId}" class="tm-product-delete-link">
+                                                                    <i> Edit</i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </section>
@@ -201,33 +177,7 @@
             </div>
         </main>
         <div class="ttr-overlay"></div>
-        <script>
-            function updateStatus(id, checkbox) {
-                let status = checkbox.checked;
-                if (confirm('Are you sure?'))
-                    window.location.href = 'updateStatus?id=' + id + '&status=' + status;
-                else
-                    checkbox.checked = !status;
-            }
-        </script>
-        <script>
-            setTimeout(function () {
-                var notificationMessage = document.getElementById("notificationMessage");
-                if (notificationMessage) {
-                    notificationMessage.style.display = "none";
-                }
-            }, 5000);
-        </script>
-        <script>
-            function goToPage(i) {
-                document.getElementById('pageNoInput').value = i;
-                document.getElementById('form').submit();
-            }
-            function sortDatas(orders) {
-                document.getElementById('orders').value = orders;
-                document.getElementById('form').submit();
-            }
-        </script>
+        
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

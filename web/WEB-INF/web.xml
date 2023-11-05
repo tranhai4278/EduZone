@@ -200,6 +200,10 @@
     <servlet>
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
+        </servlet>
+    <servlet>
+        <servlet-name>Quizs</servlet-name>
+        <servlet-class>Manager.controller.Quizs</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DashboardController</servlet-name>
@@ -372,6 +376,10 @@
     <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Quizs</servlet-name>
+        <url-pattern>/quizs</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>

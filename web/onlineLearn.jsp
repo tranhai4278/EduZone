@@ -198,7 +198,37 @@
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="widget-inner" id="chapter">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="ml-auto">
+                                        <h1>"+ss.getSettingName()+"</h1>
+                                        <p> "+ss.getDescription()+"   </p> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-10 offset-2 ">
+                                    <c:forEach>
+                                        <div>
+                                            <h4>" + s.getTitle() + "</h4>
+                                            <p>Type:" + s.getLessonType() + "</p>
+                                            <p>Description:" + s.getDescription() + "</p>
+                                            if ("Video".equals(s.getLessonType())) {
+                                            <iframe width="560" height=\"315\" src="s" title="s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                            }
+                                            if ("Quiz".equals(s.getLessonType())) {
+                                            out.println("Quiz\n");
+                                            }
+                                            if ("Assignment".equals(s.getLessonType())) {
+                                            out.println("Assignment\n");
+                                            }
+                                            out.println("                                      </div>
 
+                                        <div class="seperator"></div>
+                                    </c:forEach>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -46,11 +46,6 @@
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
         <link rel="stylesheet" href="assets/css/questionListStyle.css" />
         <style>
-            .table__header {
-                
-                min-height: 113px; /* Add a minimum height */
-            }
-            
             .no-display img {
                 display: none;
             }
@@ -66,61 +61,64 @@
                     <h4 class="breadcrumb-title">Manager Page</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Question List</li>
+                        <li>Discussion List</li>
                     </ul>
                 </div>	
                 <div class="row">
                     <div class="table">
-                        <section class="table__header">
-                            <div class="input-group" style="height: 40px;">
-                                <input type="search" placeholder="Search Data...">
-                                <img src="assets/images/search.png" alt="">
+                        <section class="table__header" style="margin-left: 12px; height: 40px; width: 99.8%;">
+                            <div style="display: flex;">
+                                <div class="input-group" style="height: 40px; width: 450px; border-radius: 1px;">
+                                    <input type="search" placeholder="Search Data...">
+                                    <img src="assets/images/search.png" alt="">
+                                </div>
+                                <div style="height: 40px; width: 40%; margin-left: 30px;">
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                </div>
+                                <div style="height: 40px; width: 40%; margin-left: 30px;">
+                                    <select>
+                                        <option>1</option>
+                                    </select>
+                                </div>
                             </div>
+
                             <div class="">
                                 <div class="">
                                     <div class="row">
                                         <div class="col-12 col-sm-7 col-md-7 col-lg-7">
                                             <a class="btn" href="addQuestion">Add new question</a>
                                         </div>
-                                        
                                     </div>
-
                                 </div>
                             </div>
                         </section>
-
-                        <section class="table__body">
+                        <section class="table__body" style="border-radius: 1px;">
                             <table>
                                 <thead>
                                     <tr>
                                         <th>ID <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Question <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Subject Code <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Chapter <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Dimension <span class="icon-arrow">&UpArrow;</span></th>
-                                        <th>Question Type <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Title <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Subject <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Class <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Poster <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Time <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th>Status <span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="question" items="${list}">
                                         <tr>
-                                            <td> ${question.getQuestionId()} </td>
-                                            <td class="no-display"> ${question.getQuestion()} </td>
-                                            <td> ${question.getSubjectCode()} </td>
-                                            <td> ${question.getChapter()} </td>
-                                            <td>${question.getDimension()}</td>
-                                            <td> <c:choose>
-                                                    <c:when test="${question.getFlag() == 1}">
-                                                        Restricted
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        Free
-                                                    </c:otherwise>
-                                                </c:choose></td>
-                                            <td><a href="editQuestion?questionId=${question.getQuestionId()}">Edit</a>/<a href="deleteQuestion?questionId=${question.getQuestionId()}">Delete</a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="#">Edit</a></td>
                                         </tr>
-                                    </c:forEach>
                                 </tbody>
                             </table>
                         </section>

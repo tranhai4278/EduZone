@@ -216,6 +216,10 @@
     <servlet>
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
+        </servlet>
+    <servlet>
+        <servlet-name>Quizs</servlet-name>
+        <servlet-class>Manager.controller.Quizs</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Quiz</servlet-name>
@@ -224,6 +228,14 @@
     <servlet>
         <servlet-name>DashboardController</servlet-name>
         <servlet-class>User.controller.DashboardController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addQuestion</servlet-name>
+        <servlet-class>Manager.controller.addQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -396,6 +408,10 @@
     <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Quizs</servlet-name>
+        <url-pattern>/quizs</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Quiz</servlet-name>
@@ -404,6 +420,14 @@
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
         <url-pattern>/dashboardController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addQuestion</servlet-name>
+        <url-pattern>/addQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <url-pattern>/editQuestion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

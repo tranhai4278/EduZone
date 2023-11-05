@@ -156,27 +156,15 @@
                 </c:if>
                 <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
-                        <a href="/QuestionsList"" class="ttr-material-button">
+                        <a href="QuestionsList"" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Question</span>
                         </a>
                     </li>
                     <li>
-                        <a href="quizlist" class="ttr-material-button">
+                        <a href="quizs?action=list" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                             <span class="ttr-label">Quiz</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="newquiz" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                            <span class="ttr-label">New Quiz</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="newquiz" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                            <span class="ttr-label">Quiz Detail</span>
                         </a>
                     </li>
                     <li>

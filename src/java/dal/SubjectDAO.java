@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import model.Subject;
@@ -11,6 +12,7 @@ import model.SubjectSetting;
 import model.User;
 
 public class SubjectDAO extends MySqlConnection {
+
     public ArrayList<Subject> getSubjectsByManagerId(int managerId) {
         ArrayList<Subject> subjects = new ArrayList<>();
         String sql = "SELECT * FROM subject WHERE manager_id = ?";
@@ -54,7 +56,6 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
-
     public ArrayList getAllSubjects() {
         ArrayList<Subject> list = new ArrayList<>();
         String sql = "select * from subject";
@@ -94,7 +95,7 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-    
+
     public void addSubject(int mID, String name, String code, String des, String image) {
         try {
             String strSelect = "INSERT INTO subject (manager_id, subject_name, subject_code, description, img_url, \n"
@@ -107,7 +108,7 @@ public class SubjectDAO extends MySqlConnection {
             pstm.setString(3, code);
             pstm.setString(4, des);
             pstm.setString(5, image);
-            pstm.setBoolean(6, true );
+            pstm.setBoolean(6, true);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
@@ -122,7 +123,6 @@ public class SubjectDAO extends MySqlConnection {
             System.out.println("addAccount: " + e.getMessage());
         }
     }
-
 
     public ArrayList getAllSubjectsWithUser() {
         UserDAO userDao = new UserDAO();
@@ -192,7 +192,7 @@ public class SubjectDAO extends MySqlConnection {
         String sql = "SELECT subject_code FROM `subject`";
 
         try {
-                statement = connection.prepareStatement(sql);
+            statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
 
             while (result.next()) {
@@ -294,7 +294,6 @@ public class SubjectDAO extends MySqlConnection {
         }
     }
 
-    
     public Subject getSubjectWithId(int subject_id) {
         Subject subject = new Subject();
         String sql = "SELECT *\n"
@@ -336,7 +335,7 @@ public class SubjectDAO extends MySqlConnection {
     }
 
     public Subject getSubjectByCode(String code) {
-        String query ="SELECT * FROM `subject` WHERE subject_code = ?";
+        String query = "SELECT * FROM `subject` WHERE subject_code = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, code);
             try ( ResultSet resultSet = statement.executeQuery()) {
@@ -361,7 +360,6 @@ public class SubjectDAO extends MySqlConnection {
         }
         return null;
     }
-    
 
     public Subject getSubjectAndManagerWithId(int subject_id) {
         UserDAO userDao = new UserDAO();
@@ -405,7 +403,7 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-    
+
     public ArrayList<SubjectSetting> getAllSubjectSetting() {
         ArrayList<SubjectSetting> subjectSettingList = new ArrayList<>();
         String sql = "SELECT * FROM `subject_setting` WHERE setting_type != 'Chapter'";
@@ -413,7 +411,7 @@ public class SubjectDAO extends MySqlConnection {
         try {
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
-            
+
             while (result.next()) {
                 int settingId = result.getInt(1);
                 int subjectId = result.getInt(2);
@@ -430,12 +428,30 @@ public class SubjectDAO extends MySqlConnection {
                 SubjectSetting subjectSetting = new SubjectSetting(settingId, subjectId, settingType, settingName, description, displayOrder, boolStatus, createAt, createBy, updateAt, updateBy);
                 subjectSettingList.add(subjectSetting);
             }
-            
+
             return subjectSettingList;
         } catch (Exception e) {
             Logger.getLogger(e.toString());
             return null;
         }
+    }
+
+    public String getManagerName(String managerID) {
+        String sql = "select user.full_name \n"
+                + "from user\n"
+                + "where user.user_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, managerID);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                return rs.getString("full_name");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return null;
     }
 
 }

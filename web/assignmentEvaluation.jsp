@@ -6,6 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="assignDAO" value="<%= new dal.AssignmentDAO() %>" />
+<%@page import="model.AssignmentSubmit" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,7 +137,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th style="position: relative;" scope="col">Name <i style="position: absolute;
+                                                    <th style="position: relative;" scope="col">Full Name <i style="position: absolute;
                                                                                                         right: 6px;
                                                                                                         top: 10px;
                                                                                                         color: #cccccc;
@@ -143,41 +147,26 @@
                                                            top: 18px;
                                                            color: #cccccc;
                                                            cursor: pointer;" class="fa fa-caret-down ${order eq 'setting_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  DESC')"></i></th>
-                                                    <th scope="col">Description</th>
-                                                    <th scope="col">Display Order </th>
-                                                    <th scope="col">Type </th>
+                                                    <th scope="col">Submission</th>
+                                                    <th scope="col">Submit time</th>
                                                     <th scope="col">Status</th>
-                                                    <th scope="col">Action</th>
+                                                    <th scope="col">Grade</th>
+                                                    <th scope="col">Comment</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="s" items="${listR}" >
+                                                <c:forEach var="a" items="${list}" >
                                                     <tr>
-                                                        <td>${s.settingName}</td>
-                                                        <td>${s.note}</td>
-                                                        <td>${s.displayOrder}</td>
-                                                        <td> <c:choose>
-                                                                <c:when test="${s.settingGroup == 1}">
-                                                                    Role
-                                                                </c:when>
-                                                                <c:when test="${s.settingGroup == 2}">
-                                                                    Email Domain
-                                                                </c:when>
-                                                                <c:when test="${s.settingGroup == 3}">
-                                                                    Semester
-                                                                </c:when>
-                                                            </c:choose>
-                                                        </td>
-
+                                                        <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
+                                                        <td>${a.getFile()}</td>
+                                                        <td>${a.getSubmitTime()}</td>
                                                         <td>
                                                             <div class="form-check form-switch">
-                                                                <input style="margin: 0" class="form-check-input" type="checkbox" ${s.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
+                                                                <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
                                                             </div>
-                                                        <td>
-                                                            <a href="editsetting?sid=${s.settingId}&gid=${s.settingGroup}" class="tm-product-delete-link">
-                                                                <i> Edit</i>
-                                                            </a>
                                                         </td>
+                                                        <td>${a.getMark()}</td>
+                                                        <td>${a.getComment()}</td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>

@@ -19,7 +19,7 @@ import java.sql.SQLException;
 public class AssignmentDAO extends MySqlConnection {
     public ArrayList getAllAssignment() {
         ArrayList<AssignmentSubmit> list = new ArrayList<>();
-        String sql = "select * from assignment";
+        String sql = "SELECT * FROM `assignment`";
         try {
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
@@ -33,7 +33,7 @@ public class AssignmentDAO extends MySqlConnection {
                 boolean status = result.getBoolean(7);
                 String comment = result.getString(8);
                 Date submitTime = result.getDate(9);
-                AssignmentSubmit a = new AssignmentSubmit();
+                AssignmentSubmit a = new AssignmentSubmit(classID, classID, traineeID, file, mark, weight, status, comment, submitTime);
                 list.add(a);
             }
             return list;
@@ -41,5 +41,29 @@ public class AssignmentDAO extends MySqlConnection {
             e.printStackTrace();
             return null;
         }
+    }
+    
+     public String getTraineeName (int id) {
+        String query = "SELECT u.full_name FROM `assignment` a JOIN user u ON a.trainee_id = u.user_id WHERE a.trainee_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                return result.getString("full_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+     
+     public static void main(String[] args) {
+        AssignmentDAO dao = new AssignmentDAO();
+        ArrayList<AssignmentSubmit> list = dao.getAllAssignment();
+         for (AssignmentSubmit a : list) {
+             System.out.println(a.getFile() + " " + a.getMark());
+         }
     }
 }

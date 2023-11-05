@@ -108,7 +108,4 @@ public class AssignmentSubmit {
         this.submitTime = submitTime;
     }
     
-    
 }
-
-

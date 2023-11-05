@@ -207,7 +207,7 @@
                     <li>
                         <a href="dashboardController" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
-                            <span class="ttr-label">Subject List</span>
+                            <span class="ttr-label">All Subject</span>
                         </a>
                     </li>               
                 </c:if>

@@ -12,6 +12,7 @@ public class Discussion {
     private int userId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private boolean status;
     private Date createAt;
     private int createBy;
     private Date updateAt;
@@ -20,7 +21,7 @@ public class Discussion {
     public Discussion() {
     }
 
-    public Discussion(int discussionId, int subjectId, int classId, String title, String description, int userId, LocalDateTime startTime, LocalDateTime endTime, Date createAt, int createBy, Date updateAt, int updateBy) {
+    public Discussion(int discussionId, int subjectId, int classId, String title, String description, int userId, LocalDateTime startTime, LocalDateTime endTime, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.discussionId = discussionId;
         this.subjectId = subjectId;
         this.classId = classId;
@@ -29,6 +30,7 @@ public class Discussion {
         this.userId = userId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
         this.updateAt = updateAt;
@@ -97,6 +99,14 @@ public class Discussion {
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Date getCreateAt() {

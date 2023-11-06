@@ -222,6 +222,10 @@
         <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
+        </servlet>
+    <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>
     </servlet>
@@ -420,6 +424,10 @@
     <servlet-mapping>
         <servlet-name>editQuestionServlet</servlet-name>
         <url-pattern>/editQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <url-pattern>/LoginGoogleHandler</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>discussionListServlet</servlet-name>

@@ -100,17 +100,6 @@
                                             <option value="">dimention name 1</option>
                                         </select>
                                     </div>
-
-                                    <div class="col-md-3" style="margin-top:10px; margin-top: 20px">
-                                        <label class="col-form-label">Questions</label>
-                                        <div>
-                                            <input class="form-control" id="inputtotal" style="background-color: white" type="text" name="total" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3" style="margin-top:10px; margin-top: 20px"> 
-                                        <i class="fa-solid fa-plus"></i>
-                                    </div>   
-
                                 </div>
                             </div>
 
@@ -122,16 +111,6 @@
                                             <option value="">chapter 1</option>
                                         </select>
                                     </div>
-
-                                    <div class="col-md-3" style="margin-top:10px; margin-top: 20px">
-                                        <label class="col-form-label">Questions</label>
-                                        <div>
-                                            <input class="form-control" id="inputtotal" style="background-color: white" type="text" name="total" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3" style="margin-top:10px; margin-top: 20px"> 
-                                        <i class="fa-solid fa-plus"></i>
-                                    </div> 
                                 </div>
                             </div>
                         </form>

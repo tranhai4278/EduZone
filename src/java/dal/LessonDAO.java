@@ -154,10 +154,13 @@ public class LessonDAO extends MySqlConnection {
                     lesson.setFile(resultSet.getString(8));
                     lesson.setStatus(resultSet.getBoolean(9));
                     lesson.setDescription(resultSet.getString(10));
-                    lesson.setCreateAt(resultSet.getDate(11));
-                    lesson.setCreateBy(resultSet.getInt(12));
-                    lesson.setUpdateAt(resultSet.getDate(13));
-                    lesson.setUpdateBy(resultSet.getInt(14));
+                    lesson.setStartDate(resultSet.getDate(11));
+                    lesson.setEndDate(resultSet.getDate(12));
+                    lesson.setDisplayOrder(resultSet.getInt(13));
+                    lesson.setCreateAt(resultSet.getDate(14));
+                    lesson.setCreateBy(resultSet.getInt(15));
+                    lesson.setUpdateAt(resultSet.getDate(16));
+                    lesson.setUpdateBy(resultSet.getInt(17));
                     return lesson;
                 }
             } catch (Exception e) {

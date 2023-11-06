@@ -8,6 +8,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="assignDAO" value="<%= new dal.AssignmentDAO() %>" />
 <%@page import="model.AssignmentSubmit" %>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+
 
 
 <!DOCTYPE html>
@@ -152,11 +156,15 @@
                                                     <th scope="col">Status</th>
                                                     <th scope="col">Grade</th>
                                                     <th scope="col">Comment</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <c:forEach var="a" items="${list}" >
                                                     <tr>
+                                                        <input type="hidden" name="assignmentID" value="${a.getaID()}">
+                                                        <input type="hidden" name="classID" value="${a.getClassID()}">
+                                                        <input type="hidden" name="traineeID" value="${a.getTraineeID()}">
                                                         <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
                                                         <td>${a.getFile()}</td>
                                                         <td>${a.getSubmitTime()}</td>
@@ -167,6 +175,14 @@
                                                         </td>
                                                         <td>${a.getMark()}</td>
                                                         <td>${a.getComment()}</td>
+                                                        <td>
+                                                            <div class="col-md-2 offset-md-4">
+                                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal"
+                                                                   onclick="setEvaluationData('${a.getaID()}', '${a.getClassID()}', '${a.getTraineeID()}')">
+                                                                    Grade   
+                                                                </a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -213,59 +229,38 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Setting</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Assignment Evaluation</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="edit-profile m-b30" action="addsetting" method="post">
+                    <form class="edit-profile m-b30" action="evaluate" method="post">
+                        <input type="hidden" name="assignmentID" id="assignmentID">
+                        <input type="hidden" name="classID" id="classID">
+                        <input type="hidden" name="traineeID" id="traineeID">
                         <div class="row">
                             <div class="col-12">
                                 <div class="ml-auto">
-                                    <h3>1. Basic info</h3>
+                                    <h3>Grade</h3>
                                 </div>
                             </div>
-
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Group</label>
-                                <select
-                                    name="gid"
-                                    id="group"
-                                    required
-                                    >
-                                    <option value="1">
-                                        Role
-                                    </option>
-                                    <option value="2">
-                                        Email Domain
-                                    </option>
-                                    <option value="3">
-                                        Semester
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Name</label>
+                             <div class="form-group col-12">
                                 <div>
-                                    <input class="form-control" type="text"  name="sname" required>
+                                    <input class="form-control" type="text"  name="mark" required>
                                 </div>
                             </div>
                             <div class="seperator"></div>
                             <div class="col-12 m-t20">
-                                <div class="ml-auto m-b5">
-                                    <h3>2. Description</h3>
+                                <div class="ml-auto">
+                                    <h3>Comment</h3>
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                <label class="col-form-label">Description</label>
-                                <div>
-                                    <textarea class="form-control" name="description" required maxlength="250" > </textarea>
-                                </div>
+                                    <input name="comment" id="summernote">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" onclick="setSellDate()" class="btn">Add</button>
+                            <button type="submit" onclick="setSellDate()" class="btn">Save</button>
                         </div>
                     </form>
                 </div>
@@ -302,7 +297,17 @@
         document.getElementById('form').submit();
     }
 </script>
+<script>
+    $('#summernote').summernote();
+</script>
+<script>
+    function setEvaluationData(assignmentID, classID, traineeID) {
+    document.getElementById("assignmentID").value = assignmentID;
+    document.getElementById("classID").value = classID;
+    document.getElementById("traineeID").value = traineeID;
+}
 
+</script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

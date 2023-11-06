@@ -194,11 +194,17 @@
                     
                 <c:if test="${sessionScope.user.roleId == 3 ||  sessionScope.user.roleId == 4}">
                     <li>
-                        <a href="traineDashboard" class="ttr-material-button">
+                        <a href="dashboardController" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
-                            <span class="ttr-label">Subject List</span>
+                            <span class="ttr-label">All Subject</span>
                         </a>
-                    </li>               
+                    </li>  
+                    <li>
+                        <a href="" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz Practice</span>
+                        </a>
+                    </li>
                 </c:if>
                     
 

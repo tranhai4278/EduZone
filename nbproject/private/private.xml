@@ -278,5 +278,35 @@
             <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/QuestionDAO.java</file>
             <file>file:/E:/FPTU/HK5/EduZone/web/quiz.jsp</file>
         </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingSubject.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/updateDiscussionStatus.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/setting-subject.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+        </group>
     </open-files>
 </project-private>

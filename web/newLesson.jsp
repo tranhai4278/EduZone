@@ -148,7 +148,7 @@
                                             <div class="form-group col-10" id="fileSection">
                                                 <label class="col-form-label">File attachment</label>
                                                 <div>
-                                                    <input class="form-control" type="file" name="file">
+                                                    <input class="form-control" type="file" name="file" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required>
                                                 </div>
                                             </div>
 <!--                                            <div class="form-group col-2">

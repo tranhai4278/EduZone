@@ -445,7 +445,7 @@ public class AdminDAO extends MySqlConnection {
         return null;
     }
 
-    public List<Setting> searchAndFilterSettings(String searchName, Integer status, Integer group, String sortBy, Integer page) {
+     public List<Setting> searchAndFilterSettings(String searchName, Integer status, Integer group, String sortBy, Integer page) {
         List<Setting> settings = new ArrayList<>();
 
         try {

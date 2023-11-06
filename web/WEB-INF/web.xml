@@ -178,8 +178,20 @@
         <servlet-class>Class.controller.classSearchStudentServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>QuestionDetailController</servlet-name>
+        <servlet-class>Manager.controller.QuestionDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuestionController</servlet-name>
+        <servlet-class>Manager.controller.AddQuestionController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>OnlineLearning</servlet-name>
         <servlet-class>OnlineLearn.OnlineLearning</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.EditQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addLessonController</servlet-name>
@@ -198,12 +210,20 @@
         <servlet-class>utils.getChapter</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>getLesson</servlet-name>
+        <servlet-class>utils.getLesson</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Quizs</servlet-name>
         <servlet-class>Manager.controller.Quizs</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Quiz</servlet-name>
+        <servlet-class>OnlineLearn.Quiz</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DashboardController</servlet-name>
@@ -220,6 +240,30 @@
     <servlet>
         <servlet-name>editQuestionServlet</servlet-name>
         <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
+        </servlet>
+    <servlet>
+        <servlet-name>discussionListServlet</servlet-name>
+        <servlet-class>Manager.controller.discussionListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <servlet-class>Manager.controller.updateDiscussionStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDiscussion</servlet-name>
+        <servlet-class>Manager.controller.addDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getClassBySubject</servlet-name>
+        <servlet-class>utils.getClassBySubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editDiscussion</servlet-name>
+        <servlet-class>Manager.controller.editDiscussion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EvaluateController</servlet-name>
@@ -358,8 +402,20 @@
         <url-pattern>/classsearchstudent</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>QuestionDetailController</servlet-name>
+        <url-pattern>/QuestionDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestionController</servlet-name>
+        <url-pattern>/AddQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>OnlineLearning</servlet-name>
         <url-pattern>/onlineLearning</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditQuestionServlet</servlet-name>
+        <url-pattern>/EditQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addLessonController</servlet-name>
@@ -378,12 +434,20 @@
         <url-pattern>/getChapter</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>getLesson</servlet-name>
+        <url-pattern>/getLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Quizs</servlet-name>
         <url-pattern>/quizs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Quiz</servlet-name>
+        <url-pattern>/quiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
@@ -400,6 +464,30 @@
     <servlet-mapping>
         <servlet-name>editQuestionServlet</servlet-name>
         <url-pattern>/editQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <url-pattern>/LoginGoogleHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionListServlet</servlet-name>
+        <url-pattern>/discussionList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <url-pattern>/updateDiscussionStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDiscussion</servlet-name>
+        <url-pattern>/addDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getClassBySubject</servlet-name>
+        <url-pattern>/getClassBySubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editDiscussion</servlet-name>
+        <url-pattern>/editDiscussion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EvaluateController</servlet-name>

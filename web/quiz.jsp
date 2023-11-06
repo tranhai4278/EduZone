@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/add-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->
     <head>
@@ -37,11 +37,6 @@
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-
         <!-- All PLUGINS CSS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
@@ -57,69 +52,110 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
-        <script>
-            $(document).ready(function () {
 
-            });
-        </script>
     </head>
-    <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-       <%@include file="subject-header.jsp" %> 
+    <body class=" ttr-pinned-sidebar">
 
-        <!--Main container start -->
-        <main class="ttr-wrapper">
-            <div class="container-fluid">
-                <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">${detail.subjectName}</h4>
-                    <ul class="db-breadcrumb-list">
-                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>${detail.subjectName}</li>
-                    </ul>
+
+        <header class="ttr-header">
+            <div class="ttr-header-wrapper">
+                <div class="ttr-logo-box">
+                    <div>
+                        <a href="" class="ttr-logo">
+                            <img alt="" class="ttr-logo-mobile" src="assets/images/logo.png" width="30" height="15">
+                            <img alt="" class="ttr-logo-desktop" src="assets/images/logo.png" width="70" height="27">
+                        </a>
+                    </div>
                 </div>
+                <!--logo end -->
+                <div class="ttr-header-menu">
+                    <div id="countdown"></div>
+                </div>
+
+
+            </div>
+        </header>
+        <!-- header end -->
+        <!-- Left sidebar menu start -->
+
+        <main class="ttr-wrapper">
+
+            <div class="container-fluid">
                 <div class="col-lg-12 m-b30">
+                    <h1>${detail.quizName}</h1>
+
                     <div class="widget-box">
-                        <div class="widget-inner" id="chapter">
-                           
+                        <div class="email-wrapper" style="border-bottom: solid gray 1px">
+                            <div class="col-2" style="border-right:  solid gray 1px">
+                                <div class="email-menu-bar-inner" >
+                                    <ul>
+                                        <h4>Quesion </h4>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class=" ml-sm-5 " >
+                                    <div  style="border-bottom: solid gray 1px"><b>${quession.getQuestion()}</b></div>
+                                    <p>Chosse one:</p>
+                                    <div class="ml-md-3"  id="options">
+
+                                        <c:forEach var="c" items="${listC}">
+                                            <input type="radio" name="radio" value="${c.choiceId}" >${c.choice} </br>
+                                        </c:forEach>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex align-items-center pt-3">
+                                    <div id="prev">
+                                        <button class="btn btn-primary" id="prevBtn" onclick="prevBtn()">Previous</button>
+                                    </div>
+                                    <div class="ml-auto mr-sm-5">
+                                        <button class="btn btn-success" onclick="nextBtn()">Next</button>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-2" style="border-left: solid gray 1px ">
+                                <div class="email-menu-bar-inner">
+                                    <p>Quiz navigation</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <c:forEach var="a" begin="1" end="${detail.numberQuestion}">
+                                                <a class="btn m-1"  ${que == a ? 'style="background-color: purple" ' : ' '} href="quiz?qid=${detail.quizId}&que=${a}"" >${a}</a>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                    <a href="h"><i>Finish Test</i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <script>
-            function getChapter(cid) {
-                console.log(cid);
-                $.ajax({
-                    url: "/eduzone/chapterLesson",
-                    type: "get",
-                    data: {
-                        cid: cid
-                    },
-                    success: function (data) {
-                        var content = document.getElementById("lesson");
-                        content.innerHTML = data;
-                    },
-                    error: function (xhr) {
-                    }
-                });
-            }
+            var currentQuestion = ${que};
+            var totalQuestions = ${detail.numberQuestion};
+            $(document).ready(function () {
+                if (currentQuestion === 1) {
+                    $('#prevBtn').hide();
+                }
+            });
+            function prevBtn() {
+                if (currentQuestion > 1) {
+                    currentQuestion--;
+                    updateQuestion(currentQuestion); // Cập nhật giao diện cho câu hỏi mới
+                }
 
-            function getLesson(cid, lid) {
-                console.log(cid);
-                $.ajax({
-                    url: "/eduzone/chapterLesson",
-                    type: "post",
-                    data: {
-                        cid: cid,
-                        lid: lid
-                    },
-                    success: function (data) {
-                        var content = document.getElementById("chapter");
-                        content.innerHTML = data;
-                    },
-                    error: function (xhr) {
-                        // Xử lý lỗi ở đây nếu cần
-                    }
-                });
+            }
+            function nextBtn() {
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    updateQuestion(currentQuestion);
+                }
+            }
+            console.log(currentQuestion);
+            function updateQuestion(questionNumber) {
+                window.location.href = 'quiz?qid=${detail.quizId}&que=' + questionNumber;
             }
         </script>
         <div class="ttr-overlay"></div>

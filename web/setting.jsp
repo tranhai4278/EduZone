@@ -113,7 +113,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <select id="filterStatus" name="status" onchange="this.form.submit()">
-                                                        <option  ${type == -1 ? ' selected' : ' '} value="-1">Status</option>
+                                                        <option  ${status == -1 ? ' selected' : ' '} value="-1">Status</option>
                                                         <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
                                                         <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
                                                     </select>

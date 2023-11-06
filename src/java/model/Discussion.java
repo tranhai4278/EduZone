@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Discussion {
+
     private int discussionId;
     private int subjectId;
     private int classId;
@@ -18,6 +19,11 @@ public class Discussion {
     private Date updateAt;
     private int updateBy;
 
+    private String classCode;
+    private String userName;
+    private String formattedStartTime;
+    private String formattedEndTime;
+
     public Discussion() {
     }
 
@@ -30,6 +36,22 @@ public class Discussion {
         this.userId = userId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.status = status;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
+    public Discussion(int discussionId, int subjectId, String classCode, String title, String description, String userName, String formattedStartTime, String formattedEndTime, boolean status, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.discussionId = discussionId;
+        this.subjectId = subjectId;
+        this.classCode = classCode;
+        this.title = title;
+        this.description = description;
+        this.userName = userName;
+        this.formattedStartTime = formattedStartTime;
+        this.formattedEndTime = formattedEndTime;
         this.status = status;
         this.createAt = createAt;
         this.createBy = createBy;
@@ -140,6 +162,37 @@ public class Discussion {
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
     }
-    
-    
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getFormattedStartTime() {
+        return formattedStartTime;
+    }
+
+    public void setFormattedStartTime(String formattedStartTime) {
+        this.formattedStartTime = formattedStartTime;
+    }
+
+    public String getFormattedEndTime() {
+        return formattedEndTime;
+    }
+
+    public void setFormattedEndTime(String formattedEndTime) {
+        this.formattedEndTime = formattedEndTime;
+    }
+
 }

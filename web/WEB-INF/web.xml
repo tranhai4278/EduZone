@@ -200,7 +200,7 @@
     <servlet>
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>Quizs</servlet-name>
         <servlet-class>Manager.controller.Quizs</servlet-class>
@@ -216,6 +216,26 @@
     <servlet>
         <servlet-name>editQuestionServlet</servlet-name>
         <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>discussionListServlet</servlet-name>
+        <servlet-class>Manager.controller.discussionListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <servlet-class>Manager.controller.updateDiscussionStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDiscussion</servlet-name>
+        <servlet-class>Manager.controller.addDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getClassBySubject</servlet-name>
+        <servlet-class>utils.getClassBySubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editDiscussion</servlet-name>
+        <servlet-class>Manager.controller.editDiscussion</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -372,7 +392,7 @@
     <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
-</servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Quizs</servlet-name>
         <url-pattern>/quizs</url-pattern>
@@ -388,6 +408,26 @@
     <servlet-mapping>
         <servlet-name>editQuestionServlet</servlet-name>
         <url-pattern>/editQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionListServlet</servlet-name>
+        <url-pattern>/discussionList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <url-pattern>/updateDiscussionStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDiscussion</servlet-name>
+        <url-pattern>/addDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getClassBySubject</servlet-name>
+        <url-pattern>/getClassBySubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editDiscussion</servlet-name>
+        <url-pattern>/editDiscussion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

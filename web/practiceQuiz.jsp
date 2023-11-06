@@ -83,7 +83,7 @@
                     <h4 class="breadcrumb-title">Quiz</h4>
                     <ul class="db-breadcrumb-list">
                         <li><i class="fa fa-home"></i>Home</li>
-                        <li><a href="quizs">Quiz List</a></li>
+                        <li><a href="quizs">Practice Quiz</a></li>
                     </ul>
                 </div>	
 
@@ -92,7 +92,7 @@
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="wc-title">
-                                <h4>Quiz List</h4>
+                                <h4>Practice Quiz</h4>
                             </div>
 
                             <div id="snackbar" style="display: flex">

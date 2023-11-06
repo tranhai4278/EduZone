@@ -197,7 +197,13 @@
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Subject List</span>
                         </a>
-                    </li>               
+                    </li>  
+                    <li>
+                        <a href="" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz Practice</span>
+                        </a>
+                    </li>
                 </c:if>
                     
 

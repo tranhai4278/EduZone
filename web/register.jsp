@@ -8,55 +8,55 @@
 <!DOCTYPE html>
 <html lang="en">
     <%@include file="cssconnect.jsp" %>
-        <script>
-            // Validate the form on submit
-            function validateForm() {
-                var yourname = document.getElementById("yourname").value;
-                var email = document.getElementById("email").value;
-                var password = document.getElementById("password").value;
-                var phone = document.getElementById("phone").value;
-                var successMessage = document.getElementById("successMessage");
-                var isValid = true;
+    <script>
+        // Validate the form on submit
+        function validateForm() {
+            var yourname = document.getElementById("yourname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var phone = document.getElementById("phone").value;
+            var successMessage = document.getElementById("successMessage");
+            var isValid = true;
 
-                if (successMessage) {
-                    successMessage.style.display = "none";
-                }
-
-                // Validate fullName
-                if (!/^[\p{L} ]+$/u.test(yourname)) {
-                    document.getElementById("yourNameError").innerHTML = "Fullname should only contain letters";
-                    isValid = false;
-                } else {
-                    document.getElementById("yourNameError").innerHTML = "";
-                }
-                
-                // Validate email
-                if (!/\S+@\S+\.\S+/.test(email)) {
-                    document.getElementById("emailError").innerHTML = "Invalid email format";
-                    isValid = false;
-                } else {
-                    document.getElementById("emailError").innerHTML = "";
-                }
-                
-                // Validate password
-                if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)^.{8,16}$/.test(password)) {
-                    document.getElementById("passwordError").innerHTML = "Passwordshould have from 8 to 16 characters, at least one uppercase, one digit, and one special character";
-                    isValid = false;
-                } else {
-                    document.getElementById("passwordError").innerHTML = "";
-                }
-
-                // Validate phone
-                if (!/^\d{7,11}$/.test(phone)) {
-                    document.getElementById("phoneError").innerHTML = "Phones can only contain numbers and have 10 numbers";
-                    isValid = false;
-                } else {
-                    document.getElementById("phoneError").innerHTML = "";
-                }
-
-                return isValid;
+            if (successMessage) {
+                successMessage.style.display = "none";
             }
-        </script>
+
+            // Validate fullName
+            if (!/^[\p{L} ]+$/u.test(yourname)) {
+                document.getElementById("yourNameError").innerHTML = "Fullname should only contain letters";
+                isValid = false;
+            } else {
+                document.getElementById("yourNameError").innerHTML = "";
+            }
+
+            // Validate email
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById("emailError").innerHTML = "Invalid email format";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").innerHTML = "";
+            }
+
+            // Validate password
+            if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)^.{8,16}$/.test(password)) {
+                document.getElementById("passwordError").innerHTML = "Passwordshould have from 8 to 16 characters, at least one uppercase, one digit, and one special character";
+                isValid = false;
+            } else {
+                document.getElementById("passwordError").innerHTML = "";
+            }
+
+            // Validate phone
+            if (!/^\d{7,11}$/.test(phone)) {
+                document.getElementById("phoneError").innerHTML = "Phones can only contain numbers and have 10 numbers";
+                isValid = false;
+            } else {
+                document.getElementById("phoneError").innerHTML = "";
+            }
+
+            return isValid;
+        }
+    </script>
     <body id="bg">
         <div class="page-wraper">
             <div id="loading-icon-bx"></div>
@@ -118,16 +118,17 @@
                                         </tr>
                                     </table>
                                     <div>
-
-
                                         <div class="col-lg-12 m-b30">
                                             <button name="submit" type="submit" value="Submit" class="btn button-md">Sign Up</button><span>${message_email}</span><span>${message_phone}</span>
                                         </div>
                                         <div class="col-lg-12">
-                                            <h6>Sign Up with Social media</h6>
+                                            <h6>Login with Social media</h6>
                                             <div class="d-flex">
-                                                <a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-                                                <a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
+                                                <!--<a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>-->
+                                                <a class="btn flex-fill m-l5 google-plus" 
+                                                   href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/eduzone/LoginGoogleHandler&response_type=code
+                                                   &client_id=873369314493-0633objgah4ms59h8cihg92v1lphq2am.apps.googleusercontent.com&approval_prompt=force">
+                                                    <i class="fa fa-google-plus"></i>Google Plus</a>
                                             </div>
                                         </div>
                                     </div>

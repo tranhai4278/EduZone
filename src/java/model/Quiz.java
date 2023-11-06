@@ -56,6 +56,21 @@ public class Quiz {
         this.updateBy = updateBy;
     }
 
+    public Quiz(int quizId, String quizName, int subjectId, int chapterId, boolean quizType, int numberQuestion, boolean status, int quizTime, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.subjectId = subjectId;
+        this.chapterId = chapterId;
+        this.quizType = quizType;
+        this.numberQuestion = numberQuestion;
+        this.status = status;
+        this.quizTime = quizTime;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
 
 
     

@@ -252,6 +252,7 @@ public class LessonDAO extends MySqlConnection {
             System.out.println("addAccount: " + e.getMessage());
         }
     }
+    
 
     public List<SubjectSetting> getAllChapterNamesBySubjectId(String subjectId) {
         List<SubjectSetting> list = new ArrayList<>();

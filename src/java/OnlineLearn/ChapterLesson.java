@@ -4,7 +4,6 @@
  */
 package OnlineLearn;
 
-import dal.AdminDAO;
 import dal.ManagerDAO;
 import dal.OnlineLearningDAO;
 import java.io.IOException;
@@ -16,7 +15,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Lesson;
-import model.Subject;
 import model.SubjectSetting;
 
 /**
@@ -40,43 +38,14 @@ public class ChapterLesson extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         OnlineLearningDAO Odao = new OnlineLearningDAO();
         String id = request.getParameter("cid");
-        ManagerDAO dao = new ManagerDAO();
         int cid = Integer.parseInt(id);
-        SubjectSetting ss = dao.getSubjectSeting(cid);
         List<Lesson> listL = Odao.getLessonbyChapter(cid);
         PrintWriter out = response.getWriter();
-        out.println("<div class=\"row\">\n"
-                + "                                <div class=\"col-12\">\n"
-                + "                                    <div class=\"ml-auto\">\n"
-                + "                                        <h1>"+ss.getSettingName()+"</h1>\n"
-                + "                                          <p> "+ss.getDescription()+"   </p> "
-                + "                                    </div>\n"
-                + "                                </div>\n"
-                + "                            </div>\n"
-                + "                            <div class=\"row\">\n"
-                + "                                <div class=\"col-10 offset-2 \">\n");
         for (Lesson s : listL) {
-            out.println(" <div>\n"
-                    + "                                            <h4>" + s.getTitle() + "</h4>\n"
-                    + "                                            <p>Type:" + s.getLessonType() + "</p>\n"
-                    + "                                            <p>Description:" + s.getDescription() + "</p>\n");
-            if ("Video".equals(s.getLessonType())) {
-                out.println(" <iframe width=\"560\" height=\"315\" src=\"" + s.getVideoLink() + "\" title=\"" + s.getTitle() + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n");
-            }
-            if ("Quiz".equals(s.getLessonType())) {
-                out.println("Quiz\n");
-            }
-            if ("Assignment".equals(s.getLessonType())) {
-                out.println("Assignment\n");
-            }
-            out.println("                                      </div>\n"
-                    
-                    + "                                        <div class=\"seperator\"></div>\n");
+            out.println(" <li>\n"
+                    + "     <a onclick=\"getLesson(" + cid + "," + s.getLessonId() + " )\" >" + s.getTitle() + " </a>\n"
+                    + "     </li>");
         }
-
-        out.println("                                </div>\n"
-                + "                            </div>");
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -105,7 +74,47 @@ public class ChapterLesson extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        OnlineLearningDAO Odao = new OnlineLearningDAO();
+        String id = request.getParameter("cid");
+        int lid = Integer.parseInt(request.getParameter("lid"));
+        ManagerDAO dao = new ManagerDAO();
+        int cid = Integer.parseInt(id);
+        SubjectSetting ss = dao.getSubjectSeting(cid);
+        Lesson s = Odao.getLessonbyId(lid);
+        PrintWriter out = response.getWriter();
+        out.println("<div class=\"row\">\n"
+                + "                                <div class=\"col-12\">\n"
+                + "                                    <div class=\"ml-auto\">\n"
+                + "                                        <h1>" + ss.getSettingName() + "</h1>\n"
+                + "                                          <p> " + ss.getDescription() + "   </p> "
+                + "                                    </div>\n"
+                + "                                        <div class=\"seperator\"></div>\n"
+                + "                                </div>\n"
+                + "                            </div>\n"
+                + "                            <div class=\"row\">\n"
+                + "                                <div class=\"col-10 offset-2 \">\n");
+        out.println(" <div>\n"
+                + "                                            <h4>" + s.getTitle() + "</h4>\n"
+                + "                                            <p>Type:" + s.getLessonType() + "</p>\n"
+                + "                                            <p>Description:" + s.getDescription() + "</p>\n");
+        if ("Video".equals(s.getLessonType())) {
+            out.println(" <iframe width=\"560\" height=\"315\" src=\"" + s.getVideoLink() + "\" title=\"" + s.getTitle() + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>\n");
+        }
+        if ("Quiz".equals(s.getLessonType())) {
+            out.println("<div style=\"text-align: center\" >\n"
+                    + "                                <p>This quiz start at " + s.getStartDate() + "</p>\n"
+                    + "                                <p>This quiz will close at  " + s.getEndDate() + "</p>\n"
+                    + " <a href=\"quiz?qid="+s.getQuizId()+"&que=1\" class=\"btn\">Take quiz </a>"
+                    + "                            </div>");
+        }
+        if ("Assignment".equals(s.getLessonType())) {
+            out.println("Assignment\n");
+        }
+        out.println("                                      </div>\n"
+                + "                                        <div class=\"seperator\"></div>\n");
+
+        out.println("                                </div>\n"
+                + "                            </div>");
     }
 
     /**

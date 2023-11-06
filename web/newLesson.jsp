@@ -1,9 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
-<c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
-<c:set var="subjectSettingDAO" value="<%= new dal.SubjectSettingDAO() %>" />
-<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <%@page import="model.Lesson" %>
 <%@page import="model.Subject" %>
 <%@page import="model.Quiz" %>
@@ -86,17 +83,18 @@
                                             <label class="col-form-label">Subject* </label>
                                             <div>
                                                 <select name="subject" required="true" onchange="getSubject(this)">
-                                                    <c:forEach items="${subjectDAO.getAllSubjects()}" var="subject">
+                                                    <c:forEach items="${listSubjects}" var="subject">
                                                         <option value="${subject.subjectId}">${subject.subjectName}</option>
                                                     </c:forEach>
                                                 </select>
+                                                
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Chapter* </label>
                                             <div>
                                                 <select name="chapter" required="true">
-                                                    <c:forEach items="${subjectSettingDAO.getAllChapters()}" var="subjectSetting">
+                                                    <c:forEach items="${listChapters}" var="subjectSetting">
                                                         <option value="${subjectSetting.settingId}">${subjectSetting.settingName}</option>
                                                     </c:forEach>
                                                 </select>
@@ -138,7 +136,7 @@
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <c:forEach items="${quizDAO.getAllQuizes()}" var="quiz">
+                                                    <c:forEach items="${listQuizzes}" var="quiz">
                                                         <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
                                                     </c:forEach>
                                                 </select> 

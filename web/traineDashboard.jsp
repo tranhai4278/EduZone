@@ -78,7 +78,7 @@
                 <div class="row">
                     <c:forEach items="${listS}" var="s">
                         <div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
-                            <a href="subjectDetail?sid=${s.subjectId}">
+                            <a href="onlineLearning?sid=${s.subjectId}">
                                 <div class="widget-card widget-bg1" style="height: 150px">					 
                                     <div class="wc-item">
                                         <h3 class="wc-title">

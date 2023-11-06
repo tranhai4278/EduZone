@@ -146,16 +146,14 @@
                 <nav class="ttr-sidebar-navi">
                     <ul>
                         <c:forEach var="s" items="${listC}" >
-                            <li class="show">
+                            <li>
                                 <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
                                     <span class="ttr-icon"><i class="ti-book"></i></span>
                                     <span class="ttr-label">${s.settingName}</span>
                                     <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
                                 </a>
-                                <ul>
-                                    <li>
-                                        <a> </a>
-                                    </li>
+                                <ul id="lesson">
+
                                 </ul>
                             </li>
                         </c:forEach>
@@ -195,40 +193,17 @@
         <!--Main container start -->
         <main class="ttr-wrapper">
             <div class="container-fluid">
+                <div class="db-breadcrumb">
+                    <h4 class="breadcrumb-title">${detail.subjectName}</h4>
+                    <ul class="db-breadcrumb-list">
+                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                        <li>${detail.subjectName}</li>
+                    </ul>
+                </div>
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="widget-inner" id="chapter">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="ml-auto">
-                                        <h1>"+ss.getSettingName()+"</h1>
-                                        <p> "+ss.getDescription()+"   </p> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-10 offset-2 ">
-                                    <c:forEach>
-                                        <div>
-                                            <h4>" + s.getTitle() + "</h4>
-                                            <p>Type:" + s.getLessonType() + "</p>
-                                            <p>Description:" + s.getDescription() + "</p>
-                                            if ("Video".equals(s.getLessonType())) {
-                                            <iframe width="560" height=\"315\" src="s" title="s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                            }
-                                            if ("Quiz".equals(s.getLessonType())) {
-                                            out.println("Quiz\n");
-                                            }
-                                            if ("Assignment".equals(s.getLessonType())) {
-                                            out.println("Assignment\n");
-                                            }
-                                            out.println("                                      </div>
-
-                                        <div class="seperator"></div>
-                                    </c:forEach>
-
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -242,6 +217,24 @@
                     type: "get",
                     data: {
                         cid: cid
+                    },
+                    success: function (data) {
+                        var content = document.getElementById("lesson");
+                        content.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                    }
+                });
+            }
+
+            function getLesson(cid, lid) {
+                console.log(cid);
+                $.ajax({
+                    url: "/eduzone/chapterLesson",
+                    type: "post",
+                    data: {
+                        cid: cid,
+                        lid: lid
                     },
                     success: function (data) {
                         var content = document.getElementById("chapter");

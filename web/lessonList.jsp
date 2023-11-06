@@ -76,13 +76,38 @@
                             <div class="wc-title">
                                 <h4>Lesson List</h4>
                             </div>
-                            <div class="col-sm-5">
-                                <a class="btn" href="newLesson.jsp">
-                                    Add a new lesson 
-                                </a>
-                            </div><br>
+                            
+                            <div class="col-sm-10"> 
+                                <div class="row">
+                                    <div class="col-12 col-sm-9 col-md-9 col-lg-3">
+                                        <a class="btn" href="newLesson.jsp">
+                                            Add a new lesson 
+                                        </a> 
+                                    </div>
+                                    <form action="searchLesson" method="post">
+                                        <div class="row">
+                                            <p>Search by</p>
+                                            <div class="col-12 col-sm-9 col-md-9 col-lg-4">
+                                                <select name="criteria">
+                                                    <option value="subject_name">Subject Name</option>
+                                                    <option value="setting_name">Chapter</option>
+                                                    <option value="title">Lesson title</option>
+                                                    <option value="lesson_type">Lesson type</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-9 col-md-9 col-lg-4">
+                                                <input type="text" class="form-control" name="key" placeholder="Search key" />
+                                            </div>
+                                            <div class="col-12 col-sm-3 col-md-3 col-lg-1">
+                                                <input type="submit" class="btn btn-primary" value="Search" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <div class="mail-box-list">
-                                        <section id="subject">
+                                <section id="subject">
                                             <table class="table">
                                                 <thead>
                                                     <tr>

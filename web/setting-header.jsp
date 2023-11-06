@@ -45,9 +45,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
     <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+    
 </head>
 
+
 <header class="ttr-header">
+    
     <div class="ttr-header-wrapper">
         <!--sidebar menu toggler start -->
         <div class="ttr-toggle-sidebar ttr-material-button">
@@ -83,12 +86,10 @@
             <!-- header right menu start -->
             <ul class="ttr-header-navigation">
                 <li>
-                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
+                    <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="" width="32" height="32"></span></a>
                     <div class="ttr-header-submenu">
                         <ul>
                             <li><a href="profile">My profile</a></li>
-                            <li><a href="list-view-calendar.html">Activity</a></li>
-                            <li><a href="mailbox.html">Messages</a></li>
                             <li><a href="logout">Logout</a></li>
                         </ul>
                     </div>
@@ -153,29 +154,17 @@
                         </a>
                     </li>
                 </c:if>
-                <c:if test="${sessionScope.user.roleId == 2}">
+                <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="QuestionsList"" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Question</span>
                         </a>
                     </li>
                     <li>
-                        <a href="quizlist" class="ttr-material-button">
+                        <a href="quizs?action=list" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                             <span class="ttr-label">Quiz</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="newquiz" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                            <span class="ttr-label">New Quiz</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="newquiz" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                            <span class="ttr-label">Quiz Detail</span>
                         </a>
                     </li>
                     <li>
@@ -193,13 +182,29 @@
 
                 </c:if>
                     
-                       <c:if test="${sessionScope.user.roleId == 2}">
+                <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
                         <a href="classlist" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Class List</span>
                         </a>
                     </li>               
+                </c:if>
+                    
+                    
+                <c:if test="${sessionScope.user.roleId == 3 ||  sessionScope.user.roleId == 4}">
+                    <li>
+                        <a href="dashboardController" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">All Subject</span>
+                        </a>
+                    </li>  
+                    <li>
+                        <a href="" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Quiz Practice</span>
+                        </a>
+                    </li>
                 </c:if>
                     
 

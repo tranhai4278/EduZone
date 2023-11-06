@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Lesson" %>
+<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
 
 <html lang="en">
@@ -68,6 +69,15 @@
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
+            <c:if test="${not empty requestScope.successMessage}">
+                <div class="alert alert-success" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.successMessage}
+                </div>
+            </c:if>
+
             <div class="container-fluid">
                 <div class="row">
                     <!-- Your Profile Views Chart -->
@@ -121,9 +131,14 @@
                                                     <c:when test="${lesson.getLessonType() eq 'Video'}">
                                                         <input class="form-control" type="text" name="video" value="${lesson.videoLink}">
                                                     </c:when>
-                                                    <c:when test="${lesson.getLessonType() eq 'Quiz'}">
-                                                        <input class="form-control" type="text" name="quiz" value="${lesson.quizId}">
-                                                    </c:when>
+                                                        <c:when test="${lesson.getLessonType() eq 'Quiz'}">
+                                                            <select class="form-control" name="quiz">
+                                                                <c:forEach items="${quizDAO.getAllQuizes()}" var="quizOption">
+                                                                    <option value="${quizOption.getQuizId()}" ${quizOption.getQuizId() == lesson.quizId ? "selected" : ""}>${quizOption.getQuizName()}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </c:when>
+
                                                     <c:when test="${lesson.getLessonType() eq 'Assignment'}">
                                                         <input class="form-control" type="text" name="assignment" value="${lesson.file}">
                                                     </c:when>
@@ -133,8 +148,7 @@
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
-                                                <textarea class="form-control" type="text" name="des" value="${lesson.getDescription()}"> </textarea>
-                                            </div>
+                                                <input class="form-control" type="text" name="des" value="${lesson.description}">                                            </div>
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" class="btn">Save</button>

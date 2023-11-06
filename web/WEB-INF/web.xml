@@ -198,6 +198,14 @@
         <servlet-class>Manager.controller.AddLessonController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>UploadFile</servlet-name>
+        <servlet-class>Manager.controller.UploadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchLesson</servlet-name>
+        <servlet-class>Manager.controller.SearchLesson</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getChapter</servlet-name>
         <servlet-class>utils.getChapter</servlet-class>
     </servlet>
@@ -210,12 +218,73 @@
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>submitAssignmentController</servlet-name>
         <servlet-class>Assignment.controller.submitAssignmentController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>assignmentListController</servlet-name>
         <servlet-class>Assignment.controller.assignmentListController</servlet-class>
+=======
+        <servlet-name>Quizs</servlet-name>
+        <servlet-class>Manager.controller.Quizs</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Quiz</servlet-name>
+        <servlet-class>OnlineLearn.Quiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashboardController</servlet-name>
+        <servlet-class>User.controller.DashboardController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AssignmentController</servlet-name>
+        <servlet-class>User.controller.AssignmentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addQuestion</servlet-name>
+        <servlet-class>Manager.controller.addQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <servlet-class>Manager.controller.editQuestionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
+        </servlet>
+    <servlet>
+        <servlet-name>discussionListServlet</servlet-name>
+        <servlet-class>Manager.controller.discussionListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <servlet-class>Manager.controller.updateDiscussionStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDiscussion</servlet-name>
+        <servlet-class>Manager.controller.addDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getClassBySubject</servlet-name>
+        <servlet-class>utils.getClassBySubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editDiscussion</servlet-name>
+        <servlet-class>Manager.controller.editDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EvaluateController</servlet-name>
+        <servlet-class>User.controller.EvaluateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>discussionDetail</servlet-name>
+        <servlet-class>Manager.controller.discussionDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>postComment</servlet-name>
+        <servlet-class>User.controller.postComment</servlet-class>
+>>>>>>> 0a1475e33006d3657302a3c9081046ead7bccacf
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -370,6 +439,14 @@
         <url-pattern>/addLesson</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>UploadFile</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchLesson</servlet-name>
+        <url-pattern>/searchLesson</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>getChapter</servlet-name>
         <url-pattern>/getChapter</url-pattern>
     </servlet-mapping>
@@ -382,12 +459,73 @@
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>submitAssignmentController</servlet-name>
         <url-pattern>/submitassignment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>assignmentListController</servlet-name>
         <url-pattern>/assignmentlist</url-pattern>
+=======
+        <servlet-name>Quizs</servlet-name>
+        <url-pattern>/quizs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Quiz</servlet-name>
+        <url-pattern>/quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardController</servlet-name>
+        <url-pattern>/dashboardController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AssignmentController</servlet-name>
+        <url-pattern>/assignment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addQuestion</servlet-name>
+        <url-pattern>/addQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editQuestionServlet</servlet-name>
+        <url-pattern>/editQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginGoogleHandler</servlet-name>
+        <url-pattern>/LoginGoogleHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionListServlet</servlet-name>
+        <url-pattern>/discussionList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <url-pattern>/updateDiscussionStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDiscussion</servlet-name>
+        <url-pattern>/addDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getClassBySubject</servlet-name>
+        <url-pattern>/getClassBySubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editDiscussion</servlet-name>
+        <url-pattern>/editDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EvaluateController</servlet-name>
+        <url-pattern>/evaluate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionDetail</servlet-name>
+        <url-pattern>/discussionDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>postComment</servlet-name>
+        <url-pattern>/postComment</url-pattern>
+>>>>>>> 0a1475e33006d3657302a3c9081046ead7bccacf
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

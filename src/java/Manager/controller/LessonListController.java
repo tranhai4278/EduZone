@@ -49,6 +49,7 @@ public class LessonListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
+        
     } 
 
     /** 
@@ -62,6 +63,30 @@ public class LessonListController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
+//        response.setContentType("text/html;charset=UTF-8");
+//        String search = request.getParameter("criteria");
+//        String key = request.getParameter("key");
+//        String criteria = null;
+//        switch (search) {
+//            case "subject_name":
+//                criteria = "s.subject_name";
+//                break;
+//            case "chapter_name":
+//                criteria = "ss.setting_name";
+//                break;
+//            case "title":
+//                criteria = "l.title";
+//                break;
+//            case "lesson_type":
+//                criteria = "l.lesson_type";
+//                break;
+//            default:
+//                break;
+//        }
+//        LessonDAO dao = new LessonDAO();
+//        ArrayList<Lesson> list = dao.searchLesson(criteria, key);
+//        request.setAttribute("searchList", list);
+//        request.getRequestDispatcher("lessonList.jsp").forward(request, response);
     }
 
     /** 

@@ -37,8 +37,8 @@ public class SubjectSettingDAO extends MySqlConnection {
         }
     }
 
-    public List<SubjectSetting> getAllChapters() {
-        List<SubjectSetting> list = new ArrayList<>();
+    public ArrayList<SubjectSetting> getAllChapters() {
+        ArrayList<SubjectSetting> list = new ArrayList<>();
         String sql = "SELECT * FROM subject_setting WHERE setting_type = 'Chapter' ";
         try {
             statement = connection.prepareStatement(sql);

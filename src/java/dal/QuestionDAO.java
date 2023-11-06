@@ -52,9 +52,14 @@ public class QuestionDAO extends MySqlConnection {
             while (result.next()) {
                 int questionId = result.getInt(1);
                 String questionString = result.getString(2);
+                int flag = result.getInt(3);
 
-                ArrayList<SubjectSetting> subjectSettingList = new ArrayList<>();
-                subjectSettingList = questionDao.getSubjectSettingWithQuestionId(questionId);
+                Question q = questionDao.getQuestionById(questionId);
+                int chapterId = q.getChapterId();
+                SubjectSetting ss = questionDao.getChapterById(chapterId);
+                String chapter = ss.getSettingName();
+
+                ArrayList<SubjectSetting> subjectSettingList = questionDao.getSubjectSettingWithQuestionId(questionId);
 
                 String dimension = "";
                 for (SubjectSetting subjectSetting : subjectSettingList) {
@@ -66,7 +71,7 @@ public class QuestionDAO extends MySqlConnection {
                 String subjectCode = subject.getSubjectCode();
 
                 Date createAt = result.getDate(6);
-                Question question = new Question(questionId, questionString, dimension, subjectCode, createAt);
+                Question question = new Question(questionId, questionString, dimension, subjectCode, chapter, flag, createAt);
                 list.add(question);
             }
 
@@ -113,10 +118,10 @@ public class QuestionDAO extends MySqlConnection {
         }
     }
 
-    public void addQuestion(int userId, String question, int lessonId, int chapterId, int subjectId, int createBy, int updateBy) {
+    public void addQuestion(int userId, String question, int flag, int chapterId, int subjectId, int createBy, int updateBy) {
         String sql;
-        sql = "INSERT INTO question (question, lesson_id, chapter_id, subject_id, create_at, create_by, update_at, update_by)\n"
-                + "VALUES ('" + question + "', " + lessonId + ", " + chapterId + ", " + subjectId + ", NOW(), " + userId + ", NOW(), " + userId + ");";
+        sql = "INSERT INTO question (question, flag, chapter_id, subject_id, create_at, create_by, update_at, update_by)\n"
+                + "VALUES ('" + question + "', " + flag + ", " + chapterId + ", " + subjectId + ", NOW(), " + userId + ", NOW(), " + userId + ");";
 
         try {
             statement = connection.prepareStatement(sql);
@@ -169,18 +174,18 @@ public class QuestionDAO extends MySqlConnection {
 
     public ArrayList getAllQuestionQuiz() {
         ArrayList<Question> list = new ArrayList<>();
-        String sql = "SELECT question, lesson_id, chapter_id, subject_id, create_at FROM `question`";
+        String sql = "SELECT question, flag, chapter_id, subject_id, create_at FROM `question`";
         try {
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
             while (result.next()) {
                 String question = result.getString(1);
-                int lessonId = result.getInt(2);
+                int flag = result.getInt(2);
                 int chapterId = result.getInt(3);
                 int subjectId = result.getInt(4);
                 Date createAt = result.getDate(5);
 
-                Question question1 = new Question(question, lessonId, chapterId, subjectId, createAt);
+                Question question1 = new Question(question, flag, chapterId, subjectId, createAt);
                 list.add(question1);
             }
             return list;
@@ -238,10 +243,10 @@ public class QuestionDAO extends MySqlConnection {
         }
     }
 
-    public void updateQuestionWithId(int questionId, String question, int lessonId, int chapterId, int subjectId, int userId) {
+    public void updateQuestionWithId(int questionId, String question, int flag, int chapterId, int subjectId, int userId) {
         String sql = "UPDATE question SET\n"
                 + "    question = '" + question + "',\n"
-                + "    lesson_id = " + lessonId + ",\n"
+                + "    flag = " + flag + ",\n"
                 + "    chapter_id = " + chapterId + ",\n"
                 + "    subject_id = " + subjectId + ",\n"
                 + "    create_at = NOW(),\n"
@@ -270,8 +275,8 @@ public class QuestionDAO extends MySqlConnection {
             Logger.getLogger(e.toString());
         }
     }
-    
-        public void deleteQuestionById(int questionId) {
+
+    public void deleteQuestionById(int questionId) {
         String sql = "DELETE FROM question WHERE question_id = " + questionId + "";
 
         try {
@@ -279,6 +284,36 @@ public class QuestionDAO extends MySqlConnection {
             statement.execute();
         } catch (Exception e) {
             Logger.getLogger(e.toString());
+        }
+    }
+
+    public SubjectSetting getChapterById(int chapterId) {
+        SubjectSetting subjectSetting = new SubjectSetting();
+        String sql = "SELECT * FROM `subject_setting` WHERE setting_id = " + chapterId + "";
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int settingId = result.getInt(1);
+                int subjectId = result.getInt(2);
+                String settingType = result.getString(3);
+                String settingName = result.getString(4);
+                String description = result.getString(5);
+                int displayOrder = result.getInt(6);
+                int status = result.getInt(7);
+                boolean boolStatus = (status == 1);
+                Date createAt = result.getDate(8);
+                int createBy = result.getInt(9);
+                Date updateAt = result.getDate(10);
+                int updateBy = result.getInt(11);
+                subjectSetting = new SubjectSetting(settingId, subjectId, settingType, settingName, description, displayOrder, boolStatus, createAt, createBy, updateAt, updateBy);
+            }
+
+            return subjectSetting;
+        } catch (Exception e) {
+            Logger.getLogger(e.toString());
+            return null;
         }
     }
 }

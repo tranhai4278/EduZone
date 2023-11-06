@@ -49,13 +49,16 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 m-b30">
-                                    <button name="submit" type="submit" value="Submit" class="btn button-md">Login</button><span>${message}</span><span>${message1}</span>
+                                    <button name="submit" type="submit" value="Submit" class="btn button-md">Login</button><span>${message}</span><span>${message1}</span><span>${err}</span>
                                 </div>
                                 <div class="col-lg-12">
                                     <h6>Login with Social media</h6>
                                     <div class="d-flex">
-                                        <a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-                                        <a class="btn flex-fill m-l5 google-plus" href="#"><i class="fa fa-google-plus"></i>Google Plus</a>
+                                        <!--<a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>-->
+                                        <a class="btn flex-fill m-l5 google-plus" 
+                                           href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/eduzone/LoginGoogleHandler&response_type=code
+                                           &client_id=873369314493-0633objgah4ms59h8cihg92v1lphq2am.apps.googleusercontent.com&approval_prompt=force">
+                                            <i class="fa fa-google-plus"></i>Google Plus</a>
                                     </div>
                                 </div>
                             </div>

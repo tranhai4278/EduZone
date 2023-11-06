@@ -44,6 +44,11 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+
+        <!-- include libraries(jQuery, bootstrap) -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
             .content-block {
                 display: flex;
@@ -67,6 +72,16 @@
                 padding-bottom: 10px;
             }
 
+            .no-style {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                color: inherit;
+                background: none;
+                border: none;
+                padding: 0;
+                margin: 0;
+            }
         </style>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
@@ -76,10 +91,10 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Manager Page</h4>
+                    <h4 class="breadcrumb-title">General</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Question Detail</li>
+                        <li>Update Discussion</li>
                     </ul>
                 </div>	
                 <div class="row">
@@ -90,55 +105,58 @@
                                     <div class="page-content bg-white">
                                         <div class="content-block">
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
-                                                <h3>Add new Question</h3>
+                                                <h3>Update Discussion</h3>
                                             </div>
-                                            <form class="edit-profile" method="post" action="AddQuestion">
+                                            <form class="edit-profile" method="post" action="editDiscussion">
+                                                <input type="hidden" name="message" value="" />
+                                                <input type="hidden" name="discussionId" value="${discussionId}" />
                                                 <div class="top-part">
                                                     <div class="ssc-section">
                                                         <div id="ssc-section">
                                                             <div class="subject-section">
                                                                 <label>Subject:</label>
-                                                                <div style="width: 50%;">
-                                                                    <select id="subject" name="subject" onchange="getChapter(this);">
-                                                                        <option value="" disabled selected>Nothing selected</option>
+                                                                <div style="width: 90%;">
+                                                                    <select id="subject" name="subject" onchange="getClass(this);">
                                                                         <c:forEach var="subject" items="${subjectList}">
-                                                                            <option value="${subject.getSubjectId()}">${subject.getSubjectCode()}</option>
+                                                                            <option value="${subject.getSubjectId()}"
+                                                                                    <c:if test="${subject.getSubjectId() == subjectId}">
+                                                                                        selected
+                                                                                    </c:if>>${subject.getSubjectCode()}</option>
                                                                         </c:forEach>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div id="c-section">
-                                                            
-                                                        </div>
-                                                        <div id="l-section">
-                                                            
-                                                        </div>
-
                                                     </div>
 
-                                                    <div class="dimension-section">
-                                                        <div id="dimension-container">
-                                                            <label>Dimension:</label>
-
+                                                    <div id="c-section" style="margin-left: 60px;">
+                                                        <div class="class-section new-box">
+                                                            <label>Class:</label>
+                                                            <div style="width: 90%;">
+                                                                <select id="class" name="class">
+                                                                    <c:forEach var="c" items="${classList}">
+                                                                        <option value="${c.getID()}"
+                                                                                <c:if test="${c.getID() == classId}">
+                                                                                </c:if>>${c.getClassCode()}</option>
+                                                                    </c:forEach>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <button id="add-dimension-button" class="btn">Add Dimension</button>
                                                     </div>
                                                 </div>
                                                 <div class="bottom-part">
-                                                    <div class="question-section">
-                                                        <label for="questionArea" class="question-area">Question:</label>
-                                                        <textarea id="questionArea" name="questionString" rows="6" cols="70"></textarea>
-                                                    </div>
-
-                                                    <div class="answer-section">
-                                                        <label>Answer: </label>
-                                                        <div class="asc">
-                                                            <div id="answers-container">
-
-                                                            </div>
-                                                            <button id="add-answer-button" class="btn">Add Answer</button>
-                                                        </div>
+                                                    <div class="description-section">
+                                                        <label for="title" class="description-area">Title:</label><br>
+                                                        <input id="title" type="text" name="title" value="${title}" placeholder=" Title here..." style="height: 40px; width: 100%"/><br>
+                                                        <br>
+                                                        <label for="summernote" class="description-area">Description:</label>
+                                                        <textarea id="summernote" name="summernote" style="width: 80%">${description}</textarea>
+                                                        <br>
+                                                        <label>Current Time: (${startTime}) - (${endTime})</label>
+                                                        <br>
+                                                        &nbsp;&nbsp;<label>Extend End Time (optional):</label>
+                                                        <br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="datetime-local" name="endDateTime">
                                                     </div>
                                                 </div>
 
@@ -149,7 +167,7 @@
                                                     <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                                     </div>
                                                     <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <button type="submit" class="btn">Add</button>
+                                                        <button type="submit" class="btn">Update</button>
                                                         <button class="btn-secondry" onclick="reloadPage()">Cancel</button>
                                                         ${message}
                                                     </div>
@@ -185,50 +203,11 @@
         <script src="assets/js/admin.js"></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
         <script>
-            let answerIndex = 0;
-            document.getElementById('add-answer-button').addEventListener('click', function () {
-                event.preventDefault();
-                const answersContainer = document.getElementById('answers-container');
-                const answerDiv = document.createElement('div');
-                answerDiv.classList.add('answer');
-                answerDiv.innerHTML = `
-                    <input type="text" name="answer" placeholder="Enter answer text">
-                    <input type="checkbox" name="true-answer"> True Answer
-                    <button class="delete-answer btn-secondry" style="margin: 2px;">Delete</button>`;
-                answersContainer.appendChild(answerDiv);
-                answerDiv.querySelector('.delete-answer').addEventListener('click', function () {
-                    event.preventDefault();
-                    answersContainer.removeChild(answerDiv);
-                });
-            });
-
-            document.getElementById('add-dimension-button').addEventListener('click', function () {
-                event.preventDefault();
-                const dimensionContainer = document.getElementById('dimension-container');
-                const dimensionDiv = document.createElement('div');
-                dimensionDiv.classList.add('dimension');
-                dimensionDiv.innerHTML = `
-                <div style="width: 50%; display: flex; align-items: center; margin: 5px;">
-                    <select name="dimension" class="form-control">
-                        <c:forEach var="ss" items="${subjectSettingList}">
-                            <option value="${ss.getSettingId()}">${ss.getSettingType()}/${ss.getSettingName()}</option>
-                        </c:forEach>   
-                    </select>
-                    <button class="delete-dimension btn-secondry" style="margin-left: 5px;">Delete</button>
-                </div>`;
-                dimensionContainer.appendChild(dimensionDiv);
-                dimensionDiv.querySelector('.delete-dimension').addEventListener('click', function () {
-                    event.preventDefault();
-                    dimensionContainer.removeChild(dimensionDiv);
-                });
-            });
-        </script>
-        <script>
-            function getChapter(selectElement) {
+            function getClass(selectElement) {
                 var subject = selectElement.value;
                 console.log(subject);
                 $.ajax({
-                    url: "/eduzone/getChapter",
+                    url: "/eduzone/getClassBySubject",
                     type: "get",
                     data: {
                         subject: subject
@@ -254,39 +233,21 @@
                 });
             }
 
-            function getLesson(selectElement) {
-                var chapter = selectElement.value;
-                $.ajax({
-                    url: "/eduzone/getLesson",
-                    type: "get",
-                    data: {
-                        chapter: chapter
-                    },
-                    success: function (data) {
-                        var sscSection = document.getElementById("l-section");
-                        var newContainer = document.createElement("div");
-                        newContainer.classList.add("new-box2");
-
-                        var divToDelete = document.querySelector(".new-box2");
-                        if (divToDelete) {
-                            var parentElement = divToDelete.parentNode;
-
-                            parentElement.removeChild(divToDelete);
-                        }
-                        newContainer.innerHTML = data;
-
-                        sscSection.appendChild(newContainer);
-                    },
-                    error: function (xhr) {
-                        // Xử lý lỗi ở đây nếu cần
-                    }
-                });
-            }
-
             function reloadPage() {
                 event.preventDefault();
                 window.location.reload();
             }
+        </script>
+        <!-- include summernote css/js -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#summernote').summernote({
+                    placeholder: "Description here...",
+                    height: 200
+                });
+            });
         </script>
     </body>
 </html>

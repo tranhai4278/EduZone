@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
@@ -67,8 +67,8 @@ public class LessonEditController extends HttpServlet {
         LessonDAO lesDAO = new LessonDAO();
         String userId = request.getParameter("userId");
         lesDAO.updateLessonById(title,type,des, video, quiz, file, stt, id);
-        // Redirect 
-        response.sendRedirect("lessonDetail?lessonId=" + id);
+        request.setAttribute("successMessage", "Lesson is updated successfully!");
+        request.getRequestDispatcher("lessonDetail?lessonId=" + id).forward(request, response);
     }
 
     /** 

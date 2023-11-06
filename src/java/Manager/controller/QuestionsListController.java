@@ -17,7 +17,6 @@ public class QuestionsListController extends HttpServlet {
         QuestionDAO questionDao = new QuestionDAO();
         ArrayList<Question> list = questionDao.getAllQuestionInformation();
         
-        
         request.setAttribute("list", list);
         request.getRequestDispatcher("questionsList.jsp").forward(request, response);
     }

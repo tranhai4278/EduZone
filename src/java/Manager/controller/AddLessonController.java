@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package Manager.controller;
 
 import dal.LessonDAO;
+import dal.QuizDAO;
 import dal.SubjectDAO;
+import dal.SubjectSettingDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,6 +12,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import model.Quiz;
+import model.Subject;
+import model.SubjectSetting;
 
 /**
  *
@@ -57,7 +58,22 @@ public class AddLessonController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         //processRequest(request, response);
+        SubjectDAO sdao = new SubjectDAO();
+        ArrayList<Subject> listS = sdao.getAllSubjects();
         
+        SubjectSettingDAO ssdao = new SubjectSettingDAO();
+        ArrayList<SubjectSetting> listSS = ssdao.getAllChapters();       
+        
+        QuizDAO qdao = new QuizDAO();
+        ArrayList<Quiz> listQ = qdao.getAllQuizzes();
+        
+        request.setAttribute("listSubjects", listS);
+        request.setAttribute("listChapters", listSS);
+        request.setAttribute("listQuizzes", listQ);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/newLesson.jsp");
+        dispatcher.forward(request, response);
+
     } 
 
     /** 

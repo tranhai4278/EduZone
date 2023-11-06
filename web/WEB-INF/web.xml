@@ -210,6 +210,10 @@
         <servlet-class>User.controller.DashboardController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AssignmentController</servlet-name>
+        <servlet-class>User.controller.AssignmentController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>addQuestion</servlet-name>
         <servlet-class>Manager.controller.addQuestion</servlet-class>
     </servlet>
@@ -220,6 +224,30 @@
     <servlet>
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
+        </servlet>
+    <servlet>
+        <servlet-name>discussionListServlet</servlet-name>
+        <servlet-class>Manager.controller.discussionListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <servlet-class>Manager.controller.updateDiscussionStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDiscussion</servlet-name>
+        <servlet-class>Manager.controller.addDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getClassBySubject</servlet-name>
+        <servlet-class>utils.getClassBySubject</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editDiscussion</servlet-name>
+        <servlet-class>Manager.controller.editDiscussion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EvaluateController</servlet-name>
+        <servlet-class>User.controller.EvaluateController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -386,6 +414,10 @@
         <url-pattern>/dashboardController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AssignmentController</servlet-name>
+        <url-pattern>/assignment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addQuestion</servlet-name>
         <url-pattern>/addQuestion</url-pattern>
     </servlet-mapping>
@@ -396,6 +428,30 @@
     <servlet-mapping>
         <servlet-name>LoginGoogleHandler</servlet-name>
         <url-pattern>/LoginGoogleHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionListServlet</servlet-name>
+        <url-pattern>/discussionList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateDiscussionStatus</servlet-name>
+        <url-pattern>/updateDiscussionStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDiscussion</servlet-name>
+        <url-pattern>/addDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getClassBySubject</servlet-name>
+        <url-pattern>/getClassBySubject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editDiscussion</servlet-name>
+        <url-pattern>/editDiscussion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EvaluateController</servlet-name>
+        <url-pattern>/evaluate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

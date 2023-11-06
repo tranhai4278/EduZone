@@ -4,12 +4,20 @@
  */
 package dal;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import model.Discussion;
 import model.Subject;
 import model.SubjectSetting;
+import model.User;
 
 /**
  *
@@ -249,5 +257,242 @@ public class ManagerDAO extends MySqlConnection {
 
         }
         return p;
+    }
+
+    public List<Discussion> filterDiscussion(int subjectId, String title, int classId, int status, String sortBy, int page) {
+        List<Discussion> DiscussionList = new ArrayList<>();
+
+        try {
+            // Bắt đầu tạo câu truy vấn SQL
+            String query = "SELECT\n"
+                    + "    d.discussion_id,\n"
+                    + "    d.subject_id,\n"
+                    + "    c.class_code AS class_id,\n"
+                    + "    d.title,\n"
+                    + "    d.description,\n"
+                    + "    u.full_name AS user_id,\n"
+                    + "    d.start_time,\n"
+                    + "    d.end_time,\n"
+                    + "    d.status,\n"
+                    + "    d.created_at,\n"
+                    + "    d.create_by,\n"
+                    + "    d.update_at,\n"
+                    + "    d.update_by\n"
+                    + "FROM\n"
+                    + "    discussion d\n"
+                    + "LEFT JOIN class c ON d.class_id = c.class_id\n"
+                    + "LEFT JOIN user u ON d.user_id = u.user_id\n"
+                    + "WHERE\n"
+                    + "    1=1 AND\n"
+                    + "    d.subject_id = " + subjectId + "";
+
+            if (title != null && !title.isEmpty()) {
+                query += " AND d.title LIKE ? ";
+            }
+
+            if (classId > -1) {
+                query += " AND d.class_id = ?";
+            }
+            if (status > -1) {
+                query += " AND d.status = ?";
+            }
+
+            if (sortBy != null && !sortBy.isEmpty()) {
+                query += " ORDER BY " + sortBy;
+            }
+
+            // Thêm phần phân trang
+            query += " LIMIT 10 OFFSET ?";
+            System.out.println(query);
+
+            // Chuẩn bị câu truy vấn
+            statement = connection.prepareStatement(query);
+
+            // Đặt các tham số dựa trên các điều kiện và phân trang
+            int parameterIndex = 1;
+            if (title != null && !title.isEmpty()) {
+                statement.setString(parameterIndex++, "%" + title + "%");
+            }
+
+            if (classId > -1) {
+                statement.setInt(parameterIndex++, classId);
+            }
+            if (status > -1) {
+                statement.setInt(parameterIndex++, status);
+            }
+
+            statement.setInt(parameterIndex++, (page - 1) * 10);
+
+            // Thực hiện truy vấn
+            result = statement.executeQuery();
+
+            // Xử lý kết quả và thêm vào danh sách subjects
+            while (result.next()) {
+                Discussion discussion = new Discussion();
+                discussion.setDiscussionId(result.getInt(1));
+                discussion.setSubjectId(result.getInt(2));
+                discussion.setClassCode(result.getString(3));
+                discussion.setTitle(result.getString(4));
+                discussion.setDescription(result.getString(5));
+                discussion.setUserName(result.getString(6));
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu | HH:mm");
+                Timestamp startTime = result.getTimestamp(7);
+                Instant instantStartTime = startTime.toInstant();
+                LocalDateTime localStartTime = instantStartTime.atZone(ZoneId.systemDefault()).toLocalDateTime();
+                discussion.setFormattedStartTime(localStartTime.format(formatter));
+
+                Timestamp endTime = result.getTimestamp(8);
+                Instant instantEndTime = endTime.toInstant();
+                LocalDateTime localEndTime = instantEndTime.atZone(ZoneId.systemDefault()).toLocalDateTime();
+                discussion.setFormattedEndTime(localEndTime.format(formatter));
+
+                discussion.setStatus(result.getBoolean(9));
+                discussion.setCreateAt(result.getDate(10));
+                discussion.setCreateBy(result.getInt(11));
+                discussion.setUpdateAt(result.getDate(12));
+                discussion.setUpdateBy(result.getInt(13));
+                DiscussionList.add(discussion);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the database resources
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return DiscussionList;
+    }
+
+    public int totalPageDiscussion() {
+        int itemsPerPage = 10;
+        int totalPages = 0;
+        try {
+            String countQuery = "SELECT COUNT(*) FROM discussion";
+            PreparedStatement countStatement = connection.prepareStatement(countQuery);
+
+            ResultSet countResult = countStatement.executeQuery();
+            countResult.next();
+
+            int totalItems = countResult.getInt(1);
+            countStatement.close();
+            totalPages = (int) Math.ceil((double) totalItems / itemsPerPage);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalPages;
+    }
+
+    public int totalPageDiscussion(int subjectId, String title, int classId, int status, String sortBy, int page) {
+        int totalPages = 0;
+
+        try {
+            // Bắt đầu tạo câu truy vấn SQL
+            String query = "SELECT\n"
+                    + "    d.discussion_id,\n"
+                    + "    d.subject_id,\n"
+                    + "    c.class_code AS class_id,\n"
+                    + "    d.title,\n"
+                    + "    d.description,\n"
+                    + "    u.full_name AS user_id,\n"
+                    + "    d.start_time,\n"
+                    + "    d.end_time,\n"
+                    + "    d.status,\n"
+                    + "    d.created_at,\n"
+                    + "    d.create_by,\n"
+                    + "    d.update_at,\n"
+                    + "    d.update_by\n"
+                    + "FROM\n"
+                    + "    discussion d\n"
+                    + "LEFT JOIN class c ON d.class_id = c.class_id\n"
+                    + "LEFT JOIN user u ON d.user_id = u.user_id\n"
+                    + "WHERE\n"
+                    + "    1=1 AND\n"
+                    + "    d.subject_id = " + subjectId + "";
+
+            if (title != null && !title.isEmpty()) {
+                query += " AND d.title LIKE ? ";
+            }
+
+            if (classId > -1) {
+                query += " AND d.class_id = ?";
+            }
+            if (status > -1) {
+                query += " AND d.status = ?";
+            }
+
+            if (sortBy != null && !sortBy.isEmpty()) {
+                query += " ORDER BY " + sortBy;
+            }
+
+            // Thêm phần phân trang
+            query += " LIMIT 10 OFFSET ?";
+            System.out.println(query);
+
+            // Chuẩn bị câu truy vấn
+            statement = connection.prepareStatement(query);
+
+            // Đặt các tham số dựa trên các điều kiện và phân trang
+            int parameterIndex = 1;
+            if (title != null && !title.isEmpty()) {
+                statement.setString(parameterIndex++, "%" + title + "%");
+            }
+
+            if (classId > -1) {
+                statement.setInt(parameterIndex++, classId);
+            }
+            if (status > -1) {
+                statement.setInt(parameterIndex++, status);
+            }
+
+            statement.setInt(parameterIndex++, (page - 1) * 10);
+
+            // Thực hiện truy vấn
+            result = statement.executeQuery();
+
+            if (result.next()) {
+                int totalItems = result.getInt(1);
+                totalPages = (int) Math.ceil((double) totalItems / 10);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the database resources
+            try {
+                if (result != null) {
+                    result.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return totalPages;
+    }
+    
+    public void updateStatusDiscussion(int discussionId, boolean status) {
+        String sql = "UPDATE discussion SET status = ? WHERE discussion_id = ?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setBoolean(1, status);
+            statement.setInt(2, discussionId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+
+        }
     }
 }

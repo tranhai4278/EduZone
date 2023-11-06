@@ -152,7 +152,7 @@
                                     <span class="ttr-label">${s.settingName}</span>
                                     <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
                                 </a>
-                                <ul id="lesson">
+                                <ul id="lesson_${s.settingId}">
 
                                 </ul>
                             </li>
@@ -219,10 +219,11 @@
                         cid: cid
                     },
                     success: function (data) {
-                        var content = document.getElementById("lesson");
+                        var content = document.getElementById("lesson_"+cid);
                         content.innerHTML = data;
                     },
                     error: function (xhr) {
+                        console.log('Lỗi');
                     }
                 });
             }

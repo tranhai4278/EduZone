@@ -58,13 +58,40 @@ public class AssignmentDAO extends MySqlConnection {
         }
         return null;
     }
+    
+    
      
      public static void main(String[] args) {
         AssignmentDAO dao = new AssignmentDAO();
-        ArrayList<AssignmentSubmit> list = dao.getAllAssignment();
-         for (AssignmentSubmit a : list) {
-             System.out.println(a.getFile() + " " + a.getMark());
-         }
+//        ArrayList<AssignmentSubmit> list = dao.getAllAssignment();
+//         for (AssignmentSubmit a : list) {
+//             System.out.println(a.getFile() + " " + a.getMark());
+//         }
+        dao.evaluateAssignment(9, "good job", "4", "2", "2");
     }
+     
+    public void evaluateAssignment (double mark, String comment, String assignId, String classId, String traineeId) {
+        MySqlConnection dbContext = new MySqlConnection();
+        try {
+            String sql = "UPDATE `assignment` SET `mark`=?,`comment`=? WHERE assigment_id = ? AND class_id = ? AND trainee_id = ?";
+            PreparedStatement preparedStatement = dbContext.connection.prepareStatement(sql);
+            preparedStatement.setDouble(1, mark);
+            preparedStatement.setString(2, comment);
+            preparedStatement.setString(3, assignId);
+            preparedStatement.setString(4, classId);
+            preparedStatement.setString(5, traineeId);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            dbContext.connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+            
+
+    
 
 }

@@ -1,10 +1,13 @@
 package dal;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import model.Comment;
 import model.Discussion;
 
 public class DiscussionDAO extends MySqlConnection {
@@ -85,7 +88,7 @@ public class DiscussionDAO extends MySqlConnection {
                 + "    update_at = NOW(),\n"
                 + "    update_by = " + userId + "\n"
                 + "WHERE discussion_id = " + discussionId + ";";
-        
+
         try {
             statement = connection.prepareStatement(sql);
             statement.setTimestamp(1, endTime);
@@ -94,7 +97,7 @@ public class DiscussionDAO extends MySqlConnection {
 
         }
     }
-    
+
     public void updateDiscussion(int discussionId, int subjectId, int classId, String title, String description, int userId, boolean status) {
         String sql = "UPDATE discussion\n"
                 + "SET\n"
@@ -107,7 +110,7 @@ public class DiscussionDAO extends MySqlConnection {
                 + "    update_at = NOW(),\n"
                 + "    update_by = " + userId + "\n"
                 + "WHERE discussion_id = " + discussionId + ";";
-        
+
         try {
             statement = connection.prepareStatement(sql);
             statement.execute();
@@ -115,4 +118,63 @@ public class DiscussionDAO extends MySqlConnection {
 
         }
     }
+
+    public ArrayList<Comment> getCommentByDiscussionId(int discussionId) {
+        ArrayList<Comment> commentList = new ArrayList<>();
+        String sql = "SELECT\n"
+                + "    c.comment_id,\n"
+                + "    c.comment,\n"
+                + "    u.full_name AS user_name,\n"
+                + "    c.discussion_id,\n"
+                + "    c.reply_id,\n"
+                + "    c.created_at,\n"
+                + "    c.create_by,\n"
+                + "    c.update_at,\n"
+                + "    c.update_by\n"
+                + "FROM comment c\n"
+                + "INNER JOIN user u ON c.user_id = u.user_id\n"
+                + "WHERE c.discussion_id = " + discussionId + ";";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                Comment comment = new Comment();
+                comment.setCommentId(result.getInt(1));
+                comment.setComment(result.getString(2));
+                comment.setFullName(result.getString(3));
+                comment.setDiscussionId(result.getInt(4));
+                comment.setReplyId(result.getInt(5) == 0 ? 0 : result.getInt(5));
+                comment.setUpdateAt(result.getDate(6));
+                comment.setCreateBy(result.getInt(7));
+                comment.setUpdateAt(result.getDate(8));
+                comment.setUpdateBy(result.getInt(9));
+                commentList.add(comment);
+            }
+
+            return commentList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public void postCommentWithDiscussionId(int discussionId, String comment, int userId) {
+        String sql = "INSERT INTO comment (comment, user_id, discussion_id, reply_id, created_at, create_by, update_at, update_by) VALUES (?, ?, ?, NULL, NOW(), ?, NOW(), ?)";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            
+            statement.setString(1, comment);
+            statement.setInt(2, userId);
+            statement.setInt(3, discussionId);
+            statement.setInt(4, userId);
+            statement.setInt(5, userId);
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception properly, e.g., log it or throw a custom exception
+        }
+    }
+
 }

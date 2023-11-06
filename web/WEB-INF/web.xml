@@ -209,6 +209,14 @@
         <servlet-name>deleteQuestionController</servlet-name>
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>submitAssignmentController</servlet-name>
+        <servlet-class>Assignment.controller.submitAssignmentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>assignmentListController</servlet-name>
+        <servlet-class>Assignment.controller.assignmentListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -372,6 +380,14 @@
     <servlet-mapping>
         <servlet-name>deleteQuestionController</servlet-name>
         <url-pattern>/deleteQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>submitAssignmentController</servlet-name>
+        <url-pattern>/submitassignment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>assignmentListController</servlet-name>
+        <url-pattern>/assignmentlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

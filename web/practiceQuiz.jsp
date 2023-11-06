@@ -75,7 +75,7 @@
     <body onload="showToast('${txt}');" class="ttr-opened-sidebar ttr-pinned-sidebar">
 
         <!-- header start -->
-        <%@include file="setting-header.jsp" %>   
+        <%@include file="subject-header.jsp" %>   
         <!--Main container start -->
         <main class="ttr-wrapper">
             <div class="container-fluid">

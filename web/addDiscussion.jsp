@@ -107,7 +107,7 @@
                                             <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
                                                 <h3>Create new Discussion</h3>
                                             </div>
-                                            <form class="edit-profile" method="post" action="#">
+                                            <form class="edit-profile" method="post" action="addDiscussion">
                                                 <input type="hidden" name="message" value="" />
                                                 <div class="top-part">
                                                     <div class="ssc-section">

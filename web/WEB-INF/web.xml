@@ -269,6 +269,14 @@
         <servlet-name>EvaluateController</servlet-name>
         <servlet-class>User.controller.EvaluateController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>discussionDetail</servlet-name>
+        <servlet-class>Manager.controller.discussionDetail</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>postComment</servlet-name>
+        <servlet-class>User.controller.postComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -492,6 +500,14 @@
     <servlet-mapping>
         <servlet-name>EvaluateController</servlet-name>
         <url-pattern>/evaluate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>discussionDetail</servlet-name>
+        <url-pattern>/discussionDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>postComment</servlet-name>
+        <url-pattern>/postComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

@@ -289,6 +289,10 @@
         <servlet-name>assignmentDetailController</servlet-name>
         <servlet-class>Assignment.controller.assignmentDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>classTrainerListServlet</servlet-name>
+        <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -532,6 +536,10 @@
     <servlet-mapping>
         <servlet-name>assignmentDetailController</servlet-name>
         <url-pattern>/assignmentdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classTrainerListServlet</servlet-name>
+        <url-pattern>/classtrainerlist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

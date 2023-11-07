@@ -4,6 +4,7 @@
  */
 package Assignment.controller;
 
+import DTO.AssignmentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -32,7 +33,7 @@ public class assignmentDetailController extends HttpServlet {
         int assignmentId = Integer.parseInt(request.getParameter("assignmentId"));
 
         AssignmentDAO assDAO = new AssignmentDAO();
-        Assignment ass = assDAO.getAssignmentDetail(assignmentId, courseId, userId);
+        AssignmentDTO ass = assDAO.getAssignmentDetail(assignmentId, courseId, userId);
         request.setAttribute("data", ass);
         request.getRequestDispatcher("assignmentDetail.jsp").forward(request, response);
     }
@@ -69,7 +70,7 @@ public class assignmentDetailController extends HttpServlet {
 //        PrintWriter out = response.getWriter();
 //        out.println("<html><head><script>" + javascriptCode + "</script></head><body></body></html>");
         // Forward the request to the assignmentlist.jsp page
-        ArrayList<Assignment> data = assDAO.getAllAssignmentTrainee(userId);
+        ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails();
         request.setAttribute("data", data);
         request.getRequestDispatcher("assignmentlist.jsp").forward(request, response);
     }

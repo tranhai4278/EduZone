@@ -112,6 +112,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Assignment</th>
+                                                    <th scope="col">Class</th>
                                                     <th scope="col">File</th>
                                                     <th scope="col">Mark</th>
                                                     <th scope="col">Status</th>
@@ -121,15 +122,16 @@
                                             <tbody>
                                                 <c:forEach var="a" items="${data}">
                                                     <tr>
-                                                        <td>${a.assignmentId}</td>
+                                                        <td>${a.title}</td>
+                                                        <td>${a.classCode}</td>
                                                         <td>
-                                                            <a href="#" download="${a.submitFile}" onclick="showFileList('${a.submitFile}')">${a.submitFile}</a>                                                        </td>
+                                                            <a href="#" download="${a.submit_file}" onclick="showFileList('${a.submit_file}')">${a.submit_file}</a>                                                        </td>
                                                         <td>${a.mark}</td>
                                                         <td>
                                                             ${a.status == true ? "Submitted" : "Not Submitted"}
                                                         </td>
                                                         <td>
-                                                             <a href="assignmentdetail?assignmentId=${a.assignmentId}&courseId=${a.classId}&userId=${a.traineeId}" class="btn btn-primary">Assignment Detail</a>
+                                                            <a href="assignmentdetail?assignmentId=${a.asignment_id}&courseId=${a.class_id}&userId=${a.trainee_id}" class="btn btn-primary">Assignment Detail</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -138,35 +140,35 @@
                                     </section>
                                 </div>
 
-
-                            </div>
-                            <c:if test="${totalPage!=0}">
-                                <nav aria-label="Page navigation example" style="margin-top: 20px;">
-                                    <ul class="pagination justify-content-end">
-                                        <li class="page-item ${pageNo == 1 ? ' disabled' : ' '}">
-                                            <a class="page-link" style="cursor: pointer"
-                                               onclick="goToPage(${pageNo} - 1)">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <input type="hidden" name="pageNo" id="pageNoInput" value="${pageNo}">
-                                        <c:forEach begin="1" var="i" end="${totalPage}">
-                                            <li class="page-item  ${pageNo == i  ? ' active' : ' '}">
-                                                <a class="page-link"  style="cursor: pointer"
-                                                   onclick="goToPage(${i})">
-                                                    ${i}
+                                <c:if test="${totalPage!=0}">
+                                    <nav aria-label="Page navigation example" style="margin-top: 20px;">
+                                        <ul class="pagination justify-content-end">
+                                            <li class="page-item ${pageNo == 1 ? ' disabled' : ' '}">
+                                                <a class="page-link" style="cursor: pointer"
+                                                   onclick="goToPage(${pageNo} - 1)">
+                                                    <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
-                                        </c:forEach>
-                                        <li class="page-item ${pageNo == (totalPage) ? ' disabled' : ' '}">
-                                            <a class="page-link user-select-all" style="cursor: pointer"
-                                               onclick="goToPage(${pageNo+1})">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </c:if>
+                                            <input type="hidden" name="pageNo" id="pageNoInput" value="${pageNo}">
+                                            <c:forEach begin="1" var="i" end="${totalPage}">
+                                                <li class="page-item  ${pageNo == i  ? ' active' : ' '}">
+                                                    <a class="page-link"  style="cursor: pointer"
+                                                       onclick="goToPage(${i})">
+                                                        ${i}
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                            <li class="page-item ${pageNo == (totalPage) ? ' disabled' : ' '}">
+                                                <a class="page-link user-select-all" style="cursor: pointer"
+                                                   onclick="goToPage(${pageNo+1})">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </c:if>
+                            </div>
+
                         </div>
                     </div>
                 </div>

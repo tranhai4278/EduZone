@@ -162,11 +162,7 @@
                             </a>
                         </li>
                         <li>
-<<<<<<< HEAD
                             <a href="assignmentlist" class="ttr-material-button">
-=======
-                            <a href="assignment" class="ttr-material-button">
->>>>>>> 7c046be4a0bb8678021501ab37a7ca0fd7391d1b
                                 <span class="ttr-icon"><i class="ti-file"></i></span>
                                 <span class="ttr-label">Assigment</span>
                             </a>

@@ -4,6 +4,7 @@
  */
 package Assignment.controller;
 
+import DTO.AssignmentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -29,7 +30,7 @@ public class assignmentListController extends HttpServlet {
         User u = (User) session.getAttribute("user");
         int userID = u.getUserId();
         AssignmentDAO assDAO = new AssignmentDAO();
-        ArrayList<Assignment> data = assDAO.getAllAssignmentTrainee(userID);
+        ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails();
         request.setAttribute("data", data);
         request.getRequestDispatcher("assignmentlist.jsp").forward(request, response);
     }

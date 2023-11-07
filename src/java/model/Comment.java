@@ -12,6 +12,8 @@ public class Comment {
     private int createBy;
     private Date updateAt;
     private int updateBy;
+    
+    private String fullName;
 
     public Comment() {
     }
@@ -20,6 +22,18 @@ public class Comment {
         this.commentId = commentId;
         this.comment = comment;
         this.userId = userId;
+        this.discussionId = discussionId;
+        this.replyId = replyId;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+    
+    public Comment(int commentId, String comment, String fullName, int discussionId, int replyId, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.commentId = commentId;
+        this.comment = comment;
+        this.fullName = fullName;
         this.discussionId = discussionId;
         this.replyId = replyId;
         this.createAt = createAt;
@@ -98,6 +112,14 @@ public class Comment {
 
     public void setUpdateBy(int updateBy) {
         this.updateBy = updateBy;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
     
     

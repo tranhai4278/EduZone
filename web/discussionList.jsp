@@ -132,7 +132,7 @@
                                                     <tbody>
                                                         <c:forEach var="d" items="${discussionList}" >
                                                             <tr>
-                                                                <td>${d.getTitle()}</td>
+                                                                <td><a href="discussionDetail?discussionId=${d.getDiscussionId()}">${d.getTitle()}</a></td>
                                                                 <td>${d.getClassCode()}</td>
                                                                 <td>${d.getUserName()}</td>
                                                                 <td>(${d.getFormattedStartTime()}) / (${d.getFormattedEndTime()})</td>

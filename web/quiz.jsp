@@ -98,7 +98,6 @@
                                     <div  style="border-bottom: solid gray 1px"><b>${quession.getQuestion()}</b></div>
                                     <p>Chosse one:</p>
                                     <div class="ml-md-3"  id="options">
-
                                         <c:forEach var="c" items="${listC}">
                                             <input type="radio" name="radio" value="${c.choiceId}" >${c.choice} </br>
                                         </c:forEach>

@@ -112,28 +112,26 @@
         </div>
     </header>
     <!-- header end -->
-            <!-- Left sidebar menu start -->
-        <div class="ttr-sidebar">
-            <div class="ttr-sidebar-wrapper content-scroll">
-                <!-- side menu logo start -->
-                <div class="row">
-                    <div class="col-9" style="text-align: center ; margin: 13px" >
-                        <div class="row">
+    <!-- Left sidebar menu start -->
+    <div class="ttr-sidebar">
+        <div class="ttr-sidebar-wrapper content-scroll">
+            <!-- side menu logo start -->
+            <div class="row">
+                <div class="col-9" style="text-align: center ; margin: 13px" >
+                    <div class="row">
+                        <div class="col">
+                            ${detail.subjectCode}
                             <div class="col">
-                                ${detail.subjectCode}
-                                <div class="col">
-                                    ${detail.subjectName}
-                                </div>
+                                ${detail.subjectName}
                             </div>
                         </div>
                     </div>
-                    <div class="col-2" >
-                        <div class="ttr-sidebar-toggle-button">
-                            <i class="ti-arrow-left"></i>
-                        </div>
+                </div>
+                <div class="col-2" >
+                    <div class="ttr-sidebar-toggle-button">
+                        <i class="ti-arrow-left"></i>
                     </div>
                 </div>
-
                 <!-- side menu logo end -->
                 <!-- sidebar menu start -->
                 <nav class="ttr-sidebar-navi">
@@ -164,9 +162,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="ttr-material-button">
+                            <a href="assignment" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assigment</span>
+                                <span class="ttr-label">Assignment</span>
                             </a>
                         </li>
                         <li>
@@ -178,7 +176,84 @@
                     </ul>
                 </nav>
             </div>
-        </div>
-        <!-- header end -->
+            <nav class="ttr-sidebar-navi">
+                <ul>
+                    <form action="onlineLearning"  method ="post">
+                        <input hidden="" name="sid" value="${detail.subjectId}" />
+                        <li>
+                            <div id="class">
+                                <select
+                                    name="classid"
+                                    id="class"
+                                    onchange="this.form.submit()"
+                                    >
+                                    <c:forEach items="${listClass}" var="c">
+                                        <option ${c.ID == classid ? 'selected' : ''} value="${c.ID}" >${c.classCode}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </li>
+                    </form>
+                    <c:forEach var="s" items="${listC}" >
+                        <li>
+                            <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
+                                <span class="ttr-icon"><i class="ti-book"></i></span>
+                                <span class="ttr-label">${s.settingName}</span>
+                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                            </a>
+                            <ul id="lesson_${s.settingId}">
 
-        <!-- Left sidebar menu end -->
+                            </ul>
+                        </li>
+                    </c:forEach>
+
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
+                            <span class="ttr-label">Grades</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-comments"></i></span>
+                            <span class="ttr-label">Discussion</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-file"></i></span>
+                            <span class="ttr-label">Assigment</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="practiceQuiz.jsp" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
+                            <span class="ttr-label">Practice Quizzes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- header end -->
+    <script>
+        function getChapter(cid) {
+            console.log(cid);
+            $.ajax({
+                url: "/eduzone/chapterLesson",
+                type: "get",
+                data: {
+                    cid: cid
+                },
+                success: function (data) {
+                    var content = document.getElementById("lesson_" + cid);
+                    content.innerHTML = data;
+                },
+                error: function (xhr) {
+                    console.log('Lỗi');
+                }
+            });
+        }
+
+    </script>
+    <!-- Left sidebar menu end -->

@@ -11,12 +11,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Assignment;
 
 /**
  *
  * @author PHAM NGOC
  */
 public class AssignmentDAO extends MySqlConnection {
+
     public ArrayList getAllAssignment() {
         ArrayList<AssignmentSubmit> list = new ArrayList<>();
         String sql = "SELECT * FROM `assignment`";
@@ -42,8 +44,8 @@ public class AssignmentDAO extends MySqlConnection {
             return null;
         }
     }
-    
-    public String getTraineeName (int id) {
+
+    public String getTraineeName(int id) {
         String query = "SELECT u.full_name FROM `assignment` a JOIN user u ON a.trainee_id = u.user_id WHERE a.trainee_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -58,10 +60,8 @@ public class AssignmentDAO extends MySqlConnection {
         }
         return null;
     }
-    
-    
-     
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         AssignmentDAO dao = new AssignmentDAO();
 //        ArrayList<AssignmentSubmit> list = dao.getAllAssignment();
 //         for (AssignmentSubmit a : list) {
@@ -69,8 +69,8 @@ public class AssignmentDAO extends MySqlConnection {
 //         }
         dao.evaluateAssignment(9, "good job", "4", "2", "2");
     }
-     
-    public void evaluateAssignment (double mark, String comment, String assignId, String classId, String traineeId) {
+
+    public void evaluateAssignment(double mark, String comment, String assignId, String classId, String traineeId) {
         MySqlConnection dbContext = new MySqlConnection();
         try {
             String sql = "UPDATE `assignment` SET `mark`=?,`comment`=? WHERE assigment_id = ? AND class_id = ? AND trainee_id = ?";
@@ -88,10 +88,27 @@ public class AssignmentDAO extends MySqlConnection {
             e.printStackTrace();
         }
     }
-    
-    
+
+    public ArrayList<Assignment> getAssignmentWithSIdAndClassId(int classId, int subjectId) {
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+        String sql = "SELECT a.assignment_id, a.class_id, a.trainee_id, a.submit_file, a.mark, a.weight, a.status, a.comment, a.submitTime\n"
+                + "FROM assignment a\n"
+                + "JOIN class c ON a.class_id = c.class_id\n"
+                + "JOIN subject s ON c.subject_id = s.subject_id\n"
+                + "WHERE c.class_id = " + classId + " AND s.subject_id = " + subjectId + ";";
+        
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
             
-
-    
-
+            while (result.next()) {
+                Assignment assignment = new Assignment();
+                
+            }
+            
+            return assignmentList;
+        } catch(Exception e) {
+            return null;
+        }
+    }
 }

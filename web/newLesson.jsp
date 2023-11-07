@@ -83,7 +83,7 @@
                                             <label class="col-form-label">Subject* </label>
                                             <div>
                                                 <select name="subject" required="true" onchange="getSubject(this)">
-                                                    <c:forEach items="${listSubjects}" var="subject">
+                                                    <c:forEach var="subject" items="${listSubjects}" >
                                                         <option value="${subject.subjectId}">${subject.subjectName}</option>
                                                     </c:forEach>
                                                 </select>
@@ -94,7 +94,7 @@
                                             <label class="col-form-label">Chapter* </label>
                                             <div>
                                                 <select name="chapter" required="true">
-                                                    <c:forEach items="${listChapters}" var="subjectSetting">
+                                                    <c:forEach var="subjectSetting"  items="${listChapters}">
                                                         <option value="${subjectSetting.settingId}">${subjectSetting.settingName}</option>
                                                     </c:forEach>
                                                 </select>
@@ -136,7 +136,7 @@
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <c:forEach items="${listQuizzes}" var="quiz">
+                                                    <c:forEach var="quiz"  items="${listQuizzes}" >
                                                         <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
                                                     </c:forEach>
                                                 </select> 

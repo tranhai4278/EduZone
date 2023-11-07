@@ -29,7 +29,7 @@ public class getClassBySubject extends HttpServlet {
         out.println("<select class=\"form-control\" name=\"class\" style=\"height: 40px;\">");
         out.println("<option value=\"\" disabled selected>Nothing to choose</option>");
         for (Class c : classList) {
-            out.println("<option value=\"" + c.getID() + "\">" + c.getClassCode() + "</option>");
+            out.println("<option value=\"" + c.getID() + "\">" + c.getclassCode() + "</option>");
         }
         out.println("</select>");
         out.println("</div>");

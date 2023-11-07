@@ -156,7 +156,7 @@ public class ClassDAO extends MySqlConnection {
         String sql = "UPDATE class SET class_code = ?, subject_id = ?, semester_id = ?, trainer_id = ?, status = ?, update_at = NOW(), update_by = ? WHERE class_id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, updatedClass.getClassCode());
+            preparedStatement.setString(1, updatedClass.getclassCode());
             preparedStatement.setInt(2, updatedClass.getSubjectID());
             preparedStatement.setInt(3, updatedClass.getSemesterID());
             preparedStatement.setInt(4, updatedClass.getTrainerID());
@@ -176,7 +176,7 @@ public class ClassDAO extends MySqlConnection {
         String sql = "INSERT INTO class (class_code, subject_id, semester_id, trainer_id, status, create_at, create_by, update_at, update_by) VALUES (?, ?, ?, ?, ?, NOW(), ?, NOW(), ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, newClass.getClassCode());
+            preparedStatement.setString(1, newClass.getclassCode());
             preparedStatement.setInt(2, newClass.getSubjectID());
             preparedStatement.setInt(3, newClass.getSemesterID());
             preparedStatement.setInt(4, newClass.getTrainerID());
@@ -371,7 +371,7 @@ public class ClassDAO extends MySqlConnection {
 //        System.out.println(c.getClass_Code() + ", " + c.getTrainer_ID());
         ArrayList<Class> searchResults = classDAO.searchClasses("H");
         for (Class c : searchResults) {
-            System.out.println(c.getClassCode() + ", " + c.getTrainerID());
+            System.out.println(c.getclassCode() + ", " + c.getTrainerID());
         }
     }
 }

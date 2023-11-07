@@ -64,8 +64,6 @@
         </script>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-<<<<<<< HEAD
-
 
         <header class="ttr-header">
             <div class="ttr-header-wrapper">

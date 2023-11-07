@@ -40,7 +40,7 @@ public class updateClassSevlet extends HttpServlet {
         // Create a Class object with updated information
         Class updatedClass = new Class();
         updatedClass.setID(classID);
-        updatedClass.setClassCode(classCode);
+        updatedClass.setclassCode(classCode);
         updatedClass.setSemesterID(semesterId);
         updatedClass.setTrainerID(lecturerId);
         updatedClass.setSubjectID(subjectId);

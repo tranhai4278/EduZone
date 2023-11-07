@@ -168,7 +168,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="practiceQuiz.jsp" class="ttr-material-button">
+                            <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                                 <span class="ttr-label">Practice Quizzes</span>
                             </a>

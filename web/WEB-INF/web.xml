@@ -245,6 +245,7 @@
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
     </servlet>
+    </servlet>
     <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>

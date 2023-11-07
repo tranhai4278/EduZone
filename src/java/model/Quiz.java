@@ -21,6 +21,8 @@ public class Quiz {
     private int updateBy;
     private Subject s;
     private SubjectSetting ss;
+    private QuizConfig qc;
+    private QuizResult qr;
 
     public Quiz() {
     }
@@ -70,12 +72,36 @@ public class Quiz {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
-
-
-
+    
     
 
-    
+    public Quiz(int quizId, String quizName, int subjectId, int chapterId, boolean quizType, int numberQuestion, boolean status, int quizTime, Date createAt, int createBy, Date updateAt, int updateBy, Subject s, SubjectSetting ss, QuizConfig qc, QuizResult qr) {
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.subjectId = subjectId;
+        this.chapterId = chapterId;
+        this.quizType = quizType;
+        this.numberQuestion = numberQuestion;
+        this.status = status;
+        this.quizTime = quizTime;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.s = s;
+        this.ss = ss;
+        this.qc = qc;
+        this.qr = qr;
+    }
+
+    public Quiz(int quizId, String quizName, SubjectSetting ss, QuizConfig qc, QuizResult qr) {
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.ss = ss;
+        this.qc = qc;
+        this.qr = qr;
+    }
+
     public int getQuizId() {
         return quizId;
     }
@@ -188,11 +214,26 @@ public class Quiz {
         this.ss = ss;
     }
 
-    
+    public QuizConfig getQc() {
+        return qc;
+    }
+
+    public void setQc(QuizConfig qc) {
+        this.qc = qc;
+    }
+
+    public QuizResult getQr() {
+        return qr;
+    }
+
+    public void setQr(QuizResult qr) {
+        this.qr = qr;
+    }
+
     @Override
     public String toString() {
-        return "Quiz{" + "quizId=" + quizId + ", quizName=" + quizName + ", subjectId=" + subjectId + ", chapterId=" + chapterId + ", quizType=" + quizType + ", numberQuestion=" + numberQuestion + ", status=" + status + ", quizTime=" + quizTime + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + ", s=" + s + ", ss=" + ss + '}';
+        return "Quiz{" + "quizId=" + quizId + ", quizName=" + quizName + ", subjectId=" + subjectId + ", chapterId=" + chapterId + ", quizType=" + quizType + ", numberQuestion=" + numberQuestion + ", status=" + status + ", quizTime=" + quizTime + ", createAt=" + createAt + ", createBy=" + createBy + ", updateAt=" + updateAt + ", updateBy=" + updateBy + ", s=" + s + ", ss=" + ss + ", qc=" + qc + ", qr=" + qr + '}';
     }
-    
+
     
 }

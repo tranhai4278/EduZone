@@ -218,14 +218,14 @@
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>submitAssignmentController</servlet-name>
         <servlet-class>Assignment.controller.submitAssignmentController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>assignmentListController</servlet-name>
         <servlet-class>Assignment.controller.assignmentListController</servlet-class>
-=======
+        </servlet>
+    <servlet>
         <servlet-name>Quizs</servlet-name>
         <servlet-class>Manager.controller.Quizs</servlet-class>
     </servlet>
@@ -284,7 +284,6 @@
     <servlet>
         <servlet-name>postComment</servlet-name>
         <servlet-class>User.controller.postComment</servlet-class>
->>>>>>> 0a1475e33006d3657302a3c9081046ead7bccacf
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -459,14 +458,14 @@
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>submitAssignmentController</servlet-name>
         <url-pattern>/submitassignment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>assignmentListController</servlet-name>
         <url-pattern>/assignmentlist</url-pattern>
-=======
+           </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Quizs</servlet-name>
         <url-pattern>/quizs</url-pattern>
     </servlet-mapping>
@@ -525,7 +524,6 @@
     <servlet-mapping>
         <servlet-name>postComment</servlet-name>
         <url-pattern>/postComment</url-pattern>
->>>>>>> 0a1475e33006d3657302a3c9081046ead7bccacf
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

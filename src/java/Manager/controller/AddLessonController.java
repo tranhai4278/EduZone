@@ -65,7 +65,8 @@ public class AddLessonController extends HttpServlet {
         ArrayList<SubjectSetting> listSS = ssdao.getAllChapters();       
         
         QuizDAO qdao = new QuizDAO();
-        ArrayList<Quiz> listQ = qdao.getAllQuizzes();
+        ArrayList<Quiz> listQ = new ArrayList<>();
+        listQ = qdao.getAllQuizzes();
         
         request.setAttribute("listSubjects", listS);
         request.setAttribute("listChapters", listSS);

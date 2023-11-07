@@ -107,7 +107,7 @@
                                         <div class="mail-toolbar">
                                             <div class="row" style="width: 100%">
                                                 <div class="col-md-2">
-                                                    <input value="${search}" name="search" type="text" id="filterSubject" placeholder="Search setting" class="form-control" autocomplete="off" onchange="this.form.submit()">
+                                                    <input value="${search}" name="search" type="text" id="filterSubject" placeholder="Search key" class="form-control" autocomplete="off" onchange="this.form.submit()">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="filter-section">
@@ -126,11 +126,7 @@
                                                         <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2 offset-md-4">
-                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal">
-                                                        Add a new Setting   
-                                                    </a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -177,11 +173,19 @@
                                                         <td>${a.getComment()}</td>
                                                         <td>
                                                             <div class="col-md-2 offset-md-4">
+                                                                <c:if test="${sessionScope.user.roleId == 3}">
                                                                 <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal"
                                                                    onclick="setEvaluationData('${a.getaID()}', '${a.getClassID()}', '${a.getTraineeID()}')">
                                                                     Grade   
                                                                 </a>
+                                                                </c:if>
+                                                                <c:if test="${sessionScope.user.roleId == 4}">
+                                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal">
+                                                                    Submit   
+                                                                </a>
+                                                                </c:if>
                                                             </div>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

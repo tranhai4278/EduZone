@@ -10,22 +10,22 @@ import java.util.Date;
  * @author Admin
  */
 public class Class {
-    int ID; 
-    String ClassCode; 
-    int SubjectID;
-    int SemesterID;
-    int TrainerID;
-    boolean Status;
-    Date CreateAt;
-    int CreateBy; 
-    Date UpdateAt;
-    int UpdateBy;
+    private int ID; 
+    private String classCode; 
+    private int SubjectID;
+    private int SemesterID;
+    private int TrainerID;
+    private boolean Status;
+    private Date CreateAt;
+    private int CreateBy; 
+    private Date UpdateAt;
+    private int UpdateBy;
    
     public Class(){}
 
-    public Class(int ID, String ClassCode, int SubjectID, int SemesterID,int TrainerID, boolean Status, Date CreateAt, int CreateBy, Date UpdateAt, int UpdateBy) {
+    public Class(int ID, String classCode, int SubjectID, int SemesterID,int TrainerID, boolean Status, Date CreateAt, int CreateBy, Date UpdateAt, int UpdateBy) {
         this.ID = ID;
-        this.ClassCode = ClassCode;
+        this.classCode = classCode;
         this.SubjectID = SubjectID;
         this.SemesterID = SemesterID;
         this.TrainerID = TrainerID;
@@ -36,8 +36,8 @@ public class Class {
         this.UpdateBy = UpdateBy;
     }
 
-    public Class(String ClassCode, int SubjectID, int SemesterID, int TrainerID, boolean Status, int CreateBy) {
-        this.ClassCode = ClassCode;
+    public Class(String classCode, int SubjectID, int SemesterID, int TrainerID, boolean Status, int CreateBy) {
+        this.classCode = classCode;
         this.SubjectID = SubjectID;
         this.SemesterID = SemesterID;
         this.TrainerID = TrainerID;
@@ -57,12 +57,12 @@ public class Class {
         this.ID = ID;
     }
 
-    public String getClassCode() {
-        return ClassCode;
+    public String getclassCode() {
+        return classCode;
     }
 
-    public void setClassCode(String ClassCode) {
-        this.ClassCode = ClassCode;
+    public void setclassCode(String classCode) {
+        this.classCode = classCode;
     }
 
     public int getSubjectID() {

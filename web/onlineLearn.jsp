@@ -64,9 +64,62 @@
         </script>
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+        <header class="ttr-header">
+            <div class="ttr-header-wrapper">
+                <!--sidebar menu toggler start -->
+                <div class="ttr-toggle-sidebar ttr-material-button">
+                    <i class="ti-close ttr-open-icon"></i>
+                    <i class="ti-menu ttr-close-icon"></i>
+                </div>
+                <!--sidebar menu toggler end -->
+                <!--logo start -->
+                <div class="ttr-logo-box">
+                    <div>
+                        <a href="home" class="ttr-logo">
+                            <img alt="" class="ttr-logo-mobile" src="assets/images/logo.png" width="30" height="15">
+                            <img alt="" class="ttr-logo-desktop" src="assets/images/logo.png" width="70" height="27">
+                        </a>
+                    </div>
+                </div>
+                <!--logo end -->
+                <div class="ttr-header-menu">
+                    <!-- header left menu start -->
+                    <ul class="ttr-header-navigation">
+                        <li>
+                            <a href="home" class="ttr-material-button ttr-submenu-toggle">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#" class="ttr-material-button ttr-submenu-toggle">QUICK MENU <i class="fa fa-angle-down"></i></a>
+                            <div class="ttr-header-submenu">
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- header left menu end -->
+                </div>
+                <div class="ttr-header-right ttr-with-seperator">
+                    <!-- header right menu start -->
+                    <ul class="ttr-header-navigation">
+                        <li>
+                            <a href="#" class="ttr-material-button ttr-submenu-toggle"><span class="ttr-user-avatar"><img alt="" src="assets/images/testimonials/pic3.jpg" width="32" height="32"></span></a>
+                            <div class="ttr-header-submenu">
+                                <ul>
+                                    <li><a href="profile">My profile</a></li>
+                                    <li><a href="list-view-calendar.html">Activity</a></li>
+                                    <li><a href="mailbox.html">Messages</a></li>
+                                    <li><a href="logout">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- header right menu end -->
+                </div>
+
+            </div>
+        </header>
+        <!-- Left sidebar menu start -->
        <%@include file="subject-header.jsp" %> 
 
-        <!--Main container start -->
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
@@ -79,30 +132,13 @@
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
                         <div class="widget-inner" id="chapter">
-                           
+                            <h4>${detail.description}</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <script>
-            function getChapter(cid) {
-                console.log(cid);
-                $.ajax({
-                    url: "/eduzone/chapterLesson",
-                    type: "get",
-                    data: {
-                        cid: cid
-                    },
-                    success: function (data) {
-                        var content = document.getElementById("lesson");
-                        content.innerHTML = data;
-                    },
-                    error: function (xhr) {
-                    }
-                });
-            }
-
             function getLesson(cid, lid) {
                 console.log(cid);
                 $.ajax({

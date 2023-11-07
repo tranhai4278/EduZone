@@ -40,6 +40,7 @@ public class ChapterLesson extends HttpServlet {
         String id = request.getParameter("cid");
         int cid = Integer.parseInt(id);
         List<Lesson> listL = Odao.getLessonbyChapter(cid);
+        System.out.println(listL);
         PrintWriter out = response.getWriter();
         for (Lesson s : listL) {
             out.println(" <li>\n"
@@ -104,7 +105,7 @@ public class ChapterLesson extends HttpServlet {
             out.println("<div style=\"text-align: center\" >\n"
                     + "                                <p>This quiz start at " + s.getStartDate() + "</p>\n"
                     + "                                <p>This quiz will close at  " + s.getEndDate() + "</p>\n"
-                    + " <a href=\"quiz?qid="+s.getQuizId()+"&que=1\" class=\"btn\">Take quiz </a>"
+                    + " <a href=\"quiz?qid=" + s.getQuizId() + "&que=1\" class=\"btn\">Take quiz </a>"
                     + "                            </div>");
         }
         if ("Assignment".equals(s.getLessonType())) {

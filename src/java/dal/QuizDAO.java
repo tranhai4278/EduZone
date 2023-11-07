@@ -8,15 +8,24 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Question;
 import model.Quiz;
+import model.QuizConfig;
+import model.QuizResult;
 import model.Subject;
 import model.SubjectSetting;
+
+import java.time.ZoneId;
 
 /**
  *
@@ -102,15 +111,6 @@ public class QuizDAO extends MySqlConnection {
             System.out.println(e);
         }
         return quizList;
-    }
-    
-    public static void main(String[] args) {
-        ArrayList<Quiz> list = new ArrayList<>();
-        QuizDAO dao = new QuizDAO();
-        list = dao.searchQuiz("Minh", "3", "0");
-        for (Quiz quiz : list) {
-            System.out.println(quiz);
-        }
     }
 
     public Quiz getQuiz(String getBy, String value) {
@@ -318,8 +318,8 @@ public class QuizDAO extends MySqlConnection {
         }
         return -1;
     }
-    
-     public void addQuestionToQuiz(String quizId, ArrayList<Integer> listQuestionId, int isFixed) {
+
+    public void addQuestionToQuiz(String quizId, ArrayList<Integer> listQuestionId, int isFixed) {
         try {
             for (int i = 0; i < listQuestionId.size(); i++) {
                 String sql = "INSERT INTO quiz_question (quiz_id, question_id)\n"
@@ -346,8 +346,8 @@ public class QuizDAO extends MySqlConnection {
             System.out.println(ex);
         }
     }
-     
-     public ArrayList<Integer> geAllQuestionIdByChapterSubject(Quiz quiz) {
+
+    public ArrayList<Integer> geAllQuestionIdByChapterSubject(Quiz quiz) {
         ArrayList<Integer> questionIdList = new ArrayList<>();
         String sql = "SELECT question_id FROM question WHERE subject_id = ? And chapter_id = ? AND flag = 1";
 
@@ -365,8 +365,8 @@ public class QuizDAO extends MySqlConnection {
         }
         return questionIdList;
     }
-     
-     public void activeAndDeactive(Quiz quiz) {
+
+    public void activeAndDeactive(Quiz quiz) {
         String sql = "UPDATE quiz SET  \n"
                 + "`status`=?,`update_by`=?,`update_at`=NOW()"
                 + "where quiz_id=?";
@@ -380,8 +380,8 @@ public class QuizDAO extends MySqlConnection {
             System.out.println(e);
         }
     }
-     
-     public void updateQuiz(Quiz quiz) {
+
+    public void updateQuiz(Quiz quiz) {
         String sql = "UPDATE quiz SET  \n"
                 + "`quiz_name`=?,`number_of_question`=?,"
                 + "`update_by`=?,`update_at`=NOW() "
@@ -399,5 +399,74 @@ public class QuizDAO extends MySqlConnection {
         }
     }
 
+    public Quiz getPracticeQuizByUser(int userId, int subjectId) {
+        String sql = "SELECT q.quiz_id,q.quiz_name, ss.setting_type, ss.setting_name,qc.number_of_question, qr.start_time,qr.total_time,qr.correct_count FROM quiz q, quiz_config qc, subject_setting ss, quiz_result qr WHERE qr.quiz_id=q.quiz_id AND q.create_by = ? AND q.quiz_id= qc.quiz_id and qc.setting_id =ss.setting_id AND q.subject_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userId);
+            st.setInt(2, subjectId);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Quiz q = new Quiz();
+                SubjectSetting ss = new SubjectSetting();
+                QuizConfig qc = new QuizConfig();
+                QuizResult qr = new QuizResult();
+                q.setQuizId(rs.getInt("quiz_id"));
+                q.setQuizName(rs.getString("quiz_name"));
+                ss.setSettingId(rs.getInt("setting_type"));
+                ss.setSettingName(rs.getString("setting_name"));
+                qc.setNumberOfQuestion(rs.getInt("number_of_question"));
+                qr.setStartTime(rs.getTimestamp("start_time"));
+                qr.setTotalTime(rs.getTime("total_time"));
+                qr.setCorrectCount(rs.getInt("correct_count"));
+                q.setSs(ss);
+                q.setQc(qc);
+                q.setQr(qr);
+                return q;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
     
+    public List<Quiz> getAllQuizPractice(int uid, int sid) {
+        List<Quiz> quizList = new ArrayList<>();
+        String sql = "SELECT q.quiz_id,q.quiz_name, ss.setting_type, ss.setting_name,qc.number_of_question, qr.start_time,qr.total_time,qr.correct_count FROM quiz q, quiz_config qc, subject_setting ss, quiz_result qr WHERE qr.quiz_id=q.quiz_id AND q.create_by = ? AND q.quiz_id= qc.quiz_id and qc.setting_id =ss.setting_id AND q.subject_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, uid);
+            st.setInt(2, sid);
+            ResultSet result = st.executeQuery();
+            while (result.next()) {
+                int quiz_id = result.getInt(1);
+                String quiz_name = result.getString(2);
+                String setting_type = result.getString(3);
+                String setting_name = result.getString(4);
+                int number_of_question = result.getInt(5);
+                Timestamp start_time = result.getTimestamp(6);
+                Time total_time = result.getTime(7);
+                int correct_count = result.getInt(8);
+                SubjectSetting ss = new SubjectSetting(setting_type, setting_name);
+                QuizConfig qc = new QuizConfig(number_of_question);
+                QuizResult qr = new QuizResult(start_time, total_time, correct_count);
+                Quiz quiz = new Quiz(quiz_id, quiz_name, ss, qc, qr);
+                quizList.add(quiz);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return quizList;
+    }
+
+    public static void main(String[] args) {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        list = dao.getAllQuizPractice(3, 2);
+        for (Quiz quiz : list) {
+            System.out.println(quiz);
+        }
+    }
+
+
 }

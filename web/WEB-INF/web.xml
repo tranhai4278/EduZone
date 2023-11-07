@@ -253,6 +253,10 @@
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
     </servlet>
+<<<<<<< HEAD
+=======
+    </servlet>
+>>>>>>> 1922bd7941c85c1d5c5b222540c0d48a0e6f1008
     <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>
@@ -286,12 +290,17 @@
         <servlet-class>User.controller.postComment</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>assignmentDetailController</servlet-name>
         <servlet-class>Assignment.controller.assignmentDetailController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>classTrainerListServlet</servlet-name>
         <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
+=======
+        <servlet-name>classGradeList</servlet-name>
+        <servlet-class>Manager.controller.classGradeList</servlet-class>
+>>>>>>> 1922bd7941c85c1d5c5b222540c0d48a0e6f1008
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -534,12 +543,17 @@
         <url-pattern>/postComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>assignmentDetailController</servlet-name>
         <url-pattern>/assignmentdetail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>classTrainerListServlet</servlet-name>
         <url-pattern>/classtrainerlist</url-pattern>
+=======
+        <servlet-name>classGradeList</servlet-name>
+        <url-pattern>/classGradeList</url-pattern>
+>>>>>>> 1922bd7941c85c1d5c5b222540c0d48a0e6f1008
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

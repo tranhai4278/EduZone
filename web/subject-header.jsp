@@ -164,11 +164,11 @@
                         <li>
                             <a href="assignmentlist" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assigment</span>
+                                <span class="ttr-label">Assignment</span>
                             </a>
                         </li>
                         <li>
-                            <a href="practiceQuiz.jsp" class="ttr-material-button">
+                            <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                                 <span class="ttr-label">Practice Quizzes</span>
                             </a>

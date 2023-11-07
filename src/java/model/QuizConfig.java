@@ -11,18 +11,20 @@ package model;
 public class QuizConfig {
     private int quizConfigId;
     private int quizId;
-    private int dimentionId;
-    private int chapterId;
+    private int settingId;
     private int numberOfQuestion;
 
     public QuizConfig() {
     }
 
-    public QuizConfig(int quizConfigId, int quizId, int dimentionId, int chapterId, int numberOfQuestion) {
+    public QuizConfig(int quizConfigId, int quizId, int settingId, int numberOfQuestion) {
         this.quizConfigId = quizConfigId;
         this.quizId = quizId;
-        this.dimentionId = dimentionId;
-        this.chapterId = chapterId;
+        this.settingId = settingId;
+        this.numberOfQuestion = numberOfQuestion;
+    }
+
+    public QuizConfig(int numberOfQuestion) {
         this.numberOfQuestion = numberOfQuestion;
     }
 
@@ -42,20 +44,12 @@ public class QuizConfig {
         this.quizId = quizId;
     }
 
-    public int getDimentionId() {
-        return dimentionId;
+    public int getSettingId() {
+        return settingId;
     }
 
-    public void setDimentionId(int dimentionId) {
-        this.dimentionId = dimentionId;
-    }
-
-    public int getChapterId() {
-        return chapterId;
-    }
-
-    public void setChapterId(int chapterId) {
-        this.chapterId = chapterId;
+    public void setSettingId(int settingId) {
+        this.settingId = settingId;
     }
 
     public int getNumberOfQuestion() {
@@ -68,7 +62,6 @@ public class QuizConfig {
 
     @Override
     public String toString() {
-        return "QuizConfig{" + "quizConfigId=" + quizConfigId + ", quizId=" + quizId + ", dimentionId=" + dimentionId + ", chapterId=" + chapterId + ", numberOfQuestion=" + numberOfQuestion + '}';
+        return "QuizConfig{" + "quizConfigId=" + quizConfigId + ", quizId=" + quizId + ", settingId=" + settingId + ", numberOfQuestion=" + numberOfQuestion + '}';
     }
-    
 }

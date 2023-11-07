@@ -2,13 +2,11 @@ package model;
 
 import java.util.Date;
 
-
 /**
  *
  * @author Nết
  */
 public class SubjectSetting {
-
 
     private int settingId;
     private int subjectId;
@@ -38,8 +36,13 @@ public class SubjectSetting {
         this.updateAt = updateAt;
         this.updateBy = updateBy;
     }
-        
-        public SubjectSetting(String settingName) {
+
+    public SubjectSetting(String settingName) {
+        this.settingName = settingName;
+    }
+
+    public SubjectSetting(String settingType, String settingName) {
+        this.settingType = settingType;
         this.settingName = settingName;
     }
 
@@ -156,5 +159,4 @@ public class SubjectSetting {
         this.updateBy = updateBy;
     }
 
-   
 }

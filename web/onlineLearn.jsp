@@ -118,7 +118,7 @@
             </div>
         </header>
         <!-- Left sidebar menu start -->
-       <%@include file="subject-header.jsp" %> 
+        <%@include file="subject-header.jsp" %> 
 
         <main class="ttr-wrapper">
             <div class="container-fluid">
@@ -156,6 +156,28 @@
                         // Xử lý lỗi ở đây nếu cần
                     }
                 });
+            }
+        </script>
+        <script>
+            function getType(selectElement) {
+                var type = selectElement.value;
+                if (type === "Video") {
+                    $('#videoSection').show();
+                    $('#quizSection').hide();
+                    $('#fileSection').hide();
+                } else if (type === "Quiz") {
+                    $('#videoSection').hide();
+                    $('#quizSection').show();
+                    $('#fileSection').hide();
+                } else if (type === "Assignment") {
+                    $('#videoSection').hide();
+                    $('#quizSection').hide();
+                    $('#fileSection').show();
+                } else {
+                    $('#videoSection').hide();
+                    $('#quizSection').hide();
+                    $('#fileSection').hide();
+                }
             }
         </script>
         <div class="ttr-overlay"></div>

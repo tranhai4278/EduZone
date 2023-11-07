@@ -154,54 +154,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="row" style="line-height: 30px">       
-                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
-                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
-                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
-                                                <td class="col-md-1" style="text-align: center">60</td>
-                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
-                                                <td class="col-md-1" style="text-align: center">70</td>
-                                                <td class="col-md-1" style="text-align: center">90%</td>
-                                                <td class="col-md-1" style="text-align: center">
-                                                    <button >Retake</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="row" style="line-height: 30px">       
-                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
-                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
-                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
-                                                <td class="col-md-1" style="text-align: center">60</td>
-                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
-                                                <td class="col-md-1" style="text-align: center">70</td>
-                                                <td class="col-md-1" style="text-align: center">90%</td>
-                                                <td class="col-md-1" style="text-align: center">
-                                                    <button >Retake</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="row" style="line-height: 30px">       
-                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
-                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
-                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
-                                                <td class="col-md-1" style="text-align: center">60</td>
-                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
-                                                <td class="col-md-1" style="text-align: center">70</td>
-                                                <td class="col-md-1" style="text-align: center">90%</td>
-                                                <td class="col-md-1" style="text-align: center">
-                                                    <button >Retake</button>
-                                                </td>
-                                            </tr>
-                                            <tr class="row" style="line-height: 30px">       
-                                                <td class="col-md-2" style="text-align: start">Cell content 1</td>
-                                                <td class="col-md-2" style="text-align: center">Chapter or dimention</td>
-                                                <td class="col-md-2" style="text-align: start">chapter name or dimintion type name</td>
-                                                <td class="col-md-1" style="text-align: center">60</td>
-                                                <td class="col-md-2" style="text-align: center">23/20/2023 15:35</td>
-                                                <td class="col-md-1" style="text-align: center">70</td>
-                                                <td class="col-md-1" style="text-align: center">90%</td>
-                                                <td class="col-md-1" style="text-align: center">
-                                                    <button >Retake</button>
-                                                </td>
-                                            </tr>
+                                            <c:forEach var="q" items="${quiz}">
+                                                <tr class="row" style="line-height: 30px">       
+                                                    <td class="col-md-2" style="text-align: start">${q.quizName}</td>
+                                                    <td class="col-md-2" style="text-align: center">${q.ss.settingType}</td>
+                                                    <td class="col-md-2" style="text-align: start">${q.ss.settingName}</td>
+                                                    <td class="col-md-1" style="text-align: center">${q.qc.numberOfQuestion}</td>
+                                                    <td class="col-md-2" style="text-align: center">${q.qr.startTime}</td>
+                                                    <td class="col-md-1" style="text-align: center">${q.qr.totalTime}</td>
+                                                    <td class="col-md-1" style="text-align: center">${q.qr.correctCount}</td>
+                                                    <td class="col-md-1" style="text-align: center">
+                                                        <button >Retake</button>
+                                                    </td>
+                                                </tr>  
+                                            </c:forEach>
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -164,7 +164,7 @@
                         <li>
                             <a href="assignment" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assigment</span>
+                                <span class="ttr-label">Assignment</span>
                             </a>
                         </li>
                         <li>

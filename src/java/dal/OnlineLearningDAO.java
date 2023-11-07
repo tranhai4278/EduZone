@@ -21,12 +21,13 @@ import model.Class;
  */
 public class OnlineLearningDAO extends MySqlConnection {
 
-    public List<Lesson> getLessonbyChapter(int sid) {
+    public List<Lesson> getLessonbyChapter(int sid, int classid) {
         List<Lesson> list = new ArrayList<>();
-        String sql = " SELECT * FROM `lesson` WHERE `chapter_id`=? and class_id is null";
+        String sql = " SELECT * FROM `lesson` WHERE `chapter_id`=? and (class_id is null or class_id =?)";
         try {
             statement = connection.prepareStatement(sql);
             statement.setInt(1, sid);
+            statement.setInt(2, classid);
             result = statement.executeQuery();
             while (result.next()) {
                 Lesson s = new Lesson(result.getInt(1),
@@ -160,37 +161,36 @@ public class OnlineLearningDAO extends MySqlConnection {
         return q;
     }
 
-public List<Class> getClassbyUser(int uid) {
-    List<Class> list = new ArrayList<>();
-    String sql1 = "SELECT u.role_id FROM user u WHERE user_id=?";
-    try {
-        PreparedStatement st1 = connection.prepareStatement(sql1);
-        st1.setInt(1, uid);
-        ResultSet rs = st1.executeQuery();
-        if (rs.next()) {
-            int roleid = rs.getInt("role_id");
-            System.out.println(roleid);
-            String sql2 = "";
-            if (roleid == 4) {
-                sql2 = "SELECT c.* FROM class c, user u, class_student cs WHERE 1=1 and u.user_id=cs.trainee_id and u.user_id=? and c.class_id = cs.class_id";
-            } else if (roleid == 3) {
-                sql2 = "SELECT c.* FROM class c WHERE 1=1 and c.trainer_id=?";
+    public List<Class> getClassbyUser(int uid) {
+        List<Class> list = new ArrayList<>();
+        String sql1 = "SELECT u.role_id FROM user u WHERE user_id=?";
+        try {
+            PreparedStatement st1 = connection.prepareStatement(sql1);
+            st1.setInt(1, uid);
+            ResultSet rs = st1.executeQuery();
+            if (rs.next()) {
+                int roleid = rs.getInt("role_id");
+                System.out.println(roleid);
+                String sql2 = "";
+                if (roleid == 4) {
+                    sql2 = "SELECT c.* FROM class c, user u, class_student cs WHERE 1=1 and u.user_id=cs.trainee_id and u.user_id=? and c.class_id = cs.class_id";
+                } else if (roleid == 3) {
+                    sql2 = "SELECT c.* FROM class c WHERE 1=1 and c.trainer_id=?";
+                }
+                PreparedStatement statement = connection.prepareStatement(sql2);
+                statement.setInt(1, uid);
+                ResultSet result = statement.executeQuery();
+                System.out.println(sql2);
+                while (result.next()) {
+                    Class c = new Class(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(4), result.getInt(5), result.getBoolean(6), result.getDate(7), result.getInt(8), result.getDate(9), result.getInt(10));
+                    list.add(c);
+                }
             }
-            PreparedStatement statement = connection.prepareStatement(sql2);
-            statement.setInt(1, uid);
-            ResultSet result = statement.executeQuery();
-            System.out.println(sql2);
-            while (result.next()) {
-                Class c = new Class(result.getInt(1), result.getString(2), result.getInt(3), result.getInt(4), result.getInt(5), result.getBoolean(6), result.getDate(7), result.getInt(8), result.getDate(9), result.getInt(10));
-                list.add(c);
-            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Xử lý lỗi, ví dụ: in lỗi ra màn hình hoặc ghi vào logs
         }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Xử lý lỗi, ví dụ: in lỗi ra màn hình hoặc ghi vào logs
+        return list;
     }
-    return list;
-}
-
 
     public static void main(String[] args) {
         OnlineLearningDAO dao = new OnlineLearningDAO();

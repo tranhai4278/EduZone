@@ -132,49 +132,6 @@
                         <i class="ti-arrow-left"></i>
                     </div>
                 </div>
-                <!-- side menu logo end -->
-                <!-- sidebar menu start -->
-                <nav class="ttr-sidebar-navi">
-                    <ul>
-                        <c:forEach var="s" items="${listC}" >
-                            <li>
-                                <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
-                                    <span class="ttr-icon"><i class="ti-book"></i></span>
-                                    <span class="ttr-label">${s.settingName}</span>
-                                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                </a>
-                                <ul id="lesson">
-
-                                </ul>
-                            </li>
-                        </c:forEach>
-
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
-                                <span class="ttr-label">Grades</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-comments"></i></span>
-                                <span class="ttr-label">Discussion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assignment" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assigment</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="practiceQuiz.jsp" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                                <span class="ttr-label">Practice Quizzes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             <nav class="ttr-sidebar-navi">
                 <ul>
@@ -196,7 +153,7 @@
                     </form>
                     <c:forEach var="s" items="${listC}" >
                         <li>
-                            <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
+                            <a onclick="getChapter(${s.settingId}, ${classid})" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-book"></i></span>
                                 <span class="ttr-label">${s.settingName}</span>
                                 <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
@@ -237,13 +194,14 @@
     </div>
     <!-- header end -->
     <script>
-        function getChapter(cid) {
+        function getChapter(cid,classid) {
             console.log(cid);
             $.ajax({
                 url: "/eduzone/chapterLesson",
                 type: "get",
                 data: {
-                    cid: cid
+                    cid: cid,
+                    classid:classid
                 },
                 success: function (data) {
                     var content = document.getElementById("lesson_" + cid);

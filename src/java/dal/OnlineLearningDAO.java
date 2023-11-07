@@ -7,6 +7,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import model.Lesson;
@@ -161,6 +162,27 @@ public class OnlineLearningDAO extends MySqlConnection {
         return q;
     }
 
+    public List<Quiz> getQuizbySubject(int sid) {
+        List<Quiz> list = new ArrayList<>();
+        String sql = " SELECT * FROM quiz q WHERE q.subject_id=?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, sid);
+            result = statement.executeQuery();
+            while (result.next()) {
+                Quiz q = new Quiz(result.getInt(1),
+                        result.getString(2),
+                        result.getInt(3),
+                        result.getInt(4), result.getBoolean(5), result.getInt(6), result.getBoolean(7), result.getInt(8), result.getDate(9), result.getInt(10), result.getDate(11), result.getInt(12));
+                list.add(q);
+            }
+        } catch (SQLException e) {
+
+        }
+        return list;
+
+    }
+
     public List<Class> getClassbyUser(int uid) {
         List<Class> list = new ArrayList<>();
         String sql1 = "SELECT u.role_id FROM user u WHERE user_id=?";
@@ -190,6 +212,34 @@ public class OnlineLearningDAO extends MySqlConnection {
             e.printStackTrace(); // Xử lý lỗi, ví dụ: in lỗi ra màn hình hoặc ghi vào logs
         }
         return list;
+    }
+
+    public void extraLesson(Lesson s) {
+        String sql = "INSERT INTO `lesson`(`title`, `chapter_id`, `class_id`, `lesson_type`, `quiz_id`, `video_link`, "
+                + "`file`, `status`, `description`, `start_date`, `end_date`, `display_order`, `create_at`, `create_by`, `update_at`, `update_by`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, s.getTitle());
+            statement.setInt(2, s.getChapterId());
+            statement.setInt(3, s.getClassId());
+            statement.setString(4, s.getLessonType());
+            statement.setInt(5, s.getQuizId());
+            statement.setString(6, s.getVideoLink());
+            statement.setString(7, s.getFile());
+            statement.setBoolean(8, s.isStatus());
+            statement.setString(9, s.getDescription());
+            statement.setTimestamp(10, (s.getUpdateAt().getTime()));
+            statement.setTimestamp(11, (s.getUpdateAt().getTime()));
+            statement.setInt(12, s.getDisplayOrder());
+            statement.setTimestamp(13, new Timestamp(s.getUpdateAt().getTime()));
+            statement.setInt(14, s.getUpdateBy());
+            statement.setTimestamp(15, new Timestamp(s.getCreateAt().getTime()));
+            statement.setInt(16, s.getUpdateBy());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+
+        }
     }
 
     public static void main(String[] args) {

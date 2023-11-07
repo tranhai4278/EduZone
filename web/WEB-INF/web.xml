@@ -244,7 +244,7 @@
     <servlet>
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>
@@ -276,6 +276,10 @@
     <servlet>
         <servlet-name>postComment</servlet-name>
         <servlet-class>User.controller.postComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExtraLesson</servlet-name>
+        <servlet-class>OnlineLearn.ExtraLesson</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -508,6 +512,10 @@
     <servlet-mapping>
         <servlet-name>postComment</servlet-name>
         <url-pattern>/postComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExtraLesson</servlet-name>
+        <url-pattern>/extraLesson</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

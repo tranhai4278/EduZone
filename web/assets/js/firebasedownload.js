@@ -1,7 +1,7 @@
 // file-download.js
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-storage.js";
 
-function downloadFile(fileRef, fileName) {
+function fileDownload(fileRef, fileName) {
     const storage = getStorage();
     const fileStorageRef = ref(storage, fileRef);
 
@@ -18,4 +18,4 @@ function downloadFile(fileRef, fileName) {
         });
 }
 
-export { downloadFile };
+export { fileDownload };

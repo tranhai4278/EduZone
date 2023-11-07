@@ -14,6 +14,8 @@
             <button type="submit">Upload</button>
         </form>
 
+        <a href="#" onclick="fileDownload('gs://sms-eduzone.appspot.com/Project-package.rar', 'Project-package.rar')">Project-package.rar</a>
+        
         <!-- Available Files List -->
         <h2>Available Files</h2>
         <ul id="fileList"></ul>

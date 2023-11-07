@@ -1,9 +1,3 @@
-<%-- 
-    Document   : userDetail
-    Created on : Sep 25, 2023, 2:17:11 AM
-    Author     : PHAM NGOC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.User" %>
@@ -78,7 +72,7 @@
                     <!-- Breadcrumb row END -->
                     <!-- inner page banner END -->
                     <div class="content-block">
-                    
+
                         <div class="row">
                             <!-- Your Profile Views Chart -->
                             <div class="col-lg-12 m-b30">
@@ -92,26 +86,34 @@
                                     </div>
                                     <% } %>
                                     <div class="widget-inner">
-                                        <form class="edit-profile" action="updateclass" method="post">
+                                        <form class="edit-profile" action="assignmentdetail" method="post">
                                             <!-- Trainee ID -->
                                             <div class="form-group row" hidden>
                                                 <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Trainee ID</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input class="form-control" type="text" name="traineeID" value="<c:out value="${classObj.traineeID}"/>">
+                                                    <input class="form-control" type="text" name="traineeID" value="<c:out value="${data.traineeId}"/>">
                                                 </div>
                                             </div>
                                             <!-- Assignment Title -->
                                             <div class="form-group row">
                                                 <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Assignment Title</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input class="form-control" type="text" name="assignmentTitle" value="<c:out value="${classObj.assignmentTitle}"/>" readonly>
+                                                    <input class="form-control" type="text" name="assignmentTitle" value="<c:out value="${data.assignmentId}"/>" readonly>
+                                                </div>
+                                            </div>
+                                            <!-- Class Code -->
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Class Code</label>
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                    <input class="form-control" type="text" name="classId" value="<c:out value="${data.classId}"/>" readonly>
                                                 </div>
                                             </div>
                                             <!-- File Submit (with Browse Button) -->
                                             <div class="form-group row">
                                                 <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">File Submit</label>
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input type="file" name="submitFile">
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">                                             
+                                                    <a href="#" download="${data.submitFile}" onclick="showFileList('${data.submitFile}')">${data.submitFile}</a>                                                       
+                                                    <input type="file"  name="submitFile" class="btn btn-secondry">                                      
                                                 </div>
                                             </div>
                                             <div class="seperator"></div>
@@ -121,10 +123,8 @@
                                                         <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                                         </div>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <!-- Submit Button -->
-                                                            <button type="submit" class="btn">Submit</button>
-
                                                             <!-- Return to Assignment List Button -->
+                                                            <input type="submit" class="btn btn-primary" value="submit">
                                                             <button type="button" class="btn-secondry" onclick="window.location.href = 'assignmentlist'">Return to Assignment List</button>
                                                         </div>
                                                     </div>
@@ -144,6 +144,10 @@
         <div class="ttr-overlay"></div>
 
         <!-- External JavaScripts -->
+        <script type="module" src="assets/js/firebaseconfig.js"></script>
+
+        <!-- Other JavaScript modules that depend on the Firebase configuration -->
+        <script type="module" src="assets/js/firebaseupload.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

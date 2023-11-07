@@ -224,7 +224,7 @@
     <servlet>
         <servlet-name>assignmentListController</servlet-name>
         <servlet-class>Assignment.controller.assignmentListController</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>Quizs</servlet-name>
         <servlet-class>Manager.controller.Quizs</servlet-class>
@@ -252,7 +252,7 @@
     <servlet>
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>
@@ -284,6 +284,10 @@
     <servlet>
         <servlet-name>postComment</servlet-name>
         <servlet-class>User.controller.postComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>assignmentDetailController</servlet-name>
+        <servlet-class>Assignment.controller.assignmentDetailController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -464,7 +468,7 @@
     <servlet-mapping>
         <servlet-name>assignmentListController</servlet-name>
         <url-pattern>/assignmentlist</url-pattern>
-           </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Quizs</servlet-name>
         <url-pattern>/quizs</url-pattern>
@@ -524,6 +528,10 @@
     <servlet-mapping>
         <servlet-name>postComment</servlet-name>
         <url-pattern>/postComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>assignmentDetailController</servlet-name>
+        <url-pattern>/assignmentdetail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

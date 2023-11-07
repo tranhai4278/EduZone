@@ -3,7 +3,7 @@ import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs
 
 // Handle file upload form submission
 document.getElementById('fileUploadForm').addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent form submission
+     
 
     const file = document.getElementById('fileInput').files[0];
 

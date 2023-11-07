@@ -244,7 +244,7 @@
     <servlet>
         <servlet-name>LoginGoogleHandler</servlet-name>
         <servlet-class>Login.controller.LoginGoogleHandler</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>discussionListServlet</servlet-name>
         <servlet-class>Manager.controller.discussionListServlet</servlet-class>
@@ -268,6 +268,10 @@
     <servlet>
         <servlet-name>EvaluateController</servlet-name>
         <servlet-class>User.controller.EvaluateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PracticeQuiz</servlet-name>
+        <servlet-class>OnlineLearn.PracticeQuiz</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -492,6 +496,10 @@
     <servlet-mapping>
         <servlet-name>EvaluateController</servlet-name>
         <url-pattern>/evaluate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PracticeQuiz</servlet-name>
+        <url-pattern>/practicequiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

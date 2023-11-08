@@ -2,9 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
         </group>
@@ -282,9 +279,7 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
         </group>
-<<<<<<< HEAD
->>>>>>> 0a1475e33006d3657302a3c9081046ead7bccacf
-=======
+
         <group>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/SubjectSetting.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginController.java</file>
@@ -306,10 +301,6 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/subject-header.jsp</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 1922bd7941c85c1d5c5b222540c0d48a0e6f1008
-=======
         <group>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
@@ -390,8 +381,5 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
         </group>
->>>>>>> a42901950df71a405d2604806cf39f7427d31692
-=======
->>>>>>> 2d31fea8d5c8832e184931644788192343b88669
     </open-files>
 </project-private>

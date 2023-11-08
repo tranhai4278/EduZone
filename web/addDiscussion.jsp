@@ -131,7 +131,7 @@
                                                             <div style="width: 90%;">
                                                                 <select id="class" name="class">
                                                                     <c:forEach var="c" items="${classList}">
-                                                                        <option value="${c.getID()}">${c.getClassCode()}</option>
+                                                                        <option value="${c.getID()}">${c.getclassCode()}</option>
                                                                     </c:forEach>
                                                                 </select>
                                                             </div>

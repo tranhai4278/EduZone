@@ -188,7 +188,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="discussionList?subjectId=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-comments"></i></span>
                             <span class="ttr-label">Discussion</span>
                         </a>
@@ -196,7 +196,7 @@
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-file"></i></span>
-                            <span class="ttr-label">Assigment</span>
+                            <span class="ttr-label">Assignment</span>
                         </a>
                     </li>
                     <li>

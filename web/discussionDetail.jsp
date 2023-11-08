@@ -160,7 +160,7 @@
 
         <!-- header start -->
         <div class="order1">
-            <%@include file="setting-header.jsp" %>
+            <%@include file="subject-header.jsp" %>
         </div>
 
         <main class="ttr-wrapper">

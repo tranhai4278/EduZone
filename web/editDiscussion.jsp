@@ -116,7 +116,7 @@
                                                             <div class="subject-section">
                                                                 <label>Subject:</label>
                                                                 <div style="width: 90%;">
-                                                                    <select id="subject" name="subject" onchange="getClass(this);">
+                                                                    <select id="subject" name="subject" onchange="getClass(this);" disabled>
                                                                         <c:forEach var="subject" items="${subjectList}">
                                                                             <option value="${subject.getSubjectId()}"
                                                                                     <c:if test="${subject.getSubjectId() == subjectId}">
@@ -133,11 +133,11 @@
                                                         <div class="class-section new-box">
                                                             <label>Class:</label>
                                                             <div style="width: 90%;">
-                                                                <select id="class" name="class">
+                                                                <select id="class" name="class" disabled>
                                                                     <c:forEach var="c" items="${classList}">
                                                                         <option value="${c.getID()}"
                                                                                 <c:if test="${c.getID() == classId}">
-                                                                                </c:if>>${c.getClassCode()}</option>
+                                                                                </c:if>>${c.getclassCode()}</option>
                                                                     </c:forEach>
                                                                 </select>
                                                             </div>

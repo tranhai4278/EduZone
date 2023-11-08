@@ -191,7 +191,14 @@
                     </li>               
                 </c:if>
                     
-                    
+                 <c:if test="${sessionScope.user.roleId == 3}">
+                    <li>
+                        <a href="classtrainerlist" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-clipboard"></i></span>
+                            <span class="ttr-label">Class List</span>
+                        </a>
+                    </li>               
+                </c:if>
                 <c:if test="${sessionScope.user.roleId == 3 ||  sessionScope.user.roleId == 4}">
                     <li>
                         <a href="dashboardController" class="ttr-material-button">

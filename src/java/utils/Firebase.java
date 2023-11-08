@@ -4,10 +4,11 @@
  */
 package utils;
 
-/**
- *
- * @author admin
- */
+
 public class Firebase {
-    
+
+    public static void main(String[] args) {
+     
+       
+    }
 }

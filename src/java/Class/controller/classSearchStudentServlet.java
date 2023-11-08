@@ -4,6 +4,7 @@
  */
 package Class.controller;
 
+import DTO.StudentListDTO;
 import dal.Class_TraineeDAO;
 import dal.UserDAO;
 import java.io.IOException;
@@ -25,44 +26,21 @@ public class classSearchStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        String classID = request.getParameter("code");
-        String searchString = request.getParameter("search");
-        UserDAO userDAO = new UserDAO();
-        ArrayList<User> users = userDAO.getAllUser();
-        Class_TraineeDAO classTDAO = new Class_TraineeDAO();
+        int classID = Integer.parseInt(request.getParameter("code"));
+        String searchTerm = request.getParameter("search");
+        Class_TraineeDAO classDAO = new Class_TraineeDAO(); // Replace with your actual DAO class
 
-        // Get students in the designated class
-        ArrayList<Class_Trainee> classStudents = classTDAO.getTraineesByClassID(Integer.parseInt(classID));
+        // Call the DAO method to search for students by name
+        ArrayList<StudentListDTO> studentList = classDAO.searchStudentsByName(classID, searchTerm);
+        ArrayList<StudentListDTO> studentList3 = classDAO.getClassTraineeDTO(classID);
 
-        // Initialize the data list with class students
-        ArrayList<Class_Trainee> data = new ArrayList<>(classStudents);
-
-        // Get students based on the search
-        ArrayList<User> studentlist = userDAO.getUsersBySearchString(searchString);
-
-        // Add searched students to the data list for the designated class
-        for (User student : studentlist) {
-            // Check if the student is already in the class
-            if (!studentInClass(student.getUserId(), classStudents)) {
-                data.add(new Class_Trainee(Integer.parseInt(classID), student.getUserId()));
-            }
-        }
-        
+        ArrayList<StudentListDTO> studentlist2 = classDAO.getTraineeDTO();
+        request.setAttribute("studentList2", studentlist2);
+        request.setAttribute("studentList3", studentList3);
         request.setAttribute("Classcode", classID);
-        request.setAttribute("trainee", data);
-        request.setAttribute("users", users);
+        request.setAttribute("studentList", studentList);
 
         request.getRequestDispatcher("classdetail-studentlist.jsp").forward(request, response);
-    }
 
-    private boolean studentInClass(int userId, ArrayList<Class_Trainee> trainee) {
-        for (Class_Trainee classTrainee : trainee) {
-            if (classTrainee.getTraineeID() == userId) {
-                return true; // The student is already in the class.
-            }
-        }
-        return false; // The student is not in the class.
     }
-
 }

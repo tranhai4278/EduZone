@@ -66,7 +66,7 @@
 
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
-        
+
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
@@ -105,37 +105,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="student" items="${trainee}">
+                                            <c:forEach var="student" items="${studentList}">
                                                 <tr>
                                                     <td>
-                                                        <input type="checkbox" class="studentCheckbox" value="${student.traineeID}" />
+                                                        <input type="checkbox" class="studentCheckbox" value="${student.student.traineeID}" />
                                                     </td>
-                                                    <c:forEach var="user" items="${users}">
-                                                        <c:choose>
-                                                            <c:when test="${student.traineeID eq user.userId}">
-                                                                <td><c:out value="${user.fullName}" /></td>
-                                                                <td><c:out value="${user.email}" /></td>
-                                                                <td><c:out value="${user.phone}" /></td>
-                                                            </c:when>
-                                                        </c:choose>
-                                                    </c:forEach>
+                                                    <td><c:out value="${student.fullName}" /></td>
+                                                    <td><c:out value="${student.email}" /></td>
+                                                    <td><c:out value="${student.phone}" /></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
+
                                     <form action="classaddstudent" method="post">
                                         <div class="row">
                                             <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                <input type="hidden" name="Classcode" value="${Classcode}">
                                                 <select name="selectedStudent" class="form-control-sm">
                                                     <option value="">Select a Student to Add</option>
-                                                    <c:forEach var="user" items="${users}">
-                                                        <c:if test="${user.roleId == 4}">
-                                                            <option value="${user.userId}"><c:out value="${user.fullName}" /></option>
-                                                        </c:if>
+                                                    <c:forEach var="studentnew" items="${studentList2}">
+                                                        <c:forEach var="student" items="${studentList}">
+                                                            <c:if test = "${studentnew.student.classID != Classcode && studentnew.student.traineeID != student.student.traineeID }">
+                                                                <option value="${studentnew.userID}">
+                                                                    <c:out value="${studentnew.fullName}" />
+                                                                </option>
+                                                            </c:if>
+                                                        </c:forEach>
                                                     </c:forEach>
                                                 </select>
-                                                <button class="btn btn-primary">Add Student</button>
-                                                <div class="row"></div>
+                                                <button class="btn btn-primary" type="submit">Add Student</button>
                                             </div>
                                         </div>
                                     </form>
@@ -144,7 +143,12 @@
 
                                     <div class="action-buttons">
                                         <div class="col-12 col-sm-2 col-md-2 col-lg-2">
-                                            <button class="btn btn-danger" id="removeStudentsBtn">Remove Students</button>
+                                            <form action="removestudent" method="post" id="removeStudentsForm">
+                                                <input type="hidden" name="Classcode" value="${Classcode}">
+                                                <input type="hidden" name="selectedStudentIds" id="selectedStudentIds" />
+                                                <button class="btn btn-danger" type="submit" id="removeStudentsBtn">Remove Students</button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -159,6 +163,18 @@
 
     <!-- External JavaScripts -->
     <script src="assets/js/jquery.min.js"></script>
+    <script>
+        document.getElementById("removeStudentsBtn").addEventListener("click", function () {
+            var selectedStudents = document.querySelectorAll(".studentCheckbox:checked");
+            var selectedStudentIds = Array.from(selectedStudents).map(function (student) {
+                return student.value;
+            });
+
+            // Populate the hidden input with the selected student IDs
+            document.getElementById("selectedStudentIds").value = selectedStudentIds.join(",");
+        });
+    </script>
+
     <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
     <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>

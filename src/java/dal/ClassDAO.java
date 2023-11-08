@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Class;
+import DTO.ClassDTO;
 
 /**
  *
@@ -56,6 +57,43 @@ public class ClassDAO extends MySqlConnection {
         }
         return data;
     }
+    
+    public ArrayList<ClassDTO> getDTOClassesByTrainerId(int trainerId) {
+        ArrayList<ClassDTO> data = new ArrayList<>();
+        String sql = "SELECT class.*, subject.subject_code, setting.setting_name, user.full_name "
+                + "FROM class "
+                + "LEFT JOIN subject ON class.subject_id = subject.subject_id "
+                + "LEFT JOIN setting ON class.semester_id = setting.setting_id "
+                + "LEFT JOIN user ON class.trainer_id = user.user_id "
+                + "WHERE trainer_id = ?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, trainerId);
+            result = statement.executeQuery();
+            while (result.next()) {        
+              int class_id = result.getInt(1);
+              String class_code = result.getString(2);
+              int subject_id = result.getInt(3);
+              int semester_id = result.getInt(4);
+              int trainer_id = result.getInt(5);
+              boolean status = result.getBoolean(6);
+              Date create_at = result.getDate(7);
+              int create_by = result.getInt(8);
+              Date update_at = result.getDate(9);
+              int update_by = result.getInt(10);
+              String subject_code = result.getString(11);
+              String setting_name = result.getString(12);
+              String full_name = result.getString(13);
+              
+              ClassDTO c = new ClassDTO(class_id, class_code, subject_id, semester_id, trainer_id, status, create_at, create_by, update_at, update_by, subject_code, setting_name, full_name);
+              data.add(c);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
+    
 
     public Class getClassByID(int classID) {
         String sql = "SELECT * FROM class WHERE class_id = ?";
@@ -362,16 +400,16 @@ public class ClassDAO extends MySqlConnection {
 
     public static void main(String[] args) {
         ClassDAO classDAO = new ClassDAO();
-        ArrayList<Class> data = classDAO.getAllClass();
-//        for(Class c : data){
-//            System.out.println(c.getClass_Code());
-//        }
+        ArrayList<ClassDTO> data = classDAO.getDTOClassesByTrainerId(5);
+        for(ClassDTO c : data){
+            System.out.println(c.getFull_name());
+        }
 
 //        Class c = classDAO.getClassByCode("CS102");
 //        System.out.println(c.getClass_Code() + ", " + c.getTrainer_ID());
-        ArrayList<Class> searchResults = classDAO.searchClasses("H");
-        for (Class c : searchResults) {
-            System.out.println(c.getclassCode() + ", " + c.getTrainerID());
-        }
+//        ArrayList<Class> searchResults = classDAO.searchClasses("H");
+//        for (Class c : searchResults) {
+//            System.out.println(c.getclassCode() + ", " + c.getTrainerID());
+//        }
     }
 }

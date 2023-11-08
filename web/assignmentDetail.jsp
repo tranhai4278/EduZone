@@ -1,9 +1,3 @@
-<%-- 
-    Document   : userDetail
-    Created on : Sep 25, 2023, 2:17:11 AM
-    Author     : PHAM NGOC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.User" %>
@@ -66,10 +60,10 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Class Detail</h4>
+                    <h4 class="breadcrumb-title">Submit Assignment</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Class Detail</li>
+                        <li>Submit Assignment</li>
                     </ul>
                 </div>
                 <!-- header END ==== -->
@@ -78,11 +72,6 @@
                     <!-- Breadcrumb row END -->
                     <!-- inner page banner END -->
                     <div class="content-block">
-                        <!-- About Us -->
-                        <c:set var="classObj" value="${classObj}"/>
-                        <c:set var="subjects" value="${subjects}"/>
-                        <c:set var="users" value="${users}"/>
-                        <c:set var="semesters" value="${semesters}"/>
 
                         <div class="row">
                             <!-- Your Profile Views Chart -->
@@ -97,85 +86,43 @@
                                     </div>
                                     <% } %>
                                     <div class="widget-inner">
-                                        <form class="edit-profile" action="updateclass" method="post">
+                                        <form class="edit-profile" action="assignmentdetail" method="post">
+                                            <!-- Trainee ID -->
                                             <div class="form-group row" hidden>
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Class ID</label>
+                                                
+                                                    <input class="form-control" type="text" name="traineeID" value="<c:out value="${data.trainee_id}"/>">
+                                                    <input class="form-control" type="text" name="classId" value="<c:out value="${data.class_id}"/>" readonly>
+                                                    <input class="form-control" type="text" name="assignmentTitle" value="<c:out value="${data.asignment_id}"/>" readonly>
+                                                    <input class="form-control" type="text" name="sid" value="<c:out value="${sid}"/>">
+                                                
+                                            </div>
+                                            <!-- Assignment Title -->
+                                            <div class="form-group row">
+                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Assignment Title</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input class="form-control" type="text" name="classID" value="<c:out value="${classObj.ID}"/>" readonly>
+                                                    <c:out value="${data.title}"/>
                                                 </div>
                                             </div>
+                                            <!-- Class Code -->
                                             <div class="form-group row">
                                                 <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Class Code</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <input class="form-control" type="text" name="classCode" value="<c:out value="${classObj.classCode}"/>" readonly>
+                                                    <c:out value="${data.classCode}"/>
                                                 </div>
                                             </div>
+                                            <!-- Assignment Description -->
                                             <div class="form-group row">
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Semester</label>
+                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Assignment Description</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <select name="semester" class="form-control">
-                                                        <c:forEach var="semester" items="${semesters}">
-                                                            <c:choose>
-                                                                <c:when test="${semester.settingId eq classObj.semesterID}">
-                                                                    <option value="<c:out value='${semester.settingId}'/>" selected><c:out value='${semester.settingName}'/></option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option value="<c:out value='${semester.settingId}'/>"><c:out value='${semester.settingName}'/></option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
-                                                    </select>
+                                                    <c:out value="${data.description}"/>
                                                 </div>
                                             </div>
+                                            <!-- File Submit (with Browse Button) -->
                                             <div class="form-group row">
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Lecturer</label>
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <select name="lecturer" class="form-control">
-                                                        <c:forEach var="user" items="${users}">
-                                                            <c:choose>
-                                                                <c:when test="${user.userId eq classObj.trainerID}">
-                                                                    <option value="<c:out value='${user.userId}'/>" selected><c:out value='${user.fullName}'/></option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option value="<c:out value='${user.userId}'/>"><c:out value='${user.fullName}'/></option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject</label>
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <select name="subject" class="form-control">
-                                                        <c:forEach var="subject" items="${subjects}">
-                                                            <c:choose>
-                                                                <c:when test="${subject.subjectId eq classObj.subjectID}">
-                                                                    <option value="<c:out value='${subject.subjectId}'/>" selected><c:out value='${subject.subjectCode}'/></option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option value="<c:out value='${subject.subjectId}'/>"><c:out value='${subject.subjectCode}'/></option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Status</label>
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <select name="status" class="form-control">
-                                                        <c:choose>
-                                                            <c:when test="${classObj.status == true}">
-                                                                <option value="1" selected>Active</option>
-                                                                <option value="0">Inactive</option>
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <option value="1">Active</option>
-                                                                <option value="0" selected>Inactive</option>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </select>
+                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">File Submit</label>
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">                                             
+                                                    <a href="#" download="${data.submit_file}" onclick="showFileList('${data.submit_file}')">${data.submit_file}</a>                                                       
+
                                                 </div>
                                             </div>
                                             <div class="seperator"></div>
@@ -185,10 +132,10 @@
                                                         <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                                         </div>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <button type="submit" class="btn">Save Change</button>
-                                                            <button type="button" class="btn-secondry" onclick="window.location.href = 'classstudentlist?code=${classObj.ID}'">Return to Class List</button>
-
-                                                            <button type="button" class="btn-secondry" onclick="window.location.href = 'classlist'">Return to Class List</button>
+                                                            <!-- Return to Assignment List Button -->
+                                                            <input type="file"  name="submitFile" class="btn btn-secondry">
+                                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                                            <button type="button" class="btn-secondry" onclick="window.location.href = 'assignmentlist?Class=${cid}&Subject=${sid}'">Return to Assignment List</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -207,6 +154,10 @@
         <div class="ttr-overlay"></div>
 
         <!-- External JavaScripts -->
+        <script type="module" src="assets/js/firebaseconfig.js"></script>
+
+        <!-- Other JavaScript modules that depend on the Firebase configuration -->
+        <script type="module" src="assets/js/firebaseupload.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
         <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

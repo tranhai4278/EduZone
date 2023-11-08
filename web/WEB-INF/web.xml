@@ -218,6 +218,14 @@
         <servlet-class>Manager.controller.deleteQuestionController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>submitAssignmentController</servlet-name>
+        <servlet-class>Assignment.controller.submitAssignmentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>assignmentListController</servlet-name>
+        <servlet-class>Assignment.controller.assignmentListController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Quizs</servlet-name>
         <servlet-class>Manager.controller.Quizs</servlet-class>
     </servlet>
@@ -282,6 +290,14 @@
         <servlet-class>User.controller.postComment</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>assignmentDetailController</servlet-name>
+        <servlet-class>Assignment.controller.assignmentDetailController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classTrainerListServlet</servlet-name>
+        <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
+        </servlet>
+    <servlet>
         <servlet-name>ExtraLesson</servlet-name>
         <servlet-class>OnlineLearn.ExtraLesson</servlet-class>
     </servlet>
@@ -289,6 +305,14 @@
         <servlet-name>classGradeList</servlet-name>
         <servlet-class>Manager.controller.classGradeList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>classAddStudentServlet</servlet-name>
+        <servlet-class>Class.controller.classAddStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classRemoveStudentServlet</servlet-name>
+        <servlet-class>Class.controller.classRemoveStudentServlet</servlet-class>
+        </servlet>
     <servlet>
         <servlet-name>deleteComment</servlet-name>
         <servlet-class>Manager.controller.deleteComment</servlet-class>
@@ -470,6 +494,14 @@
         <url-pattern>/deleteQuestion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>submitAssignmentController</servlet-name>
+        <url-pattern>/submitassignment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>assignmentListController</servlet-name>
+        <url-pattern>/assignmentlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Quizs</servlet-name>
         <url-pattern>/quizs</url-pattern>
     </servlet-mapping>
@@ -534,6 +566,14 @@
         <url-pattern>/postComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>assignmentDetailController</servlet-name>
+        <url-pattern>/assignmentdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classTrainerListServlet</servlet-name>
+        <url-pattern>/classtrainerlist</url-pattern>
+        </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ExtraLesson</servlet-name>
         <url-pattern>/extraLesson</url-pattern>
     </servlet-mapping>
@@ -541,6 +581,14 @@
         <servlet-name>classGradeList</servlet-name>
         <url-pattern>/classGradeList</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classAddStudentServlet</servlet-name>
+        <url-pattern>/classaddstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classRemoveStudentServlet</servlet-name>
+        <url-pattern>/removestudent</url-pattern>
+         </servlet-mapping>
     <servlet-mapping>
         <servlet-name>deleteComment</servlet-name>
         <url-pattern>/deleteComment</url-pattern>

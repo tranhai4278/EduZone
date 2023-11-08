@@ -4,6 +4,7 @@
  */
 package Class.controller;
 
+import DTO.StudentListDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -62,31 +63,16 @@ public class classStudentListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         User user = (User) request.getSession().getAttribute("user");
-        int ID = Integer.parseInt(request.getParameter("code"));
-        System.out.println(ID);
-        Class_TraineeDAO ClassTDAO = new Class_TraineeDAO();
-        UserDAO userDAO = new UserDAO();
-        ArrayList<User> users = userDAO.getAllUser();
-        ArrayList<Class_Trainee> data = ClassTDAO.getTraineesByClassID(ID);
-        for (Class_Trainee c : data) {
-            System.out.println(c.getClassID() + ", " + c.getTraineeID());
-        }
-
-        request.setAttribute("Classcode", ID);
-        request.setAttribute("users", users);
-        request.setAttribute("trainee", data);
+        User user = (User) request.getSession().getAttribute("user");
+        int classID = Integer.parseInt(request.getParameter("code"));
+        Class_TraineeDAO studentListDAO = new Class_TraineeDAO(); // Replace with your actual DAO class
+        ArrayList<StudentListDTO> studentList = studentListDAO.getClassTraineeDTO(classID);
+        ArrayList<StudentListDTO> studentlist2 = studentListDAO.getTraineeDTO();
+        request.setAttribute("studentList2", studentlist2);
+        request.setAttribute("Classcode", classID);
+        request.setAttribute("studentList", studentList);
 
         request.getRequestDispatcher("classdetail-studentlist.jsp").forward(request, response);
-    }
-
-    private boolean studentInClass(int userId, ArrayList<Class_Trainee> trainee) {
-        for (Class_Trainee classTrainee : trainee) {
-            if (classTrainee.getTraineeID() == userId) {
-                return true; // The student is already in the class.
-            }
-        }
-        return false; // The student is not in the class.
     }
 
     /**

@@ -300,21 +300,5 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/subject-header.jsp</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subject-header.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/OnlineLearn/OnlineLearning.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/OnlineLearningDAO.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/ManagerDAO.java</file>
-        </group>
-        <group>
-            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subject-header.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/OnlineLearn/OnlineLearning.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/OnlineLearningDAO.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/ManagerDAO.java</file>
-        </group>
     </open-files>
 </project-private>

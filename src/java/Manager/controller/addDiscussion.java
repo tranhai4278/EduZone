@@ -26,8 +26,12 @@ public class addDiscussion extends HttpServlet {
 
         SubjectDAO subjectDao = new SubjectDAO();
         ClassDAO classDao = new ClassDAO();
+        
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getUserId();
 
-        ArrayList<Subject> subjectList = subjectDao.getAllSubjects();
+        ArrayList<Subject> subjectList = subjectDao.getSubjectWithUserId(userId);
         ArrayList<Class> classList = classDao.getClassBySubjectId(1);
 
         request.setAttribute("message", message);

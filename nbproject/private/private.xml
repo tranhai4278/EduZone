@@ -292,17 +292,21 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionDetail.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/SubjectDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionDetail.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ClassDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/register.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
         </group>
     </open-files>
 </project-private>

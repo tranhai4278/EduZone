@@ -48,12 +48,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="addPractieQuizForm" action="newpracticequiz" method="post" >
-                            <input type="text" name="action" style="display: none" value="addQuiz">
+                        <form action="newpracticequiz?sid=${detail.subjectId}" method="post" >
                             <!--Name-->
                             <div class="form-group" style="margin-top:10px; margin-top: 20px">
                                 <label for="name">Quiz Name:</label>
-                                <input type="text" class="form-control" id="quiz_name" name="name">
+                                <input type="text" class="form-control" id="quiz_name" name="quiz_name">
                                 <div id="nameError" class="error"></div>
                             </div>
 
@@ -91,7 +90,7 @@
                                     <label for="dimentype">Choose Question dimention</label>
                                     <select name="dimName">
                                         <c:forEach var="ss" items="${listss}">
-                                            <option value="${ss.getSettingName}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                                            <option value="${ss.settingId}">${ss.getSettingType()}/${ss.getSettingName()}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -103,18 +102,19 @@
                                         <label for="chapName">Choose Question Chapter</label>
                                         <select name="chapques">
                                             <c:forEach var="c" items="${listC}">
-                                            <option value="${c.settingName}">${c.settingName}</option>
-                                        </c:forEach>
+                                                <option value="${ss.settingid}">${c.settingName}</option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer" style="justify-content: flex-start">
+                                <button name="submit" type="submit" value="Submit" class="btn btn-primary">Save Quiz</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="modal-footer" style="justify-content: flex-start">
-                        <button type="submit" class="btn btn-primary" form="addPractieQuizForm" onclick="validateForm()">Save Quiz</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    </div>
+
                 </div>
             </div>
         </div>

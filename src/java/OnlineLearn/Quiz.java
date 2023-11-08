@@ -7,6 +7,7 @@ package OnlineLearn;
 import dal.OnlineLearningDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,6 +38,20 @@ public class Quiz extends HttpServlet {
         model.Quiz q = dao.getQuizbyId(id);
         Question que = dao.getQuestion(id).get(qid - 1);
         List<QuestionChoise> listC = dao.getChoice(que.getQuestionId());
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().startsWith("answer_")) {
+                    // Extract the question number and answer value from the cookie
+                    String[] parts = cookie.getName().split("_");
+                    int questionNumber = Integer.parseInt(parts[1]);
+                    String answer = cookie.getValue();
+
+                    // Process the answer as needed
+                    // You can store it in a data structure or perform any other necessary actions
+                }
+            }
+        }
         request.setAttribute("detail", q);
         request.setAttribute("quession", que);
         request.setAttribute("que", qid);

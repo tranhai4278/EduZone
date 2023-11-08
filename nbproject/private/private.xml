@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
 
+=======
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
+        </group>
+        <group>
+>>>>>>> 2d31fea8d5c8832e184931644788192343b88669
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
@@ -73,7 +79,10 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
         </group>
         <group>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d31fea8d5c8832e184931644788192343b88669
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -299,6 +308,7 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/subject-header.jsp</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
+<<<<<<< HEAD
         <group>
 
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/LessonDAO.java</file>
@@ -402,5 +412,7 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
 
         </group>
+=======
+>>>>>>> 2d31fea8d5c8832e184931644788192343b88669
     </open-files>
 </project-private>

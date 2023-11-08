@@ -20,13 +20,12 @@ public class Question {
     private int createBy;
     private Date updateAt;
     private int updateBy;
-    
     private String dimensionType;
     private String dimensionName;
     private String dimension;
     private String subjectCode;
     private String chapter;
-
+    private QuestionChoise qc;
     public Question() {
     }
 
@@ -36,6 +35,24 @@ public class Question {
         this.chapterId = chapterId;
         this.subjectId = subjectId;
         this.createAt = createAt;
+    }
+
+    public Question(int questionId, String question, int flag, int chapterId, int subjectId, Date createAt, int createBy, Date updateAt, int updateBy, String dimensionType, String dimensionName, String dimension, String subjectCode, String chapter, QuestionChoise qc) {
+        this.questionId = questionId;
+        this.question = question;
+        this.flag = flag;
+        this.chapterId = chapterId;
+        this.subjectId = subjectId;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.dimensionType = dimensionType;
+        this.dimensionName = dimensionName;
+        this.dimension = dimension;
+        this.subjectCode = subjectCode;
+        this.chapter = chapter;
+        this.qc = qc;
     }
     
     

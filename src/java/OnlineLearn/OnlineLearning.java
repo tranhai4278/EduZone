@@ -77,9 +77,12 @@ public class OnlineLearning extends HttpServlet {
         List<SubjectSetting> listS = Sdao.getChapterbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
+        Class c = Odao.getClassbyUser(uid).get(0);
+        int classid=c.getID();
         List<Quiz> listQuizzes = Odao.getQuizbySubject(id);
         request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("detail", s);
+        request.setAttribute("classid", classid);
         request.setAttribute("listC", listS);
         request.setAttribute("listClass", listClass);
         request.getRequestDispatcher("onlineLearn.jsp").forward(request, response);
@@ -110,6 +113,7 @@ public class OnlineLearning extends HttpServlet {
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
         List<Quiz> listQuizzes = Odao.getQuizbySubject(id);
+
         request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("detail", s);
         request.setAttribute("classid", classid);

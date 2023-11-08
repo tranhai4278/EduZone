@@ -13,9 +13,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Lesson;
 import model.SubjectSetting;
+import model.User;
 
 /**
  *
@@ -46,6 +48,7 @@ public class ChapterLesson extends HttpServlet {
         for (Lesson s : listL) {
             out.println(" <li>\n"
                     + "     <a onclick=\"getLesson(" + cid + "," + s.getLessonId() + " )\" >" + s.getTitle() + " </a>\n"
+                            
                     + "     </li>");
         }
     }
@@ -76,15 +79,20 @@ public class ChapterLesson extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
+        int uid = u.getUserId();
         OnlineLearningDAO Odao = new OnlineLearningDAO();
-        String id = request.getParameter("cid");
+        int cid = Integer.parseInt(request.getParameter("cid"));
         int lid = Integer.parseInt(request.getParameter("lid"));
         ManagerDAO dao = new ManagerDAO();
-        int cid = Integer.parseInt(id);
         SubjectSetting ss = dao.getSubjectSeting(cid);
         Lesson s = Odao.getLessonbyId(lid);
         PrintWriter out = response.getWriter();
-        out.println("<div class=\"row\">\n"
+        if(s.getCreateBy() == uid){
+             out.println(" <a class=\"btn\"  type=\"button\" style=\"float: right;\" onclick=\"deleteLesson("+s.getClassId()+","+ss.getSubjectId()+","+lid+")\">Delete</a> ");
+        }
+        out.println( "<div class=\"row\">\n"
                 + "                                <div class=\"col-12\">\n"
                 + "                                    <div class=\"ml-auto\">\n"
                 + "                                        <h1>" + ss.getSettingName() + "</h1>\n"

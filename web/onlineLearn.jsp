@@ -67,7 +67,7 @@
 
         <header class="ttr-header">
             <div class="ttr-header-wrapper">
-                <!--sidebar menu toggler start -->
+
                 <div class="ttr-toggle-sidebar ttr-material-button">
                     <i class="ti-close ttr-open-icon"></i>
                     <i class="ti-menu ttr-close-icon"></i>
@@ -121,6 +121,14 @@
         <%@include file="subject-header.jsp" %> 
 
         <main class="ttr-wrapper">
+            <c:if test="${not empty requestScope.successMessage}">
+                <div class="alert alert-success" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.successMessage}
+                </div>
+            </c:if>
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">${detail.subjectName}</h4>
@@ -131,8 +139,9 @@
                 </div>
                 <div class="col-lg-12 m-b30">
                     <div class="widget-box">
+
                         <div class="widget-inner" id="chapter">
-                            <h4>${detail.description}</h4>
+                            <h4>${detail.description}</h4> 
                         </div>
                     </div>
                 </div>
@@ -159,25 +168,19 @@
             }
         </script>
         <script>
-            function getType(selectElement) {
-                var type = selectElement.value;
-                if (type === "Video") {
-                    $('#videoSection').show();
-                    $('#quizSection').hide();
-                    $('#fileSection').hide();
-                } else if (type === "Quiz") {
-                    $('#videoSection').hide();
-                    $('#quizSection').show();
-                    $('#fileSection').hide();
-                } else if (type === "Assignment") {
-                    $('#videoSection').hide();
-                    $('#quizSection').hide();
-                    $('#fileSection').show();
-                } else {
-                    $('#videoSection').hide();
-                    $('#quizSection').hide();
-                    $('#fileSection').hide();
+            setTimeout(function () {
+                var notificationMessage = document.getElementById("notificationMessage");
+                if (notificationMessage) {
+                    notificationMessage.style.display = "none";
                 }
+            }, 5000);
+        </script>
+        <script>
+            function deleteLesson(cid, sid, lid) {
+                if (confirm('Are you sure?'))
+                    window.location.href = 'extraLesson?cid=' + cid + '&sid=' + sid + '&lid=' + lid;
+                else
+                    checkbox.checked = !status;
             }
         </script>
         <div class="ttr-overlay"></div>

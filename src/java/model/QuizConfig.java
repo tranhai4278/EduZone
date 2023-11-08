@@ -24,6 +24,13 @@ public class QuizConfig {
         this.numberOfQuestion = numberOfQuestion;
     }
 
+    public QuizConfig(int quizId, int settingId, int numberOfQuestion) {
+        this.quizId = quizId;
+        this.settingId = settingId;
+        this.numberOfQuestion = numberOfQuestion;
+    }
+
+    
     public QuizConfig(int numberOfQuestion) {
         this.numberOfQuestion = numberOfQuestion;
     }

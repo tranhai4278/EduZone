@@ -164,7 +164,7 @@
                                                     <td class="col-md-1" style="text-align: center">${q.qr.totalTime}</td>
                                                     <td class="col-md-1" style="text-align: center">${q.qr.correctCount}</td>
                                                     <td class="col-md-1" style="text-align: center">
-                                                        <button >Retake</button>
+                                                        <button >Take Quiz</button>
                                                     </td>
                                                 </tr>  
                                             </c:forEach>

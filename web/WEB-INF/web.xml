@@ -284,10 +284,14 @@
     <servlet>
         <servlet-name>ExtraLesson</servlet-name>
         <servlet-class>OnlineLearn.ExtraLesson</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>classGradeList</servlet-name>
         <servlet-class>Manager.controller.classGradeList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteComment</servlet-name>
+        <servlet-class>Manager.controller.deleteComment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewPacticeQuiz</servlet-name>
@@ -532,10 +536,14 @@
     <servlet-mapping>
         <servlet-name>ExtraLesson</servlet-name>
         <url-pattern>/extraLesson</url-pattern>
-        </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>classGradeList</servlet-name>
         <url-pattern>/classGradeList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteComment</servlet-name>
+        <url-pattern>/deleteComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NewPacticeQuiz</servlet-name>

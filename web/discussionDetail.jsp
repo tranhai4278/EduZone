@@ -153,6 +153,11 @@
             .description img {
                 height: 350px;
             }
+            
+            .comment-content img {
+                max-height: 250px;
+                max-width: 400px;
+            }
 
         </style>
     </head>
@@ -228,7 +233,7 @@
                                                 <p>${c.getComment()}</p>
                                             </div>
                                             <div style="float: right; margin-right: 10px;">
-                                                <a href="#">Delete</a>
+                                                <a href="deleteComment?discussionId=${discussionId}&commentId=${c.getCommentId()}">Delete</a>
                                             </div>
                                         </div>
                                         <!--<div class="reply">

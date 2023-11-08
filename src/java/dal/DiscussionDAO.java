@@ -176,5 +176,16 @@ public class DiscussionDAO extends MySqlConnection {
             e.printStackTrace(); // Handle the exception properly, e.g., log it or throw a custom exception
         }
     }
+    
+    public void deleteComment(int commentId) {
+        String sql = "DELETE FROM comment WHERE comment_id = " + commentId + "";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception properly, e.g., log it or throw a custom exception
+        }
+    }
 
 }

@@ -67,9 +67,6 @@ public class LoginGoogleHandler extends HttpServlet {
             session.setAttribute("user", user);
             response.sendRedirect("home");
         }
-     
-            
-
     }
 
     public static String getToken(String code) throws ClientProtocolException, IOException {

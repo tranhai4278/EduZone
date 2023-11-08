@@ -69,11 +69,9 @@ public class PracticeQuiz extends HttpServlet {
         System.out.println(sid);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        System.out.println(user.getUserId());
         int userId = user.getUserId();
         QuizDAO qd = new QuizDAO();
         List<Quiz> listq = qd.getAllQuizPractice(userId, sid);
-        System.out.println(listq);
         AdminDAO dao = new AdminDAO();
         ManagerDAO Sdao = new ManagerDAO();
         SubjectSettingDAO ssdao = new SubjectSettingDAO();

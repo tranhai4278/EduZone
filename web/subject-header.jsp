@@ -166,17 +166,17 @@
                             <a onclick="getChapter(${s.settingId}, ${classid})" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-book"></i></span>
                                 <span class="ttr-label">${s.settingName}</span>
-                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
+                                <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i> </span>
                             </a>
                             <ul id="lesson_${s.settingId}">
-
+                                
                             </ul>
                         </li>
                     </c:forEach>
                     <c:if test="${sessionScope.user.roleId != 4}">
                         <li>
                             <a href="#" class="ttr-material-button" data-bs-toggle="modal" data-bs-target="#lessonModal">
-                                <span class="ttr-icon"><i class="ti-"></i></span>
+                                <span class="ttr-icon"><i class="ti-plus"></i></span>
                                 <span class="ttr-label">New Lesson</span>
                             </a>
                         </li>
@@ -188,7 +188,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="discussionList?subjectId=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-comments"></i></span>
                             <span class="ttr-label">Discussion</span>
                         </a>
@@ -196,11 +196,11 @@
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-file"></i></span>
-                            <span class="ttr-label">Assigment</span>
+                            <span class="ttr-label">Assignment</span>
                         </a>
                     </li>
                     <li>
-                        <a href="practiceQuiz.jsp" class="ttr-material-button">
+                        <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                             <span class="ttr-label">Practice Quizzes</span>
                         </a>
@@ -218,7 +218,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="edit-profile m-b30" action="extraLesson" method="get">
+                    <form class="edit-profile m-b30" action="extraLesson" method="post">
                         <input hidden="" name="sid" value="${detail.subjectId}" />
                         <input hidden="" name="cid" value="${classid}" />
 
@@ -244,15 +244,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-6">
-                                <label class="col-form-label">Status* </label>
-                                <div>
-                                    <select name="status" required="true">
-                                        <option value="0">Unpublished</option>
-                                        <option value="1">Published</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group col-12">
                                 <label class="col-form-label">Lesson title* </label>
                                 <div>
@@ -266,7 +257,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-12" id="quizSection">
-                                <label class="col-form-label">Quiz</label>
+                                <div>
+                                    <label class="col-form-label">Quiz</label>
+                                </div>
                                 <div>
                                     <select name="quiz">
                                         <c:forEach var="quiz"  items="${listQuizzes}" >
@@ -274,12 +267,34 @@
                                         </c:forEach>
                                     </select> 
                                 </div>
+                                <div>
+                                    <label class="col-form-label">Start Date</label>
+                                    <input type="date" name="sdate" />
+                                </div>
+                                <div>
+                                    <label class="col-form-label">End Date</label>
+                                    <input type="date" name="edate" />
+                                </div>
                             </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Display Order<span style="color: red">*</span></label>
+                                <div>
+                                    <input class="form-control" type="number"  name="displayOrder" required maxlength="11" >
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+
+                                <label class="col-form-label">Status</label>
+                                <div class="form-check form-switch">
+                                    <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
+                                </div>
+                            </div>
+
                             <div>
-                                <div class="form-group col-10" id="fileSection">
+                                <div class="form-group col-12" id="fileSection">
                                     <label class="col-form-label">File attachment</label>
                                     <div>
-                                        <input class="form-control" type="file" name="file" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required>
+                                        <input class="form-control" type="file" name="file" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx">
                                     </div>
                                 </div>
                             </div>
@@ -291,8 +306,8 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn">Add</button>
-                                <button type="reset" class="btn-secondry">Cancel</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" onclick="setSellDate()" class="btn">Add</button>
                             </div>
                         </div>
                     </form>
@@ -301,6 +316,28 @@
             </div>
         </div>
     </div>
+    <script>
+        function getType(selectElement) {
+            var type = selectElement.value;
+            if (type === "Video") {
+                $('#videoSection').show();
+                $('#quizSection').hide();
+                $('#fileSection').hide();
+            } else if (type === "Quiz") {
+                $('#videoSection').hide();
+                $('#quizSection').show();
+                $('#fileSection').hide();
+            } else if (type === "Assignment") {
+                $('#videoSection').hide();
+                $('#quizSection').hide();
+                $('#fileSection').show();
+            } else {
+                $('#videoSection').hide();
+                $('#quizSection').hide();
+                $('#fileSection').hide();
+            }
+        }
+    </script>
     <script>
         function getChapter(cid, classid) {
             console.log(cid);

@@ -24,7 +24,7 @@ public class OnlineLearningDAO extends MySqlConnection {
 
     public List<Lesson> getLessonbyChapter(int sid, int classid) {
         List<Lesson> list = new ArrayList<>();
-        String sql = " SELECT * FROM `lesson` WHERE `chapter_id`=? and (class_id is null or class_id =?)";
+        String sql = " SELECT * FROM `lesson` WHERE `chapter_id`=? and (class_id is null or class_id =?) ORDER BY `lesson`.`display_order` ASC";
         try {
             statement = connection.prepareStatement(sql);
             statement.setInt(1, sid);
@@ -229,13 +229,23 @@ public class OnlineLearningDAO extends MySqlConnection {
             statement.setString(7, s.getFile());
             statement.setBoolean(8, s.isStatus());
             statement.setString(9, s.getDescription());
-            statement.setTimestamp(10, (s.getUpdateAt().getTime()));
-            statement.setTimestamp(11, (s.getUpdateAt().getTime()));
+            statement.setTimestamp(10,  new Timestamp(s.getUpdateAt().getTime()));
+            statement.setTimestamp(11,  new Timestamp(s.getUpdateAt().getTime()));
             statement.setInt(12, s.getDisplayOrder());
             statement.setTimestamp(13, new Timestamp(s.getUpdateAt().getTime()));
             statement.setInt(14, s.getUpdateBy());
             statement.setTimestamp(15, new Timestamp(s.getCreateAt().getTime()));
             statement.setInt(16, s.getUpdateBy());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+
+        }
+    }
+     public void deleteExtraLesson(int lid) {
+        String sql = "DELETE FROM `lesson` WHERE `lesson_id`=?";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, lid);
             statement.executeUpdate();
         } catch (SQLException e) {
 

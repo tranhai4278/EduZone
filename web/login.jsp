@@ -56,9 +56,10 @@
                                     <div class="d-flex">
                                         <!--<a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>-->
                                         <a class="btn flex-fill m-l5 google-plus" 
-                                           href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/eduzone/LoginGoogleHandler&response_type=code
-                                           &client_id=873369314493-0633objgah4ms59h8cihg92v1lphq2am.apps.googleusercontent.com&approval_prompt=force">
-                                            <i class="fa fa-google-plus"></i>Google Plus</a>
+                                           <a class="btn flex-fill m-l5 google-plus" 
+                                                   href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/eduzone/LoginGoogleHandler&response_type=code
+                                                   &client_id=873369314493-0633objgah4ms59h8cihg92v1lphq2am.apps.googleusercontent.com&approval_prompt=force">
+                                                    <i class="fa fa-google-plus"></i>Google Plus</a>
                                     </div>
                                 </div>
                             </div>

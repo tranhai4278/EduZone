@@ -18,14 +18,15 @@
         <meta name="author" content="" />
         <meta name="robots" content="" />
 
-        <!-- DESCRIPTION -->
         <meta name="description" content="EduZone : Education HTML Template" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-        <!-- OG -->
         <meta property="og:title" content="EduZone : Education HTML Template" />
         <meta property="og:description" content="EduZone : Education HTML Template" />
         <meta property="og:image" content="" />
         <meta name="format-detection" content="telephone=no">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- FAVICONS ICON ============================================= -->
         <link rel="icon" href="../error-404.html" type="image/x-icon" />
@@ -58,6 +59,15 @@
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
         <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
     </head>
+    <script>
+        $(document).ready(function () {
+            // Ẩn toàn bộ các thông tin khi trang tải
+
+            $('#videoSection').hide();
+            $('#quizSection').hide();
+            $('#fileSection').hide();
+        });
+    </script>
 
     <header class="ttr-header">
         <div class="ttr-header-wrapper">
@@ -132,49 +142,6 @@
                         <i class="ti-arrow-left"></i>
                     </div>
                 </div>
-                <!-- side menu logo end -->
-                <!-- sidebar menu start -->
-                <nav class="ttr-sidebar-navi">
-                    <ul>
-                        <c:forEach var="s" items="${listC}" >
-                            <li>
-                                <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
-                                    <span class="ttr-icon"><i class="ti-book"></i></span>
-                                    <span class="ttr-label">${s.settingName}</span>
-                                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                </a>
-                                <ul id="lesson">
-
-                                </ul>
-                            </li>
-                        </c:forEach>
-
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
-                                <span class="ttr-label">Grades</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-comments"></i></span>
-                                <span class="ttr-label">Discussion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assignment" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assignment</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                                <span class="ttr-label">Practice Quizzes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             <nav class="ttr-sidebar-navi">
                 <ul>
@@ -196,7 +163,7 @@
                     </form>
                     <c:forEach var="s" items="${listC}" >
                         <li>
-                            <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
+                            <a onclick="getChapter(${s.settingId}, ${classid})" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-book"></i></span>
                                 <span class="ttr-label">${s.settingName}</span>
                                 <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
@@ -206,7 +173,14 @@
                             </ul>
                         </li>
                     </c:forEach>
-
+                    <c:if test="${sessionScope.user.roleId != 4}">
+                        <li>
+                            <a href="#" class="ttr-material-button" data-bs-toggle="modal" data-bs-target="#lessonModal">
+                                <span class="ttr-icon"><i class="ti-"></i></span>
+                                <span class="ttr-label">New Lesson</span>
+                            </a>
+                        </li>
+                    </c:if>
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
@@ -214,7 +188,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="discussionList?subjectId=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-comments"></i></span>
                             <span class="ttr-label">Discussion</span>
                         </a>
@@ -222,11 +196,11 @@
                     <li>
                         <a href="#" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-file"></i></span>
-                            <span class="ttr-label">Assigment</span>
+                            <span class="ttr-label">Assignment</span>
                         </a>
                     </li>
                     <li>
-                        <a href="practiceQuiz.jsp" class="ttr-material-button">
+                        <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
                             <span class="ttr-label">Practice Quizzes</span>
                         </a>
@@ -236,14 +210,106 @@
         </div>
     </div>
     <!-- header end -->
+    <div class="modal fade" id="lessonModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Lesson<span style="color: red">*</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-profile m-b30" action="extraLesson" method="get">
+                        <input hidden="" name="sid" value="${detail.subjectId}" />
+                        <input hidden="" name="cid" value="${classid}" />
+
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Chapter* </label>
+                                <div>
+                                    <select name="chapter" required="true">
+                                        <c:forEach var="c"  items="${listC}">
+                                            <option value="${c.settingId}">${c.settingName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Lesson type*</label>
+                                <div>
+                                    <select name="type" id="lessonType" required="true" onchange="getType(this)">
+                                        <option value="0" >Choose lesson type</option>
+                                        <option value="Video" >Video</option>
+                                        <option value="Quiz">Quiz</option>
+                                        <option value="Assignment">Assignment</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="col-form-label">Status* </label>
+                                <div>
+                                    <select name="status" required="true">
+                                        <option value="0">Unpublished</option>
+                                        <option value="1">Published</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-12">
+                                <label class="col-form-label">Lesson title* </label>
+                                <div>
+                                    <input class="form-control" type="text" name="title" required="" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="form-group col-12" id="videoSection">
+                                <label class="col-form-label">Video link</label>
+                                <div>
+                                    <input class="form-control" type="text" name="video">
+                                </div>
+                            </div>
+                            <div class="form-group col-12" id="quizSection">
+                                <label class="col-form-label">Quiz</label>
+                                <div>
+                                    <select name="quiz">
+                                        <c:forEach var="quiz"  items="${listQuizzes}" >
+                                            <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
+                                        </c:forEach>
+                                    </select> 
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group col-10" id="fileSection">
+                                    <label class="col-form-label">File attachment</label>
+                                    <div>
+                                        <input class="form-control" type="file" name="file" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label class="col-form-label">Description</label>
+                                <div>
+                                    <textarea class="form-control" type="text" name="des" > </textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn">Add</button>
+                                <button type="reset" class="btn-secondry">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <script>
-        function getChapter(cid) {
+        function getChapter(cid, classid) {
             console.log(cid);
             $.ajax({
                 url: "/eduzone/chapterLesson",
                 type: "get",
                 data: {
-                    cid: cid
+                    cid: cid,
+                    classid: classid
                 },
                 success: function (data) {
                     var content = document.getElementById("lesson_" + cid);

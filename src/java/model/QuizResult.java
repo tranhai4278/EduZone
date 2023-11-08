@@ -30,6 +30,14 @@ public class QuizResult {
         this.totalTime = totalTime;
         this.correctCount = correctCount;
     }
+
+    public QuizResult(int userId, int quizId, Timestamp startTime, Time totalTime, int correctCount) {
+        this.userId = userId;
+        this.quizId = quizId;
+        this.startTime = startTime;
+        this.totalTime = totalTime;
+        this.correctCount = correctCount;
+    }
     
     
 

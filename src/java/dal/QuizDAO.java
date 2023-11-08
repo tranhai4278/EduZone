@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -429,7 +430,7 @@ public class QuizDAO extends MySqlConnection {
         }
         return null;
     }
-    
+
     public List<Quiz> getAllQuizPractice(int uid, int sid) {
         List<Quiz> quizList = new ArrayList<>();
         String sql = "SELECT q.quiz_id,q.quiz_name, ss.setting_type, ss.setting_name,qc.number_of_question, qr.start_time,qr.total_time,qr.correct_count FROM quiz q, quiz_config qc, subject_setting ss, quiz_result qr WHERE qr.quiz_id=q.quiz_id AND q.create_by = ? AND q.quiz_id= qc.quiz_id and qc.setting_id =ss.setting_id AND q.subject_id = ?";
@@ -459,14 +460,48 @@ public class QuizDAO extends MySqlConnection {
         return quizList;
     }
 
-    public static void main(String[] args) {
-        List<Quiz> list = new ArrayList<>();
-        QuizDAO dao = new QuizDAO();
-        list = dao.getAllQuizPractice(3, 2);
-        for (Quiz quiz : list) {
-            System.out.println(quiz);
+    public void addPracticeQuiz(Quiz quiz) {
+        String sql = "INSERT INTO `quiz`(`quiz_name`, `subject_id`, `chapter_id`, `quiz_type`, `number_of_question`, `status`, `quiz_time`, `create_at`, `create_by`, `update_at`, `update_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, quiz.getQuizName());
+            st.setInt(2, quiz.getSubjectId());
+            st.setInt(3, quiz.getChapterId());
+            st.setBoolean(4, quiz.isQuizType());
+            st.setInt(5, quiz.getNumberQuestion());
+            st.setBoolean(6, quiz.isStatus());
+            st.setInt(7, quiz.getQuizTime());
+            st.setTimestamp(8, new Timestamp(quiz.getCreateAt().getTime()));
+            st.setInt(9, quiz.getCreateBy());
+            st.setTimestamp(10, new Timestamp(quiz.getUpdateAt().getTime()));
+            st.setInt(11, quiz.getUpdateBy());
+            st.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    public void addQuizConfig(QuizConfig quizcf) {
+        String sql1 = "INSERT INTO `quiz_config`(`quiz_id`, `setting_id`, `number_of_question`) VALUES (?,?,?)";
+        try {
+            PreparedStatement s = connection.prepareStatement(sql1);
+            s.setInt(1, quizcf.getQuizId());
+            s.setInt(2, quizcf.getSettingId());
+            s.setInt(3, quizcf.getNumberOfQuestion());
+            s.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void main(String[] args) {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        Quiz q = dao.getQuiz("quiz_name", "Minhdq");
+        System.out.println(q.getQuizId());
+    }
 
 }

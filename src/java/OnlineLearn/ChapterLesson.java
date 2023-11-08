@@ -38,8 +38,9 @@ public class ChapterLesson extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         OnlineLearningDAO Odao = new OnlineLearningDAO();
         String id = request.getParameter("cid");
+        int classid = Integer.parseInt(request.getParameter("classid"));
         int cid = Integer.parseInt(id);
-        List<Lesson> listL = Odao.getLessonbyChapter(cid);
+        List<Lesson> listL = Odao.getLessonbyChapter(cid,classid);
         System.out.println(listL);
         PrintWriter out = response.getWriter();
         for (Lesson s : listL) {

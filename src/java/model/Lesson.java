@@ -32,6 +32,25 @@ public class Lesson {
     public Lesson() {
     }
 
+    public Lesson(String title, int chapterId, int classId, String lessonType, int quizId, String videoLink, String file, boolean status, String description, Date startDate, Date endDate, int displayOrder, Date createAt, int createBy, Date updateAt, int updateBy) {
+        this.title = title;
+        this.chapterId = chapterId;
+        this.classId = classId;
+        this.lessonType = lessonType;
+        this.quizId = quizId;
+        this.videoLink = videoLink;
+        this.file = file;
+        this.status = status;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.displayOrder = displayOrder;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+    }
+
     public Lesson(int lessonId, String title, int chapterId, int classId, String lessonType, int quizId, String videoLink, String file, boolean status, String description, Date startDate, Date endDate, int displayOrder, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.lessonId = lessonId;
         this.title = title;

@@ -7,6 +7,7 @@ package OnlineLearn;
 import dal.AdminDAO;
 import dal.ManagerDAO;
 import dal.OnlineLearningDAO;
+import dal.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -19,6 +20,7 @@ import model.Class;
 import model.Subject;
 import model.SubjectSetting;
 import model.User;
+import model.Quiz;
 
 /**
  *
@@ -75,6 +77,8 @@ public class OnlineLearning extends HttpServlet {
         List<SubjectSetting> listS = Sdao.getChapterbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
+        List<Quiz> listQuizzes = Odao.getQuizbySubject(id);
+        request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("detail", s);
         request.setAttribute("listC", listS);
         request.setAttribute("listClass", listClass);
@@ -101,9 +105,12 @@ public class OnlineLearning extends HttpServlet {
         OnlineLearningDAO Odao = new OnlineLearningDAO();
         AdminDAO dao = new AdminDAO();
         ManagerDAO Sdao = new ManagerDAO();
+        QuizDAO qdao = new QuizDAO();
         List<SubjectSetting> listS = Sdao.getChapterbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
+        List<Quiz> listQuizzes = Odao.getQuizbySubject(id);
+        request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("detail", s);
         request.setAttribute("classid", classid);
         request.setAttribute("listC", listS);

@@ -259,18 +259,18 @@ public class ManagerDAO extends MySqlConnection {
         return p;
     }
 
-    public List<Discussion> filterDiscussion(int subjectId, String title, int classId, int status, String sortBy, int page) {
+    public List<Discussion> filterDiscussion(int subjectId, int userId, String title, int status, String sortBy, int page) {
         List<Discussion> DiscussionList = new ArrayList<>();
 
         try {
             // Bắt đầu tạo câu truy vấn SQL
-            String query = "SELECT\n"
+            String query = "SELECT \n"
                     + "    d.discussion_id,\n"
                     + "    d.subject_id,\n"
-                    + "    c.class_code AS class_id,\n"
+                    + "    c.class_code AS class_code,\n"
                     + "    d.title,\n"
                     + "    d.description,\n"
-                    + "    u.full_name AS user_id,\n"
+                    + "    u.full_name AS full_name,\n"
                     + "    d.start_time,\n"
                     + "    d.end_time,\n"
                     + "    d.status,\n"
@@ -278,21 +278,17 @@ public class ManagerDAO extends MySqlConnection {
                     + "    d.create_by,\n"
                     + "    d.update_at,\n"
                     + "    d.update_by\n"
-                    + "FROM\n"
-                    + "    discussion d\n"
-                    + "LEFT JOIN class c ON d.class_id = c.class_id\n"
-                    + "LEFT JOIN user u ON d.user_id = u.user_id\n"
-                    + "WHERE\n"
-                    + "    1=1 AND\n"
-                    + "    d.subject_id = " + subjectId + "";
+                    + "FROM discussion AS d\n"
+                    + "INNER JOIN class AS c ON d.class_id = c.class_id\n"
+                    + "INNER JOIN class_student AS cs ON c.class_id = cs.class_id\n"
+                    + "INNER JOIN user AS u ON d.user_id = u.user_id\n"
+                    + "WHERE d.subject_id = " + subjectId + "\n"
+                    + "  AND cs.trainee_id = " + userId + "";
 
             if (title != null && !title.isEmpty()) {
                 query += " AND d.title LIKE ? ";
             }
 
-            if (classId > -1) {
-                query += " AND d.class_id = ?";
-            }
             if (status > -1) {
                 query += " AND d.status = ?";
             }
@@ -314,9 +310,6 @@ public class ManagerDAO extends MySqlConnection {
                 statement.setString(parameterIndex++, "%" + title + "%");
             }
 
-            if (classId > -1) {
-                statement.setInt(parameterIndex++, classId);
-            }
             if (status > -1) {
                 statement.setInt(parameterIndex++, status);
             }
@@ -394,18 +387,18 @@ public class ManagerDAO extends MySqlConnection {
         return totalPages;
     }
 
-    public int totalPageDiscussion(int subjectId, String title, int classId, int status, String sortBy, int page) {
+    public int totalPageDiscussion(int subjectId, int userId, String title, int status, String sortBy, int page) {
         int totalPages = 0;
 
         try {
             // Bắt đầu tạo câu truy vấn SQL
-            String query = "SELECT\n"
+            String query = "SELECT \n"
                     + "    d.discussion_id,\n"
                     + "    d.subject_id,\n"
-                    + "    c.class_code AS class_id,\n"
+                    + "    c.class_code AS class_code,\n"
                     + "    d.title,\n"
                     + "    d.description,\n"
-                    + "    u.full_name AS user_id,\n"
+                    + "    u.full_name AS user_full_name,\n"
                     + "    d.start_time,\n"
                     + "    d.end_time,\n"
                     + "    d.status,\n"
@@ -413,21 +406,17 @@ public class ManagerDAO extends MySqlConnection {
                     + "    d.create_by,\n"
                     + "    d.update_at,\n"
                     + "    d.update_by\n"
-                    + "FROM\n"
-                    + "    discussion d\n"
-                    + "LEFT JOIN class c ON d.class_id = c.class_id\n"
-                    + "LEFT JOIN user u ON d.user_id = u.user_id\n"
-                    + "WHERE\n"
-                    + "    1=1 AND\n"
-                    + "    d.subject_id = " + subjectId + "";
+                    + "FROM discussion AS d\n"
+                    + "INNER JOIN class AS c ON d.class_id = c.class_id\n"
+                    + "INNER JOIN class_student AS cs ON c.class_id = cs.class_id\n"
+                    + "INNER JOIN user AS u ON d.user_id = u.user_id\n"
+                    + "WHERE d.subject_id = " + subjectId + "\n"
+                    + "  AND cs.trainee_id = " + userId + "";
 
             if (title != null && !title.isEmpty()) {
                 query += " AND d.title LIKE ? ";
             }
 
-            if (classId > -1) {
-                query += " AND d.class_id = ?";
-            }
             if (status > -1) {
                 query += " AND d.status = ?";
             }
@@ -449,9 +438,6 @@ public class ManagerDAO extends MySqlConnection {
                 statement.setString(parameterIndex++, "%" + title + "%");
             }
 
-            if (classId > -1) {
-                statement.setInt(parameterIndex++, classId);
-            }
             if (status > -1) {
                 statement.setInt(parameterIndex++, status);
             }
@@ -483,7 +469,7 @@ public class ManagerDAO extends MySqlConnection {
 
         return totalPages;
     }
-    
+
     public void updateStatusDiscussion(int discussionId, boolean status) {
         String sql = "UPDATE discussion SET status = ? WHERE discussion_id = ?";
         try {
@@ -494,5 +480,12 @@ public class ManagerDAO extends MySqlConnection {
         } catch (SQLException e) {
 
         }
+    }
+    
+    public static void main(String[] args) {
+        ManagerDAO managerDao = new ManagerDAO();
+
+        List<Discussion> discussionList = managerDao.filterDiscussion(1, 2, "", -1, null, 1);
+        System.out.println(discussionList);
     }
 }

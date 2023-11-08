@@ -118,7 +118,7 @@
                                                                 <div style="width: 90%;">
                                                                     <select id="subject" name="subject" onchange="getClass(this);">
                                                                         <c:forEach var="subject" items="${subjectList}">
-                                                                            <option value="${subject.getSubjectId()}"
+                                                                            <option value="${subject.getSubjectId()}" 
                                                                                     <c:if test="${subject.getSubjectId() == subjectId}">
                                                                                         selected
                                                                                     </c:if>>${subject.getSubjectCode()}</option>
@@ -137,7 +137,7 @@
                                                                     <c:forEach var="c" items="${classList}">
                                                                         <option value="${c.getID()}"
                                                                                 <c:if test="${c.getID() == classId}">
-                                                                                </c:if>>${c.getClassCode()}</option>
+                                                                                </c:if>>${c.getclassCode()}</option>
                                                                     </c:forEach>
                                                                 </select>
                                                             </div>

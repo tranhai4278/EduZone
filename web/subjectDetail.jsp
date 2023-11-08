@@ -129,7 +129,6 @@
                                             </div>
                                             <div class="form-group col-6">
                                                 <input class="form-control" type="text" value="${detail.subjectId}" hidden="" name="id">
-
                                                 <label class="col-form-label">Subject code</label>
                                                 <div>
                                                     <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11">
@@ -353,7 +352,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="edit-profile m-b30" action="subjectDetail" method="post">
+                            <form class="edit-profile m-b30" action="extraLesson" method="post">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="ml-auto">

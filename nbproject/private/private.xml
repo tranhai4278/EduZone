@@ -6,6 +6,78 @@
         <group/>
 =======
         <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Admin/controller/SettingSubject.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/admin.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.min.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/header.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/User.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LogoutController.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Subject.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/autocomplete-subject-only.js</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/QuizDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Subject.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/QuizList.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Quiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/subjectList.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectList.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/SubjectSetting.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/EditSubjectSetting.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/subjectDetail.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject-setting.jsp</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/ManagerDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/QuestionDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/AddQuestionController.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionDetail.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/QuestionDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/AdminDAO.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/AddQuestionController.java</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionDetail.jsp</file>
+            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
+        </group>
+        <group>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -235,6 +307,7 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 1922bd7941c85c1d5c5b222540c0d48a0e6f1008
 =======
         <group>
@@ -318,5 +391,7 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
         </group>
 >>>>>>> a42901950df71a405d2604806cf39f7427d31692
+=======
+>>>>>>> 2d31fea8d5c8832e184931644788192343b88669
     </open-files>
 </project-private>

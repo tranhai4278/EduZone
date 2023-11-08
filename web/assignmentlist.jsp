@@ -121,8 +121,7 @@
                                             <tbody>
                                                 <c:forEach var="a" items="${data}">
                                                     <tr>
-                                                        <td>${a.title}</td>
-                                                        
+                                                        <td>${a.title}</td>                                                     
                                                         <td>
                                                             <a href="#" download="${a.submit_file}" onclick="showFileList('${a.submit_file}')">${a.submit_file}</a>                                                        </td>
                                                         <td>${a.mark}</td>

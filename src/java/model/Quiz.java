@@ -23,7 +23,8 @@ public class Quiz {
     private SubjectSetting ss;
     private QuizConfig qc;
     private QuizResult qr;
-
+    private int selected_anwer;
+    
     public Quiz() {
     }
 
@@ -43,6 +44,28 @@ public class Quiz {
         this.s = s;
         this.ss = ss;
     }
+
+    public Quiz(int quizId, String quizName, int subjectId, int chapterId, boolean quizType, int numberQuestion, boolean status, int quizTime, Date createAt, int createBy, Date updateAt, int updateBy, Subject s, SubjectSetting ss, QuizConfig qc, QuizResult qr, int selected_anwer) {
+        this.quizId = quizId;
+        this.quizName = quizName;
+        this.subjectId = subjectId;
+        this.chapterId = chapterId;
+        this.quizType = quizType;
+        this.numberQuestion = numberQuestion;
+        this.status = status;
+        this.quizTime = quizTime;
+        this.createAt = createAt;
+        this.createBy = createBy;
+        this.updateAt = updateAt;
+        this.updateBy = updateBy;
+        this.s = s;
+        this.ss = ss;
+        this.qc = qc;
+        this.qr = qr;
+        this.selected_anwer = selected_anwer;
+    }
+    
+
 
     public Quiz(String quizName, int subjectId, int chapterId, boolean quizType, int numberQuestion, boolean status, int quizTime, Date createAt, int createBy, Date updateAt, int updateBy) {
         this.quizName = quizName;

@@ -306,13 +306,10 @@
         <servlet-class>Manager.controller.classGradeList</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-
         <servlet-name>SearchAssignment</servlet-name>
         <servlet-class>User.controller.SearchAssignment</servlet-class>
     </servlet>
     <servlet>
-=======
         <servlet-name>classAddStudentServlet</servlet-name>
         <servlet-class>Class.controller.classAddStudentServlet</servlet-class>
     </servlet>
@@ -321,7 +318,6 @@
         <servlet-class>Class.controller.classRemoveStudentServlet</servlet-class>
         </servlet>
     <servlet>
->>>>>>> d7793408ab4b68818500bd51bf00546da206f439
         <servlet-name>deleteComment</servlet-name>
         <servlet-class>Manager.controller.deleteComment</servlet-class>
     </servlet>
@@ -590,12 +586,10 @@
         <url-pattern>/classGradeList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>SearchAssignment</servlet-name>
         <url-pattern>/searchAssignment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-=======
         <servlet-name>classAddStudentServlet</servlet-name>
         <url-pattern>/classaddstudent</url-pattern>
     </servlet-mapping>
@@ -604,7 +598,6 @@
         <url-pattern>/removestudent</url-pattern>
          </servlet-mapping>
     <servlet-mapping>
->>>>>>> d7793408ab4b68818500bd51bf00546da206f439
         <servlet-name>deleteComment</servlet-name>
         <url-pattern>/deleteComment</url-pattern>
     </servlet-mapping>

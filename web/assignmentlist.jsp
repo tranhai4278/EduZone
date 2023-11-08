@@ -112,7 +112,6 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Assignment</th>
-                                                    <th scope="col">Class</th>
                                                     <th scope="col">File</th>
                                                     <th scope="col">Mark</th>
                                                     <th scope="col">Status</th>
@@ -123,7 +122,7 @@
                                                 <c:forEach var="a" items="${data}">
                                                     <tr>
                                                         <td>${a.title}</td>
-                                                        <td>${a.classCode}</td>
+                                                        
                                                         <td>
                                                             <a href="#" download="${a.submit_file}" onclick="showFileList('${a.submit_file}')">${a.submit_file}</a>                                                        </td>
                                                         <td>${a.mark}</td>
@@ -131,7 +130,7 @@
                                                             ${a.status == true ? "Submitted" : "Not Submitted"}
                                                         </td>
                                                         <td>
-                                                            <a href="assignmentdetail?assignmentId=${a.asignment_id}&courseId=${a.class_id}&userId=${a.trainee_id}" class="btn btn-primary">Assignment Detail</a>
+                                                            <a href="assignmentdetail?assignmentId=${a.asignment_id}&classId=${a.class_id}&userId=${a.trainee_id}&sid=${sid}" class="btn btn-primary">Assignment Detail</a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

@@ -75,7 +75,6 @@ public class OnlineLearning extends HttpServlet {
         List<SubjectSetting> listS = Sdao.getChapterbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
-        request.setAttribute("sid", sid);
         request.setAttribute("detail", s);
         request.setAttribute("listC", listS);
         request.setAttribute("listClass", listClass);

@@ -5,6 +5,7 @@
 package Assignment.controller;
 
 import DTO.AssignmentDTO;
+import dal.AdminDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,9 +14,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Assignment;
 import dal.AssignmentDAO;
+import dal.OnlineLearningDAO;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
+import model.Subject;
 import model.User;
+import model.Class;
 
 /**
  *
@@ -28,13 +33,25 @@ public class assignmentDetailController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int courseId = Integer.parseInt(request.getParameter("courseId"));
+        int uid = Integer.parseInt(request.getParameter("userId"));
+        int classId = Integer.parseInt(request.getParameter("classId"));
         int assignmentId = Integer.parseInt(request.getParameter("assignmentId"));
+        int cid = Integer.parseInt(request.getParameter("classId"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
 
         AssignmentDAO assDAO = new AssignmentDAO();
-        AssignmentDTO ass = assDAO.getAssignmentDetail(assignmentId, courseId, userId);
+
+        OnlineLearningDAO Odao = new OnlineLearningDAO();
+        AdminDAO dao = new AdminDAO();
+        Subject s = dao.getSubjectbyId(sid);
+        List<Class> listClass = Odao.getClassbyUser(uid);
+        AssignmentDTO ass = assDAO.getAssignmentDetail(assignmentId, classId, uid);
         request.setAttribute("data", ass);
+        request.setAttribute("cid", classId);
+        request.setAttribute("sid", sid);
+        request.setAttribute("detail", s);
+        request.setAttribute("listClass", listClass);
+
         request.getRequestDispatcher("assignmentDetail.jsp").forward(request, response);
     }
 
@@ -51,16 +68,36 @@ public class assignmentDetailController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
-        int userId = Integer.parseInt(request.getParameter("traineeID"));
+        int uid = Integer.parseInt(request.getParameter("traineeID"));
         int classId = Integer.parseInt(request.getParameter("classId"));
         int assignmentId = Integer.parseInt(request.getParameter("assignmentTitle"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
         String fileSubmit = request.getParameter("submitFile");
-        System.out.println(fileSubmit);
 
+        OnlineLearningDAO Odao = new OnlineLearningDAO();
+        AdminDAO dao = new AdminDAO();
         AssignmentDAO assDAO = new AssignmentDAO();
 
-        // Update the database
-        assDAO.submitAssignment(assignmentId, userId, classId, fileSubmit);
+        if (fileSubmit.isEmpty() || fileSubmit == null) {
+            AssignmentDTO ass = assDAO.getAssignmentDetail(assignmentId, classId, uid);
+            Subject s = dao.getSubjectbyId(sid);
+            List<Class> listClass = Odao.getClassbyUser(uid);
+            request.setAttribute("data", ass);
+            request.setAttribute("cid", classId);
+            request.setAttribute("sid", sid);
+            request.setAttribute("detail", s);
+            request.setAttribute("listClass", listClass);
+
+            request.getRequestDispatcher("assignmentDetail.jsp").forward(request, response);
+        } else {
+
+            Subject s = dao.getSubjectbyId(sid);
+            List<Class> listClass = Odao.getClassbyUser(uid);
+
+            System.out.println(fileSubmit);
+
+            // Update the database
+            assDAO.submitAssignment(assignmentId, uid, classId, fileSubmit);
 
 //        // Create JavaScript code to upload the file to Firebase
 //        String javascriptCode = "document.getElementById('fileInput').files[0] = new File(['" + fileSubmit + "'], '" + fileSubmit + "');"
@@ -69,9 +106,16 @@ public class assignmentDetailController extends HttpServlet {
 //        response.setContentType("text/html");
 //        PrintWriter out = response.getWriter();
 //        out.println("<html><head><script>" + javascriptCode + "</script></head><body></body></html>");
-        // Forward the request to the assignmentlist.jsp page
-        ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails();
-        request.setAttribute("data", data);
-        request.getRequestDispatcher("assignmentlist.jsp").forward(request, response);
+            // Forward the request to the assignmentlist.jsp page
+            ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails(sid, classId, uid);
+
+            request.setAttribute("data", data);
+            request.setAttribute("cid", classId);
+            request.setAttribute("sid", sid);
+            request.setAttribute("detail", s);
+            request.setAttribute("listClass", listClass);
+
+            request.getRequestDispatcher("assignmentlist.jsp").forward(request, response);
+        }
     }
 }

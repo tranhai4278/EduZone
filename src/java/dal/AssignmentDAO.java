@@ -122,7 +122,7 @@ public class AssignmentDAO extends MySqlConnection {
 
     public static void main(String[] args) {
         AssignmentDAO dao = new AssignmentDAO();
-        ArrayList<AssignmentDTO> list = dao.getAssignmentsWithDetails();
+        ArrayList<AssignmentDTO> list = dao.getAssignmentsWithDetails(1, 1, 3);
         for (AssignmentDTO a : list) {
 //        AssignmentDTO a = dao.getAssignmentDetail(4, 1, 3);
             System.out.println(a.getTitle());
@@ -176,32 +176,36 @@ public class AssignmentDAO extends MySqlConnection {
         }
     }
 
-    public ArrayList getAssignmentsWithDetails() {
+    public ArrayList getAssignmentsWithDetails(int subjectId, int classId, int traineeId) {
         ArrayList<AssignmentDTO> data = new ArrayList<>();
 
         String sql = "SELECT assignment.*, class.class_code, class.subject_id, lesson.title "
                 + "FROM assignment "
                 + "LEFT JOIN class ON assignment.class_id = class.class_id "
-                + "LEFT JOIN lesson ON assignment.assigment_id = lesson.lesson_id ";
+                + "LEFT JOIN lesson ON assignment.assigment_id = lesson.lesson_id WHERE class.subject_id = ? AND assignment.class_id = ? AND assignment.trainee_id = ?";
              
 
-        try (
-                 PreparedStatement stmt = connection.prepareStatement(sql);  ResultSet rs = stmt.executeQuery()) {
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, subjectId);
+            statement.setInt(2, classId);
+            statement.setInt(3, traineeId);
+            result = statement.executeQuery();
 
-            while (rs.next()) {
+            while (result.next()) {
 
-                int assigment_id = rs.getInt(1);
-                int class_id = rs.getInt(2);
-                int trainee_id = rs.getInt(3);
-                String submit_file = rs.getString(4);
-                int mark = rs.getInt(5);
-                int weight = rs.getInt(6);
-                boolean status = rs.getBoolean(7);
-                String comment = rs.getString(8);
-                Date submitTime = rs.getDate(9);
-                String class_code = rs.getString(10);
-                int subject_id = rs.getInt(11);
-                String title = rs.getString(12);
+                int assigment_id = result.getInt(1);
+                int class_id = result.getInt(2);
+                int trainee_id = result.getInt(3);
+                String submit_file = result.getString(4);
+                int mark = result.getInt(5);
+                int weight = result.getInt(6);
+                boolean status = result.getBoolean(7);
+                String comment = result.getString(8);
+                Date submitTime = result.getDate(9);
+                String class_code = result.getString(10);
+                int subject_id = result.getInt(11);
+                String title = result.getString(12);
 
                 AssignmentDTO a = new AssignmentDTO(assigment_id, class_id, trainee_id, submit_file, mark, weight, status, comment, submitTime, class_code, subject_id, title);
                 data.add(a);

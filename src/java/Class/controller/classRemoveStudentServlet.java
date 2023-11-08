@@ -5,6 +5,7 @@
 
 package Class.controller;
 
+import dal.Class_TraineeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -66,7 +67,21 @@ public class classRemoveStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+       String selectedStudentIds = request.getParameter("selectedStudentIds");
+        int classID = Integer.parseInt(request.getParameter("Classcode"));
+
+        if (selectedStudentIds != null && !selectedStudentIds.isEmpty()) {
+            String[] idsArray = selectedStudentIds.split(",");
+            Class_TraineeDAO classTraineeDAO = new Class_TraineeDAO();
+
+            // Loop through the selected student IDs and remove them from the class
+            for (String id : idsArray) {
+                int traineeID = Integer.parseInt(id);
+                classTraineeDAO.removeTrainees(classID, traineeID);
+            }
+        }
+        
+        response.sendRedirect("classstudentlist?code="+classID);
     }
 
     /** 

@@ -28,10 +28,14 @@ public class assignmentListController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
+        int ClassID = Integer.parseInt(request.getParameter("Class"));
+        int SubjectID = Integer.parseInt(request.getParameter("Subject"));
         int userID = u.getUserId();
         AssignmentDAO assDAO = new AssignmentDAO();
-        ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails();
+        ArrayList<AssignmentDTO> data = assDAO.getAssignmentsWithDetails(SubjectID, ClassID, userID);
         request.setAttribute("data", data);
+        request.setAttribute("cid", ClassID);
+        request.setAttribute("sid", SubjectID);
         request.getRequestDispatcher("assignmentlist.jsp").forward(request, response);
     }
 

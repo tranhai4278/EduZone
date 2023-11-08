@@ -89,18 +89,18 @@
                                         <form class="edit-profile" action="assignmentdetail" method="post">
                                             <!-- Trainee ID -->
                                             <div class="form-group row" hidden>
-                                                <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Trainee ID</label>
-                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                
                                                     <input class="form-control" type="text" name="traineeID" value="<c:out value="${data.trainee_id}"/>">
                                                     <input class="form-control" type="text" name="classId" value="<c:out value="${data.class_id}"/>" readonly>
                                                     <input class="form-control" type="text" name="assignmentTitle" value="<c:out value="${data.asignment_id}"/>" readonly>
-                                                </div>
+                                                    <input class="form-control" type="text" name="sid" value="<c:out value="${sid}"/>">
+                                                
                                             </div>
                                             <!-- Assignment Title -->
                                             <div class="form-group row">
                                                 <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Assignment Title</label>
                                                 <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                    <c:out value="${data.title}"/>" 
+                                                    <c:out value="${data.title}"/>
                                                 </div>
                                             </div>
                                             <!-- Class Code -->
@@ -135,7 +135,7 @@
                                                             <!-- Return to Assignment List Button -->
                                                             <input type="file"  name="submitFile" class="btn btn-secondry">
                                                             <input type="submit" class="btn btn-primary" value="Submit">
-                                                            <button type="button" class="btn-secondry" onclick="window.location.href = 'assignmentlist'">Return to Assignment List</button>
+                                                            <button type="button" class="btn-secondry" onclick="window.location.href = 'assignmentlist?Class=${cid}&Subject=${sid}'">Return to Assignment List</button>
                                                         </div>
                                                     </div>
                                                 </div>

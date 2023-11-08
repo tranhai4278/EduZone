@@ -292,10 +292,18 @@
     <servlet>
         <servlet-name>classTrainerListServlet</servlet-name>
         <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
-         </servlet>
+    </servlet>
     <servlet>
         <servlet-name>classGradeList</servlet-name>
         <servlet-class>Manager.controller.classGradeList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classAddStudentServlet</servlet-name>
+        <servlet-class>Class.controller.classAddStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>classRemoveStudentServlet</servlet-name>
+        <servlet-class>Class.controller.classRemoveStudentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -544,10 +552,18 @@
     <servlet-mapping>
         <servlet-name>classTrainerListServlet</servlet-name>
         <url-pattern>/classtrainerlist</url-pattern>
-           </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>classGradeList</servlet-name>
         <url-pattern>/classGradeList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classAddStudentServlet</servlet-name>
+        <url-pattern>/classaddstudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>classRemoveStudentServlet</servlet-name>
+        <url-pattern>/removestudent</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

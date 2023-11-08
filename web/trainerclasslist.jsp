@@ -105,7 +105,7 @@
 
                                                     <td>
                                                         <form action="classlist" method="post">
-                                                            <input type="button" class="btn" onclick="location.href = 'classstudentlist?code=${classObj.class_id}';" value="Detail" /> 
+                                                            <input type="button" class="btn" onclick="location.href = 'classstudentlist?code=${classObj.class_id}';" value="Student List" /> 
                                                         </form>
                                                     </td>
                                                 </tr>

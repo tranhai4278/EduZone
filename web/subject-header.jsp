@@ -162,7 +162,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="assignmentlist" class="ttr-material-button">
+                            <a href="assignmentlist?Subject=${sid}&Class=${classid}" class="ttr-material-button">
                                 <span class="ttr-icon"><i class="ti-file"></i></span>
                                 <span class="ttr-label">Assignment</span>
                             </a>
@@ -220,7 +220,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="ttr-material-button">
+                        <a href="assignmentlist?Subject=${sid}&Class=${classid}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-file"></i></span>
                             <span class="ttr-label">Assigment</span>
                         </a>

@@ -226,6 +226,10 @@
         <servlet-class>OnlineLearn.Quiz</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PracticeQuiz</servlet-name>
+        <servlet-class>OnlineLearn.PracticeQuiz</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DashboardController</servlet-name>
         <servlet-class>User.controller.DashboardController</servlet-class>
     </servlet>
@@ -284,6 +288,10 @@
     <servlet>
         <servlet-name>classGradeList</servlet-name>
         <servlet-class>Manager.controller.classGradeList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPacticeQuiz</servlet-name>
+        <servlet-class>OnlineLearn.NewPacticeQuiz</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -466,6 +474,10 @@
         <url-pattern>/quiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PracticeQuiz</servlet-name>
+        <url-pattern>/practicequiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>DashboardController</servlet-name>
         <url-pattern>/dashboardController</url-pattern>
     </servlet-mapping>
@@ -524,6 +536,10 @@
     <servlet-mapping>
         <servlet-name>classGradeList</servlet-name>
         <url-pattern>/classGradeList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPacticeQuiz</servlet-name>
+        <url-pattern>/newpracticequiz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

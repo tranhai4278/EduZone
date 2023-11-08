@@ -48,12 +48,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="addPractieQuizForm" action="quizs" method="get" >
+                        <form id="addPractieQuizForm" action="newpracticequiz" method="post" >
                             <input type="text" name="action" style="display: none" value="addQuiz">
                             <!--Name-->
                             <div class="form-group" style="margin-top:10px; margin-top: 20px">
                                 <label for="name">Quiz Name:</label>
-                                <input type="text" class="form-control" id="nameInput" name="name">
+                                <input type="text" class="form-control" id="quiz_name" name="name">
                                 <div id="nameError" class="error"></div>
                             </div>
 
@@ -73,13 +73,13 @@
                                 <!--Duration-->
                                 <div class="col-md-6" style="margin-top:10px; margin-top: 20px">
                                     <label for="name">Duration:</label>
-                                    <input type="text" class="form-control" id="nameInput" name="name">
+                                    <input type="text" class="form-control" id="duration" name="duration">
                                     <div id="nameError" class="error"></div>
                                 </div>
                                 <!--NumOfQues-->
                                 <div class="col-md-6" style="margin-top:10px; margin-top: 20px">
                                     <label for="name">NumberOfQuestion:</label>
-                                    <input type="text" class="form-control" id="nameInput" name="name">
+                                    <input type="text" class="form-control" id="numOfQues" name="numOfQues">
                                     <div id="nameError" class="error"></div>
                                 </div>
                             </div>
@@ -88,27 +88,23 @@
 
                             <div class="form-group" id = "dimension">
                                 <div  style="margin-top:10px; margin-top: 20px">
-                                    <label for="dimentype">Choose a dimention type</label>
-                                    <select name="searchBySubject">
-                                        <option value="">dimention Type 1</option>
+                                    <label for="dimentype">Choose Question dimention</label>
+                                    <select name="dimName">
+                                        <c:forEach var="ss" items="${listss}">
+                                            <option value="${ss.getSettingName}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                                        </c:forEach>
                                     </select>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6" style="margin-top:10px; margin-top: 20px">
-                                        <label for="dimentype">Choose Question Dimention</label>
-                                        <select name="dimentionQues">
-                                            <option value="">dimention name 1</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
 
                             <div id = "chapter">
                                 <div class="row">
                                     <div class="col-md-6" style="margin-top:10px; margin-top: 20px">
-                                        <label for="chap">Choose Question Chapter</label>
+                                        <label for="chapName">Choose Question Chapter</label>
                                         <select name="chapques">
-                                            <option value="">chapter 1</option>
+                                            <c:forEach var="c" items="${listC}">
+                                            <option value="${c.settingName}">${c.settingName}</option>
+                                        </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -116,7 +112,7 @@
                         </form>
                     </div>
                     <div class="modal-footer" style="justify-content: flex-start">
-                        <button type="submit" class="btn btn-primary" form="addPractieQuizForm" onclick="validateForm()">Take Quiz</button>
+                        <button type="submit" class="btn btn-primary" form="addPractieQuizForm" onclick="validateForm()">Save Quiz</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -147,7 +143,7 @@
                     error += $(this).html();
                 });
                 if (error === '') {
-                    $('#addQuizForm').submit();
+                    $('#addPracticeQuizForm').submit();
                 } else {
                     event.preventDefault();
                 }

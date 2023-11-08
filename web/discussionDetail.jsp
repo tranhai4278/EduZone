@@ -183,6 +183,10 @@
                                     <h2 style="margin-left: 20px;">${title}</h2>
                                     <div class="description" style="margin-bottom: 20px;">${description}</div>
                                     <label><p style="margin-left: 30px; font-size: 16px;">Time: ${time}</p></label>
+                                    <br>
+                                    
+                                        <a href="editDiscussion?discussionId=${discussionId}" class="btn btn-primary"><i>Edit</i></a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -192,7 +196,7 @@
                                 <div class="mid">
                                     <div style="margin-top: 10px; margin-left: 10px;">
                                         <label for="summernote"><h4>Comment:</h4></label>
-                                        
+
                                         <form action="postComment" method="post" style="margin-left: 32px;">
                                             <input type="hidden" name="discussionId" value="${discussionId}" />
                                             <textarea id="summernote" name="comment"></textarea>

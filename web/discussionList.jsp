@@ -115,16 +115,13 @@
                                                             <th scope="col">Poster</th>
                                                             <th scope="col">Time</th>
                                                             <th scope="col">Status</th>
-                                                                
-                                                                <th scope="col">Action</th>
-                                                                
-
+                                                            <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <c:forEach var="d" items="${discussionList}" >
                                                             <tr>
-                                                                <td><a href="discussionDetail?discussionId=${d.getDiscussionId()}">${d.getTitle()}</a></td>
+                                                                <td>${d.getTitle()}</td>
                                                                 <td>${d.getUserName()}</td>
                                                                 <td>(${d.getFormattedStartTime()}) / (${d.getFormattedEndTime()})</td>
                                                                 <td>
@@ -132,14 +129,9 @@
                                                                         <input style="margin: 0" class="form-check-input" type="checkbox" ${d.isStatus() ? 'checked' : ''} onclick="updateStatus(${d.getDiscussionId()}, this)">
                                                                     </div>
                                                                 </td>
-                                                                
-                                                                    <td>
-                                                                        <a href="editDiscussion?discussionId=${d.getDiscussionId()}" class="tm-product-delete-link">
-                                                                            <i> Edit</i>
-                                                                        </a>
-                                                                    </td>
-                                                                
-
+                                                                <td>
+                                                                    <a href="discussionDetail?discussionId=${d.getDiscussionId()}"><i>Discuss</i></a>
+                                                                </td>
                                                             </tr>
                                                         </c:forEach>
                                                     </tbody>

@@ -61,6 +61,9 @@ public class discussionDetail extends HttpServlet {
         request.setAttribute("listC", listS);
         request.setAttribute("listClass", listClass);
         
+        request.setAttribute("dUserId", discussion.getUserId());
+        request.setAttribute("userId", userId);
+        
         request.setAttribute("discussionId", discussionId);
         request.setAttribute("subjectName", subjectName);
         request.setAttribute("subjectCode", subjectCode);

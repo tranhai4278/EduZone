@@ -436,8 +436,8 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-    
-   public ArrayList<Subject> getSubjectsByTrainer(int id) {
+
+    public ArrayList<Subject> getSubjectsByTrainer(int id) {
         ArrayList<Subject> subjects = new ArrayList<>();
         String sql = "SELECT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
                 + "FROM `class`c JOIN subject s ON c.subject_id = s.subject_id  WHERE c.trainer_id = ?";
@@ -481,8 +481,8 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-   
-   public ArrayList<Subject> getSubjectsByTrainee(int id) {
+
+    public ArrayList<Subject> getSubjectsByTrainee(int id) {
         ArrayList<Subject> subjects = new ArrayList<>();
         String sql = "SELECT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
                 + "FROM `class`c JOIN subject s ON c.subject_id = s.subject_id JOIN class_student cs ON c.class_id = cs.class_id WHERE cs.trainee_id = ?";
@@ -526,10 +526,10 @@ public class SubjectDAO extends MySqlConnection {
             return null;
         }
     }
-   
+
     public static void main(String[] args) {
         SubjectDAO dao = new SubjectDAO();
-        List<Subject> listS = dao.getSubjectsByTrainer(5);
+        List<Subject> listS = dao.getSubjectWithUserId(2);
         for (Subject s : listS) {
             System.out.println(s.getSubjectCode());
         }
@@ -553,4 +553,49 @@ public class SubjectDAO extends MySqlConnection {
         return null;
     }
 
+    public ArrayList getSubjectWithUserId(int userId) {
+        ArrayList<Subject> list = new ArrayList<>();
+        String sql = "SELECT *\n"
+                + "FROM subject s\n"
+                + "WHERE s.subject_id IN (\n"
+                + "    SELECT DISTINCT c.subject_id\n"
+                + "    FROM class_student cs\n"
+                + "    JOIN class c ON cs.class_id = c.class_id\n"
+                + "    WHERE cs.trainee_id = " + userId + ")";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int subject_id = result.getInt(1);
+                int manager_id = result.getInt(2);
+                String subject_name = result.getString(3);
+                String subject_code = result.getString(4);
+                String description = result.getString(5);
+                boolean status = result.getBoolean(6);
+                Date create_at = result.getDate(7);
+                int create_by = result.getInt(8);
+                Date update_at = result.getDate(9);
+                int update_by = result.getInt(10);
+                Subject subject = new Subject(
+                        subject_id,
+                        manager_id,
+                        subject_name,
+                        subject_code,
+                        description,
+                        status,
+                        create_at,
+                        create_by,
+                        update_at,
+                        update_by);
+                list.add(subject);
+            }
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

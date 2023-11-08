@@ -63,9 +63,9 @@
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
         <!-- header start -->
-        <%@include file="setting-header.jsp" %>
+        <%@include file="subject-header.jsp" %>
         <main class="ttr-wrapper">
-            
+
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Discussion List</h4>
@@ -88,24 +88,14 @@
                                                     <input value="${search}" name="search" type="text" id="filterSubject" placeholder="Search discussion" class="form-control" autocomplete="off" onchange="this.form.submit()">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <div class="filter-section">
-                                                        <select id="filterType" name="classCode" onchange="this.form.submit()">
-                                                            <option ${manager == -1 ? ' selected' : ' '} value="-1">Class</option>
-                                                            <c:forEach var="c" items="${classList}">
-                                                                <option ${classCode == c.getClassCode() ? ' selected' : ' '}  value="${c.getID()}">${c.getClassCode()}</option>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
                                                     <select id="filterStatus" name="status" onchange="this.form.submit()">
                                                         <option value="-1">Status</option>
                                                         <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
                                                         <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2 offset-md-4">
-                                                    <a href="addDiscussion" class="btn btn-primary">
+                                                <div class="col-md-2 offset-md-6">
+                                                    <a href="addDiscussion?subjectId=${subjectId}" class="btn btn-primary">
                                                         Create new Discussion
                                                     </a>
                                                 </div>
@@ -122,7 +112,6 @@
                                                                 <i style="position: absolute; right: 6px; top: 10px; color: #cccccc; cursor: pointer;" class="fa fa-caret-up ${orders eq 'title ASC' ? 'sort-active' : ''}" onclick="sortDatas('title ASC')"></i>
                                                                 <i style="position: absolute; right: 6px; top: 18px; color: #cccccc; cursor: pointer;" class="fa fa-caret-down ${orders eq 'title DESC' ? 'sort-active' : ''}" onclick="sortDatas('title DESC')"></i>
                                                             </th>
-                                                            <th scope="col">Class</th>
                                                             <th scope="col">Poster</th>
                                                             <th scope="col">Time</th>
                                                             <th scope="col">Status</th>
@@ -132,8 +121,7 @@
                                                     <tbody>
                                                         <c:forEach var="d" items="${discussionList}" >
                                                             <tr>
-                                                                <td><a href="discussionDetail?discussionId=${d.getDiscussionId()}">${d.getTitle()}</a></td>
-                                                                <td>${d.getClassCode()}</td>
+                                                                <td>${d.getTitle()}</td>
                                                                 <td>${d.getUserName()}</td>
                                                                 <td>(${d.getFormattedStartTime()}) / (${d.getFormattedEndTime()})</td>
                                                                 <td>
@@ -142,9 +130,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="editDiscussion?discussionId=${d.getDiscussionId()}" class="tm-product-delete-link">
-                                                                        <i> Edit</i>
-                                                                    </a>
+                                                                    <a href="discussionDetail?discussionId=${d.getDiscussionId()}"><i>Discuss</i></a>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>

@@ -109,13 +109,10 @@ public class OnlineLearning extends HttpServlet {
         List<SubjectSetting> listS = Sdao.getChapterbySubject(id);
         Subject s = dao.getSubjectbyId(id);
         List<Class> listClass = Odao.getClassbyUser(uid);
-<<<<<<< HEAD
         request.setAttribute("sid", sid);
 
-=======
         List<Quiz> listQuizzes = Odao.getQuizbySubject(id);
         request.setAttribute("listQuizzes", listQuizzes);
->>>>>>> a42901950df71a405d2604806cf39f7427d31692
         request.setAttribute("detail", s);
         request.setAttribute("classid", classid);
         request.setAttribute("listC", listS);

@@ -36,7 +36,11 @@ public class editDiscussion extends HttpServlet {
         SubjectDAO subjectDao = new SubjectDAO();
         ClassDAO classDao = new ClassDAO();
 
-        ArrayList<Subject> subjectList = subjectDao.getAllSubjects();
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getUserId();
+
+        ArrayList<Subject> subjectList = subjectDao.getSubjectWithUserId(userId);
         ArrayList<model.Class> classList = classDao.getClassBySubjectId(subjectId);
 
         String title = discussion.getTitle();
@@ -74,13 +78,13 @@ public class editDiscussion extends HttpServlet {
             int userId = user.getUserId();
 
             String subject = request.getParameter("subject");
-            if (subject.isEmpty()) {
+            if (subject == null || subject.isEmpty()) {
                 throw new Exception("Must choose a subject.");
             }
             int subjectId = Integer.parseInt(subject);
 
             String classs = request.getParameter("class");
-            if (classs.isEmpty()) {
+            if (classs == null || classs.isEmpty()) {
                 throw new Exception("Must choose a class.");
             }
             int classId = Integer.parseInt(classs);
@@ -90,7 +94,7 @@ public class editDiscussion extends HttpServlet {
                 throw new Exception("Must fill out title.");
             }
             String description = request.getParameter("summernote");
-            if (description.isEmpty()) {
+            if (description == null || description.isEmpty()) {
                 throw new Exception("Must fill out description.");
             }
             

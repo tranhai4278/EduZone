@@ -116,9 +116,9 @@
                                                             <div class="subject-section">
                                                                 <label>Subject:</label>
                                                                 <div style="width: 90%;">
-                                                                    <select id="subject" name="subject" onchange="getClass(this);" disabled>
+                                                                    <select id="subject" name="subject" onchange="getClass(this);">
                                                                         <c:forEach var="subject" items="${subjectList}">
-                                                                            <option value="${subject.getSubjectId()}"
+                                                                            <option value="${subject.getSubjectId()}" 
                                                                                     <c:if test="${subject.getSubjectId() == subjectId}">
                                                                                         selected
                                                                                     </c:if>>${subject.getSubjectCode()}</option>
@@ -133,7 +133,7 @@
                                                         <div class="class-section new-box">
                                                             <label>Class:</label>
                                                             <div style="width: 90%;">
-                                                                <select id="class" name="class" disabled>
+                                                                <select id="class" name="class">
                                                                     <c:forEach var="c" items="${classList}">
                                                                         <option value="${c.getID()}"
                                                                                 <c:if test="${c.getID() == classId}">

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
         </group>
         <group>
@@ -75,6 +76,7 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
         </group>
         <group>
+
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -302,6 +304,29 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
         <group>
+
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/LessonDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/DashboardController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/LessonDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/DashboardController.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/LessonDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/newLesson.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/DashboardController.java</file>
+
+        <group>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/OnlineLearn/OnlineLearning.java</file>
@@ -380,6 +405,8 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+
         </group>
+ </group>
     </open-files>
 </project-private>

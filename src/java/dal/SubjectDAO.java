@@ -484,7 +484,7 @@ public class SubjectDAO extends MySqlConnection {
 
     public ArrayList<Subject> getSubjectsByTrainee(int id) {
         ArrayList<Subject> subjects = new ArrayList<>();
-        String sql = "SELECT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
+        String sql = "SELECT DISTINCT s.subject_id, s.manager_id, s.subject_name, s.subject_code, s.description, s.status, s.create_at, s.create_by, s.update_at, s.update_by "
                 + "FROM `class`c JOIN subject s ON c.subject_id = s.subject_id JOIN class_student cs ON c.class_id = cs.class_id WHERE cs.trainee_id = ?";
 
         try {

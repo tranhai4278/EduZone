@@ -39,7 +39,7 @@
 
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
@@ -87,7 +87,7 @@
                                                         <option value="${subject.subjectId}">${subject.subjectName}</option>
                                                     </c:forEach>
                                                 </select>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
@@ -142,21 +142,21 @@
                                                 </select> 
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="form-group col-10" id="fileSection">
+                                        <div class="row" id="fileSection">
+                                            <div class="form-group col-10" >
                                                 <label class="col-form-label">File attachment</label>
                                                 <div>
-                                                    <input class="form-control" type="file" name="file" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required>
+                                                    <input class="form-control" type="file" name="file" id="fileInput" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required/>
                                                 </div>
                                             </div>
-<!--                                            <div class="form-group col-2">
+                                            <div class="form-group col-2">
                                                 <label class="col-form-label"></label>
                                                 <div>
-                                                    <button type="submit" class="btn">Browse</button>
+                                                    <button type="button" class="btn btn-primary btn-block mx-auto" onclick="document.getElementById('fileInput').click();">Upload</button>
                                                 </div>
-                                            </div>-->
+                                            </div>
                                         </div>
-                                            
+
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
                                             <div>
@@ -172,7 +172,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Your Profile Views Chart END-->
                 </div>
             </div>
         </main>
@@ -196,6 +195,17 @@
                     $('#quizSection').hide();
                     $('#fileSection').hide();
                 }
+            }
+        </script>
+        <script>
+            function displaySelectedDocument(event) {
+                var file = event.target.files[0];
+                var formData = new FormData();
+                formData.append('document', file);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'YourServletURL', true);
+                xhr.send(formData);
             }
         </script>
 
@@ -222,7 +232,7 @@
         <script src='assets/vendors/calendar/fullcalendar.js'></script>
         <script src='assets/vendors/switcher/switcher.js'></script>
 
-        
+
 
 
     </body>

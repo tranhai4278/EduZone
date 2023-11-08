@@ -38,7 +38,7 @@ public class AssignmentDAO extends MySqlConnection {
                 boolean status = result.getBoolean(7);
                 String comment = result.getString(8);
                 Date submitTime = result.getDate(9);
-                AssignmentSubmit a = new AssignmentSubmit(classID, classID, traineeID, file, mark, weight, status, comment, submitTime);
+                AssignmentSubmit a = new AssignmentSubmit(assignmentID, classID, traineeID, file, mark, weight, status, comment, submitTime);
                 list.add(a);
             }
             return list;
@@ -120,6 +120,7 @@ public class AssignmentDAO extends MySqlConnection {
         return null;
     }
 
+
     public static void main(String[] args) {
         AssignmentDAO dao = new AssignmentDAO();
         ArrayList<AssignmentDTO> list = dao.getAssignmentsWithDetails(1, 1, 3);
@@ -156,6 +157,7 @@ public class AssignmentDAO extends MySqlConnection {
             return false; // An error occurred during the update.
         }
     }
+
 
     public void evaluateAssignment(double mark, String comment, String assignId, String classId, String traineeId) {
         MySqlConnection dbContext = new MySqlConnection();
@@ -217,6 +219,36 @@ public class AssignmentDAO extends MySqlConnection {
         return data;
     }
 
+    
+    public ArrayList searchAssignment(String key) {
+        ArrayList<AssignmentSubmit> list = new ArrayList<>();
+        String sql = "SELECT * FROM assignment a JOIN user u ON a.trainee_id = u.user_id WHERE u.full_name LIKE '%" + key + "%'";
+
+        try {
+            statement = connection.prepareStatement(sql);
+            result = statement.executeQuery();
+
+            while (result.next()) {
+                int assignmentID = result.getInt(1);
+                int classID = result.getInt(2);
+                int traineeID = result.getInt(3);
+                String file = result.getString(4);
+                double mark = result.getDouble(5);
+                int weight = result.getInt(6);
+                boolean status = result.getBoolean(7);
+                String comment = result.getString(8);
+                Date submitTime = result.getDate(9);
+                AssignmentSubmit a = new AssignmentSubmit(assignmentID, classID, traineeID, file, mark, weight, status, comment, submitTime);
+                list.add(a);
+            }
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public AssignmentDTO getAssignmentDetail(int assignmentId, int classId, int traineeId) {
         String sql = "SELECT assignment.*, class.class_code, class.subject_id, lesson.title, lesson.description "
                 + "FROM assignment "
@@ -257,3 +289,7 @@ public class AssignmentDAO extends MySqlConnection {
     }
 
 }
+
+
+    
+                

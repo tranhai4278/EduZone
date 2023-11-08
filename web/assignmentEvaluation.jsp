@@ -89,142 +89,134 @@
                     ${requestScope.successMessage}
                 </div>
             </c:if>
-            <form action="setting" method="post" id="form">
-                <div class="container-fluid">
-                    <div class="db-breadcrumb">
-                        <h4 class="breadcrumb-title">Setting</h4>
-                        <ul class="db-breadcrumb-list">
-                            <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                            <li>Setting</li>
-                        </ul>
-                    </div>	
-                    <div class="row">
-                        <!-- Your Profile Views Chart -->
-                        <div class="col-lg-12 m-b30">
-                            <div class="widget-box">
-                                <div class="email-wrapper">
-                                    <div class="mail-list-container">
-                                        <div class="mail-toolbar">
-                                            <div class="row" style="width: 100%">
-                                                <div class="col-md-2">
-                                                    <input value="${search}" name="search" type="text" id="filterSubject" placeholder="Search key" class="form-control" autocomplete="off" onchange="this.form.submit()">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="filter-section">
-                                                        <select id="filterType" name="type" onchange="this.form.submit()">
-                                                            <option ${type == -1 ? ' selected' : ' '} value="-1">Type</option>
-                                                            <option ${type == 1 ? ' selected' : ' '}  value="1">Role</option>
-                                                            <option ${type == 2 ? ' selected' : ' '}  value="2">Email Domain</option>
-                                                            <option ${type == 3 ? ' selected' : ' '}   value="3">Semester</option>
-                                                        </select>
+            <div class="container-fluid">
+                <div class="db-breadcrumb">
+                    <h4 class="breadcrumb-title">Assignment Evaluation</h4>
+                    <ul class="db-breadcrumb-list">
+                        <li><a href="home"><i class="fa fa-home"></i>Home</a></li>
+                        <li>Setting</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <!-- Your Profile Views Chart -->
+                    <div class="col-lg-12 m-b30">
+                        <div class="widget-box">
+                            <div class="email-wrapper">
+                                <div class="mail-list-container">
+                                    <div class="mail-toolbar">
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-md-6">
+                                                <form action="searchAssignment" method="post">
+                                                    <div class="row">
+                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-4">
+                                                            <input type="text" class="form-control" name="key" placeholder="Enter fullname" />
+                                                        </div>
+                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-1">
+                                                            <input type="submit" class="btn btn-primary" value="Search" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <select id="filterStatus" name="status" onchange="this.form.submit()">
-                                                        <option  ${type == -1 ? ' selected' : ' '} value="-1">Status</option>
-                                                        <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
-                                                        <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
-                                                    </select>
-                                                </div>
-                                                
+                                                </form>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <select id="filterStatus" name="status" onchange="this.form.submit()">
+                                                    <option  ${type == -1 ? ' selected' : ' '} value="-1">Status</option>
+                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
+                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
+                                                </select>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mail-box-list">
-                                    <section id="role">
-                                        <input  type="hidden" name="order" id="order" value="${order}"/>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th style="position: relative;" scope="col">Full Name <i style="position: absolute;
-                                                                                                        right: 6px;
-                                                                                                        top: 10px;
-                                                                                                        color: #cccccc;
-                                                                                                        cursor: pointer;" class="fa fa-caret-up ${order eq 'setting_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  ASC')" ></i>
-                                                        <i style=" position: absolute;
-                                                           right: 6px;
-                                                           top: 18px;
-                                                           color: #cccccc;
-                                                           cursor: pointer;" class="fa fa-caret-down ${order eq 'setting_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  DESC')"></i></th>
-                                                    <th scope="col">Submission</th>
-                                                    <th scope="col">Submit time</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Grade</th>
-                                                    <th scope="col">Comment</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach var="a" items="${list}" >
-                                                    <tr>
-                                                        <input type="hidden" name="assignmentID" value="${a.getaID()}">
-                                                        <input type="hidden" name="classID" value="${a.getClassID()}">
-                                                        <input type="hidden" name="traineeID" value="${a.getTraineeID()}">
-                                                        <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
-                                                        <td>${a.getFile()}</td>
-                                                        <td>${a.getSubmitTime()}</td>
-                                                        <td>
-                                                            <div class="form-check form-switch">
-                                                                <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                            </div>
-                                                        </td>
-                                                        <td>${a.getMark()}</td>
-                                                        <td>${a.getComment()}</td>
-                                                        <td>
-                                                            <div class="col-md-2 offset-md-4">
-                                                                <c:if test="${sessionScope.user.roleId == 3}">
-                                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal"
-                                                                   onclick="setEvaluationData('${a.getaID()}', '${a.getClassID()}', '${a.getTraineeID()}')">
-                                                                    Grade   
-                                                                </a>
-                                                                </c:if>
-                                                                <c:if test="${sessionScope.user.roleId == 4}">
-                                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal">
-                                                                    Submit   
-                                                                </a>
-                                                                </c:if>
-                                                            </div>
-                                                            
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                        </table>
-                                    </section>
-                                </div>
                             </div>
-                            <c:if test="${totalPage!=0}">
-                                <nav aria-label="Page navigation example" style="margin-top: 20px;">
-                                    <ul class="pagination justify-content-end">
-                                        <li class="page-item ${pageNo == 1 ? ' disabled' : ' '}">
-                                            <a class="page-link" style="cursor: pointer"
-                                               onclick="goToPage(${pageNo} - 1)">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <input type="hidden" name="pageNo" id="pageNoInput" value="${pageNo}">
-                                        <c:forEach begin="1" var="i" end="${totalPage}">
-                                            <li class="page-item  ${pageNo == i  ? ' active' : ' '}">
-                                                <a class="page-link"  style="cursor: pointer"
-                                                   onclick="goToPage(${i})">
-                                                    ${i}
-                                                </a>
-                                            </li>
+                            <div class="mail-box-list">
+                                <section id="role">
+                                    <input  type="hidden" name="order" id="order" value="${order}"/>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="position: relative;" scope="col">Full Name <i style="position: absolute;
+                                                                                                         right: 6px;
+                                                                                                         top: 10px;
+                                                                                                         color: #cccccc;
+                                                                                                         cursor: pointer;" class="fa fa-caret-up ${order eq 'setting_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  ASC')" ></i>
+                                                    <i style=" position: absolute;
+                                                       right: 6px;
+                                                       top: 18px;
+                                                       color: #cccccc;
+                                                       cursor: pointer;" class="fa fa-caret-down ${order eq 'setting_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  DESC')"></i></th>
+                                                <th scope="col">Submission</th>
+                                                <th scope="col">Submit time</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Grade</th>
+                                                <th scope="col">Comment</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach var="a" items="${list}" >
+                                                <tr>
+                                            <input type="hidden" name="assignmentID" value="${a.getaID()}">
+                                            <input type="hidden" name="classID" value="${a.getClassID()}">
+                                            <input type="hidden" name="traineeID" value="${a.getTraineeID()}">
+                                            <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
+                                            <td>${a.getFile()}</td>
+                                            <td>${a.getSubmitTime()}</td>
+                                            <td>
+                                                <div class="form-check form-switch">
+                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
+                                                </div>
+                                            </td>
+                                            <td>${a.getMark()}</td>
+                                            <td>${a.getComment()}</td>
+                                            <td>
+                                                <div class="col-md-2 offset-md-4">
+                                                    <c:if test="${sessionScope.user.roleId == 3}">
+                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chapterModal"
+                                                           onclick="setEvaluationData('${a.getaID()}', '${a.getClassID()}', '${a.getTraineeID()}')">
+                                                            Grade   
+                                                        </a>
+                                                    </c:if>
+                                                </div>
+                                            </td>
+                                            </tr>
                                         </c:forEach>
-                                        <li class="page-item ${pageNo == (totalPage) ? ' disabled' : ' '}">
-                                            <a class="page-link user-select-all" style="cursor: pointer"
-                                               onclick="goToPage(${pageNo+1})">
-                                                <span aria-hidden="true">&raquo;</span>
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </div>
+                        </div>
+                        <c:if test="${totalPage!=0}">
+                            <nav aria-label="Page navigation example" style="margin-top: 20px;">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item ${pageNo == 1 ? ' disabled' : ' '}">
+                                        <a class="page-link" style="cursor: pointer"
+                                           onclick="goToPage(${pageNo} - 1)">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <input type="hidden" name="pageNo" id="pageNoInput" value="${pageNo}">
+                                    <c:forEach begin="1" var="i" end="${totalPage}">
+                                        <li class="page-item  ${pageNo == i  ? ' active' : ' '}">
+                                            <a class="page-link"  style="cursor: pointer"
+                                               onclick="goToPage(${i})">
+                                                ${i}
                                             </a>
                                         </li>
-                                    </ul>
-                                </nav>
-                            </c:if>
-                        </div>
+                                    </c:forEach>
+                                    <li class="page-item ${pageNo == (totalPage) ? ' disabled' : ' '}">
+                                        <a class="page-link user-select-all" style="cursor: pointer"
+                                           onclick="goToPage(${pageNo+1})">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </c:if>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -247,7 +239,7 @@
                                     <h3>Grade</h3>
                                 </div>
                             </div>
-                             <div class="form-group col-12">
+                            <div class="form-group col-12">
                                 <div>
                                     <input class="form-control" type="text"  name="mark" required>
                                 </div>
@@ -259,12 +251,13 @@
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                    <input name="comment" id="summernote">
+                                <textarea name="comment" id="summernote"></textarea>
+
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button type="submit" class="btn">Save</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" onclick="setSellDate()" class="btn">Save</button>
                         </div>
                     </form>
                 </div>
@@ -306,10 +299,10 @@
 </script>
 <script>
     function setEvaluationData(assignmentID, classID, traineeID) {
-    document.getElementById("assignmentID").value = assignmentID;
-    document.getElementById("classID").value = classID;
-    document.getElementById("traineeID").value = traineeID;
-}
+        document.getElementById("assignmentID").value = assignmentID;
+        document.getElementById("classID").value = classID;
+        document.getElementById("traineeID").value = traineeID;
+    }
 
 </script>
 <script src="assets/js/jquery.min.js"></script>

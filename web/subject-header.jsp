@@ -142,52 +142,6 @@
                         <i class="ti-arrow-left"></i>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <!-- side menu logo end -->
-                <!-- sidebar menu start -->
-                <nav class="ttr-sidebar-navi">
-                    <ul>
-                        <c:forEach var="s" items="${listC}" >
-                            <li>
-                                <a onclick="getChapter(${s.settingId})" class="ttr-material-button">
-                                    <span class="ttr-icon"><i class="ti-book"></i></span>
-                                    <span class="ttr-label">${s.settingName}</span>
-                                    <span class="ttr-arrow-icon"><i class="fa fa-angle-down"></i></span>
-                                </a>
-                                <ul id="lesson">
-
-                                </ul>
-                            </li>
-                        </c:forEach>
-
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt2"></i></span>
-                                <span class="ttr-label">Grades</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-comments"></i></span>
-                                <span class="ttr-label">Discussion</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assignmentlist?Subject=${sid}&Class=${classid}" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-file"></i></span>
-                                <span class="ttr-label">Assignment</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
-                                <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>
-                                <span class="ttr-label">Practice Quizzes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-=======
->>>>>>> a42901950df71a405d2604806cf39f7427d31692
             </div>
             <nav class="ttr-sidebar-navi">
                 <ul>

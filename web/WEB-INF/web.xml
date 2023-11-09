@@ -306,18 +306,10 @@
         <servlet-class>Manager.controller.classGradeList</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2766d967a5b8234e6925b88f46464b1c0616827d
         <servlet-name>SearchAssignment</servlet-name>
         <servlet-class>User.controller.SearchAssignment</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-        
-=======
->>>>>>> 2766d967a5b8234e6925b88f46464b1c0616827d
         <servlet-name>classAddStudentServlet</servlet-name>
         <servlet-class>Class.controller.classAddStudentServlet</servlet-class>
     </servlet>

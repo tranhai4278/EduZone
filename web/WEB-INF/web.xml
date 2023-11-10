@@ -325,6 +325,10 @@
         <servlet-name>NewPacticeQuiz</servlet-name>
         <servlet-class>OnlineLearn.NewPacticeQuiz</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchUserController</servlet-name>
+        <servlet-class>Admin.controller.searchUserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -604,6 +608,10 @@
     <servlet-mapping>
         <servlet-name>NewPacticeQuiz</servlet-name>
         <url-pattern>/newpracticequiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchUserController</servlet-name>
+        <url-pattern>/searchUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

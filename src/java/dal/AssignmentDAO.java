@@ -105,14 +105,14 @@ public class AssignmentDAO extends MySqlConnection {
     }
 
     public String getTraineeName(int id) {
-        String query = "SELECT u.full_name FROM `assigment` a JOIN user u ON a.trainee_id = u.user_id WHERE a.trainee_id = ?";
+        String query = "SELECT u.full_name FROM `assignment` a JOIN user u ON a.trainee_id = u.user_id WHERE a.trainee_id = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
-                return result.getString("full_name");
+                return result.getString("u.full_name");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,17 +120,12 @@ public class AssignmentDAO extends MySqlConnection {
         return null;
     }
 
-
     public static void main(String[] args) {
         AssignmentDAO dao = new AssignmentDAO();
-        ArrayList<AssignmentDTO> list = dao.getAssignmentsWithDetails(1, 1, 3);
-        for (AssignmentDTO a : list) {
-//        AssignmentDTO a = dao.getAssignmentDetail(4, 1, 3);
-            System.out.println(a.getTitle());
-        }
-//            dao.evaluateAssignment(9, "good job", "4", "2", "2");
-
+        System.out.println(dao.getTraineeName(5));
     }
+
+    
 
     public boolean submitAssignment(int assignmentId, int traineeId, int classId, String fileName) {
         String sql = "UPDATE assignment SET submit_file = ?, submitTime = ?, status = ? WHERE assigment_id = ? AND trainee_id = ? AND class_id = ?";

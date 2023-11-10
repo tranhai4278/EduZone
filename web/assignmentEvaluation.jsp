@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="assignDAO" value="<%= new dal.AssignmentDAO() %>" />
+<c:set var="assignmentDAO" value="<%= new dal.AssignmentDAO() %>" />
 <%@page import="model.AssignmentSubmit" %>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
@@ -41,6 +41,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
         <!-- PAGE TITLE HERE ============================================= -->
         <title>EduNext : Education HTML Template </title>
@@ -136,16 +137,12 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th style="position: relative;" scope="col">Full Name <i style="position: absolute;
-                                                                                                         right: 6px;
-                                                                                                         top: 10px;
-                                                                                                         color: #cccccc;
-                                                                                                         cursor: pointer;" class="fa fa-caret-up ${order eq 'setting_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  ASC')" ></i>
-                                                    <i style=" position: absolute;
-                                                       right: 6px;
-                                                       top: 18px;
-                                                       color: #cccccc;
-                                                       cursor: pointer;" class="fa fa-caret-down ${order eq 'setting_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  DESC')"></i></th>
+                                                <th style="position: relative;" scope="col">Full Name
+                                                    <i class="fa fa-caret-up sort-icon" data-column="full_name"></i>
+                                                    <i class="fa fa-caret-down sort-icon" data-column="full_name"></i>
+                                                    <i style="position: absolute;right: 6px;top: 10px;color: #cccccc;cursor: pointer;" class="fa fa-caret-up ${order eq 'full_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('full_name  ASC')" ></i>
+                                                    <i style=" position: absolute;right: 6px;top: 18px;color: #cccccc;cursor: pointer;" class="fa fa-caret-down ${order eq 'full_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('full_name  DESC')"></i>
+                                                </th>
                                                 <th scope="col">Submission</th>
                                                 <th scope="col">Submit time</th>
                                                 <th scope="col">Status</th>
@@ -160,7 +157,7 @@
                                             <input type="hidden" name="assignmentID" value="${a.getaID()}">
                                             <input type="hidden" name="classID" value="${a.getClassID()}">
                                             <input type="hidden" name="traineeID" value="${a.getTraineeID()}">
-                                            <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
+                                            <td>${assignmentDAO.getTraineeName(a.getTraineeID())}</td>
                                             <td>${a.getFile()}</td>
                                             <td>${a.getSubmitTime()}</td>
                                             <td>
@@ -305,6 +302,59 @@
     }
 
 </script>
+<script>
+// Lấy danh sách các nút sắp xếp
+var sortIcons = document.querySelectorAll(".sort-icon");
+
+// Lắng nghe sự kiện khi người dùng bấm vào nút sắp xếp
+sortIcons.forEach(function (icon) {
+    icon.addEventListener("click", function () {
+        // Lấy tên cột cần sắp xếp
+        var column = this.getAttribute("data-column");
+        
+        // Lấy danh sách các hàng trong bảng
+        var table = document.querySelector("table");
+        var tableRows = Array.from(table.querySelectorAll("tbody tr"));
+
+        // Sắp xếp danh sách các hàng dựa trên giá trị cột
+        tableRows.sort(function (a, b) {
+            var aText = a.querySelector("td[data-column='" + column + "']").textContent;
+            var bText = b.querySelector("td[data-column='" + column + "']").textContent;
+
+            return aText.localeCompare(bText);
+        });
+
+        // Đảo ngược danh sách nếu người dùng bấm vào biểu tượng sắp xếp giảm dần
+        if (this.classList.contains("fa-caret-down")) {
+            tableRows.reverse();
+        }
+
+        // Xóa tất cả các hàng trong bảng
+        var tbody = table.querySelector("tbody");
+        tbody.innerHTML = "";
+
+        // Thêm lại các hàng đã sắp xếp vào bảng
+        tableRows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Xóa tất cả các biểu tượng sắp xếp trước đó
+        sortIcons.forEach(function (sortIcon) {
+            sortIcon.classList.remove("fa-caret-up", "fa-caret-down");
+        });
+
+        // Thêm biểu tượng sắp xếp tương ứng
+        if (this.classList.contains("fa-caret-up")) {
+            this.classList.remove("fa-caret-up");
+            this.classList.add("fa-caret-down");
+        } else {
+            this.classList.remove("fa-caret-down");
+            this.classList.add("fa-caret-up");
+        }
+    });
+});
+</script>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

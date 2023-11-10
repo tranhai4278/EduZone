@@ -20,6 +20,7 @@ public class UserEditController extends HttpServlet {
         String role = request.getParameter("role");
         String email = request.getParameter("email");
         String status = request.getParameter("status");
+        String sucess = "User is updated sucessfully!";
         int stt;
         if (status.matches("1")) {
             stt = 1;
@@ -29,7 +30,8 @@ public class UserEditController extends HttpServlet {
         UserDAO userDao = new UserDAO();
         String userId = request.getParameter("userId");
         userDao.updateUserByAdmin(role, stt, userId);
-        // Redirect 
-        response.sendRedirect("userDetail?email=" + email);
+        request.setAttribute("successMessage", sucess);
+        request.getRequestDispatcher("userDetail?email=" + email).forward(request, response);
+        
     }
 }

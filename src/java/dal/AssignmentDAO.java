@@ -282,6 +282,26 @@ public class AssignmentDAO extends MySqlConnection {
         }
         return null;
     }
+    
+     public String getStatusDisplay(int aID, int cID, int tID) {
+        String query = "SELECT CASE "
+                + "WHEN status = true THEN 'Submitted' ELSE 'Unsubmitted' END AS status "
+                + "FROM assignment WHERE assigment_id = ? AND class_id = ? AND trainee_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, aID);
+            statement.setInt(2, cID);
+            statement.setInt(3, tID);
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                return result.getString("status");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }
 

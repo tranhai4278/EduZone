@@ -95,7 +95,7 @@
                     <h4 class="breadcrumb-title">Assignment Evaluation</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="home"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
+                        <li>Assignment Evaluation</li>
                     </ul>
                 </div>
                 <div class="row">
@@ -132,21 +132,14 @@
                                 </div>
                             </div>
                             <div class="mail-box-list">
-                                <section id="role">
-                                    <input  type="hidden" name="order" id="order" value="${order}"/>
-                                    <table class="table">
+                                    <table class="table" id="myTable">
                                         <thead>
                                             <tr>
-                                                <th style="position: relative;" scope="col">Full Name
-                                                    <i class="fa fa-caret-up sort-icon" data-column="full_name"></i>
-                                                    <i class="fa fa-caret-down sort-icon" data-column="full_name"></i>
-                                                    <i style="position: absolute;right: 6px;top: 10px;color: #cccccc;cursor: pointer;" class="fa fa-caret-up ${order eq 'full_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('full_name  ASC')" ></i>
-                                                    <i style=" position: absolute;right: 6px;top: 18px;color: #cccccc;cursor: pointer;" class="fa fa-caret-down ${order eq 'full_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('full_name  DESC')"></i>
-                                                </th>
+                                                <th scope="col">Full Name <span id="submitNameIcon" class="sort-icon">▼</span></th>
                                                 <th scope="col">Submission</th>
-                                                <th scope="col">Submit time</th>
+                                                <th scope="col">Submit time <span id="submitTimeIcon" class="sort-icon">▼</span> </th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Grade</th>
+                                                <th scope="col">Grade <span id="submitGradeIcon" class="sort-icon">▼</span></th>
                                                 <th scope="col">Comment</th>
                                                 <th scope="col"></th>
                                             </tr>
@@ -160,11 +153,12 @@
                                             <td>${assignmentDAO.getTraineeName(a.getTraineeID())}</td>
                                             <td>${a.getFile()}</td>
                                             <td>${a.getSubmitTime()}</td>
-                                            <td>
+                                            <td>${assignmentDAO.getStatusDisplay(a.getaID(),a.getClassID() , a.getTraineeID())}</td>
+<!--                                            <td>
                                                 <div class="form-check form-switch">
                                                     <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
                                                 </div>
-                                            </td>
+                                            </td>-->
                                             <td>${a.getMark()}</td>
                                             <td>${a.getComment()}</td>
                                             <td>
@@ -181,7 +175,6 @@
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                </section>
                             </div>
                         </div>
                         <c:if test="${totalPage!=0}">
@@ -238,18 +231,17 @@
                             </div>
                             <div class="form-group col-12">
                                 <div>
-                                    <input class="form-control" type="text"  name="mark" required>
+                                    <input class="form-control" type="number" name="mark" required>
                                 </div>
                             </div>
                             <div class="seperator"></div>
-                            <div class="col-12 m-t20">
+                            <div class="col-12">
                                 <div class="ml-auto">
                                     <h3>Comment</h3>
                                 </div>
                             </div>
                             <div class="form-group col-12">
                                 <textarea name="comment" id="summernote"></textarea>
-
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -264,15 +256,7 @@
 </main>
 <div class="ttr-overlay"></div>
 <!-- External JavaScripts -->
-<script>
-    function updateStatus(id, checkbox) {
-        let status = checkbox.checked;
-        if (confirm('Are you sure?'))
-            window.location.href = 'updateStatusSetting?id=' + id + '&status=' + status;
-        else
-            checkbox.checked = !status;
-    }
-</script>
+
 <script>
     setTimeout(function () {
         var notificationMessage = document.getElementById("notificationMessage");
@@ -284,10 +268,6 @@
 <script>
     function goToPage(i) {
         document.getElementById('pageNoInput').value = i;
-        document.getElementById('form').submit();
-    }
-    function sortData(order) {
-        document.getElementById('order').value = order;
         document.getElementById('form').submit();
     }
 </script>
@@ -302,56 +282,88 @@
     }
 
 </script>
+
 <script>
-// Lấy danh sách các nút sắp xếp
-var sortIcons = document.querySelectorAll(".sort-icon");
+document.addEventListener("DOMContentLoaded", function () {
+    var submitTimeIcon = document.getElementById("submitTimeIcon");
+    var sortOrder = 1; // 1 for ascending, -1 for descending
 
-// Lắng nghe sự kiện khi người dùng bấm vào nút sắp xếp
-sortIcons.forEach(function (icon) {
-    icon.addEventListener("click", function () {
-        // Lấy tên cột cần sắp xếp
-        var column = this.getAttribute("data-column");
-        
-        // Lấy danh sách các hàng trong bảng
-        var table = document.querySelector("table");
-        var tableRows = Array.from(table.querySelectorAll("tbody tr"));
+    submitTimeIcon.addEventListener("click", function () {
+        sortOrder *= -1; // Toggle between ascending and descending
 
-        // Sắp xếp danh sách các hàng dựa trên giá trị cột
-        tableRows.sort(function (a, b) {
-            var aText = a.querySelector("td[data-column='" + column + "']").textContent;
-            var bText = b.querySelector("td[data-column='" + column + "']").textContent;
+        var table = document.getElementById("myTable");
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.querySelectorAll("tr"));
 
-            return aText.localeCompare(bText);
+        rows.sort(function (a, b) {
+            var dateA = new Date(a.cells[2].textContent);
+            var dateB = new Date(b.cells[2].textContent);
+
+            return sortOrder * (dateA - dateB);
         });
 
-        // Đảo ngược danh sách nếu người dùng bấm vào biểu tượng sắp xếp giảm dần
-        if (this.classList.contains("fa-caret-down")) {
-            tableRows.reverse();
-        }
-
-        // Xóa tất cả các hàng trong bảng
-        var tbody = table.querySelector("tbody");
-        tbody.innerHTML = "";
-
-        // Thêm lại các hàng đã sắp xếp vào bảng
-        tableRows.forEach(function (row) {
+        rows.forEach(function (row) {
             tbody.appendChild(row);
         });
 
-        // Xóa tất cả các biểu tượng sắp xếp trước đó
-        sortIcons.forEach(function (sortIcon) {
-            sortIcon.classList.remove("fa-caret-up", "fa-caret-down");
+        // Update the icon based on the sort order
+        submitTimeIcon.innerHTML = sortOrder === 1 ? "▼" : "▲";
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var submitNameIcon = document.getElementById("submitNameIcon");
+    var submitGradeIcon = document.getElementById("submitGradeIcon");
+    var sortOrderName = 1; // 1 for ascending, -1 for descending
+    var sortOrderGrade = 1; // 1 for ascending, -1 for descending
+
+    submitNameIcon.addEventListener("click", function () {
+        sortOrderName *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 0, sortOrderName, submitNameIcon);
+    });
+
+    submitGradeIcon.addEventListener("click", function () {
+        sortOrderGrade *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 4, sortOrderGrade, submitGradeIcon);
+    });
+
+    function sortTable(tableId, columnIndex, sortOrder, icon) {
+        var table = document.getElementById(tableId);
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort(function (a, b) {
+            var valueA = a.cells[columnIndex].textContent.trim();
+            var valueB = b.cells[columnIndex].textContent.trim();
+
+            if (columnIndex === 4) { // Check if sorting by grade
+                valueA = parseFloat(valueA);
+                valueB = parseFloat(valueB);
+            }
+
+            if (isNaN(valueA) || isNaN(valueB)) {
+                // For non-numeric values, use localeCompare
+                return sortOrder * valueA.localeCompare(valueB);
+            } else {
+                // For numeric values, use subtraction
+                return sortOrder * (valueA - valueB);
+            }
         });
 
-        // Thêm biểu tượng sắp xếp tương ứng
-        if (this.classList.contains("fa-caret-up")) {
-            this.classList.remove("fa-caret-up");
-            this.classList.add("fa-caret-down");
-        } else {
-            this.classList.remove("fa-caret-down");
-            this.classList.add("fa-caret-up");
-        }
-    });
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Update the icons based on the sort order
+        resetIcons();
+        icon.innerHTML = sortOrder === 1 ? "▼" : "▲";
+    }
+
+    function resetIcons() {
+        submitNameIcon.innerHTML = "▼";
+        submitGradeIcon.innerHTML = "▼";
+    }
 });
 </script>
 

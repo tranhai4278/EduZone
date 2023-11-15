@@ -120,10 +120,10 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <select id="filterStatus" name="status" onchange="this.form.submit()">
+                                                <select id="filterStatus" name="status" onchange="filterTableByStatus()">
                                                     <option  ${type == -1 ? ' selected' : ' '} value="-1">Status</option>
-                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
-                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
+                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Submitted</option>
+                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Unsubmitted</option>
                                                 </select>
                                             </div>
 
@@ -153,12 +153,9 @@
                                             <td>${assignmentDAO.getTraineeName(a.getTraineeID())}</td>
                                             <td>${a.getFile()}</td>
                                             <td>${a.getSubmitTime()}</td>
-                                            <td>${assignmentDAO.getStatusDisplay(a.getaID(),a.getClassID() , a.getTraineeID())}</td>
-<!--                                            <td>
-                                                <div class="form-check form-switch">
-                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                </div>
-                                            </td>-->
+                                            <td data-status="${a.isStatus() ? 'submitted' : 'unsubmitted'}">
+                                                ${assignmentDAO.getStatusDisplay(a.getaID(),a.getClassID(), a.getTraineeID())}
+                                            </td>
                                             <td>${a.getMark()}</td>
                                             <td>${a.getComment()}</td>
                                             <td>
@@ -271,9 +268,7 @@
         document.getElementById('form').submit();
     }
 </script>
-<script>
-    $('#summernote').summernote();
-</script>
+
 <script>
     function setEvaluationData(assignmentID, classID, traineeID) {
         document.getElementById("assignmentID").value = assignmentID;
@@ -365,6 +360,29 @@ document.addEventListener("DOMContentLoaded", function () {
         submitGradeIcon.innerHTML = "▼";
     }
 });
+</script>
+<script>
+    function filterTableByStatus() {
+        var statusFilter = document.getElementById("filterStatus");
+        // Lấy bảng và tất cả các dòng trong tbody
+        var table = document.getElementById("myTable");
+        var rows = table.querySelectorAll("tbody tr");
+
+        // Lắng nghe sự kiện thay đổi của dropdown
+        statusFilter.addEventListener("change", function () {
+            // Lấy giá trị được chọn trong dropdown
+            var selectedStatus = this.value;
+
+            // Duyệt qua tất cả các dòng và ẩn/hiển thị dựa trên trạng thái đã chọn
+            rows.forEach(function (row) {
+                // Lấy giá trị trạng thái từ thuộc tính data-status
+                var rowStatus = row.getAttribute("data-status");
+
+                // Ẩn hoặc hiển thị dòng dựa trên giá trị của dropdown
+                row.style.display = selectedStatus === "-1" || selectedStatus === rowStatus ? "table-row" : "none";
+            });
+        });
+    }
 </script>
 
 <script src="assets/js/jquery.min.js"></script>

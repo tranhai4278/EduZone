@@ -14,17 +14,6 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/QuestionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/AddQuestionController.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionDetail.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
-        </group>
-        <group>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/model/SubjectSetting.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/SubjectSettingDAO.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/QuestionDetailController.java</file>
@@ -363,6 +352,15 @@
         <group>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/EvaluateController.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/AssignmentDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userList.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
         </group>

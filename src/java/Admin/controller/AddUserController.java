@@ -21,16 +21,13 @@ public class AddUserController extends HttpServlet {
 
         String name = request.getParameter("name");
         String genderStr = request.getParameter("gender");
-        String avatar = request.getParameter("avatar");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String roleStr = request.getParameter("role");
 
         String mess = null; // Initialize the error message as null
 
-        if (avatar == null) {
-            avatar = "https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg";
-        }
+        
 
         // Check for empty or null fields
         if (name == null || phone == null || email == null || roleStr == null) {
@@ -55,7 +52,7 @@ public class AddUserController extends HttpServlet {
                     // Validation passed, parse data and add user
                     int role = Integer.parseInt(roleStr);
                     boolean gender = Boolean.parseBoolean(genderStr);
-                    dao.addUser(name, gender, avatar, phone, email, role);
+                    dao.addUser(name, gender,  phone, email, role);
                     response.sendRedirect("userList");
                     return; // Exit early since we successfully added the user
                 }

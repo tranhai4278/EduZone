@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="assignmentDAO" value="<%= new dal.AssignmentDAO() %>" />
-<%@page import="model.AssignmentSubmit" %>
+<%@page import="model.AssignmentSubmit"%>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
@@ -228,7 +228,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <div>
-                                    <input class="form-control" type="number" name="mark" required>
+                                    <input class="form-control" type="text" name="mark" required>
                                 </div>
                             </div>
                             <div class="seperator"></div>
@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                <textarea name="comment" id="summernote"></textarea>
+                                <textarea id="summernote" name="comment" style="width: 100%; height: 150px;"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -122,7 +122,6 @@
                                                         <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Description</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                             <textarea id="summernote" name="des" style="width: 100%; height: 200px;"></textarea>
-<!--                                                            <textarea name="des" id="summernote"></textarea>-->
                                                         </div>
                                                     </div>
 

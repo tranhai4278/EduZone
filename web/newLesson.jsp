@@ -13,8 +13,6 @@
 <%@page import="model.Lesson" %>
 <%@page import="model.Subject" %>
 <%@page import="model.Quiz" %>
-<%@page import="com.google.gson.Gson" %>
-<%@page import="com.google.gson.JsonObject" %>
 
 
 <!DOCTYPE html>
@@ -95,16 +93,16 @@
                                                 </select>
                                             </div>
                                         </div>
-<!--                                                                                                                        <div class="form-group col-6" id="chapterModal">
-                                                                                                                        </div>-->
-                                        <div class="form-group col-6" id="chapterModal">
+                                        <div class="form-group col-6">
                                             <label class="col-form-label">Chapter* </label>
                                             <div>
-                                                <select name="chapter" required="true">
+                                                <select name="chapter" required="true" id="chapterModal">
+                                                    <c:forEach items="${subjectSettingDAO.getAllChapters()}" var="chapter">
+                                                        <option value="${chapter.getSettingId()}">${chapter.getSettingName()}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
-
 
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Lesson type*</label>
@@ -126,7 +124,15 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
+                                        <div class="form-group col-6">
+                                            <label class="col-form-label">Display Order* </label>
+                                            <div>
+                                                <input class="form-control" type="number" name="display" required="true">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-6">
                                             <label class="col-form-label">Lesson title* </label>
                                             <div>
                                                 <input class="form-control" type="text" name="title" required="true">
@@ -148,21 +154,13 @@
                                                 </select> 
                                             </div>
                                         </div>
-                                        
-                                        <form action="upload" method="post" enctype="multipart/form-data">
-                                            <div class="row" id="fileSection"> 
-                                                <div class="form-group col-10">
-                                                    <label class="col-form-label">File attachment</label>
-                                                    <input class="form-control" type="file" id="file" name="file" required="true">
-                                                </div>
-                                                <div class="form-group col-2">
-                                                    <label class="col-form-label"></label>
-                                                    <div>
-                                                        <input type="submit" class="btn" value="Upload">
-                                                    </div>
-                                                </div>
+                                        <div class="row" id="fileSection"> 
+                                            <div class="form-group col-10">
+                                                <label class="col-form-label">File attachment</label>
+                                                <input class="form-control" type="file" id="file" name="file">
                                             </div>
-                                        </form>
+
+                                        </div>
 
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
@@ -218,50 +216,23 @@
                         subject: subject
                     },
                     success: function (data) {
-                        $('#chapterModal').show();
-                        var content = document.getElementById("chapterModal");
-                        content.innerHTML = data;
+                        // Ẩn hoặc hiển thị #chapterModal dựa trên nội dung trả về
+                        $('#chapterModal').toggle(data.trim() !== "");
+
+                        // Nếu có dữ liệu, thì thêm các tùy chọn vào thẻ select trong #chapterModal
+                        if (data.trim() !== "") {
+                            $('#chapterModal select').html(data);
+                        }
                     },
                     error: function (xhr) {
                         // Xử lý lỗi ở đây nếu cần
                     }
                 });
-//            function getSubject(selectElement) {
-//                var subject = selectElement.value;
-//                $.ajax({
-//                    url: "/eduzone/getChapter",
-//                    type: "get",
-//                    data: {
-//                        subject: subject
-//                    },
-//                    dataType: "json",
-//                    success: function (data) {
-//                        var chapterModal = document.getElementById("chapterModal"); 
-//                        chapterModal.innerHTML = "";
-//
-//                        var chapterSelect = document.createElement("select");
-//                        chapterSelect.name = "chapter";
-//                        chapterSelect.required = true;
-//
-//                        var chapters = data.chapters;
-//                        for (var i = 0; i < chapters.length; i++) {
-//                            var option = document.createElement("option");
-//                            option.value = chapters[i].id;
-//                            option.text = chapters[i].name;
-//                            chapterSelect.appendChild(option);
-//                        }
-//
-//                        chapterModal.appendChild(chapterSelect); 
-//                    },
-//                    error: function (xhr) {
-//                        // Xử lý lỗi ở đây nếu cần
-//                    }
-//                });
-//            }
-//
-//
-
+            }
         </script>
+
+
+
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

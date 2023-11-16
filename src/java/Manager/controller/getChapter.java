@@ -66,7 +66,7 @@ public class getChapter extends HttpServlet {
         String subject = request.getParameter("subject");
         LessonDAO dao = new LessonDAO();
         List<SubjectSetting> listc = dao.getAllChapterNamesBySubjectName(subject);
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<label class=\"col-form-label\">Chapter* </label>\n"
                 + "                                            <div>\n"
@@ -77,39 +77,7 @@ public class getChapter extends HttpServlet {
 
         out.println("</select>\n"
                 + " </div>");
-  } 
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String subject = request.getParameter("subject");
-//        LessonDAO dao = new LessonDAO();
-//        List<SubjectSetting> listc = dao.getAllChapterNamesBySubjectName(subject);
-//
-//        // Tạo một đối tượng JsonObject để lưu trữ dữ liệu JSON
-//        JsonObject jsonResponse = new JsonObject();
-//
-//        // Tạo một đối tượng JsonArray để lưu trữ danh sách chapter
-//        JsonArray chapterArray = new JsonArray();
-//
-//        for (SubjectSetting c : listc) {
-//            // Tạo một đối tượng JsonObject cho mỗi chapter
-//            JsonObject chapterObject = new JsonObject();
-//            chapterObject.addProperty("id", c.getSettingId());
-//            chapterObject.addProperty("name", c.getSettingName());
-//
-//            // Thêm đối tượng chapter vào mảng
-//            chapterArray.add(chapterObject);
-//        }
-//
-//        // Thêm mảng chapter vào đối tượng JSON chính
-//        jsonResponse.add("chapters", chapterArray);
-//
-//        // Thiết lập kiểu dữ liệu và kích thước ký tự cho phản hồi
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//
-//        // Ghi dữ liệu JSON vào phản hồi
-//        PrintWriter out = response.getWriter();
-//        out.print(jsonResponse.toString());
-//    }
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.

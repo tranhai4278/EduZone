@@ -34,6 +34,9 @@
         <!-- FAVICONS ICON ============================================= -->
         <link rel="icon" href="../error-404.html" type="image/x-icon" />
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
         <!-- PAGE TITLE HERE ============================================= -->
         <title>EduNext : Education HTML Template </title>
@@ -41,11 +44,7 @@
         <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-        <![endif]-->
-
+       
         <!-- All PLUGINS CSS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/calendar/fullcalendar.css">
@@ -55,7 +54,7 @@
 
         <!-- SHORTCODES ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- STYLESHEETS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
@@ -67,6 +66,22 @@
         <!-- header start -->
         <%@include file="setting-header.jsp" %>
         <main class="ttr-wrapper">
+            <c:if test="${not empty requestScope.error}">
+                <div class="alert alert-danger" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.error}
+                </div>
+            </c:if>
+            <c:if test="${not empty requestScope.successMessage}">
+                <div class="alert alert-success" id="notificationMessage" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True">&times;</span>
+                    </button>
+                    ${requestScope.successMessage}
+                </div>
+            </c:if>
             <div class="container-fluid">
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Setting User</h4>
@@ -91,26 +106,18 @@
                                                 <div class="col-12 col-sm-3 col-md-3 col-lg-2">
                                                     <input type="submit" class="btn btn-primary" value="Search" />
                                                 </div>
-                                                
                                             </div>
                                         </form>
-                                                
-                                        <div class="next-prev-btn">
-                                            <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
-                                        </div>
-
+                                       
                                     </div>
-
                                     <div class="mail-box-list">
                                         <section id="subject">
-                                            <table class="table">
+                                            <table class="table" id="myTable">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Full name</th>
+                                                        <th scope="col"><span id="submitNameIcon" class="sort-icon">▼</span>Full name</th>
                                                         <th scope="col">Phone number</th>
-                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Email <span id="submitEmailIcon" class="sort-icon">▼</span></th>
                                                         <th scope="col">Role</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Edit</th>
@@ -119,7 +126,6 @@
                                                 <tbody>
                                                     <c:forEach var="u" items="${list}">
                                                         <tr>
-                                                            <td><c:out value="${u.userId}"/></td>
                                                             <td><c:out value="${u.fullName}"/></td>
                                                             <td><c:out value="${u.phone}"/></td>
                                                             <td><c:out value="${u.email}"/></td>
@@ -143,7 +149,75 @@
                 </div>
         </main>
         <div class="ttr-overlay"></div>
+<script>
+    setTimeout(function () {
+        var notificationMessage = document.getElementById("notificationMessage");
+        if (notificationMessage) {
+            notificationMessage.style.display = "none";
+        }
+    }, 5000);
+</script>
+<script>
+    function goToPage(i) {
+        document.getElementById('pageNoInput').value = i;
+        document.getElementById('form').submit();
+    }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var submitNameIcon = document.getElementById("submitNameIcon");
+    var submitEmailIcon = document.getElementById("submitEmailIcon");
+    var sortOrderName = 1; // 1 for ascending, -1 for descending
+    var sortOrderEmail = 1; // 1 for ascending, -1 for descending
 
+    submitNameIcon.addEventListener("click", function () {
+        sortOrderName *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 0, sortOrderName, submitNameIcon);
+    });
+
+    submitEmailIcon.addEventListener("click", function () {
+        sortOrderEmail *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 4, sortOrderEmail, submitEmailIcon);
+    });
+
+    function sortTable(tableId, columnIndex, sortOrder, icon) {
+        var table = document.getElementById(tableId);
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort(function (a, b) {
+            var valueA = a.cells[columnIndex].textContent.trim();
+            var valueB = b.cells[columnIndex].textContent.trim();
+
+            if (columnIndex === 4) { // Check if sorting by email
+                var valueA = a.cells[columnIndex].textContent.trim();
+                var valueB = b.cells[columnIndex].textContent.trim();
+            }
+
+            if (isNaN(valueA) || isNaN(valueB)) {
+                // For non-numeric values, use localeCompare
+                return sortOrder * valueA.localeCompare(valueB);
+            } else {
+                // For numeric values, use subtraction
+                return sortOrder * valueA.localeCompare(valueB);
+            }
+        });
+
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Update the icons based on the sort order
+        resetIcons();
+        icon.innerHTML = sortOrder === 1 ? "▼" : "▲";
+    }
+
+    function resetIcons() {
+        submitNameIcon.innerHTML = "▼";
+        submitEmailIcon.innerHTML = "▼";
+    }
+});
+</script>
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

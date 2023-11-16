@@ -93,17 +93,16 @@ public class AddLessonController extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         LessonDAO dao = new LessonDAO();
-        int subject = Integer.parseInt(request.getParameter("sid"));
+        int order = Integer.parseInt(request.getParameter("display"));
         String title = request.getParameter("title");
         int chapter = Integer.parseInt(request.getParameter("chapter"));
-        int classid = Integer.parseInt(request.getParameter("cid"));
         String type = request.getParameter("type");
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
         String video = request.getParameter("video");
         int quiz = Integer.parseInt(request.getParameter("quiz"));
         String file = request.getParameter("file");
         String des = request.getParameter("des");
-
+        dao.addLesson(title, chapter, type, quiz, video, file, status, des, order);
         response.sendRedirect("lessonList");
     }
 

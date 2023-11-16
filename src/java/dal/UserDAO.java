@@ -122,27 +122,26 @@ public class UserDAO extends MySqlConnection {
         }
     }
 
-    public void addUser(String name, boolean gender, String avatar, String phone, String email, int role) {
+    public void addUser(String name, boolean gender, String phone, String email, int role) {
         try {
-            String strSelect = "INSERT INTO user ( password, full_name, gender, avatar_url, phone_number, email, role_id, \n"
+            String strSelect = "INSERT INTO user ( password, full_name, gender,  phone_number, email, role_id, \n"
                     + " create_at, create_by, update_at, update_by)\n"
-                    + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             Connection cnn = (new MySqlConnection()).connection;
             PreparedStatement pstm = cnn.prepareStatement(strSelect);
             pstm.setString(1, "12345678");
             pstm.setString(2, name);
             pstm.setBoolean(3, gender);
-            pstm.setString(4, avatar);
-            pstm.setString(5, phone);
-            pstm.setString(6, email);
-            pstm.setInt(7, role);
+            pstm.setString(4, phone);
+            pstm.setString(5, email);
+            pstm.setInt(6, role);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());
-            pstm.setDate(8, createdAt);
-            pstm.setInt(9, 1);
-            pstm.setDate(10, updatedAt);
-            pstm.setInt(11, 1);
+            pstm.setDate(7, createdAt);
+            pstm.setInt(8, 1);
+            pstm.setDate(9, updatedAt);
+            pstm.setInt(10, 1);
             pstm.executeUpdate();
 
         } catch (Exception e) {
@@ -505,13 +504,37 @@ public class UserDAO extends MySqlConnection {
         return users; // Return an ArrayList of users with partial similarity to the searchString
     }
 
-    public static void main(String[] args) {
-        UserDAO dao = new UserDAO();
-//        ArrayList<User> list = dao.getAllUser();
-//        
-//        for (User u : list) {
-//            System.out.println(u.getFullName() + " "+ u.getEmail() + " " + u.getPhone() + " " + u.getStatusDisplay());
-//        }
-        dao.updateUserByAdmin("3", 1, "2");
+    public ArrayList<User> getSubjectManager() {
+        ArrayList<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE role_id = 2";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                int userId = result.getInt(1);
+                String password = result.getString(2);
+                String fullName = result.getString(3);
+                boolean gender = result.getBoolean(4);
+                String avatarUrl = result.getString(5);
+                String phoneNumber = result.getString(6);
+                String email = result.getString(7);
+                int roleId = result.getInt(8);
+                boolean status = result.getBoolean(9);
+                Date createAt = result.getDate(10);
+                int createBy = result.getInt(11);
+                Date updateAt = result.getDate(12);
+                int updateBy = result.getInt(13);
+
+                User user = new User(userId, password, fullName, gender, avatarUrl, phoneNumber, email, roleId, status, createAt, createBy, updateAt, updateBy);
+                userList.add(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
+    
 }

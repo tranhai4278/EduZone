@@ -68,8 +68,8 @@
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Setting</h4>
                     <ul class="db-breadcrumb-list">
-                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
+                        <li><a href="home"><i class="fa fa-home"></i>Home</a></li>
+                        <li>Add new user</li>
                     </ul>
                 </div>	
                 <div class="row">
@@ -108,14 +108,7 @@
                                                             <input type="radio" name="gender" value=true>Male
                                                         </div>
                                                     </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Avatar URL</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="avatar" >
-                                                        </div>
-                                                    </div>
-
+                                                    
                                                     <div class="seperator"></div>
                                                     <div class="form-group row">
                                                         <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Phone *</label>

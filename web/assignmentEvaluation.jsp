@@ -6,8 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="assignDAO" value="<%= new dal.AssignmentDAO() %>" />
-<%@page import="model.AssignmentSubmit" %>
+<c:set var="assignmentDAO" value="<%= new dal.AssignmentDAO() %>" />
+<%@page import="model.AssignmentSubmit"%>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
@@ -41,6 +41,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.sm.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
         <!-- PAGE TITLE HERE ============================================= -->
         <title>EduNext : Education HTML Template </title>
@@ -94,7 +95,7 @@
                     <h4 class="breadcrumb-title">Assignment Evaluation</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="home"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
+                        <li>Assignment Evaluation</li>
                     </ul>
                 </div>
                 <div class="row">
@@ -119,10 +120,10 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <select id="filterStatus" name="status" onchange="this.form.submit()">
+                                                <select id="filterStatus" name="status" onchange="filterTableByStatus()">
                                                     <option  ${type == -1 ? ' selected' : ' '} value="-1">Status</option>
-                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Active</option>
-                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Inactive</option>
+                                                    <option ${status ==1 ? ' selected' : ' '} value="1">Submitted</option>
+                                                    <option ${status ==0 ? ' selected' : ' '} value="0">Unsubmitted</option>
                                                 </select>
                                             </div>
 
@@ -131,25 +132,14 @@
                                 </div>
                             </div>
                             <div class="mail-box-list">
-                                <section id="role">
-                                    <input  type="hidden" name="order" id="order" value="${order}"/>
-                                    <table class="table">
+                                    <table class="table" id="myTable">
                                         <thead>
                                             <tr>
-                                                <th style="position: relative;" scope="col">Full Name <i style="position: absolute;
-                                                                                                         right: 6px;
-                                                                                                         top: 10px;
-                                                                                                         color: #cccccc;
-                                                                                                         cursor: pointer;" class="fa fa-caret-up ${order eq 'setting_name  ASC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  ASC')" ></i>
-                                                    <i style=" position: absolute;
-                                                       right: 6px;
-                                                       top: 18px;
-                                                       color: #cccccc;
-                                                       cursor: pointer;" class="fa fa-caret-down ${order eq 'setting_name  DESC ' ? ' sort-active' : ' '}" onclick="sortData('setting_name  DESC')"></i></th>
+                                                <th scope="col">Full Name <span id="submitNameIcon" class="sort-icon">▼</span></th>
                                                 <th scope="col">Submission</th>
-                                                <th scope="col">Submit time</th>
+                                                <th scope="col">Submit time <span id="submitTimeIcon" class="sort-icon">▼</span> </th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Grade</th>
+                                                <th scope="col">Grade <span id="submitGradeIcon" class="sort-icon">▼</span></th>
                                                 <th scope="col">Comment</th>
                                                 <th scope="col"></th>
                                             </tr>
@@ -160,13 +150,11 @@
                                             <input type="hidden" name="assignmentID" value="${a.getaID()}">
                                             <input type="hidden" name="classID" value="${a.getClassID()}">
                                             <input type="hidden" name="traineeID" value="${a.getTraineeID()}">
-                                            <td>${assignDAO.getTraineeName(a.getTraineeID())}</td>
+                                            <td>${assignmentDAO.getTraineeName(a.getTraineeID())}</td>
                                             <td>${a.getFile()}</td>
                                             <td>${a.getSubmitTime()}</td>
-                                            <td>
-                                                <div class="form-check form-switch">
-                                                    <input style="margin: 0" class="form-check-input" type="checkbox" ${a.isStatus() ? 'checked' : ''} onclick="updateStatus(${s.settingId}, this)">
-                                                </div>
+                                            <td data-status="${a.isStatus() ? 'submitted' : 'unsubmitted'}">
+                                                ${assignmentDAO.getStatusDisplay(a.getaID(),a.getClassID(), a.getTraineeID())}
                                             </td>
                                             <td>${a.getMark()}</td>
                                             <td>${a.getComment()}</td>
@@ -184,7 +172,6 @@
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                </section>
                             </div>
                         </div>
                         <c:if test="${totalPage!=0}">
@@ -241,18 +228,17 @@
                             </div>
                             <div class="form-group col-12">
                                 <div>
-                                    <input class="form-control" type="text"  name="mark" required>
+                                    <input class="form-control" type="text" name="mark" required>
                                 </div>
                             </div>
                             <div class="seperator"></div>
-                            <div class="col-12 m-t20">
+                            <div class="col-12">
                                 <div class="ml-auto">
                                     <h3>Comment</h3>
                                 </div>
                             </div>
                             <div class="form-group col-12">
-                                <textarea name="comment" id="summernote"></textarea>
-
+                                <textarea id="summernote" name="comment" style="width: 100%; height: 150px;"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -267,15 +253,7 @@
 </main>
 <div class="ttr-overlay"></div>
 <!-- External JavaScripts -->
-<script>
-    function updateStatus(id, checkbox) {
-        let status = checkbox.checked;
-        if (confirm('Are you sure?'))
-            window.location.href = 'updateStatusSetting?id=' + id + '&status=' + status;
-        else
-            checkbox.checked = !status;
-    }
-</script>
+
 <script>
     setTimeout(function () {
         var notificationMessage = document.getElementById("notificationMessage");
@@ -289,14 +267,8 @@
         document.getElementById('pageNoInput').value = i;
         document.getElementById('form').submit();
     }
-    function sortData(order) {
-        document.getElementById('order').value = order;
-        document.getElementById('form').submit();
-    }
 </script>
-<script>
-    $('#summernote').summernote();
-</script>
+
 <script>
     function setEvaluationData(assignmentID, classID, traineeID) {
         document.getElementById("assignmentID").value = assignmentID;
@@ -305,6 +277,114 @@
     }
 
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var submitTimeIcon = document.getElementById("submitTimeIcon");
+    var sortOrder = 1; // 1 for ascending, -1 for descending
+
+    submitTimeIcon.addEventListener("click", function () {
+        sortOrder *= -1; // Toggle between ascending and descending
+
+        var table = document.getElementById("myTable");
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort(function (a, b) {
+            var dateA = new Date(a.cells[2].textContent);
+            var dateB = new Date(b.cells[2].textContent);
+
+            return sortOrder * (dateA - dateB);
+        });
+
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Update the icon based on the sort order
+        submitTimeIcon.innerHTML = sortOrder === 1 ? "▼" : "▲";
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var submitNameIcon = document.getElementById("submitNameIcon");
+    var submitGradeIcon = document.getElementById("submitGradeIcon");
+    var sortOrderName = 1; // 1 for ascending, -1 for descending
+    var sortOrderGrade = 1; // 1 for ascending, -1 for descending
+
+    submitNameIcon.addEventListener("click", function () {
+        sortOrderName *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 0, sortOrderName, submitNameIcon);
+    });
+
+    submitGradeIcon.addEventListener("click", function () {
+        sortOrderGrade *= -1; // Toggle between ascending and descending
+        sortTable("myTable", 4, sortOrderGrade, submitGradeIcon);
+    });
+
+    function sortTable(tableId, columnIndex, sortOrder, icon) {
+        var table = document.getElementById(tableId);
+        var tbody = table.querySelector("tbody");
+        var rows = Array.from(tbody.querySelectorAll("tr"));
+
+        rows.sort(function (a, b) {
+            var valueA = a.cells[columnIndex].textContent.trim();
+            var valueB = b.cells[columnIndex].textContent.trim();
+
+            if (columnIndex === 4) { // Check if sorting by grade
+                valueA = parseFloat(valueA);
+                valueB = parseFloat(valueB);
+            }
+
+            if (isNaN(valueA) || isNaN(valueB)) {
+                // For non-numeric values, use localeCompare
+                return sortOrder * valueA.localeCompare(valueB);
+            } else {
+                // For numeric values, use subtraction
+                return sortOrder * (valueA - valueB);
+            }
+        });
+
+        rows.forEach(function (row) {
+            tbody.appendChild(row);
+        });
+
+        // Update the icons based on the sort order
+        resetIcons();
+        icon.innerHTML = sortOrder === 1 ? "▼" : "▲";
+    }
+
+    function resetIcons() {
+        submitNameIcon.innerHTML = "▼";
+        submitGradeIcon.innerHTML = "▼";
+    }
+});
+</script>
+<script>
+    function filterTableByStatus() {
+        var statusFilter = document.getElementById("filterStatus");
+        // Lấy bảng và tất cả các dòng trong tbody
+        var table = document.getElementById("myTable");
+        var rows = table.querySelectorAll("tbody tr");
+
+        // Lắng nghe sự kiện thay đổi của dropdown
+        statusFilter.addEventListener("change", function () {
+            // Lấy giá trị được chọn trong dropdown
+            var selectedStatus = this.value;
+
+            // Duyệt qua tất cả các dòng và ẩn/hiển thị dựa trên trạng thái đã chọn
+            rows.forEach(function (row) {
+                // Lấy giá trị trạng thái từ thuộc tính data-status
+                var rowStatus = row.getAttribute("data-status");
+
+                // Ẩn hoặc hiển thị dòng dựa trên giá trị của dropdown
+                row.style.display = selectedStatus === "-1" || selectedStatus === rowStatus ? "table-row" : "none";
+            });
+        });
+    }
+</script>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>

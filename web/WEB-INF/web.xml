@@ -134,10 +134,6 @@
         <servlet-class>Manager.controller.LessonEditController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>QuizList</servlet-name>
-        <servlet-class>Manager.controller.QuizList</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>NewQuiz</servlet-name>
         <servlet-class>Manager.controller.NewQuiz</servlet-class>
     </servlet>
@@ -296,7 +292,7 @@
     <servlet>
         <servlet-name>classTrainerListServlet</servlet-name>
         <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>ExtraLesson</servlet-name>
         <servlet-class>OnlineLearn.ExtraLesson</servlet-class>
@@ -316,7 +312,7 @@
     <servlet>
         <servlet-name>classRemoveStudentServlet</servlet-name>
         <servlet-class>Class.controller.classRemoveStudentServlet</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>deleteComment</servlet-name>
         <servlet-class>Manager.controller.deleteComment</servlet-class>
@@ -324,6 +320,10 @@
     <servlet>
         <servlet-name>NewPacticeQuiz</servlet-name>
         <servlet-class>OnlineLearn.NewPacticeQuiz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetChapBySubject</servlet-name>
+        <servlet-class>Manager.controller.GetChapBySubject</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -408,10 +408,6 @@
     <servlet-mapping>
         <servlet-name>LessonEditController</servlet-name>
         <url-pattern>/lessonEdit</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>QuizList</servlet-name>
-        <url-pattern>/quizlist</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NewQuiz</servlet-name>
@@ -576,7 +572,7 @@
     <servlet-mapping>
         <servlet-name>classTrainerListServlet</servlet-name>
         <url-pattern>/classtrainerlist</url-pattern>
-        </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExtraLesson</servlet-name>
         <url-pattern>/extraLesson</url-pattern>
@@ -596,7 +592,7 @@
     <servlet-mapping>
         <servlet-name>classRemoveStudentServlet</servlet-name>
         <url-pattern>/removestudent</url-pattern>
-         </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>deleteComment</servlet-name>
         <url-pattern>/deleteComment</url-pattern>
@@ -604,6 +600,10 @@
     <servlet-mapping>
         <servlet-name>NewPacticeQuiz</servlet-name>
         <url-pattern>/newpracticequiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetChapBySubject</servlet-name>
+        <url-pattern>/getchapbysubject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

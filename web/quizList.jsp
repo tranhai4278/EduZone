@@ -144,12 +144,12 @@
                                                     </c:forEach>
                                                 </select>
                                             </div>                                           
-                                            <button type="submit" class="col-md-2 button" style="border-radius: 5px">Search</button>
+                                            <button type="submit" class="col-md-2 btn btn-primary" style="border-radius: 5px">Search</button>
                                         </form>                                        
                                     </div>
                                     <div class="adbutton" style="padding: 0;margin-left: auto">
                                         <div>
-                                            <button class="button" type="button" data-toggle="modal" data-target="#NewQuiz"><i class="fa-solid fa-plus" style="padding-right:5px"></i>Add Quiz</button>                                                                                      
+                                            <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#NewQuiz"><i class="fa-solid fa-plus" style="padding-right:5px"></i>Add Quiz</button>                                                                                      
                                         </div>
                                     </div>
                                 </div>
@@ -204,14 +204,14 @@
                                                     <td class="col-md-1" style="text-align: center">
                                                         <div>
                                                             <c:if test="${q.status==false}">
-                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-check" id="active_icon" style = "cursor: pointer"></i>&nbsp;&nbsp;
+                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-check" id="active_icon" style = "cursor: pointer" title="Activate Quiz"></i>&nbsp;&nbsp;
                                                             </c:if>
                                                             <c:if test="${q.status==true}">
-                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-xmark" id="deactive_icon" style = "cursor: pointer"></i>&nbsp;&nbsp;
+                                                                <i onclick="window.location.href = 'quizs?action=activeAndDeactive&page=${page}&quizID=${q.quizId}'" class="fa-regular fa-circle-xmark" id="deactive_icon" style = "cursor: pointer" title="Deactivate Quiz"></i>&nbsp;&nbsp;
                                                             </c:if>
-                                                            <i onclick="window.location.href = 'quizs?action=detailQuiz&quizID=${q.getQuizId()}'" class="fa fa-eye" id="view_icon" style = "cursor: pointer"  ></i>
+                                                            <i onclick="window.location.href = 'quizs?action=detailQuiz&quizID=${q.getQuizId()}'" class="fa fa-eye" id="view_icon" style = "cursor: pointer" title="View Quiz" ></i>
                                                             &nbsp;&nbsp;
-                                                            <i onclick="openDeleteModal('${q.quizId}')" class="fa fa-trash"style = "cursor: pointer"></i>
+                                                            <i onclick="openDeleteModal('${q.quizId}')" class="fa fa-trash"style = "cursor: pointer" title="Delete Quiz"></i>
                                                         </div>
                                                     </td>
                                                 </tr>

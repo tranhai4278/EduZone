@@ -3,10 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
-        </group>
-        <group>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
@@ -76,7 +72,6 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
         </group>
         <group>
-
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -428,6 +423,9 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
+        </group>
+        <group>
+            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/OnlineLearningDAO.java</file>
         </group>
     </open-files>
 </project-private>

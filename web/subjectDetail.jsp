@@ -303,7 +303,6 @@
                                         </div>
                                     </div>
                                     <input name="sid" value="${detail.subjectId}" hidden>
-                                    <input name="sid" value="${detail.subjectId}" hidden>
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Chapter Name<span style="color: red">*</span></label>
                                         <div>
@@ -311,7 +310,6 @@
                                         </div>
                                     </div>
                                     <input name="type"  value="Chapter" hidden>
-
                                     <div class="form-group col-6">
                                         <label class="col-form-label">Display Order<span style="color: red">*</span></label>
                                         <div>
@@ -355,7 +353,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="edit-profile m-b30" action="extraLesson" method="post">
+                            <form class="edit-profile m-b30" action="subjectDetail" method="post">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="ml-auto">

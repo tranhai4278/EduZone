@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin
-    Created on : Sep 24, 2023, 12:30:41 AM
-    Author     : Nết
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="userDAO" value="<%= new dal.UserDAO() %>" />
@@ -124,15 +118,34 @@
                                                 <input type="hidden" name="Classcode" value="${Classcode}">
                                                 <select name="selectedStudent" class="form-control-sm">
                                                     <option value="">Select a Student to Add</option>
-                                                    <c:forEach var="studentnew" items="${studentList2}">
-                                                        <c:forEach var="student" items="${studentList}">
-                                                            <c:if test = "${studentnew.student.classID != Classcode && studentnew.student.traineeID != student.student.traineeID }">
+                                                    <c:choose>
+                                                        <c:when test="${empty studentList}">
+                                                            <c:forEach var="studentnew" items="${studentList2}">
                                                                 <option value="${studentnew.userID}">
                                                                     <c:out value="${studentnew.fullName}" />
                                                                 </option>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:forEach>
+                                                            </c:forEach>
+                                                        </c:when>
+
+                                                        <c:otherwise>
+                                                            <c:forEach var="studentnew" items="${studentList2}">
+                                                                <c:set var="addToSelect" value="true" />
+
+                                                                <c:forEach var="student" items="${studentList}">
+                                                                    <c:if test="${studentnew.student.classID == Classcode || studentnew.student.traineeID == student.student.traineeID}">
+                                                                        <c:set var="addToSelect" value="false" />
+                                                                    </c:if>
+                                                                </c:forEach>
+
+                                                                <c:if test="${addToSelect}">
+                                                                    <option value="${studentnew.userID}">
+                                                                        <c:out value="${studentnew.fullName}" />
+                                                                    </option>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:otherwise>
+
+                                                    </c:choose>
                                                 </select>
                                                 <button class="btn btn-primary" type="submit">Add Student</button>
                                             </div>

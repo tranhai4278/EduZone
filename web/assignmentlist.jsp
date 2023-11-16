@@ -115,6 +115,7 @@
                                                     <th scope="col">File</th>
                                                     <th scope="col">Mark</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col">Submit TIme</th>
                                                     <th scope="col">Detail</th>
                                                 </tr>
                                             </thead>
@@ -128,6 +129,7 @@
                                                         <td>
                                                             ${a.status == true ? "Submitted" : "Not Submitted"}
                                                         </td>
+                                                        <td>${a.submitTime}</td>
                                                         <td>
                                                             <a href="assignmentdetail?assignmentId=${a.asignment_id}&classId=${a.class_id}&userId=${a.trainee_id}&sid=${sid}" class="btn btn-primary">Assignment Detail</a>
                                                         </td>

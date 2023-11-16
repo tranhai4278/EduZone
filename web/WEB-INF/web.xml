@@ -134,10 +134,6 @@
         <servlet-class>Manager.controller.LessonEditController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>QuizList</servlet-name>
-        <servlet-class>Manager.controller.QuizList</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>NewQuiz</servlet-name>
         <servlet-class>Manager.controller.NewQuiz</servlet-class>
     </servlet>
@@ -326,8 +322,8 @@
         <servlet-class>OnlineLearn.NewPacticeQuiz</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>searchUserController</servlet-name>
-        <servlet-class>Admin.controller.searchUserController</servlet-class>
+        <servlet-name>GetChapBySubject</servlet-name>
+        <servlet-class>Manager.controller.GetChapBySubject</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
@@ -412,10 +408,6 @@
     <servlet-mapping>
         <servlet-name>LessonEditController</servlet-name>
         <url-pattern>/lessonEdit</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>QuizList</servlet-name>
-        <url-pattern>/quizlist</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>NewQuiz</servlet-name>
@@ -610,8 +602,8 @@
         <url-pattern>/newpracticequiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>searchUserController</servlet-name>
-        <url-pattern>/searchUser</url-pattern>
+        <servlet-name>GetChapBySubject</servlet-name>
+        <url-pattern>/getchapbysubject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

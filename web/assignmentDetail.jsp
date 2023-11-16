@@ -60,10 +60,11 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Submit Assignment</h4>
+                    <h4 class="breadcrumb-title">Assignment Detail</h4>
                     <ul class="db-breadcrumb-list">
                         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Submit Assignment</li>
+                        <li>Assignment List</li>
+                        <li>${data.title}</li>
                     </ul>
                 </div>
                 <!-- header END ==== -->
@@ -78,7 +79,7 @@
                             <div class="col-lg-12 m-b30">
                                 <div class="widget-box">
                                     <div class="wc-title">
-                                        <h4>Class Detail</h4>
+                                        <h4>Assignment Detail</h4>
                                     </div>
                                     <% if (request.getAttribute("classAddFailed") != null) { %>
                                     <div class="alert alert-danger">

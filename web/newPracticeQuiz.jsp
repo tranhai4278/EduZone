@@ -102,7 +102,7 @@
                                         <label for="chapName">Choose Question Chapter</label>
                                         <select name="chapques">
                                             <c:forEach var="c" items="${listC}">
-                                                <option value="${ss.settingid}">${c.settingName}</option>
+                                                <option value="${ss.settingId}">${c.settingName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>

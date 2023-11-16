@@ -70,6 +70,26 @@
         <!--<! JavaScript file>-->
 
         <script src="function.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                // Ẩn toàn bộ các thông tin khi trang tải
+                $('#chapter').hide();
+                $('#dimension').show;
+
+                // Bắt sự kiện khi ấn vào nút Chapter
+                $('#btn-chapter').click(function () {
+                    $('#chapter').show();
+                    $('#dimension').hide();
+                });
+
+                // Bắt sự kiện khi ấn vào nút Dimention
+                $('#btn-dimention').click(function () {
+                    $('#chapter').hide();
+                    $('#dimension').show();
+                });
+            });
+        </script>
     </head>
     <body onload="showToast('${txt}');turnEditMode('${txt}', '${err}')" class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -120,6 +140,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="nav-question-tab" data-toggle="tab" href="#nav-question" role="tab"
                            aria-controls="nav-question" aria-selected="false">Question</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-random-tab" data-toggle="tab" href="#nav-random" role="tab" aria-controls="nav-random" aria-selected="false">Random Option</a>
                     </li>
                 </ul>
 
@@ -228,24 +251,24 @@
                                         <h4>Quiz Details</h4>
                                     </div>
                                     <div class="widget-inner">                               
-                                        <form action="Quizz" method="get" class="edit-profile m-b30">
+                                        <form action="Quizs" method="get" class="edit-profile m-b30">
                                             <input type="text" name="action" style="display: none" value="questionList"/> 
                                             <input style="display: none" type="text" id ="quizID" name="quizID" value="${quiz.quizId}">
                                             <div class="row" style="justify-content: flex-end">
-                                                <!--Export-->
-                                                <input type="text" name="action" style="display: none" value="addQuestion"/>
-                                                <div class="col-1" id="" style="margin:0 13px 10px 0">
-                                                    <button type="button" class="btn-secondry add-item m-r5">Export</button>
-                                                </div>
-                                                <!--Import-->
-                                                <input type="text" name="action" style="display: none" value="addQuestion"/>
-                                                <div class="col-1" id="" style="margin:0 13px 10px 0">
-                                                    <button type="button" class="btn-secondry add-item m-r5">Import</button>
-                                                </div>
+                                                <!--                                                Export
+                                                                                                <input type="text" name="action" style="display: none" value="addQuestion"/>
+                                                                                                <div class="col-1" id="" style="margin:0 13px 10px 0">
+                                                                                                    <button type="button" class="btn-secondry add-item m-r5">Export</button>
+                                                                                                </div>
+                                                                                                Import
+                                                                                                <input type="text" name="action" style="display: none" value="addQuestion"/>
+                                                                                                <div class="col-1" id="" style="margin:0 13px 10px 0">
+                                                                                                    <button type="button" class="btn-secondry add-item m-r5">Import</button>
+                                                                                                </div>-->
                                                 <!--Add ques-->
                                                 <input type="text" name="action" style="display: none" value="addQuestion"/>
                                                 <div class="col-2" id="" style="margin:0 0 10px 0">
-                                                    <button type="button" class="btn-secondry add-item m-r5" id="addQuestionBtn">Add Question</button>
+                                                    <button type="button" class="btn btn-primary add-item m-r5" id="addQuestionBtn">Add Question</button>
                                                 </div>
                                             </div>
 
@@ -288,7 +311,7 @@
                                                 <!--Add ques-->
                                                 <input type="text" name="action" style="display: none" value="addQuestionToQuiz"/>
                                                 <div class="col-2" id="" style="margin:0 0 10px 0">
-                                                    <button type="submit" class="btn-secondry add-item m-r5" onclick = "addQuestionToQuiz()">Add Question</button>
+                                                    <button type="submit" class="btn btn-primary add-item m-r5" onclick = "addQuestionToQuiz()">Add Question</button>
                                                 </div>
                                             </div>
 
@@ -312,13 +335,61 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Your Profile Views Chart END-->
-            </div>
-        </div>
 
+                    <div class="tab-pane fade" id="nav-random" role="tabpanel" aria-labelledby="nav-random-tab">
+                        <div class="widget-box" >
+                            <div class="wc-title">
+                                <h4>Add Question</h4>
+                            </div>
+                            <div class="widget-inner">                               
+                                <form action="newquiz" method="post" class="edit-profile m-b30">
+                                    <input style="display: none" type="text" name="quizID"  value="${quiz.quizId}">
+                                    <input style="display: none" type="text" name="quizNum"  value="${quiz.numberQuestion}">
+                                    <div>
+                                        <div class="form-check form-check-inline" style="margin-right: 60px">
+                                            <input class="form-check-input" type="radio" name="type" id="btn-dimention" value="false" checked/>
+                                            <label class="form-check-label" for="randomQues">By Dimensions</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="type" id="btn-chapter" value="true" />
+                                            <label class="form-check-label" for="fixedQues">By Chapter</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id = "dimension">
+                                        <div  style="margin-top:10px; margin-top: 20px">
+                                            <label for="dimentype">Choose Question dimention</label>
+                                            <select name="settingID">
+                                                <c:forEach var="ss" items="${listss}">
+                                                    <option value="${ss.settingId}">${ss.getSettingType()}/${ss.getSettingName()}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div id = "chapter">
+                                        <div class="row">
+                                            <div class="col-md-6" style="margin-top:10px; margin-top: 20px">
+                                                <label for="chapName">Choose Question Chapter</label>
+                                                <select name="settingID">
+                                                    <c:forEach var="c" items="${listC}">
+                                                        <option value="${ss.settingId}">${c.settingName}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary add-item m-r5" id="addQuestionBtn">Add Question</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Your Profile Views Chart END-->
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 </div>
 </main>
 
@@ -641,6 +712,33 @@
 
     });
 
+</script>
+
+<script>
+    // Assume you have the 'type' variable defined
+    var quizType = ${quiz.quizType};
+
+    // Function to show/hide tabs based on the quiz type
+    function toggleTabs() {
+        var navGeneralTab = document.getElementById('nav-general-tab');
+        var navQuestionTab = document.getElementById('nav-question-tab');
+        var navRandomTab = document.getElementById('nav-random-tab');
+
+        if (quizType) {
+            // Show General and Question tabs, hide Random tab
+            navGeneralTab.style.display = 'block';
+            navQuestionTab.style.display = 'block';
+            navRandomTab.style.display = 'none';
+        } else {
+            // Hide Question tab, show Random tab
+            navGeneralTab.style.display = 'block';
+            navQuestionTab.style.display = 'none';
+            navRandomTab.style.display = 'block';
+        }
+    }
+
+    // Call the function on page load
+    window.onload = toggleTabs;
 </script>
 
 <!-- External JavaScripts -->

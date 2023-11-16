@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Manager.controller;
 
+import dal.ManagerDAO;
 import dal.QuizDAO;
 import dal.SubjectDAO;
 import dal.SubjectSettingDAO;
@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +37,7 @@ import model.User;
  * @author MinhDQ
  */
 public class Quizs extends HttpServlet {
-   
+
     QuizDAO qd = new QuizDAO();
     SubjectDAO sd = new SubjectDAO();
     SubjectSettingDAO ssd = new SubjectSettingDAO();
@@ -141,7 +142,6 @@ public class Quizs extends HttpServlet {
         request.getRequestDispatcher("quizList.jsp").forward(request, response);
     }
 
-
     private void searchQuiz(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchContent = request.getParameter("searchContent");
         String subject = request.getParameter("searchBySubject");
@@ -161,7 +161,6 @@ public class Quizs extends HttpServlet {
         request.setAttribute("chapterList", chapterList);
         request.getRequestDispatcher("quizList.jsp").forward(request, response);
     }
-
 
     private void addQuiz(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         int subjectId = Integer.parseInt(request.getParameter("subject"));
@@ -344,6 +343,13 @@ public class Quizs extends HttpServlet {
         Quiz quiz = qd.getQuiz("quiz_id", quizID);
         ArrayList<Question> questionList = qd.getQuestionsByQuiz(quizID);
         ArrayList<Question> questionListToAdd = qd.getQuestionToAdd(quiz);
+        ManagerDAO Sdao = new ManagerDAO();
+        SubjectSettingDAO ssdao = new SubjectSettingDAO();
+        System.out.println(quiz.getSubjectId());
+        List<SubjectSetting> listC = Sdao.getChapterbySubject(quiz.getS().getSubjectId());
+        List<SubjectSetting> listss = ssdao.getDimentionBySubjectId(quiz.getS().getSubjectId());
+        request.setAttribute("listss", listss);
+        request.setAttribute("listC", listC);
         request.setAttribute("quiz", quiz);
         request.setAttribute("creater", sd.getManagerName(quiz.getCreateBy() + ""));
         request.setAttribute("updater", sd.getManagerName(quiz.getUpdateBy() + ""));

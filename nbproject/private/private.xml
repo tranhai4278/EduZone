@@ -419,10 +419,14 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/EvaluateController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/QuizConfig.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Manager/controller/Quizs.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/SubjectSettingDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/QuizDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/ManagerDAO.java</file>
         </group>
         <group>
             <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/OnlineLearningDAO.java</file>

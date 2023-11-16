@@ -259,7 +259,7 @@ public class SubjectSettingDAO extends MySqlConnection {
     public static void main(String[] args) {
         SubjectSetting ss = new SubjectSetting();
         SubjectSettingDAO dao = new SubjectSettingDAO();
-        ss = dao.getSubjectSettingByName("Chapter 1");
+        ss = (SubjectSetting) dao.getAllChapterNamesBySubjectId("1");
         System.out.println(ss);
     }
 }

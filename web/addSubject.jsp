@@ -7,6 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Subject"%>
+<c:set var="userDAO" value="<%= new dal.UserDAO() %>" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <!DOCTYPE html>
 <html>
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
@@ -68,8 +71,8 @@
                 <div class="db-breadcrumb">
                     <h4 class="breadcrumb-title">Setting</h4>
                     <ul class="db-breadcrumb-list">
-                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
-                        <li>Setting</li>
+                        <li><a href="home"><i class="fa fa-home"></i>Home</a></li>
+                        <li>Add new subject</li>
                     </ul>
                 </div>	
                 <div class="row">
@@ -94,19 +97,23 @@
                                             <form class="edit-profile" method="post" action="addSubject">
                                                 <div class="">
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Manager ID *</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Manager Name*</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="mID" required="true">
+                                                            <select name="mID" required="true" >
+                                                                <c:forEach items="${userDAO.getSubjectManager()}" var="u">
+                                                                    <option value="${u.getUserId()}">${u.getFullName()}</option>
+                                                                </c:forEach>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Name *</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Name*</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                             <input class="form-control" type="text" name="name" required="true">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Code *</label>
+                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Subject Code*</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
                                                             <input class="form-control" type="text" name="code" required="true">
                                                         </div>
@@ -114,18 +121,10 @@
                                                     <div class="form-group row">
                                                         <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Description</label>
                                                         <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="des">
+                                                            <textarea id="summernote" name="des" style="width: 100%; height: 200px;"></textarea>
                                                         </div>
                                                     </div>
-                                                  
-                                                    <div class="form-group row">
-                                                        <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Image URL</label>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <input class="form-control" type="text" name="image">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    
+
                                                 </div>
                                                 <div class="">
                                                     <div class="">
@@ -139,7 +138,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </form>
                                         </div>
                                         <!-- contact area END -->
@@ -152,27 +151,37 @@
                 </div>
         </main>
         <div class="ttr-overlay"></div>
+    </script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#summernote').summernote(){
+                height: 500;
+            });
+        });
+    </script>
+    <!-- External JavaScripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+    <script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
+    <script src="assets/vendors/counter/waypoints-min.js"></script>
+    <script src="assets/vendors/counter/counterup.min.js"></script>
+    <script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
+    <script src="assets/vendors/masonry/masonry.js"></script>
+    <script src="assets/vendors/masonry/filter.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
+    <script src='assets/vendors/scroll/scrollbar.min.js'></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/vendors/chart/chart.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src='assets/vendors/switcher/switcher.js'></script>
 
-        <!-- External JavaScripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
-        <script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-        <script src="assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-        <script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
-        <script src="assets/vendors/counter/waypoints-min.js"></script>
-        <script src="assets/vendors/counter/counterup.min.js"></script>
-        <script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
-        <script src="assets/vendors/masonry/masonry.js"></script>
-        <script src="assets/vendors/masonry/filter.js"></script>
-        <script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
-        <script src='assets/vendors/scroll/scrollbar.min.js'></script>
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/vendors/chart/chart.min.js"></script>
-        <script src="assets/js/admin.js"></script>
-        <script src='assets/vendors/switcher/switcher.js'></script>
+</body>
 
-    </body>
-
-    <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
+<!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
 </html>

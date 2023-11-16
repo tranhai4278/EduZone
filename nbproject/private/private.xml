@@ -3,80 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/admin.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/jquery.min.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/header.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/User.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/RegisterController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LogoutController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/SubjectDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/autocomplete-subject-only.js</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/register.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/QuizDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Subject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/dal/SubjectDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/Manager/controller/QuizList.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/src/java/model/Quiz.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/ProjectSWP/EduZone/web/quizList.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subjectList.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectList.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/model/SubjectSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/EditSubjectSetting.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/subjectDetail.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/web/edit-subject-setting.jsp</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/Manager/controller/SubjectDetail.java</file>
-            <file>file:/E:/FPTU/HK5/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/classlist.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/web/setting-header.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/EduZone/src/java/Admin/controller/UserDetailController.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/QuestionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/AddQuestionController.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionDetail.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/QuestionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/AddQuestionController.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/questionDetail.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
-        </group>
-        <group>
-
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -281,7 +207,6 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
         </group>
-
         <group>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/SubjectSetting.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginController.java</file>
@@ -304,7 +229,6 @@
             <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/onlineLearn.jsp</file>
         </group>
         <group>
-
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/LessonDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/nbproject/build-impl.xml</file>
@@ -325,88 +249,120 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/SubjectDAO.java</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/newLesson.jsp</file>
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/DashboardController.java</file>
-
-        <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/OnlineLearn/OnlineLearning.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/OnlineLearn/OnlineLearning.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/SubjectDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ClassDAO.java</file>
+                <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/register.jsp</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/WEB-INF/web.xml</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
+            </group>
+            <group>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
+                <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
+            </group>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/AssignmentDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/model/AssignmentSubmit.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/setting-subject.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/lessonDetail.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/model/Assignment.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/AssignmentController.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/AssignmentDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/lessonList.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/SubjectDAO.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/subject-header.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/EvaluateController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/addDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/addDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/SubjectDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/discussionList.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ManagerDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/DiscussionDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/editDiscussion.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/web/editDiscussion.jsp</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/dal/ClassDAO.java</file>
-            <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Manager/controller/discussionListServlet.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/setting-header.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/AssignmentDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userList.jsp</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
+            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
         </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/register.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/Constants.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/login.jsp</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Login/controller/LoginGoogleHandler.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/UserGoogle.java</file>
-
-        </group>
- </group>
     </open-files>
 </project-private>

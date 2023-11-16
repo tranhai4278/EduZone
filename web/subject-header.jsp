@@ -193,12 +193,22 @@
                             <span class="ttr-label">Discussion</span>
                         </a>
                     </li>
+                    <c:if test="${sessionScope.user.roleId == 4}">
                     <li>
                         <a href="assignmentlist?Subject=${sid}&Class=${classid}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-file"></i></span>
                             <span class="ttr-label">Assignment</span>
                         </a>
                     </li>
+                    </c:if>
+                    <c:if test="${sessionScope.user.roleId == 3}">
+                    <li>
+                        <a href="assignment" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-file"></i></span>
+                            <span class="ttr-label">Assignment</span>
+                        </a>
+                    </li>
+                    </c:if>
                     <li>
                         <a href="practicequiz?sid=${detail.subjectId}" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-pencil-alt"></i></span>

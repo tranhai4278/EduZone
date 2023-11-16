@@ -1,9 +1,20 @@
+<%-- 
+    Document   : lessonDetail
+    Created on : Oct 17, 2023, 11:26:08 PM
+    Author     : PHAM NGOC
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="lessonDAO" value="<%= new dal.LessonDAO() %>" />
+<c:set var="subjectDAO" value="<%= new dal.SubjectDAO() %>" />
+<c:set var="subjectSettingDAO" value="<%= new dal.SubjectSettingDAO() %>" />
+<c:set var="quizDAO" value="<%= new dal.QuizDAO() %>" />
 <%@page import="model.Lesson" %>
 <%@page import="model.Subject" %>
 <%@page import="model.Quiz" %>
+<%@page import="com.google.gson.Gson" %>
+<%@page import="com.google.gson.JsonObject" %>
 
 
 <!DOCTYPE html>
@@ -35,9 +46,6 @@
 
         <!-- PAGE TITLE HERE ============================================= -->
         <title>EduNext : Education HTML Template </title>
-
-
-        <!-- MOBILE SPECIFIC ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -59,7 +67,6 @@
                 $('#fileSection').hide();
             });
         </script>
-
     </head>
     <body class="ttr-opened-sidebar ttr-pinned-sidebar">
 
@@ -78,33 +85,32 @@
                             <div class="widget-inner">
                                 <form class="edit-profile m-b30" action="addLesson" method="post">
                                     <div class="row">
-
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Subject* </label>
                                             <div>
                                                 <select name="subject" required="true" onchange="getSubject(this)">
-                                                    <c:forEach var="subject" items="${listSubjects}" >
+                                                    <c:forEach items="${subjectDAO.getAllSubjects()}" var="subject">
                                                         <option value="${subject.subjectId}">${subject.subjectName}</option>
                                                     </c:forEach>
                                                 </select>
-
                                             </div>
                                         </div>
-                                        <div class="form-group col-6">
+<!--                                                                                                                        <div class="form-group col-6" id="chapterModal">
+                                                                                                                        </div>-->
+                                        <div class="form-group col-6" id="chapterModal">
                                             <label class="col-form-label">Chapter* </label>
                                             <div>
                                                 <select name="chapter" required="true">
-                                                    <c:forEach var="subjectSetting"  items="${listChapters}">
-                                                        <option value="${subjectSetting.settingId}">${subjectSetting.settingName}</option>
-                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
+
+
                                         <div class="form-group col-6">
                                             <label class="col-form-label">Lesson type*</label>
                                             <div>
                                                 <select name="type" id="lessonType" required="true" onchange="getType(this)">
-                                                    <option value="0" >Choose lesson type</option>
+                                                    <option value="0" >Type</option>
                                                     <option value="Video" >Video</option>
                                                     <option value="Quiz">Quiz</option>
                                                     <option value="Assignment">Assignment</option>
@@ -136,26 +142,27 @@
                                             <label class="col-form-label">Quiz</label>
                                             <div>
                                                 <select name="quiz">
-                                                    <c:forEach var="quiz"  items="${listQuizzes}" >
+                                                    <c:forEach items="${quizDAO.getAllQuizzes() }" var="quiz">
                                                         <option value="${quiz.getQuizId()}">${quiz.getQuizName()}</option>
                                                     </c:forEach>
                                                 </select> 
                                             </div>
                                         </div>
-                                        <div class="row" id="fileSection">
-                                            <div class="form-group col-10" >
-                                                <label class="col-form-label">File attachment</label>
-                                                <div>
-                                                    <input class="form-control" type="file" name="file" id="fileInput" accept=".pdf, .doc, .txt, .zip, .xls, .xlsx" required/>
+                                        
+                                        <form action="upload" method="post" enctype="multipart/form-data">
+                                            <div class="row" id="fileSection"> 
+                                                <div class="form-group col-10">
+                                                    <label class="col-form-label">File attachment</label>
+                                                    <input class="form-control" type="file" id="file" name="file" required="true">
+                                                </div>
+                                                <div class="form-group col-2">
+                                                    <label class="col-form-label"></label>
+                                                    <div>
+                                                        <input type="submit" class="btn" value="Upload">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group col-2">
-                                                <label class="col-form-label"></label>
-                                                <div>
-                                                    <button type="button" class="btn btn-primary btn-block mx-auto" onclick="document.getElementById('fileInput').click();">Upload</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </form>
 
                                         <div class="form-group col-12">
                                             <label class="col-form-label">Description</label>
@@ -172,9 +179,13 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Your Profile Views Chart END-->
                 </div>
             </div>
         </main>
+
+
+        <div class="ttr-overlay"></div>
         <script>
             function getType(selectElement) {
                 var type = selectElement.value;
@@ -198,19 +209,59 @@
             }
         </script>
         <script>
-            function displaySelectedDocument(event) {
-                var file = event.target.files[0];
-                var formData = new FormData();
-                formData.append('document', file);
+            function getSubject(selectElement) {
+                var subject = selectElement.value;
+                $.ajax({
+                    url: "/eduzone/getChapter",
+                    type: "get",
+                    data: {
+                        subject: subject
+                    },
+                    success: function (data) {
+                        $('#chapterModal').show();
+                        var content = document.getElementById("chapterModal");
+                        content.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+//            function getSubject(selectElement) {
+//                var subject = selectElement.value;
+//                $.ajax({
+//                    url: "/eduzone/getChapter",
+//                    type: "get",
+//                    data: {
+//                        subject: subject
+//                    },
+//                    dataType: "json",
+//                    success: function (data) {
+//                        var chapterModal = document.getElementById("chapterModal"); 
+//                        chapterModal.innerHTML = "";
+//
+//                        var chapterSelect = document.createElement("select");
+//                        chapterSelect.name = "chapter";
+//                        chapterSelect.required = true;
+//
+//                        var chapters = data.chapters;
+//                        for (var i = 0; i < chapters.length; i++) {
+//                            var option = document.createElement("option");
+//                            option.value = chapters[i].id;
+//                            option.text = chapters[i].name;
+//                            chapterSelect.appendChild(option);
+//                        }
+//
+//                        chapterModal.appendChild(chapterSelect); 
+//                    },
+//                    error: function (xhr) {
+//                        // Xử lý lỗi ở đây nếu cần
+//                    }
+//                });
+//            }
+//
+//
 
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'YourServletURL', true);
-                xhr.send(formData);
-            }
         </script>
-
-        <div class="ttr-overlay"></div>
-
         <!-- External JavaScripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

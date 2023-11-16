@@ -69,40 +69,31 @@
         <main class="ttr-wrapper">
             <div class="container-fluid">
                 <div class="db-breadcrumb">
-                    <h4 class="breadcrumb-title">Setting</h4>
+                    <h4 class="breadcrumb-title">Setting User</h4>
                 </div>	
                 <div class="row">
-                    <!-- Your Profile Views Chart -->
                     <div class="col-lg-12 m-b30">
                         <div class="widget-box">
                             <div class="email-wrapper">
                                 <div class="mail-list-container">
                                     <div class="mail-toolbar">
 
-                                                <form action="searchLesson" method="post">
-                                                    <div class="row">
-                                                        <p>Search by</p>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-4">
-                                                            <select name="criteria">
-                                                                <option value="subject_name">Subject Name</option>
-                                                                <option value="setting_name">Chapter</option>
-                                                                <option value="title">Lesson title</option>
-                                                                <option value="lesson_type">Lesson type</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-4">
-                                                            <input type="text" class="form-control" name="key" placeholder="Search key" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-1">
-                                                            <input type="submit" class="btn btn-primary" value="Search" />
-                                                        </div>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-2">
-                                                            <a class="btn" href="addUser.jsp">
-                                                                Add a new user   
-                                                            </a>
+                                        <form action="searchUser" method="post">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-5">
+                                                    <a class="btn" href="addUser.jsp">
+                                                        Add a new user   
+                                                    </a>
                                                 </div>
-                                                    </div>
-                                                </form>
+                                                <div class="col-12 col-sm-9 col-md-9 col-lg-5">
+                                                    <input type="text" class="form-control" name="key" placeholder="Search key" />
+                                                </div>
+                                                <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                    <input type="submit" class="btn btn-primary" value="Search" />
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
                                                 
                                         <div class="next-prev-btn">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>

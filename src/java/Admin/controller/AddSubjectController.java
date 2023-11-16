@@ -23,7 +23,6 @@ public class AddSubjectController extends HttpServlet {
         String name = request.getParameter("name");
         String code = request.getParameter("code");
         String des = request.getParameter("des");
-        String image = request.getParameter("image");
 
         String mess = ""; //Initialize the error message as null
 
@@ -36,7 +35,7 @@ public class AddSubjectController extends HttpServlet {
                 mess = "Your input subject name is too long!";
                 // check the length and format of subject code
             } else {
-                if ((code.length() != 6) && (code.length() != 7) && (!code.matches("[A-Z]{3}\\d{3}[a-zA-Z]*"))) {
+                if ((code.length() > 10 ) ) {
                     mess = "Subject code is not valid!";
                     // check if subject code is fomatted right
                 } else if ((dao.getSubjectByCode(code)) != null) {
@@ -44,7 +43,8 @@ public class AddSubjectController extends HttpServlet {
                     // if all are checked, a new subject is added in the database
                 } else {
                     int mID = Integer.parseInt(mIDStr);
-                    dao.addSubject(mID, name, code, des, image);
+                    dao.addSubject(mID, name, code, des);
+//                    request.setAttribute("successMessage", "New subject added successfully!");
                     response.sendRedirect("settingSubject");
                     return; // early exit
                 }

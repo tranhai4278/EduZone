@@ -85,48 +85,50 @@
                     <h1>${detail.quizName}</h1>
 
                     <div class="widget-box">
-                        <div class="email-wrapper" style="border-bottom: solid gray 1px">
-                            <div class="col-2" style="border-right:  solid gray 1px">
-                                <div class="email-menu-bar-inner" >
-                                    <ul>
-                                        <h4>Quesion </h4>
-                                    </ul>
+                        <form action="" method="post" name="f">
+                            <div class="email-wrapper" style="border-bottom: solid gray 1px">
+                                <div class="col-2" style="border-right:  solid gray 1px">
+                                    <div class="email-menu-bar-inner" >
+                                        <ul>
+                                            <h4>Quesion ${que} </h4> 
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class=" ml-sm-5 " >
-                                    <div  style="border-bottom: solid gray 1px"><b>${quession.getQuestion()}</b></div>
-                                    <p>Chosse one:</p>
-                                    <div class="ml-md-3"  id="options">
-                                        <c:forEach var="c" items="${listC}">
-                                            <input type="radio" name="radio" value="${c.choiceId}" >${c.choice} </br>
-                                        </c:forEach>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex align-items-center pt-3">
-                                    <div id="prev">
-                                        <button class="btn btn-primary" id="prevBtn" onclick="prevBtn()">Previous</button>
-                                    </div>
-                                    <div class="ml-auto mr-sm-5">
-                                        <button class="btn btn-success" onclick="nextBtn()">Next</button>
-                                    </div>
-                                </div> 
-                            </div>
-                            <div class="col-2" style="border-left: solid gray 1px ">
-                                <div class="email-menu-bar-inner">
-                                    <p>Quiz navigation</p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <c:forEach var="a" begin="1" end="${detail.numberQuestion}">
-                                                <a class="btn m-1"  ${que == a ? 'style="background-color: purple" ' : ' '} href="quiz?qid=${detail.quizId}&que=${a}"" >${a}</a>
+                                <div class="col">
+                                    <div class=" ml-sm-5 " >
+                                        <div  style="border-bottom: solid gray 1px"><b>${quession.getQuestion()}</b></div>
+                                        <p>Chosse one:</p>
+                                        <div class="ml-md-3"  id="options">
+                                            <c:forEach var="c" items="${listC}">
+                                                <input type="radio" name="radio" value="${c.choiceId}" >${c.choice} </br>
                                             </c:forEach>
                                         </div>
+
                                     </div>
-                                    <a href="h"><i>Finish Test</i></a>
+                                    <div class="d-flex align-items-center pt-3">
+                                        <div id="prev">
+                                            <button class="btn btn-primary" id="prevBtn" onclick="prevBtn()">Previous</button>
+                                        </div>
+                                        <div class="ml-auto mr-sm-5">
+                                            <button class="btn btn-success" onclick="nextBtn()">Next</button>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="col-2" style="border-left: solid gray 1px ">
+                                    <div class="email-menu-bar-inner">
+                                        <p>Quiz navigation</p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <c:forEach var="a" begin="1" end="${detail.numberQuestion}">
+                                                    <button class="btn m-1"  ${que == a ? 'style="background-color: purple" ' : ' '} onclick="updateQuestion(${a})">${a}</button>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                        <a href="result"onclick="confirmFinishTest()"><i>Finish Test</i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -137,6 +139,9 @@
             $(document).ready(function () {
                 if (currentQuestion === 1) {
                     $('#prevBtn').hide();
+                }
+                if (currentQuestion === totalQuestions) {
+                    $('#nextBtn').hide();
                 }
             });
             function prevBtn() {
@@ -153,10 +158,17 @@
                 }
             }
             console.log(currentQuestion);
-            function updateQuestion(questionNumber) {
-                window.location.href = 'quiz?qid=${detail.quizId}&que=' + questionNumber;
-            }
         </script>
+        <script>
+            function confirmFinishTest() {
+                var isConfirmed = confirm("Are you sure you want to submit the test?");
+
+                if (isConfirmed) {
+                    window.location.href = "result"; // Thay thế bằng URL hoặc hành động thực tế của bạn
+                } else {
+                }
+            }
+        </script> 
         <div class="ttr-overlay"></div>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

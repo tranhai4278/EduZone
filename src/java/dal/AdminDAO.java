@@ -150,7 +150,6 @@ public class AdminDAO extends MySqlConnection {
                 + "`subject_name`=?,\n"
                 + "`subject_code`=?,\n"
                 + "`description`=?,\n"
-                + "`img_url`=?,\n"
                 + "`status`=?,\n"
                 + "`update_at`=?,\n"
                 + "`update_by`=? \n"

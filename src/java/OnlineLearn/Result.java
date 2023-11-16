@@ -6,20 +6,22 @@ package OnlineLearn;
 
 import dal.OnlineLearningDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
-import model.Question;
-import model.QuestionChoise;
 
 /**
  *
  * @author Nết
  */
-public class Quiz extends HttpServlet {
+@WebServlet(name = "Result", urlPatterns = {"/result"})
+public class Result extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +34,19 @@ public class Quiz extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("qid"));
-        int qid = Integer.parseInt(request.getParameter("que"));
-        OnlineLearningDAO dao = new OnlineLearningDAO();
-        model.Quiz q = dao.getQuizbyId(id);
-        Question que = dao.getQuestion(id).get(qid - 1);
-        List<QuestionChoise> listC = dao.getChoice(que.getQuestionId());
-        request.setAttribute("detail", q);
-        request.setAttribute("quession", que);
-        request.setAttribute("que", qid);
-        request.setAttribute("listC", listC);
-        request.getRequestDispatcher("quiz.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Result</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Result at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,7 +61,17 @@ public class Quiz extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("answers")) {
+                    String cookieValue = cookie.getValue();
+                    // Xử lý giá trị của cookie ở đây
+                    System.out.println("Cookie Value: " + cookieValue);
+                }
+            }
+        }
     }
 
     /**
@@ -71,29 +85,7 @@ public class Quiz extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("qid"));
-        int qid = Integer.parseInt(request.getParameter("que"));
-        OnlineLearningDAO dao = new OnlineLearningDAO();
-        model.Quiz q = dao.getQuizbyId(id);
-        Question que = dao.getQuestion(id).get(qid - 1);
-        List<QuestionChoise> listC = dao.getChoice(que.getQuestionId());
-        Cookie[] arr = request.getCookies();
-        String txt="";
-        if (arr != null) {
-            for (Cookie o : arr) {
-                if(o.getName().equals("answer")){
-                    txt+=o.getName();
-                    o.setMaxAge(0);
-                    response.addCookie(o);
-                }
-            }
-        }
-
-        request.setAttribute("detail", q);
-        request.setAttribute("quession", que);
-        request.setAttribute("que", qid);
-        request.setAttribute("listC", listC);
-        request.getRequestDispatcher("quiz.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

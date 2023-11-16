@@ -141,6 +141,26 @@ public class OnlineLearningDAO extends MySqlConnection {
         }
         return list;
     }
+    public QuestionChoise checkTrue(int cid) {
+        QuestionChoise s=null;
+        String sql = " SELECT * FROM `question_choice` WHERE choice_id=? AND true_answer =1";
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, cid);
+            result = statement.executeQuery();
+            while (result.next()) {
+                s = new QuestionChoise(result.getInt(1),
+                        result.getString(2),
+                        result.getInt(3),
+                        result.getBoolean(4)
+                );
+
+            }
+        } catch (SQLException e) {
+
+        }
+        return s;
+    }
 
     public Quiz getQuizbyId(int qid) {
         Quiz q = null;

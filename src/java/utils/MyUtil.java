@@ -64,8 +64,8 @@ public class MyUtil {
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", "smtp.mailtrap.io"); // Mailtrap SMTP server
         properties.put("mail.smtp.port", "587"); // Mailtrap port
-        String myAccountEmail = "bff45630c9c041";
-        String password = "1ebf9a7e83640f";
+        String myAccountEmail = "69842ba7772f9c";
+        String password = "aa288898d12b0a";
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {

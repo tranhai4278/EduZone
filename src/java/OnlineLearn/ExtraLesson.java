@@ -111,8 +111,6 @@ public class ExtraLesson extends HttpServlet {
         int chapter = Integer.parseInt(request.getParameter("chapter"));
         String type = request.getParameter("type");
         String video = request.getParameter("video");
-        int quiz = Integer.parseInt(request.getParameter("quiz"));
-        String file = request.getParameter("file");
         String des = request.getParameter("des");
         String action = request.getParameter("on");
         boolean status = "on".equals(action);
@@ -121,7 +119,7 @@ public class ExtraLesson extends HttpServlet {
         Date uDate = new Date();
         OnlineLearningDAO Odao = new OnlineLearningDAO();
         Timestamp timestamp = new Timestamp(uDate.getTime());
-        Lesson l = new Lesson(title, chapter, cid, type, quiz, video, file, status, des, null, null, order, timestamp, uid, timestamp, uid);
+        Lesson l = new Lesson(title, chapter, cid, type, 0, video, null, status, des, null, null, order, timestamp, uid, timestamp, uid);
         Odao.extraLesson(l);
         AdminDAO dao = new AdminDAO();
         ManagerDAO Sdao = new ManagerDAO();

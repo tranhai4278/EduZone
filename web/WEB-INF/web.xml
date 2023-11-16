@@ -30,14 +30,14 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>ManagerAuthenticationFilter</filter-name>
-        <url-pattern>/settingSubject</url-pattern>
-        <url-pattern>/setting</url-pattern>
-        <url-pattern>/userDetail</url-pattern>
-        <url-pattern>/userList</url-pattern>
+        <url-pattern>/subjectList</url-pattern>
+        <url-pattern>/classlist</url-pattern>
+        <url-pattern>/lessonList</url-pattern>
+        <url-pattern>/QuestionsList</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>TrainerAuthenticationFilter</filter-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/classtrainerlist</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>

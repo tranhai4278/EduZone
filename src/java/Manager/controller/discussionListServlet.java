@@ -43,9 +43,12 @@ public class discussionListServlet extends HttpServlet {
         List<SubjectSetting> listS = Sdao.getChapterbySubject(subjectId);
         Subject s = dao.getSubjectbyId(subjectId);
         List<Class> listClass = Odao.getClassbyUser(userId);
+        Class c = Odao.getClassbyUser(userId).get(0);
+        int classid=c.getID();
         List<Quiz> listQuizzes = Odao.getQuizbySubject(subjectId);
         request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("detail", s);
+        request.setAttribute("classid", classid);
         request.setAttribute("listC", listS);
         request.setAttribute("listClass", listClass);
         

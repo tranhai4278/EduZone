@@ -221,6 +221,25 @@
         <script src='assets/vendors/switcher/switcher.js'></script>
 
     </body>
-
+<script>
+            function getLesson(cid, lid) {
+                console.log(cid);
+                $.ajax({
+                    url: "/eduzone/chapterLesson",
+                    type: "post",
+                    data: {
+                        cid: cid,
+                        lid: lid
+                    },
+                    success: function (data) {
+                        var content = document.getElementById("chapter");
+                        content.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+            }
+        </script>
     <!-- Mirrored from educhamp.themetrades.com/demo/admin/mailbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
 </html>

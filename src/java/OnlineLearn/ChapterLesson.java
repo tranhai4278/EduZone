@@ -47,7 +47,7 @@ public class ChapterLesson extends HttpServlet {
         PrintWriter out = response.getWriter();
         for (Lesson s : listL) {
             out.println(" <li>\n"
-                    + "     <a onclick=\"getLesson(" + cid + "," + s.getLessonId() + " )\" >" + s.getTitle() + " </a>\n"
+                    + "     <a onclick=\"getLesson(" + cid + "," + s.getLessonId() +")\" >" + s.getTitle() + " </a>\n"
                             
                     + "     </li>");
         }

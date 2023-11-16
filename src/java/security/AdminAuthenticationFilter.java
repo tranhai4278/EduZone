@@ -24,7 +24,7 @@ public class AdminAuthenticationFilter implements Filter {
         if (session != null && session.getAttribute("user") != null) {
             // User is logged in, check their RoleId
             User user = (User) session.getAttribute("user");
-            if (user.getRoleId() == 1 || user.getRoleId() == 2) {
+            if (user.getRoleId() == 1) {
                 // User is an admin, allow access to the requested admin resource
                 chain.doFilter(request, response);
             } else {

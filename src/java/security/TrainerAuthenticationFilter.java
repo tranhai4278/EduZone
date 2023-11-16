@@ -24,7 +24,7 @@ public class TrainerAuthenticationFilter implements Filter {
         if (session != null && session.getAttribute("user") != null) {
             // User is logged in, check their RoleId
             User user = (User) session.getAttribute("user");
-            if (user.getRoleId() == 1 || user.getRoleId() == 3) {
+            if (user.getRoleId() == 1 || user.getRoleId() == 2 || user.getRoleId() == 3) {
                 // User is a trainer, allow access to the requested trainer resource
                 chain.doFilter(request, response);
             } else {

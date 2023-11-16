@@ -6,6 +6,7 @@ package OnlineLearn;
 
 import dal.AdminDAO;
 import dal.ManagerDAO;
+import dal.OnlineLearningDAO;
 import dal.QuizDAO;
 import dal.SubjectSettingDAO;
 import java.io.IOException;
@@ -70,6 +71,7 @@ public class PracticeQuiz extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         int userId = user.getUserId();
+        OnlineLearningDAO Odao = new OnlineLearningDAO();
         QuizDAO qd = new QuizDAO();
         List<Quiz> listq = qd.getAllQuizPractice(userId, sid);
         AdminDAO dao = new AdminDAO();
@@ -77,10 +79,17 @@ public class PracticeQuiz extends HttpServlet {
         SubjectSettingDAO ssdao = new SubjectSettingDAO();
         List<SubjectSetting> listC = Sdao.getChapterbySubject(sid);
         List<SubjectSetting> listss = ssdao.getDimentionBySubjectId(sid);
+        List<model.Class> listClass = Odao.getClassbyUser(userId);
+        model.Class c = Odao.getClassbyUser(userId).get(0);
+        int classid = c.getID();
         Subject s = dao.getSubjectbyId(sid);
+        List<Quiz> listQuizzes = Odao.getQuizbySubject(sid);
+        request.setAttribute("listQuizzes", listQuizzes);
         request.setAttribute("listss", listss);
         request.setAttribute("quiz", listq);
         request.setAttribute("detail", s);
+        request.setAttribute("listClass", listClass);
+        request.setAttribute("classid", classid);
         request.setAttribute("listC", listC);
         request.getRequestDispatcher("practiceQuiz.jsp").forward(request, response);
     }

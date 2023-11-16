@@ -12,8 +12,8 @@ import java.util.Properties;
 public class Mailtrap {
 
     public static boolean sendPasswordResetEmail(String userEmail) {
-        final String username = "51d141bc93e9bc"; // Replace with your Mailtrap username
-        final String password = "4d1447e90c948f"; // Replace with your Mailtrap password
+        final String username = "69842ba7772f9c"; // Replace with your Mailtrap username
+        final String password = "aa288898d12b0a"; // Replace with your Mailtrap password
 
         // Generate a unique token that includes a timestamp
         String timestamp = String.valueOf(new Date().getTime());

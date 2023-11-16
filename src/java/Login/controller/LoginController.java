@@ -1,4 +1,3 @@
-
 package Login.controller;
 
 import dal.UserDAO;
@@ -40,11 +39,22 @@ public class LoginController extends HttpServlet {
         } else if (user.isStatus() == true) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-
-            if (user.getRoleId() == 1 || user.getRoleId() == 2) {
-                response.sendRedirect("setting");
-            } else {
-                response.sendRedirect("home");
+            switch (user.getRoleId()) {
+                case 1:
+                    response.sendRedirect("setting");
+                    break;
+                case 2:
+                    response.sendRedirect("subjectList");
+                    break;
+                case 3:
+                    response.sendRedirect("dashboardController");
+                    break;
+                case 4:
+                    response.sendRedirect("dashboardController");
+                    break;
+                default:
+                    response.sendRedirect("home");
+                    break;
             }
 
         } else {

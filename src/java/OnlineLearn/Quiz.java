@@ -38,20 +38,6 @@ public class Quiz extends HttpServlet {
         model.Quiz q = dao.getQuizbyId(id);
         Question que = dao.getQuestion(id).get(qid - 1);
         List<QuestionChoise> listC = dao.getChoice(que.getQuestionId());
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().startsWith("answer_")) {
-                    // Extract the question number and answer value from the cookie
-                    String[] parts = cookie.getName().split("_");
-                    int questionNumber = Integer.parseInt(parts[1]);
-                    String answer = cookie.getValue();
-
-                    // Process the answer as needed
-                    // You can store it in a data structure or perform any other necessary actions
-                }
-            }
-        }
         request.setAttribute("detail", q);
         request.setAttribute("quession", que);
         request.setAttribute("que", qid);
@@ -85,7 +71,29 @@ public class Quiz extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("qid"));
+        int qid = Integer.parseInt(request.getParameter("que"));
+        OnlineLearningDAO dao = new OnlineLearningDAO();
+        model.Quiz q = dao.getQuizbyId(id);
+        Question que = dao.getQuestion(id).get(qid - 1);
+        List<QuestionChoise> listC = dao.getChoice(que.getQuestionId());
+        Cookie[] arr = request.getCookies();
+        String txt="";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if(o.getName().equals("answer")){
+                    txt+=o.getName();
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
+            }
+        }
+
+        request.setAttribute("detail", q);
+        request.setAttribute("quession", que);
+        request.setAttribute("que", qid);
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("quiz.jsp").forward(request, response);
     }
 
     /**

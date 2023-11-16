@@ -128,40 +128,43 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-6">
-                                                <input class="form-control" type="text" value="${detail.subjectId}" hidden="" name="id">
+                                                <input class="form-control" type="text" value="${detail.subjectId}" hidden="" name="id"  >
                                                 <label class="col-form-label">Subject code</label>
                                                 <div>
-                                                    <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11">
-                                                </div>
-                                                <p style="color: red">${requestScope.error}</p>
+                                                    <input class="form-control" type="text" value="${detail.subjectCode}" name="scode" required maxlength="11" <c:if test="${sessionScope.user.roleId == 2 }">readonly </c:if>>
+                                                    </div>
+                                                    <p style="color: red">${requestScope.error}</p>
                                             </div>
                                             <div class="form-group col-6">
                                                 <label class="col-form-label">Subject name</label>
                                                 <div>
-                                                    <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50">
+                                                    <input class="form-control" type="text" value="${detail.subjectName}" name="sname" required maxlength="50" <c:if test="${sessionScope.user.roleId == 2 }">readonly </c:if>>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group col-6">
-                                                <label class="col-form-label" >Manager</label>
-                                                <select
-                                                    name="mid"
-                                                    id="manager"
-                                                    >
-                                                    <c:forEach items="${listSM}" var="s">
-                                                        <option <c:if test="${detail.managerId eq s.userId}">
-                                                                selected
-                                                            </c:if> value="${s.userId}">
-                                                            ${s.fullName}
-                                                        </option>
-                                                    </c:forEach>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-3">
-                                                <label class="col-form-label">Status</label>
-                                                <div class="form-check form-switch">
-                                                    <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
+                                            <c:if test="${sessionScope.user.roleId == 1 }">
+                                                <div class="form-group col-6">
+                                                    <label class="col-form-label" >Manager</label>
+                                                    <select
+                                                        name="mid"
+                                                        id="manager"
+                                                        >
+                                                        <c:forEach items="${listSM}" var="s">
+                                                            <option <c:if test="${detail.managerId eq s.userId}">
+                                                                    selected
+                                                                </c:if> value="${s.userId}">
+                                                                ${s.fullName}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
-                                            </div>
+                                                <div class="form-group col-3">
+                                                    <label class="col-form-label">Status</label>
+                                                    <div class="form-check form-switch">
+                                                        <input name="on"  style="margin: 0" class="form-check-input" type="checkbox" ${detail.isStatus() ? 'checked' : ' '} >
+                                                    </div>
+                                                </div>
+                                            </c:if>
+
                                             <div class="seperator"></div>
 
                                             <div class="col-12 m-t20">
@@ -172,7 +175,7 @@
                                             <div class="form-group col-12">
                                                 <label class="col-form-label">Subject description</label>
                                                 <div>
-                                                    <textarea class="form-control" name="description" required maxlength="250" >${detail.description} </textarea>
+                                                    <textarea class="form-control" name="description" required maxlength="250" <c:if test="${sessionScope.user.roleId == 2 }">readonly </c:if>>${detail.description} </textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12">

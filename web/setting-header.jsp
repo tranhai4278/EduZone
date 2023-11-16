@@ -45,12 +45,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
     <link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
-    
+
 </head>
 
 
 <header class="ttr-header">
-    
+
     <div class="ttr-header-wrapper">
         <!--sidebar menu toggler start -->
         <div class="ttr-toggle-sidebar ttr-material-button">
@@ -134,7 +134,7 @@
                     </a>
                 </li>
                 <li class="ttr-seperate"></li>     
-                <c:if test="${sessionScope.user.roleId == 1}">
+                    <c:if test="${sessionScope.user.roleId == 1}">
                     <li>
                         <a href="userList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-user"></i></span>
@@ -156,7 +156,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
-                        <a href="QuestionsList"" class="ttr-material-button">
+                        <a href="QuestionsList" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
                             <span class="ttr-label">Question</span>
                         </a>
@@ -173,16 +173,7 @@
                             <span class="ttr-label">Lesson</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="subjectList" class="ttr-material-button">
-                            <span class="ttr-icon"><i class="ti-agenda"></i></span>
-                            <span class="ttr-label">Subject Setting</span>
-                        </a>
-                    </li>
 
-                </c:if>
-                    
-                <c:if test="${sessionScope.user.roleId == 2 ||  sessionScope.user.roleId == 1}">
                     <li>
                         <a href="classlist" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
@@ -190,8 +181,17 @@
                         </a>
                     </li>               
                 </c:if>
-                    
-                 <c:if test="${sessionScope.user.roleId == 3}">
+                <c:if test="${sessionScope.user.roleId == 2}">
+
+                    <li>
+                        <a href="subjectList" class="ttr-material-button">
+                            <span class="ttr-icon"><i class="ti-agenda"></i></span>
+                            <span class="ttr-label">Subject Setting</span>
+                        </a>
+                    </li>
+                </c:if>
+
+                <c:if test="${sessionScope.user.roleId == 3}">
                     <li>
                         <a href="classtrainerlist" class="ttr-material-button">
                             <span class="ttr-icon"><i class="ti-clipboard"></i></span>
@@ -207,7 +207,7 @@
                         </a>
                     </li>  
                 </c:if>
-                    
+
 
 
                 <!--                        <li>

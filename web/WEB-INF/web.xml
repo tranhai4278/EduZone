@@ -293,6 +293,7 @@
         <servlet-name>classTrainerListServlet</servlet-name>
         <servlet-class>Class.controller.classTrainerListServlet</servlet-class>
     </servlet>
+    </servlet>
     <servlet>
         <servlet-name>ExtraLesson</servlet-name>
         <servlet-class>OnlineLearn.ExtraLesson</servlet-class>
@@ -312,6 +313,7 @@
     <servlet>
         <servlet-name>classRemoveStudentServlet</servlet-name>
         <servlet-class>Class.controller.classRemoveStudentServlet</servlet-class>
+    </servlet>
     </servlet>
     <servlet>
         <servlet-name>deleteComment</servlet-name>
@@ -573,6 +575,7 @@
         <servlet-name>classTrainerListServlet</servlet-name>
         <url-pattern>/classtrainerlist</url-pattern>
     </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExtraLesson</servlet-name>
         <url-pattern>/extraLesson</url-pattern>
@@ -592,6 +595,7 @@
     <servlet-mapping>
         <servlet-name>classRemoveStudentServlet</servlet-name>
         <url-pattern>/removestudent</url-pattern>
+    </servlet-mapping>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>deleteComment</servlet-name>

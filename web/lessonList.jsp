@@ -89,7 +89,6 @@
                                             <p>Search by</p>
                                             <div class="col-12 col-sm-9 col-md-9 col-lg-4">
                                                 <select name="criteria">
-                                                    <option value="subject_name">Subject Name</option>
                                                     <option value="setting_name">Chapter</option>
                                                     <option value="title">Lesson title</option>
                                                     <option value="lesson_type">Lesson type</option>
@@ -112,7 +111,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Lesson title</th>
-                                                        <th scope="col">Subject</th>
                                                         <th scope="col">Chapter</th>
                                                         <th scope="col">Lesson Content</th>
                                                         <th scope="col">Lesson Type</th>
@@ -124,7 +122,6 @@
                                                     <c:forEach var="l" items="${list}">
                                                         <tr>
                                                             <td><c:out value="${l.title}"/></td>
-                                                            <td><c:out value="${lessonDAO.getSubjectName(l.lessonId)}"/></td>
                                                             <td><c:out value="${lessonDAO.getChapterName(l.lessonId)}"/></td>
                                                             <td>
                                                                 <c:choose>

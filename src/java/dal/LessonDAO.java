@@ -223,22 +223,22 @@ public class LessonDAO extends MySqlConnection {
         }
     }
 
-    public void addLesson(String title, int chapterId, int classId, String type, int quizId, String videoLink, String file, boolean status, String des) {
+    public void addLesson(String title, int chapterId, String type, int quizId, String videoLink, String file, boolean status, String des, int order) {
         try {
-            String strSelect = "INSERT INTO `lesson` (`lesson_id`, `title`, `chapter_id`, `class_id`, `lesson_type`, "
-                    + "`quiz_id`, `video_link`, `file`, `status`, `description`, `create_at`, `create_by`, `update_at`, `update_by`) "
-                    + "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            String strSelect = "INSERT INTO `lesson` ( `title`, `chapter_id`,  `lesson_type`, "
+                    + "`quiz_id`, `video_link`, `file`, `status`, `description`,display_order, `create_at`, `create_by`, `update_at`, `update_by`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             Connection cnn = (new MySqlConnection()).connection;
             PreparedStatement pstm = cnn.prepareStatement(strSelect);
             pstm.setString(1, title);
             pstm.setInt(2, chapterId);
-            pstm.setInt(3, classId);
-            pstm.setString(4, type);
-            pstm.setInt(5, quizId);
-            pstm.setString(6, videoLink);
-            pstm.setString(7, file);
-            pstm.setBoolean(8, status);
-            pstm.setString(9, des);
+            pstm.setString(3, type);
+            pstm.setInt(4, quizId);
+            pstm.setString(5, videoLink);
+            pstm.setString(6, file);
+            pstm.setBoolean(7, status);
+            pstm.setString(8, des);
+            pstm.setInt(9, order);
             java.util.Date d = new java.util.Date();
             java.sql.Date createdAt = new java.sql.Date(d.getTime());
             java.sql.Date updatedAt = new java.sql.Date(d.getTime());

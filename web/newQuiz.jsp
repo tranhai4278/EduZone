@@ -31,10 +31,10 @@
                         <form id="addQuizForm" action="quizs" method="get" >
                             <input type="text" name="action" style="display: none" value="addQuiz">
                             <div class="row">
-                                <!--Subject-->
+<!--                                Subject-->
                                 <div class="col-md-6">
-                                    <select name="subject">
-                                        <option value="">Subject</option>
+                                    <select id="subject" name="subject" onchange="getChapters(this)">
+                                        <option value="">Nothing selected</option>
                                         <c:forEach items="${subjectList}" var="i">
                                             <c:if test="${searchBySubject == i.subjectId}">
                                                 <option value="${i.subjectId}" selected style="text-align: left">${i.subjectCode}</option>
@@ -45,20 +45,11 @@
                                         </c:forEach>
                                     </select>
                                 </div>
-                                <!--Chapter-->
-                                <div class="col-md-6">
-                                    <select name="chapter">
-                                        <option value="" style="text-align: left">Chapter</option>
-                                        <c:forEach items="${chapterList}" var="i">
-                                            <c:if test="${searchByChapter == i.getSettingId()}">
-                                                <option value="${i.getSettingId()}" selected style="text-align: left">${i.getSettingName()}</option>
-                                            </c:if>
-                                            <c:if test="${searchByChapter != i.getSettingId()}">
-                                                <option value="${i.getSettingId()}"  style="text-align: left">${i.getSettingName()}</option>
-                                            </c:if>
-                                        </c:forEach>
-                                    </select>
+<!--                                Chapter-->
+                                <div class="col-md-6" id="content">
+                                    
                                 </div>   
+                                
                             </div>  
                             <!--Name-->
                             <div class="form-group" style="margin-top:10px; margin-top: 20px">
@@ -85,7 +76,7 @@
                                 <input type="number" class="form-control" id="totalInput" name="total">
                                 <div id="totalError" class="error"></div>
                             </div>
-                            
+
                             <!--Time-->
                             <div class="form-group" style="margin-top: 23px">
                                 <label for="time">Duration:</label>
@@ -143,7 +134,27 @@
                 } else {
                     event.preventDefault();
                 }
-            }           
+            }
+        </script>
+        <script>
+            function getChapters(selectElement) {
+                var subject = selectElement.value;
+                console.log(1);
+                $.ajax({
+                    url: "/eduzone/getchapbysubject",
+                    type: "get",
+                    data: {
+                        subject: subject
+                    },
+                    success: function (data) {
+                        var content = document.getElementById("content");
+                        content.innerHTML = data;
+                    },
+                    error: function (xhr) {
+                        // Xử lý lỗi ở đây nếu cần
+                    }
+                });
+            }
         </script>
     </body>
 </html>

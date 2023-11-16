@@ -4,23 +4,21 @@
  */
 package Manager.controller;
 
-import dal.QuizDAO;
+import dal.SubjectSettingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.Quiz;
-import model.User;
+import model.SubjectSetting;
 
 /**
  *
  * @author MinhDQ
  */
-public class QuizList extends HttpServlet {
+public class GetChapBySubject extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,6 +32,17 @@ public class QuizList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int subject  = Integer.parseInt(request.getParameter("subject")) ;
+        SubjectSettingDAO daost = new SubjectSettingDAO();
+        List<SubjectSetting> listc = daost.getAllChapterBySubjectId(subject);
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<select name=\"chapter\" >\n"
+                + "<option value=\"\" style=\"text-align: left\">Nothing selected</option>\n");
+        for (SubjectSetting c : listc) {
+            out.println("<option value=\"" + c.getSettingId() + "\">" + c.getSettingName() + "</option>\n");
+        }
+        out.println("</select>");
 
     }
 
@@ -49,7 +58,7 @@ public class QuizList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**

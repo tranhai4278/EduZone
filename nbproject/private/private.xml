@@ -3,17 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/utils/MyUtil.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/AdminDAO.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/model/Setting.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Admin/controller/SettingSubject.java</file>
-            <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/dal/MySqlConnection.java</file>
-        </group>
-        <group>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/src/java/Login/controller/LoginController.java</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/admin.js</file>
             <file>file:/C:/Users/MinhDQ/Desktop/SWP/EduZone/web/assets/js/functions.js</file>
@@ -76,7 +65,6 @@
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Login/controller/authen.java</file>
         </group>
         <group>
-
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/SettingServlet.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/Admin/controller/UpdateStatus.java</file>
             <file>file:/C:/Users/haina/Documents/SWP-Project/EduZone/src/java/utils/MyUtil.java</file>
@@ -424,10 +412,14 @@
             <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/User/controller/EvaluateController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/assignmentEvaluation.jsp</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/src/java/Admin/controller/UserEditController.java</file>
-            <file>file:/C:/Users/PHAM%20NGOC/Documents/NetBeansProjects/EduZone/EduZone/web/userDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/model/QuizConfig.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/quizDetail.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Manager/controller/NewQuiz.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/web/newQuiz.jsp</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/Manager/controller/Quizs.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/SubjectSettingDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/QuizDAO.java</file>
+            <file>file:/C:/Users/MinhDQ/Desktop/FinalSWP391/EduZone/src/java/dal/ManagerDAO.java</file>
         </group>
     </open-files>
 </project-private>

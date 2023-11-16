@@ -78,7 +78,7 @@ public class QuizDAO extends MySqlConnection {
 
     public ArrayList<Quiz> searchQuiz(String searchContent, String subject, String chapter) {
         ArrayList<Quiz> quizList = new ArrayList<>();
-        String sql = "SELECT * FROM quiz q \n"
+        String sql = "SELECT q.*, s.subject_code, ss.setting_name FROM quiz q \n"
                 + "JOIN subject s ON s.subject_id = q.subject_id \n"
                 + "LEFT JOIN subject_setting ss ON ss.setting_id = q.chapter_id\n"
                 + "where q.quiz_name like ? or q.subject_id like ? or q.chapter_id like ?";
